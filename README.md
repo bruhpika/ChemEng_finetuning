@@ -6,6 +6,7 @@
 ---
 
 ## Table of Contents
+
 - [1. Project Overview](#1-project-overview)
 - [2. Vision & Value Proposition](#2-vision--value-proposition)
 - [3. Core Features](#3-core-features)
@@ -20,11 +21,13 @@
 ---
 
 ## 1. Project Overview
+
 **ChemE‑LLM** is an open‑source, student‑deployable AI assistant for chemical‑engineering simulation tools – specifically **DWSIM** and **MATLAB**.  It provides natural‑language query handling, grounded answers, and step‑by‑step UI navigation for common simulation workflows.  The system is built to run on **free compute** (Google Colab T4) and requires **zero software licences**.
 
 ---
 
 ## 2. Vision & Value Proposition
+
 - **Zero‑budget, zero‑license** – students can access a powerful LLM‑driven help system without institutional software licences.
 - **Domain‑specific knowledge** – combines official documentation, university PDFs, and curated YouTube walkthroughs into a unified knowledge base.
 - **Grounded, accurate answers** – Retrieval‑Augmented Generation (RAG) ensures answers are sourced from verified chunks, dramatically reducing hallucinations.
@@ -33,6 +36,7 @@
 ---
 
 ## 3. Core Features
+
 | Feature | Description |
 |---|---|
 | **Dual‑track data curation** | Official docs (PDF/HTML) + YouTube video extraction. |
@@ -46,6 +50,7 @@
 ---
 
 ## 4. System Architecture
+
 ```
 ┌─────────────────────────────────────────────────────┐
 │                DATA INGESTION LAYER               │
@@ -97,7 +102,9 @@
 ---
 
 ## 5. Quick Start (Installation & Setup)
+>
 > **Prerequisites**
+>
 > - Python 3.9 or newer
 > - Git
 > - Access to a Google Colab account (GPU‑enabled) or a local GPU with ≥16 GB VRAM
@@ -126,7 +133,9 @@ python app.py
 ---
 
 ## 6. Usage Guide
+
 ### 6.1 Query the Assistant (Gradio UI)
+
 1. Open the URL printed by `app.py` (default `http://127.0.0.1:7860`).
 2. Type a natural‑language question, e.g.:
    - *“How do I configure a Flash Drum in DWSIM?”*
@@ -135,14 +144,17 @@ python app.py
 4. Click **Show source** to view the exact chunk(s) used for grounding.
 
 ### 6.2 Command‑Line Interface (optional)
+
 ```bash
 python cli.py "<your question>"
 ```
+
 The CLI returns the answer and a path to the source JSON chunk for audit.
 
 ---
 
 ## 7. Development Roadmap
+
 | Phase | Timeline | Goal |
 |---|---|---|
 | **Phase 1** – Data Curation | Weeks 1‑2 | Gather PDFs, HTML docs, and curate ≥40 YouTube videos per tool. |
@@ -156,7 +168,9 @@ All phases are tracked in `PROJECT_PLAN.md` with detailed milestones.
 ---
 
 ## 8. Contributing
+
 We welcome contributions! Please follow these steps:
+
 1. Fork the repository and create a feature branch.
 2. Ensure code complies with the existing style (PEP 8, type hints, docstrings).
 3. Run the full test suite: `pytest -q`.
@@ -168,14 +182,14 @@ For major changes, open an issue first to discuss the design.
 ---
 
 ## 9. License
+
 This project is licensed under the **MIT License** – see the `LICENSE` file for details.
 
 ---
 
 ## 10. Contact & Acknowledgements
-**Lead Maintainer:** [Your Name] – [your.email@example.com](mailto:your.email@example.com)
 
-**Contributors:** See `CONTRIBUTORS.md`.
+**Lead Maintainer:** Harshith Bhardwaz Kenkari – <harshithkenkary@gmail.com>
 
 Special thanks to the **Google Gemini** team for the extraction models, the **HuggingFace** community for PEFT/QLoRA, and the **open‑source DWSIM** project for providing a free simulation engine.
 
