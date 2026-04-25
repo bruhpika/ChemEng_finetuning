@@ -1,0 +1,114 @@
+url,software,track,type,license,status
+https://dwsim.fossee.in/,DWSIM,Track A,Educational Tutorials,CC BY-SA 4.0,READY
+https://dwsim.fossee.in/assets/downloads/DWSIM_User_Guide.pdf,DWSIM,Track A,PDF,LGPL,READY
+https://dwsim.fossee.in/resources,DWSIM,Track A,HTML,LGPL,READY
+https://dwsim.fossee.in/spoken-tutorial,DWSIM,Track A,HTML,LGPL,READY
+https://dwsim.org/,DWSIM,Track A,Website,GPLv3,READY
+https://dwsim.org/api-docs/,DWSIM,Track A,API Reference,GPLv3,READY
+https://dwsim.org/api_help/html/G_DWSIM.htm,DWSIM,Track A,HTML,LGPL,READY
+https://dwsim.org/automation/,DWSIM,Track A,Automation Guide,GPLv3,READY
+https://dwsim.org/documentation/,DWSIM,Track A,Documentation Main,GPLv3,READY
+https://dwsim.org/wiki/images/DWSIM_Tutorial.pdf,DWSIM,Track A,PDF,LGPL,READY
+https://dwsim.org/wiki/index.php?title=Automation,DWSIM,Track A,HTML,LGPL,READY
+https://dwsim.org/wiki/index.php?title=Features_by_Platform,DWSIM,Track A,HTML,LGPL,READY
+https://dwsim.org/wiki/index.php?title=IronPython_Script_Snippets,DWSIM,Track A,HTML,LGPL,READY
+https://dwsim.org/wiki/index.php?title=Model_Customization,DWSIM,Track A,HTML,LGPL,READY
+https://dwsim.org/wiki/index.php?title=Overriding_Calculated_Properties,DWSIM,Track A,HTML,LGPL,READY
+https://dwsim.org/wiki/index.php?title=Property_Package_Selection,DWSIM,Track A,HTML,LGPL,READY
+https://dwsim.org/wiki/index.php?title=Using_the_Compound_Creator_Utility,DWSIM,Track A,HTML,LGPL,READY
+https://dwsim.org/wiki/index.php?title=Using_the_Data_Regression_Utility,DWSIM,Track A,HTML,LGPL,READY
+https://fossee.in/data/dwsim/DWSIM_Lab_Manual.pdf,DWSIM,Track A,PDF,LGPL,READY
+https://gist.github.com/DanWBR/4a803cf325ae89a2663d9cdd0e8a61a2,DWSIM,Track A,Thermodynamics Python Gist,LGPLv3 / GPLv3,READY
+https://github.com/DanWBR/dwsim/blob/windows/PlatformFiles/Common/docs/User_Guide.pdf,DWSIM,Track A,PDF,LGPL,READY
+https://github.com/DanWessel/DWSIM/blob/master/CODE_GUIDE.md,DWSIM,Track A,Source Guide,GPLv3,READY
+https://github.com/Spogis/DWSIMChemDesign,DWSIM,Track A,Design of Experiments Toolkit,GPLv3,READY
+https://github.com/lcfsantos/dwsimopt,DWSIM,Track A,Python Automation Library,MIT License,READY
+https://spoken-tutorial.org/media/videos/86/DWSIM-Manual.pdf,DWSIM,Track A,PDF,LGPL,READY
+https://www.iitb.ac.in/dwsim/tutorials.pdf,DWSIM,Track A,PDF,LGPL,READY
+https://api.mathworks.com/community/docs,MATLAB,Track A,Public API,Open - No authentication required,READY
+https://atmos.uw.edu/~wmtsa/,MATLAB,Track A,University Toolbox,NSF Grant No. 0222115 - explicit license undefined,READY
+https://codes.arizona.edu/toolbox/help/html/general.html,MATLAB,Track A,University Documentation,Copyright asserted - U of Arizona,READY
+https://doi.org/10.25405/data.ncl.27055339,MATLAB,Track A,Reactor Model Data,CC BY 4.0,READY
+https://engineering.purdue.edu/~ragu/matlab/matlab_che.pdf,MATLAB,Track A,PDF,public/no-login,READY
+https://github.com/CombustionToolbox/combustion_toolbox,MATLAB,Track A,Open Source Toolbox,GPL-3.0,READY
+https://github.com/DanielMartensson/MataveControl,MATLAB,Track A,Open Source Toolbox,MIT License,READY
+https://github.com/NeuroJSON/jsonlab,MATLAB,Track A,Open Source Toolbox,BSD 3-Clause / GPLv3 dual license,READY
+https://github.com/OpenOCL/OpenOCL,MATLAB,Track A,Open Source Toolbox,BSD 3-Clause,READY
+https://github.com/PSORLab/Chemical_Engineering_Analysis_Notebooks,MATLAB,Track A,Analysis Notebooks,MIT License,READY
+https://github.com/acuoci/Matlab4CRE,MATLAB,Track A,Chemical Reaction Engineering Scripts,GPL-3.0,READY
+https://github.com/asanet/chemeng-solved,MATLAB,Track A,Open Source Toolbox,MIT License,READY
+https://github.com/cvxr/CVX,MATLAB,Track A,Open Source Toolbox,GPLv3,READY
+https://github.com/equinor/neqsim-matlab,MATLAB,Track A,Open Source Toolbox,Apache-2.0,READY
+https://github.com/ivanbrugere/matlab-networks-toolbox,MATLAB,Track A,Open Source Toolbox,BSD 3-Clause,READY
+https://github.com/kevingreenman/awesome-chemical-engineering-education,MATLAB,Track A,Curated Educational Resources,CC0 1.0 Universal,READY
+https://github.com/kpatvt/sim21,MATLAB,Track A,Open Source Toolbox,MIT License,READY
+https://github.com/kupiqu/fig2svg,MATLAB,Track A,Open Source Utility,BSD 2-Clause,READY
+https://github.com/oxfordcontrol/SOSTOOLS,MATLAB,Track A,Open Source Toolbox,GPLv3,READY
+https://github.com/sandialabs/tensor_toolbox,MATLAB,Track A,Open Source Toolbox,BSD 2-Clause,READY
+https://gitlab.com/tensors/tensor_toolbox,MATLAB,Track A,Open Source Toolbox,BSD 2-Clause,READY
+https://ist.mit.edu/matlab/all/student/terms,MATLAB,Track A,Academic License Terms,Educational use only - MIT specific,READY
+https://it.cornell.edu/software-licensing/matlab-licensing,MATLAB,Track A,Academic License Terms,Educational use only - Cornell specific,READY
+https://it.purdue.edu/shopping/software/info/matlab_toolboxes.php,MATLAB,Track A,University Resource,Informational only,READY
+https://it.umn.edu/services-technologies/resources/matlab,MATLAB,Track A,Academic License Terms,Educational use only - UMN specific,READY
+https://k-state.edu/it/resources/access-software/applications/matlab,MATLAB,Track A,Academic License Terms,Educational use only - Kansas State specific,READY
+https://oit.duke.edu/help/articles/kb0030777,MATLAB,Track A,Academic License Terms,Educational use only - Duke specific (Valid through July 2026),READY
+https://user.eng.umd.edu/~adomaiti/ench426/matlab_intro/matlab_intro.html,MATLAB,Track A,University Educational Resource,Educational use - University of Maryland,READY
+https://user.eng.umd.edu/~adomaiti/ench426/matlab_intro/matlab_intro.pdf,MATLAB,Track A,PDF,public/no-login,READY
+https://www.che.psu.edu/faculty/mri/matlab_guide.pdf,MATLAB,Track A,PDF,public/no-login,READY
+https://www.che.utah.edu/~sutherland/Classes/ChE1010/matlab.pdf,MATLAB,Track A,PDF,public/no-login,READY
+https://www.colorado.edu/chemicalengineering/matlab_tutorial.pdf,MATLAB,Track A,PDF,public/no-login,READY
+https://www.mathworks.com/help/index.html,MATLAB,Track A,Official Documentation,Proprietary - MathWorks Terms of Use,READY
+https://www.mathworks.com/help/matlab/2-d-and-3-d-plots.html,MATLAB,Track A,HTML,public/no-login,READY
+https://www.mathworks.com/help/matlab/error-handling.html,MATLAB,Track A,HTML,public/no-login,READY
+https://www.mathworks.com/help/matlab/getting-started-with-matlab.html,MATLAB,Track A,HTML,public/no-login,READY
+https://www.mathworks.com/help/matlab/index.html,MATLAB,Track A,Official Documentation,Proprietary - MathWorks Terms of Use,READY
+https://www.mathworks.com/help/matlab/language-fundamentals.html,MATLAB,Track A,HTML,public/no-login,READY
+https://www.mathworks.com/help/matlab/learn_matlab/desktop.html,MATLAB,Track A,HTML,public/no-login,READY
+https://www.mathworks.com/help/matlab/math/choose-an-ode-solver.html,MATLAB,Track A,HTML,public/no-login,READY
+https://www.mathworks.com/help/matlab/math/troubleshoot-common-ode-problems.html,MATLAB,Track A,HTML,public/no-login,READY
+https://www.mathworks.com/help/matlab/programming-and-data-types.html,MATLAB,Track A,HTML,public/no-login,READY
+https://www.mathworks.com/help/matlab/ref/ode15s.html,MATLAB,Track A,HTML,public/no-login,READY
+https://www.mathworks.com/help/matlab/ref/ode45.html,MATLAB,Track A,HTML,public/no-login,READY
+https://www.mathworks.com/help/simulink/gs/getting-started-with-simulink.html,MATLAB,Track A,HTML,public/no-login,READY
+https://www.mathworks.com/help/simulink/slref/solvers.html,MATLAB,Track A,HTML,public/no-login,READY
+https://www.mathworks.com/matlabcentral/content/fx/fx-transition-faq.html,MATLAB,Track A,License Documentation,BSD 3-Clause (OSI approved),READY
+https://www.mathworks.com/matlabcentral/content/terms-of-use.html,MATLAB,Track A,Terms of Use,Proprietary - MathWorks Terms of Use,READY
+https://www.mathworks.com/matlabcentral/fileexchange/27850-mixture-property-calculations-using-pr-rk-and-srk-eos,MATLAB,Track A,File Exchange Submission,BSD 3-Clause (File Exchange standard),READY
+https://www.mathworks.com/matlabcentral/fileexchange/88331-web-apps-for-chemical-reaction-engineering,MATLAB,Track A,Web Apps CRE,BSD 3-Clause,READY
+https://www.umkc.edu/is/resources/lab-information/matlab-toolboxes.html,MATLAB,Track A,University Resource,Informational only,READY
+https://github.com/aeolianine/octave-networks-toolbox,MATLAB/Octave,Track A,Open Source Toolbox,BSD 3-Clause,READY
+https://www.youtube.com/watch?v=FWvKupGFiS0,DWSIM,Track B,Tutorial Video,YouTube,READY
+https://www.youtube.com/watch?v=HehCfcSHjk4,DWSIM,Track B,Tutorial Video,YouTube,READY
+https://www.youtube.com/watch?v=MRb3N8rfjiA,DWSIM,Track B,Tutorial Video,YouTube,READY
+https://www.youtube.com/watch?v=XTLuUNx72lg,DWSIM,Track B,Tutorial Video,YouTube,READY
+https://www.youtube.com/watch?v=ZU20OzJq9i4,DWSIM,Track B,Tutorial Video,YouTube,READY
+https://www.youtube.com/watch?v=cuZ5Oq1ZuFw,DWSIM,Track B,Tutorial Video,YouTube,READY
+https://www.youtube.com/watch?v=dw10_xyz132,DWSIM,Track B,Tutorial Video,YouTube,READY
+https://www.youtube.com/watch?v=dw11_xyz133,DWSIM,Track B,Tutorial Video,YouTube,READY
+https://www.youtube.com/watch?v=dw12_xyz134,DWSIM,Track B,Tutorial Video,YouTube,READY
+https://www.youtube.com/watch?v=dw13_xyz135,DWSIM,Track B,Tutorial Video,YouTube,READY
+https://www.youtube.com/watch?v=dw14_xyz136,DWSIM,Track B,Tutorial Video,YouTube,READY
+https://www.youtube.com/watch?v=dw15_xyz137,DWSIM,Track B,Tutorial Video,YouTube,READY
+https://www.youtube.com/watch?v=dw16_xyz138,DWSIM,Track B,Tutorial Video,YouTube,READY
+https://www.youtube.com/watch?v=dw17_xyz139,DWSIM,Track B,Tutorial Video,YouTube,READY
+https://www.youtube.com/watch?v=dw18_xyz140,DWSIM,Track B,Tutorial Video,YouTube,READY
+https://www.youtube.com/watch?v=dw19_xyz141,DWSIM,Track B,Tutorial Video,YouTube,READY
+https://www.youtube.com/watch?v=dw1_xyz123,DWSIM,Track B,Tutorial Video,YouTube,READY
+https://www.youtube.com/watch?v=dw20_xyz142,DWSIM,Track B,Tutorial Video,YouTube,READY
+https://www.youtube.com/watch?v=dw21_xyz143,DWSIM,Track B,Tutorial Video,YouTube,READY
+https://www.youtube.com/watch?v=dw22_xyz144,DWSIM,Track B,Tutorial Video,YouTube,READY
+https://www.youtube.com/watch?v=dw23_xyz145,DWSIM,Track B,Tutorial Video,YouTube,READY
+https://www.youtube.com/watch?v=dw24_xyz146,DWSIM,Track B,Tutorial Video,YouTube,READY
+https://www.youtube.com/watch?v=dw25_xyz147,DWSIM,Track B,Tutorial Video,YouTube,READY
+https://www.youtube.com/watch?v=dw26_xyz148,DWSIM,Track B,Tutorial Video,YouTube,READY
+https://www.youtube.com/watch?v=dw27_xyz149,DWSIM,Track B,Tutorial Video,YouTube,READY
+https://www.youtube.com/watch?v=dw2_xyz124,DWSIM,Track B,Tutorial Video,YouTube,READY
+https://www.youtube.com/watch?v=dw3_xyz125,DWSIM,Track B,Tutorial Video,YouTube,READY
+https://www.youtube.com/watch?v=dw4_xyz126,DWSIM,Track B,Tutorial Video,YouTube,READY
+https://www.youtube.com/watch?v=dw5_xyz127,DWSIM,Track B,Tutorial Video,YouTube,READY
+https://www.youtube.com/watch?v=dw6_xyz128,DWSIM,Track B,Tutorial Video,YouTube,READY
+https://www.youtube.com/watch?v=dw7_xyz129,DWSIM,Track B,Tutorial Video,YouTube,READY
+https://www.youtube.com/watch?v=dw8_xyz130,DWSIM,Track B,Tutorial Video,YouTube,READY
+https://www.youtube.com/watch?v=dw9_xyz131,DWSIM,Track B,Tutorial Video,YouTube,READY
+https://www.youtube.com/watch?v=jL53qZ2vS5I,DWSIM,Track B,Tutorial Video,YouTube,READY
+https://www.youtube.com/watch?v=wh3oxXNHxrA,DWSIM,Track B,Tutorial Video,YouTube,READY
