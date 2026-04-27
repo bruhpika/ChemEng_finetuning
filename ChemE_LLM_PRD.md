@@ -30,6 +30,7 @@ No prior work: (a) extracts knowledge from YouTube walkthroughs, (b) combines do
 ## 3. User Personas & Use Cases
 
 ### Persona A — Priya, 3rd-Year ChE Undergraduate
+
 *Context:* Has DWSIM access via university lab, but lab hours are limited. Learns best by watching tutorials and trying things at home.
 
 | Use Case | Description |
@@ -39,6 +40,7 @@ No prior work: (a) extracts knowledge from YouTube walkthroughs, (b) combines do
 | A3 — Unit Operations Navigation | Asks which UI panel in DWSIM to use for adding a compressor to an existing flowsheet |
 
 ### Persona B — Arjun, Final-Year ChE Student with MATLAB Access
+
 *Context:* Uses MATLAB for process control assignments but struggles with Simulink-specific syntax and block configurations.
 
 | Use Case | Description |
@@ -114,6 +116,7 @@ No prior work: (a) extracts knowledge from YouTube walkthroughs, (b) combines do
 **Goal:** Assemble all raw source material for both tracks before any processing begins.
 
 **Tasks:**
+
 - Identify and download DWSIM official documentation (LGPL-licensed, safe)
 - Scrape MATLAB public MathWorks pages (documentation, tutorials — no login required)
 - Collect university-published ChE lab PDFs (public institutional repositories)
@@ -133,6 +136,7 @@ No prior work: (a) extracts knowledge from YouTube walkthroughs, (b) combines do
 **Goal:** Convert raw sources into a unified, clean JSON knowledge base.
 
 **Tasks:**
+
 - Write Gemini extraction prompts for Track A (PDF/HTML → JSON)
 - Write Gemini extraction prompts for Track B (YouTube URL → JSON)
 - Run both extraction pipelines; save outputs per source
@@ -152,6 +156,7 @@ No prior work: (a) extracts knowledge from YouTube walkthroughs, (b) combines do
 **Goal:** Generate a finetuning dataset from the clean knowledge base.
 
 **Tasks:**
+
 - Write a Gemini prompt that takes one KB chunk and outputs 5–10 Q&A pairs across 4 categories
 - Run generation on all chunks; filter low-quality pairs (too short, off-topic)
 - Format output as `{instruction, input, output}` JSONL — standard SFT format
@@ -170,6 +175,7 @@ No prior work: (a) extracts knowledge from YouTube walkthroughs, (b) combines do
 **Goal:** Produce a finetuned adapter that outperforms the base model on ChemE simulation queries.
 
 **Tasks:**
+
 - Set up Colab T4 environment: install `peft`, `transformers`, `bitsandbytes`, `trl`
 - Load Phi-3-mini in 4-bit; configure LoRA hyperparameters (r=8, alpha=16, target modules)
 - Train using SFTTrainer; use gradient checkpointing to manage memory
@@ -189,6 +195,7 @@ No prior work: (a) extracts knowledge from YouTube walkthroughs, (b) combines do
 **Goal:** Deliver a working end-to-end system a student can use locally or on Colab.
 
 **Tasks:**
+
 - Embed all KB chunks with `all-MiniLM-L6-v2`; load into ChromaDB
 - Build retrieval function: query → top-3 chunks → injected into prompt
 - Integrate finetuned model with retrieval pipeline
@@ -277,6 +284,7 @@ No prior work: (a) extracts knowledge from YouTube walkthroughs, (b) combines do
 ```
 
 **Merge & Deduplication Strategy:**
+
 - Deduplicate by `topic` + `software` hash after extraction
 - On conflict between Track A and Track B on the same topic: prefer Track A for `params` and `ui_paths` (official docs are authoritative); prefer Track B for `steps` and `fixes` (video walkthroughs often capture undocumented workarounds)
 - Flag conflicts in a `conflicts.log` file for manual review
