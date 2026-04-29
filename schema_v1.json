@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "chunk_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "source_type": {
+      "type": "string",
+      "enum": [
+        "track_a",
+        "track_b"
+      ]
+    },
+    "software": {
+      "type": "string",
+      "enum": [
+        "DWSIM",
+        "MATLAB"
+      ]
+    },
+    "topic": {
+      "type": "string"
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "params": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "ui_paths": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "fixes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "theory": {
+      "type": "string"
+    },
+    "source_url": {
+      "type": "string"
+    },
+    "license": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "chunk_id",
+    "source_type",
+    "software",
+    "topic",
+    "source_url",
+    "license"
+  ]
+}

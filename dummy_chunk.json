@@ -1,0 +1,23 @@
+{
+  "chunk_id": "123e4567-e89b-12d3-a456-426614174000",
+  "source_type": "track_a",
+  "software": "DWSIM",
+  "topic": "Flash Drum Setup",
+  "steps": [
+    "Open flowsheet",
+    "Add Flash Drum from the Object Palette",
+    "Connect feed stream to the inlet port"
+  ],
+  "params": {
+    "temperature": "298 K",
+    "pressure": "101325 Pa"
+  },
+  "ui_paths": [
+    "Flowsheet > Add Unit Op > Flash Drum"
+  ],
+  "errors": [],
+  "fixes": [],
+  "theory": "A flash drum separates a liquid mixture into a vapor and a liquid phase by a sudden pressure drop.",
+  "source_url": "https://dwsim.inforside.com.br/wiki/index.php?title=Flash_Drum",
+  "license": "LGPL"
+}
