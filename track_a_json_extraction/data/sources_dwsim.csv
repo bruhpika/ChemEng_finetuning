@@ -1,0 +1,27 @@
+url,software,track,type,license,status
+https://dwsim.fossee.in/,DWSIM,Track A,Educational Tutorials,CC BY-SA 4.0,READY
+https://dwsim.fossee.in/assets/downloads/DWSIM_User_Guide.pdf,DWSIM,Track A,PDF,LGPL,READY
+https://dwsim.fossee.in/resources,DWSIM,Track A,HTML,LGPL,READY
+https://dwsim.fossee.in/spoken-tutorial,DWSIM,Track A,HTML,LGPL,READY
+https://dwsim.org/,DWSIM,Track A,Website,GPLv3,READY
+https://dwsim.org/api-docs/,DWSIM,Track A,API Reference,GPLv3,READY
+https://dwsim.org/api_help/html/G_DWSIM.htm,DWSIM,Track A,HTML,LGPL,READY
+https://dwsim.org/automation/,DWSIM,Track A,Automation Guide,GPLv3,READY
+https://dwsim.org/documentation/,DWSIM,Track A,Documentation Main,GPLv3,READY
+https://dwsim.org/wiki/images/DWSIM_Tutorial.pdf,DWSIM,Track A,PDF,LGPL,READY
+https://dwsim.org/wiki/index.php?title=Automation,DWSIM,Track A,HTML,LGPL,READY
+https://dwsim.org/wiki/index.php?title=Features_by_Platform,DWSIM,Track A,HTML,LGPL,READY
+https://dwsim.org/wiki/index.php?title=IronPython_Script_Snippets,DWSIM,Track A,HTML,LGPL,READY
+https://dwsim.org/wiki/index.php?title=Model_Customization,DWSIM,Track A,HTML,LGPL,READY
+https://dwsim.org/wiki/index.php?title=Overriding_Calculated_Properties,DWSIM,Track A,HTML,LGPL,READY
+https://dwsim.org/wiki/index.php?title=Property_Package_Selection,DWSIM,Track A,HTML,LGPL,READY
+https://dwsim.org/wiki/index.php?title=Using_the_Compound_Creator_Utility,DWSIM,Track A,HTML,LGPL,READY
+https://dwsim.org/wiki/index.php?title=Using_the_Data_Regression_Utility,DWSIM,Track A,HTML,LGPL,READY
+https://fossee.in/data/dwsim/DWSIM_Lab_Manual.pdf,DWSIM,Track A,PDF,LGPL,READY
+https://gist.github.com/DanWBR/4a803cf325ae89a2663d9cdd0e8a61a2,DWSIM,Track A,Thermodynamics Python Gist,LGPLv3 / GPLv3,READY
+https://github.com/DanWBR/dwsim/blob/windows/PlatformFiles/Common/docs/User_Guide.pdf,DWSIM,Track A,PDF,LGPL,READY
+https://github.com/DanWessel/DWSIM/blob/master/CODE_GUIDE.md,DWSIM,Track A,Source Guide,GPLv3,READY
+https://github.com/Spogis/DWSIMChemDesign,DWSIM,Track A,Design of Experiments Toolkit,GPLv3,READY
+https://github.com/lcfsantos/dwsimopt,DWSIM,Track A,Python Automation Library,MIT License,READY
+https://spoken-tutorial.org/media/videos/86/DWSIM-Manual.pdf,DWSIM,Track A,PDF,LGPL,READY
+https://www.iitb.ac.in/dwsim/tutorials.pdf,DWSIM,Track A,PDF,LGPL,READY

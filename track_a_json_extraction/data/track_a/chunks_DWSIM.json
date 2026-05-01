@@ -1,0 +1,32 @@
+[
+  {
+    "chunk_id": "19397088-93c3-4ce8-a969-435c04311557",
+    "source_type": "track_a",
+    "software": "DWSIM",
+    "topic": "DWSIM Overview and Project Information",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "DWSIM is a multiplatform, CAPE-OPEN compliant chemical process simulator. It uses rigorous thermodynamic and unit operations models to simulate process plants. The software features a modular thermodynamics engine available as a standalone DLL.",
+    "source_url": "https://dwsim.fossee.in/",
+    "license": "CC BY-SA 4.0",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "2abddb6c-110e-4d8b-bdba-c09a85e588e7",
+    "source_type": "track_a",
+    "software": "DWSIM",
+    "topic": "General applications",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "tary applications.",
+    "source_url": "https://dwsim.fossee.in/",
+    "license": "CC BY-SA 4.0",
+    "flag": "INCOMPLETE"
+  }
+]
