@@ -1,0 +1,1127 @@
+[
+  {
+    "chunk_id": "037d71c5-a61d-4472-ab16-1fec3e48bbd8",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "JSON and Binary-JSON encoding/decoding",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "JSONLab is a toolbox for MATLAB/Octave designed for encoding and decoding JSON and binary-JSON (JData) data formats, including support for compression and base64 encoding.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "29e05924-f9cb-4692-b34b-0f47948d7ea3",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "JSONLab file list",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "List of source files provided in the JSONLab toolbox for MATLAB, including various encoding, decoding, and data conversion utilities.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "16e78b3c-c163-4d47-805f-9ea10d30cc15",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "JSONLab Library Overview and Installation",
+    "steps": [
+      "Download JSONLab from official repository",
+      "Add JSONLab directory to MATLAB/Octave path",
+      "Use loadjson/savejson or loadbj/savebj functions for data serialization"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "JSONLab is a toolbox for encoding/decoding JSON, binary JSON (BJData), and JData formats within MATLAB or Octave, facilitating data portability.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "ce1173cb-699a-4d15-8d85-dec014ab204a",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "JSONLab Library Overview and Installation",
+    "steps": [
+      "Install JSONLab on Debian",
+      "Install JSONLab on Ubuntu",
+      "Install JSONLab on Arch Linux",
+      "Using JSONLab functions: savejson, loadjson, savebj, loadbj, jdataencode, jdatadecode, savejd, loadjd, jsonget, jsonset, jsonpath, jsoncache, jdlink",
+      "Perform in-memory data compression and decompression",
+      "Use jsave and jload for workspace sharing"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "JSONLab is the official reference library for JData and BJData specifications, providing serialization and data annotation standards for neuroimaging and scientific data sharing.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "6cd25e2a-a03e-4234-b234-cbe78c044435",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "JSONLab v2.9.8 feature overview",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [
+      "bug fixes for JSONLab v3.0 milestone"
+    ],
+    "theory": "JSONLab is a toolbox for JSON/binary JSON data annotation, supporting JData specifications, JSON-Mmap, JSONPath, and efficient data handling/compression for large N-D arrays.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "9427ee60-5944-4fe5-8149-5831399a95e0",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "JSONLab v2.0+ Updates and Features",
+    "steps": [
+      "Use loadjd/savejd for file operations",
+      "Utilize built-in jsonencode/jsondecode functions",
+      "Implement zlib/gzip compression/decompression via octavezmat",
+      "Upload JSON files to CouchDB using json2couch",
+      "Read .nii/.nii.gz/.jnii/.h5/.snirf/.tsv/.csv files using integrated parsers"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Resolved struct search depth issues",
+      "Fixed jdlink compatibility for Octave 4.2 and 5.2"
+    ],
+    "fixes": [
+      "Improved struct to containers.Map conversion for long keys",
+      "Added fall-back compression for Octave environments"
+    ],
+    "theory": "Support for BJData Draft-2 specification and updated integration with MATLAB/Octave environments.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "08e4f54e-5b28-42e2-8773-22269a8df4a4",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "JSONLab Library Updates and Bug Fixes",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "error_pos error when giving a non-existant input file",
+      "octave failed test",
+      "jsonpath handling of recursive deep scans"
+    ],
+    "fixes": [
+      "fix README.rst formatting issues",
+      "fix error_pos error",
+      "fix octave failed test",
+      "fix jsonpath handling of recursive deep scans",
+      "fix missing index_esc reset"
+    ],
+    "theory": "Implementation of JSONPath support, deep scanning in structs and cells, and dynamic data caching via jdlink/jsoncache.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "c539a695-a304-48fe-8425-9b1ca725ea5d",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "JSONLab version history and maintenance",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "octave 6.4+ regexp non-utf8 error",
+      "fread issue"
+    ],
+    "fixes": [
+      "missing index_esc reset",
+      "typos found by codespell",
+      "compression method typo",
+      "octave utf-8 handling",
+      "broken tests",
+      "error for expecting an ending object mark when count is given"
+    ],
+    "theory": "Documentation of version control history, CI adjustments for MATLAB/Octave compatibility, and features for JSON/JData handling.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "f0509f25-1bfd-48ea-bb0f-225df4afd227",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "JSONLab Library Changelog",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Octave bug 57107",
+      "indentation bug with containers.Map",
+      "broken tests"
+    ],
+    "fixes": [
+      "fix broken tests",
+      "fix #71",
+      "fix containers.Map indentation bug",
+      "fix string indentation",
+      "fix #91",
+      "fix #88",
+      "Fix typo (codespell)",
+      "revert savejson change",
+      "fix matlab test",
+      "fix loadjd and savejd"
+    ],
+    "theory": "Changelog for JSONLab library covering updates to serialization, compression (zstd, blosc2), and compatibility patches for MATLAB and Octave.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "1aa7d65b-7bac-40c5-beb4-e9d5da81694f",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "JSONLab Change Log and Bug Fixes",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Broken jdatahash",
+      "MATLAB 2022b converting string to unicode",
+      "Conjugating complex numbers",
+      "Issue #85 (empty struct with names)",
+      "Issue #84 (string typed file name)",
+      "Issue #83 (complex number conjugation)",
+      "Issues found by dependency check"
+    ],
+    "fixes": [
+      "Bug fix test section added",
+      "Simplify all-numeric or all-struct cells",
+      "Missing file extension handling",
+      "Fix loadjd and savejd file extension match",
+      "Fix broken jdatahash",
+      "Handle empty struct with names",
+      "Accept string typed file name",
+      "Avoid conjugating complex numbers",
+      "Fix issues found by dependency check",
+      "Stop escaping / to / in JSON string",
+      "Improve datalink uri handling",
+      "Make datalink URL query more robust"
+    ],
+    "theory": "Implementation of JSON-Mmap spec, portable data hash functions, and unified JSON/binary JSON file interface (loadjd/savejd).",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "65b4abff-d3d6-40e6-a8c4-013ef3e6fd33",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "JSONLab Update Logs",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [
+      "fix test for older octave",
+      "fix #79: support empty name key",
+      "fix #78: increase default float number digits from 10 to 16",
+      "fix row-major ('formatversion',1.8) ND array storage order"
+    ],
+    "theory": "Changelog for JSONLab detailing data storage, JSONPath support, mmap integration, and optimization updates.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "c3af3f25-a6b4-4b3a-a532-7ad170bb91e0",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "JSONLab Library Updates and Bug Fixes",
+    "steps": [],
+    "params": {
+      "formatversion": 1.8,
+      "BuiltinJSON": "option for savejson/loadjson"
+    },
+    "ui_paths": [],
+    "errors": [
+      "octave 3.8 single precision support error",
+      "inconsistency between singlet integer and float values"
+    ],
+    "fixes": [
+      "row-major ND array storage order",
+      "variable name encoding for unicode strings",
+      "octave 3.8 error on travis",
+      "optimized ND array element order",
+      "regression in parsing array strings",
+      "loading objects"
+    ],
+    "theory": "Implementation of BJData v1-draft 2, optimization of loadjson/loadbj speed, and integration of native jsonencode/jsondecode.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "007cc256-54cf-49b1-baf1-7edb1d649a61",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "JSONLab Version Compatibility and BJData Specification",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [
+      "fix string encoding over 399 characters (close #65)",
+      "fix DESCRIPTION date bug",
+      "fix warning about lz4encode file name",
+      "supports ND cell array (fix #66)"
+    ],
+    "theory": "JSONLab v2.0-v3.0 is compliant with JData Spec Draft 3. JSONLab v3.0 savebj/loadbj is compatible with BJData spec Draft 2, which includes breaking changes from v2.0 such as Little-Endian default byte order and additional numeric data types (uint16, uint32, uint64, float16).",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "2ff2a9f9-4c1a-43c1-9bdd-dd366da00d53",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "JSONLab BJData format compatibility and migration",
+    "steps": [
+      "To save data using legacy UBJSON format: savebj('',data,'FileName','myfile.bjd','UBJSON',1, 'Endian','B');",
+      "To read legacy BJData files (v2.0): data=loadbj('my_old_data_file.bjd','Endian','B');",
+      "Convert all pre-v2.9 JSONLab generated BJD or .pmat files to the new BJData Draft 2 format."
+    ],
+    "params": {
+      "savebj_options": {
+        "UBJSON": 1,
+        "Endian": "B"
+      },
+      "loadbj_options": {
+        "Endian": "B"
+      }
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [
+      "Use 'UBJSON',1 and 'Endian','B' in savebj to maintain legacy format",
+      "Use 'Endian','B' in loadbj to read legacy files"
+    ],
+    "theory": "JSONLab supports JSON, UBJSON, and MessagePack formats. BJData Draft 2 updates the default byte order to Little-Endian and restricts optimized array data types to U, i, u, I, m, l, M, L, h, d, D, C.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "0d8a8bdb-f5b0-411a-8bcd-21a817f98d99",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "JSON and Binary JSON Data Handling",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "JSON is a portable, human-readable text format for complex data. UBJSON (Universal Binary JSON) and MessagePack are binary formats designed for efficient storage, faster encoding/decoding, and handling of large N-D arrays, serving as alternatives to formats like HDF5 for scientific data exchange.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "d7c8b060-86c4-408d-9bde-f29dbcd3fe73",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Installation and Configuration of JSONLab",
+    "steps": [
+      "Add JSONLab root folder to MATLAB path and click 'Save'.",
+      "Run 'rehash' in MATLAB command window.",
+      "Verify installation by typing 'which savejson'.",
+      "For shared environments: Create/edit ~/matlab/startup.m to include 'addpath('/path/to/jsonlab')'.",
+      "For Octave: Edit ~/.octaverc to include path.",
+      "For compression: Download and install ZMat toolbox.",
+      "Fedora installation: Use 'sudo dnf install octave-jsonlab' and 'sudo dnf install octave-zmat'.",
+      "Debian installation: Use 'sudo apt-get install octave-jsonlab'."
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "JSONLab provides JSON data structure support for MATLAB and Octave. Data compression requires the ZMat toolbox for specific modes or large arrays.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "f0d9d5b5-5827-4a3a-8e00-ee3d91a87b6f",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "JSONLab Installation and Usage",
+    "steps": [
+      "Install JSONLab on Debian using 'sudo apt-get install matlab-jsonlab'",
+      "Install JSONLab on Ubuntu using 'sudo apt-get install octave-jsonlab' (or add PPA for older versions)",
+      "Install JSONLab on Arch Linux using 'sudo pikaur -S jsonlab'",
+      "Use loadjson/savejson for text-based JSON operations",
+      "Use loadbj/savebj, loadubjson/saveubjson, or loadmsgpack/savemsgpack for alternative data formats"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "JSONLab provides functions to parse and encode MATLAB data structures into JSON, UBJSON, and MessagePack formats using a unified parameter structure.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "9a2a4227-f4b2-4dd1-b329-724fbfbdaafc",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Data Serialization with JSONLab",
+    "steps": [
+      "Use jdataencode/jdatadecode to convert complex MATLAB data structures to JData-compliant forms.",
+      "Utilize savejson, saveubjson, or savemsgpack for encoding data.",
+      "Use loadjd and savejd for unified reading and writing of supported file formats including JSON, BJData, UBJSON, MessagePack, and HDF5."
+    ],
+    "params": {
+      "supported_formats": {
+        "JSON": [
+          ".json",
+          ".jdt",
+          ".jmsh",
+          ".jnii",
+          ".jnirs"
+        ],
+        "BJData": [
+          ".bjd",
+          ".jdb",
+          ".bmsh",
+          ".bnii",
+          ".bnirs",
+          ".pmat"
+        ],
+        "UBJSON": [
+          ".ubj"
+        ],
+        "MessagePack": [
+          ".msgpack"
+        ],
+        "HDF5": [
+          ".h5",
+          ".hdf5",
+          ".snirf"
+        ]
+      }
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "JSONLab uses JData specifications to provide an in-memory data conversion layer that translates MATLAB data structures into serializable formats compatible with various standards like JSON, BJData, UBJSON, MessagePack, and HDF5.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "87076b75-3e1d-400d-9378-00900b393eed",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "JSON serialization using JSONLab",
+    "steps": [
+      "Define a MATLAB structure or variable representing mesh or data",
+      "Use savejson(rootname, data) to convert MATLAB variables to JSON format",
+      "Specify 'Compact',1 for minified JSON output",
+      "Provide a filename parameter to export the JSON directly to a file",
+      "Utilize optional parameters like 'ArrayIndent' and 'FloatFormat' for custom formatting",
+      "Use 'BuiltinJSON', 1 to leverage native MATLAB jsonencode for performance"
+    ],
+    "params": {
+      "rootname": "String identifying the JSON root element",
+      "data": "MATLAB variable to be converted",
+      "Compact": "Flag to print JSON without white-space",
+      "FileName": "Output path for the generated JSON file",
+      "ArrayIndent": "Control indentation for arrays",
+      "FloatFormat": "Format string for floating point numbers",
+      "BuiltinJSON": "Flag to use native MATLAB jsonencode"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "JSONLab is a toolbox used for converting MATLAB data structures into JSON format, supporting JData annotations for complex types and binary data.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "a95a7021-4dcc-48b7-9941-620a00b6c63e",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "JSON Serialization and Deserialization with JsonLab",
+    "steps": [
+      "Use savejson with 'BuiltinJSON' to save data without all native savejson features",
+      "Compress binary strongly-typed data using 'Compression' and 'CompressArraySize' flags",
+      "Preserve types using JData ND array annotations with the 'ArrayToStruct' flag",
+      "Store special matrices compactly using the 'UseArrayShape' annotation",
+      "Parse JSON strings or objects directly using loadjson",
+      "Read and parse JSON data from a local file path using loadjson",
+      "Customize parsing behavior using parameter/value pairs like 'SimplifyCell'",
+      "Retrieve and decode JData annotations from a URL using loadjson"
+    ],
+    "params": {
+      "savejson": {
+        "BuiltinJSON": "Logical flag to use native MATLAB JSON support",
+        "Compression": "Compression algorithm (e.g., zlib)",
+        "CompressArraySize": "Threshold for applying compression to arrays",
+        "ArrayToStruct": "Force use of JData ND array annotations",
+        "UseArrayShape": "Use _ArrayShape_ annotation for special matrices"
+      },
+      "loadjson": {
+        "SimplifyCell": "Flag to control cell array simplification"
+      }
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "JsonLab utilizes JData annotations to represent complex data structures, binary data, and specialized matrix shapes within the JSON format, ensuring cross-platform data interoperability.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "5c7b1576-75ae-4239-96c0-378445b61754",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "JSON Data Loading",
+    "steps": [
+      "Load JSON data from a URL using loadjson",
+      "Parse JSON using built-in decoder with 'builtinjson' flag",
+      "Handle long key names using 'UseMap' flag",
+      "Download and merge linked data using 'maxlinklevel' and '_DataLink_'",
+      "Retrieve JSON sub-elements using JSONPath",
+      "Generate memory-map objects for disk-like read/write"
+    ],
+    "params": {
+      "builtinjson": "use built-in jsondecode.m for speed",
+      "UseMap": "store data in containers.Map to bypass 63-character key limit",
+      "maxlinklevel": "set recursion depth for _DataLink_ resolution"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The loadjson function extends standard JSON parsing by supporting JData annotations, automatic URL downloading, _DataLink_ tag merging, and memory-mapping for large datasets.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "6e2cdff9-f71a-402f-aad8-5661cb8f5378",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "JSON and Binary JSON operations with JSONLab",
+    "steps": [
+      "Load JSON data into memory using loadjson with memory mapping",
+      "Save data structures to binary JSON format using savebj",
+      "Customize root names and output files during binary serialization",
+      "Enable debug mode to inspect binary JSON structures as text",
+      "Apply compression (gzip/zlib) to binary JSON outputs",
+      "Export to alternate binary formats like MessagePack or UBJSON",
+      "Load binary JSON data using loadbj"
+    ],
+    "params": {
+      "loadjson": {
+        "mmaponly": "logical flag to return only memory map structure"
+      },
+      "savebj": {
+        "rootname": "string for root element name",
+        "FileName": "output file destination",
+        "debug": "boolean flag for verbose text output",
+        "Compression": "string for compression algorithm (e.g., 'gzip', 'zlib')",
+        "MessagePack": "logical flag for MessagePack format",
+        "UBJSON": "logical flag for UBJSON format"
+      }
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Binary JSON (BJ) provides more compact storage compared to text-based JSON by eliminating base64-encoding requirements and offering native binary support for data structures.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "8eeb39c9-00f9-4a28-a68b-0b8b25d9c1d3",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Binary JSON (BJData/UBJSON) serialization and deserialization",
+    "steps": [
+      "Use savebj to serialize MATLAB structures into binary JSON formats like UBJSON or BJData",
+      "Use loadbj to parse binary JSON files, buffers, or remote URLs into MATLAB structures",
+      "Apply compression options like 'zlib' when saving arrays with savebj",
+      "Use mmap options with loadbj to perform memory-mapped disk access for large data elements",
+      "Use jdataencode to convert complex MATLAB data types into JSON-serializable structures"
+    ],
+    "params": {
+      "savebj": [
+        "FileName",
+        "UBJSON",
+        "Compression",
+        "CompressArraySize"
+      ],
+      "loadbj": [
+        "mmaponly"
+      ]
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Binary JSON (BJData/UBJSON) provides a high-performance, compact representation of JSON data, supporting N-dimensional arrays, sparse matrices, and compressed data blocks within MATLAB environments.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "8c71873c-0614-423f-acd1-90f68703fe28",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "JData encoding and decoding",
+    "steps": [
+      "Use jdataencode to transform complex MATLAB data structures into JSON-serializable forms.",
+      "Use savejson to export the encoded structure to a JSON file.",
+      "Use jdatadecode to convert JData-annotated JSON structures back to native MATLAB data structures."
+    ],
+    "params": {
+      "jdataencode": [
+        "'annotatearray'",
+        "'prefix'",
+        "'usearrayshape'"
+      ]
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "JData annotations (e.g., _ArrayType_, _ArraySize_, _ArrayData_, _ArrayShape_) allow for the preservation of complex MATLAB data types like sparse arrays, ND-arrays, tables, and graphs during JSON serialization and deserialization.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "8b569151-4a05-4e87-a870-06cc3c123ae4",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "JSON and JData file I/O operations",
+    "steps": [
+      "Decode JData annotations using jsondecode or loadjson with jdatadecode",
+      "Use savejd as a unified interface to save data to various formats (.json, .jdb, .ubj, .h5)",
+      "Use loadjd to import data from various file types or URLs",
+      "Utilize jsonget for JSON-memory-map operations"
+    ],
+    "params": {
+      "savejd": {
+        "inputs": [
+          "rootname",
+          "data",
+          "filename"
+        ]
+      },
+      "loadjd": {
+        "inputs": [
+          "filename_or_url"
+        ]
+      }
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "JData serves as a schema for structured data serialization in MATLAB. The library provides utility functions to bridge standard JSON decoding with specialized JData structure reconstruction, handling name encoding/decoding inconsistencies between different parsers.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "20f20594-ecf5-4f1d-a46a-55ebce8c7344",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Efficient JSON Data Access and Modification using JSONLab",
+    "steps": [
+      "Generate a memory map of a JSON string or file using loadjson with the 'mmaponly' option",
+      "Retrieve specific JSON objects using jsonget by providing the JSON string/file, the mmap structure, and the desired JSONPath",
+      "Modify JSON content rapidly using JSON mmap via jsonset"
+    ],
+    "params": {
+      "loadjson": {
+        "input": "JSON string or file path",
+        "options": "mmaponly (boolean)"
+      },
+      "jsonget": {
+        "input": "JSON string or file path",
+        "mmap": "mmap structure",
+        "path": "JSONPath string"
+      }
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The JSONLab memory-mapping (mmap) approach allows for reading and extracting parts of a JSON structure by storing byte offsets and lengths, avoiding the need to re-parse the entire string or file for subsequent access.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "d23ca2a4-a908-4027-97a7-dfedff9b8590",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "JSON manipulation using jsonset and jsonpath",
+    "steps": [
+      "Use loadjson with 'mmaponly' to create a memory map of a JSON object or file.",
+      "Use jsonset to modify specific values in a JSON string or file by specifying the JSONPath and the new value.",
+      "Use jsonpath to query or extract specific fields or elements from a JSON structure using JSONPath syntax."
+    ],
+    "params": {
+      "jsonset": {
+        "inputs": [
+          "json_source",
+          "mmap",
+          "path",
+          "value"
+        ],
+        "description": "Modifies JSON content at a specified path. New values must not exceed the original byte length."
+      },
+      "jsonpath": {
+        "inputs": [
+          "obj",
+          "path"
+        ],
+        "description": "Indexes or searches a JSON struct using standard JSONPath syntax."
+      }
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "JSONPath is a standard for indexing and searching JSON structures. Memory mapping (mmap) allows for rapid in-place modification or disk-mapped writing of JSON data.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "1a94c92c-94bc-4954-90e4-03f5d8513af3",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "JSONPath and JSON caching",
+    "steps": [
+      "Use jsonpath(obj, path_string) to query JSON objects",
+      "Access nested elements using dot notation or bracket notation (e.g., $.obj.key)",
+      "Use [] for array indexing, ranges (0:1), and negative indices",
+      "Use .. for deep-scanning keys within a structure",
+      "Use jsoncache.m to manage and download on-demand external data files with SHA-256 validation"
+    ],
+    "params": {
+      "obj": "The MATLAB struct representing the JSON data",
+      "path_string": "The JSONPath query string to execute"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The jsonpath function implements JSONPath syntax for querying MATLAB structures, supporting hierarchical navigation, deep scanning, and bracket-based indexing. jsoncache.m provides a mechanism for efficient on-demand retrieval and local caching of external files referenced via DataLink annotations.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "f5e2480d-989d-4303-9fb5-2a1be81a50f4",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "NeuroJSON local file caching mechanism",
+    "steps": [
+      "Call jsoncache.m to search for a requested file in local cache folders.",
+      "If found, return the local file path.",
+      "If not found, generate a SHA-256 hash of the URL to be used as a filename and identify cache search paths.",
+      "Search order: global NEUROJSON_CACHE variable, pwd/.neurojson, user-specific home folders, system-wide cache directories based on OS.",
+      "For NeuroJSON.io URLs, save files into a subfolder structure mirroring the database and document path.",
+      "For non-NeuroJSON URLs, save files into a domain-based hashed directory structure."
+    ],
+    "params": {
+      "global_variable": "NEUROJSON_CACHE",
+      "supported_OS": [
+        "Linux",
+        "MacOS",
+        "Windows"
+      ]
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Files retrieved via URL are cached locally to optimize access performance and availability. The caching strategy uses a hierarchical directory structure derived either from the URL structure (for NeuroJSON.io) or a SHA-256 hash-based structure (for generic URLs).",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "a3bfef20-7ae3-461a-9f63-eb0bf42b92eb",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Data caching and dynamic loading via NeuroJSON",
+    "steps": [
+      "Use jsoncache to search for or download files from a URL into a local cache directory structure.",
+      "Use jdlink to dynamically download, cache, and parse linked data files from URLs.",
+      "Use loadjson to load data from a NeuroJSON URL."
+    ],
+    "params": {
+      "jsoncache": {
+        "url": "String representing the data source URL",
+        "cachepath": "Returned local directory path",
+        "filename": "Returned local filename"
+      },
+      "jdlink": {
+        "url": "String representing the linked data source"
+      }
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The system caches files based on the neurojson.io format or by creating a SHA-256 hash of the URL if the neurojson format is not followed, mapping URLs to a specific directory structure under a defined CACHEFOLDER.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "db2df8f2-7035-4989-848b-5a5389e709f4",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "JSONLab Data Loading and Testing",
+    "steps": [
+      "Load dataset from NeuroJSON using loadjson",
+      "Scan linked resources using jsonpath",
+      "Download and load linked NIfTI files using jdlink",
+      "Run demo scripts from the examples folder",
+      "Run unit testing scripts from the test folder"
+    ],
+    "params": {
+      "url": "string",
+      "regex": "string"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "JSONLab utilizes jsoncache for efficient data retrieval, jsonpath for navigating linked resources, and supports various serialization formats including JSON, UBJSON, and MessagePack.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "310f2cad-fd63-4160-8b2f-d09265fcd03d",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Unit testing and in-memory data compression",
+    "steps": [
+      "Run unit testing scripts in the 'test' folder to validate data types and specification compliance",
+      "Use compression functions (zlib, gzip, base64, lzma, lzip, lz4, lz4hc, zstd, blosc2) to compress in-memory data",
+      "Pass char, numeric, or logical ND-arrays to compression functions",
+      "Specify optional compression levels (e.g., -1 to -9 for zlib) to balance speed and ratio"
+    ],
+    "params": {
+      "compression_level": "Integer between -1 (fastest) and -9 (highest compression)",
+      "supported_encoders": [
+        "zlib",
+        "gzip",
+        "base64",
+        "lzma",
+        "lzip",
+        "lz4",
+        "lz4hc",
+        "zstd",
+        "blosc2"
+      ]
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "JSONLab provides utility functions for data compression/decompression. Native support for zlib and gzip is provided via MATLAB JVM; advanced compression algorithms require the ZMat library.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "06614451-301a-4722-bc75-5cd24f21d927",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Data compression and workspace serialization using JSONLab",
+    "steps": [
+      "Compress data using functions like lz4encode, lz4hcencode, or zstdencode.",
+      "Decompress data using corresponding *decode functions, ensuring the info struct is passed to recover original data structures.",
+      "Use jsave and jload to store and retrieve workspace variables as .pmat files."
+    ],
+    "params": {
+      "compression_methods": [
+        "zlib",
+        "gzip",
+        "base64",
+        "lzma",
+        "lzip",
+        "lz4",
+        "lz4hc",
+        "zstd",
+        "blosc2"
+      ],
+      "file_format": ".pmat"
+    },
+    "ui_paths": [],
+    "errors": [
+      "Attempting to decode a compressed buffer with an incompatible decompressor (e.g., passing a zlib buffer to gzipdecode)."
+    ],
+    "fixes": [
+      "Use the 'info' struct returned by the compressor to fully recover the original data structure during decompression."
+    ],
+    "theory": "JSONLab provides tools for data compression and workspace persistence (jsave/jload). .pmat files are binary JData files that offer competitive sizing to .mat files, with potential for further reduction using lzma compression.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "6b47fc94-38b9-41a8-9033-7a128f758240",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "JSONLab .pmat file format usage",
+    "steps": [
+      "Save workspace to .pmat file using jsave",
+      "Load variables from .pmat file using jload"
+    ],
+    "params": {
+      "jsave": {
+        "filename": "string",
+        "vars": "cell array of strings",
+        "compression": "string ('lzma', 'gzip')"
+      },
+      "jload": {
+        "filename": "string",
+        "vars": "cell array of strings",
+        "simplifycell": "boolean"
+      }
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The .pmat format is an experimental binary format that offers up to 50% better compression than .mat files, cross-language compatibility (Python, JS, Go, Java), and quasi-human-readability.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "ffe9e781-8b3a-4123-b8ad-f8f7bc8223e7",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Interoperability between JSONLab and Python",
+    "steps": [
+      "Use jload to load specific variables from a .pmat file using: vars=jload('mydata.pmat','vars',{'var1','var2'})",
+      "Load data files in Python using the standard json module",
+      "Use the jdata Python module for enhanced JData encoding/decoding and NumPy compatibility",
+      "Use the bjdata Python module to handle binary JData files (.bjd, .ubj, .bnii, .bnirs, .pmat)"
+    ],
+    "params": {
+      "jload_file": "path to data file (.pmat, .json)",
+      "jload_options": {
+        "vars": "list of variable names to load",
+        "simplifycell": "boolean flag for cell array simplification"
+      }
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "JSONLab files adhere to the JData Specification, making them compatible with standard JSON parsers. Binary JData formats (UBJSON) offer smaller file sizes and faster parsing compared to text-based JSON.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "fdcc5b34-c8b0-41e3-97b7-a22018e523ba",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "JData module installation and data loading in Python",
+    "steps": [
+      "Install required python modules jdata and bjdata using pip or pip3",
+      "Ensure numpy is installed on the system",
+      "Import jdata and numpy in the python environment",
+      "Use jd.loadt() to load text-based JSON files",
+      "Use jd.loadb() to load binary JData/UBJSON files"
+    ],
+    "params": {
+      "jdata_pypi": "https://pypi.org/project/jdata/",
+      "bjdata_pypi": "https://pypi.org/project/bjdata/",
+      "jdata_github": "https://github.com/NeuroJSON/pyjdata",
+      "bjdata_github": "https://github.com/NeuroJSON/pybj"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The JData/UBJSON format provides a way to store and decode data into Python dict, list, and numpy objects.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "48257823-4d9a-4255-8918-af5620870322",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "JData file I/O and known limitations",
+    "steps": [
+      "Use jd.load() to load binary/UBJSON files based on file suffix",
+      "Use jd.savet(), jd.saveb(), or jd.save to convert Python/Numpy objects to JData encoded structures and save to disk"
+    ],
+    "params": {
+      "saveubjson": "NestArray"
+    },
+    "ui_paths": [],
+    "errors": [
+      "3D or higher dimensional cell/struct-arrays converted to 2D arrays",
+      "Field-name inconsistency in multi-byte characters between Octave and MATLAB",
+      "savejson cannot export class methods",
+      "saveubjson converts logical arrays to uint8",
+      "loadubjson cannot parse all UBJSON Draft-12 compliant files"
+    ],
+    "fixes": [
+      "Use feature('DefaultCharacterSet','latin1') in MATLAB for consistent multi-byte character field-names",
+      "Use saveubjson(...,'NestArray',1) for UBJSON Draft-12 compliance"
+    ],
+    "theory": "JData/UBJSON binary file encoding specification and structure conversion.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "e9f53bef-7a0a-4103-b5a4-b2074701bee6",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "JSONLab Contribution and UBJSON compatibility",
+    "steps": [
+      "Clone source code using git clone https://github.com/NeuroJSON/jsonlab.git jsonlab",
+      "Fork the repository on GitHub",
+      "Implement and test changes in the fork",
+      "Submit a pull request to the upstream repository"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "loadubjson cannot parse all UBJSON Specification (Draft 12) compliant files"
+    ],
+    "fixes": [
+      "Report bugs or issues to https://github.com/NeuroJSON/jsonlab/issues",
+      "Create a pull-request for code modifications"
+    ],
+    "theory": "JSONLab supports UBJSON files produced by saveubjson, but has limited compatibility with full Draft-12 specification files.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "c94e8eb2-ff88-443e-8276-a6959319c069",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Data encoding and compression utilities",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "This module provides utility functions for zlib and gzip compression/decompression, as well as base64 encoding/decoding for data processing.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "44456ac6-5e2b-4885-9c90-13c1699f8b02",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Byte Encoding Utilities",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The package provides utility functions for zlib compression/decompression, gzip compression/decompression, and base64 encoding/decoding for MATLAB.",
+    "source_url": "https://www.mathworks.com/matlabcentral/fileexchange/39526-byte-encoding-utilities",
+    "license": "BSD License",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "6b4fb5a7-8fc2-4c74-9977-e212f9978152",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "JSON and Binary Data Serialization",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Uh oh! There was an error while loading."
+    ],
+    "fixes": [],
+    "theory": "JSONLab is a toolbox for MATLAB/Octave designed for encoding and decoding JSON, binary-JSON (BJData), and related hierarchical data formats.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD-3-Clause",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "2346806e-03de-4df4-a88c-d3838204ac77",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Open Optimal Control Library (OpenOCL) Overview",
+    "steps": [
+      "Run 'doc ocl' in the MATLAB command window to access documentation",
+      "Run 'ocl.examples.cartpole' to view or execute example scripts"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The toolbox supports Trajectory Optimization and non-linear Model Predictive Control (MPC).",
+    "source_url": "https://github.com/OpenOCL/OpenOCL",
+    "license": "BSD 3-Clause",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "ae3809b5-0333-4481-99e3-7b11274e844b",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Optimal Control and Trajectory Optimization",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Open Optimal Control Library for Matlab provides tools for Trajectory Optimization and non-linear Model Predictive Control (MPC).",
+    "source_url": "https://github.com/OpenOCL/OpenOCL",
+    "license": "BSD-3-Clause",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "707e0f93-6167-4264-870c-6ac44e322fd1",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "repository_metadata",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Uh oh! There was an error while loading."
+    ],
+    "fixes": [
+      "Please reload this page"
+    ],
+    "theory": "",
+    "source_url": "https://github.com/OpenOCL/OpenOCL",
+    "license": "BSD 3-Clause",
+    "flag": "INCOMPLETE"
+  }
+]

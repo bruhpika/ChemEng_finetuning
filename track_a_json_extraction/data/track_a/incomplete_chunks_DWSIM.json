@@ -143,59 +143,6 @@
     "flag": "INCOMPLETE"
   },
   {
-    "chunk_id": "ad77cd03-1e19-41fa-a34f-47c76253eb5a",
-    "source_type": "track_a",
-    "software": "DWSIM",
-    "topic": "Phase Equilibrium Data Regression and Electrolyte Modeling",
-    "steps": [
-      "Open the Data Regression tool.",
-      "Search the local ThermoML index for VLE / LLE / SLE / VLLE datasets matching your compound pair.",
-      "Filter the results by equilibrium type and T/P range.",
-      "Preview the citation for the selected dataset.",
-      "Load experimental x\u2013y\u2013T\u2013P points into the regression grid.",
-      "Fit interaction parameters using models such as PR, SRK, PRSV2, NRTL, UNIQUAC, PC-SAFT, or Lee-Kesler-Pl\u00f6cker."
-    ],
-    "params": {
-      "equilibrium_types": [
-        "VLE",
-        "LLE",
-        "SLE",
-        "VLLE"
-      ],
-      "interaction_parameters_models": [
-        "PR",
-        "SRK",
-        "PRSV2",
-        "NRTL",
-        "UNIQUAC",
-        "PC-SAFT",
-        "Lee-Kesler-Pl\u00f6cker"
-      ],
-      "electrolyte_models": [
-        "Electrolyte NRTL (Chen & Evans)",
-        "Extended UNIQUAC (Thomsen)"
-      ],
-      "electrolyte_phenomena_solved": [
-        "dissociation",
-        "salt precipitation",
-        "complexation",
-        "vapor-liquid equilibrium"
-      ]
-    },
-    "ui_paths": [
-      "Data Regression tool",
-      "Compound Creator",
-      "Simulation Wizard",
-      "Simulation Settings",
-      "Data Regression forms"
-    ],
-    "errors": [],
-    "fixes": [],
-    "theory": "Every property imported into DWSIM carries its provenance: a source citation or estimator name. DWSIM's Electrolytes extension (Patreon Edition exclusive) uses a unified equilibrium engine driven by industry-standard activity-coefficient models, Electrolyte NRTL (Chen & Evans) and Extended UNIQUAC (Thomsen), to solve dissociation, salt precipitation, complexation, and vapor-liquid equilibrium in a single pass, ensuring atom and charge balance across liquid, solid, and vapor phases.",
-    "source_url": "https://dwsim.org/",
-    "license": "GPLv3"
-  },
-  {
     "chunk_id": "27e4893f-e8bf-4e5f-a718-523c86132f58",
     "source_type": "track_a",
     "software": "DWSIM",
@@ -395,47 +342,6 @@
     "source_url": "https://gist.github.com/DanWBR/4a803cf325ae89a2663d9cdd0e8a61a2",
     "license": "LGPLv3 / GPLv3",
     "flag": "INCOMPLETE"
-  },
-  {
-    "chunk_id": "17644476-3e7c-4a01-ae32-dbbe53835833",
-    "source_type": "track_a",
-    "software": "DWSIM",
-    "topic": "PT Flash Calculation",
-    "steps": [
-      "Set the thermodynamic property package to NRTL.",
-      "Set the stream's overall pressure, temperature, and mass flow.",
-      "Specify the flash calculation type as Pressure-Temperature (PT).",
-      "Perform the flash calculation.",
-      "Retrieve and display mass flow and density for the vapor phase.",
-      "Retrieve and display mass flow and density for the liquid phase.",
-      "Retrieve and display overall molar flow for each compound.",
-      "Retrieve and display molar flow for each compound in the vapor phase.",
-      "Retrieve and display molar flow for each compound in the liquid phase."
-    ],
-    "params": {
-      "temperature": "<user_defined_value>",
-      "temperature_unit": "K",
-      "pressure": "<user_defined_value>",
-      "pressure_unit": "Pa",
-      "mass_flow": 1000.0,
-      "mass_flow_unit": "kg/s",
-      "water_molar_fraction": 0.5,
-      "ethanol_molar_fraction": 0.5,
-      "property_package": "NRTL",
-      "flash_type": "PT"
-    },
-    "ui_paths": [
-      "Simulation > Property Packages > Add/Edit Property Package > Select NRTL",
-      "Flowsheet > [Select Material Stream] > Input (Tab) > Set Temperature",
-      "Flowsheet > [Select Material Stream] > Input (Tab) > Set Pressure",
-      "Flowsheet > [Select Material Stream] > Input (Tab) > Set Mass Flow",
-      "Flowsheet > [Select Material Stream] > Compounds (Tab) > Set Molar Fractions for Water and Ethanol"
-    ],
-    "errors": [],
-    "fixes": [],
-    "theory": "Phase equilibrium, specifically vapor-liquid equilibrium (VLE), governed by thermodynamic property packages like NRTL. The calculation determines the distribution of components between vapor and liquid phases at specified temperature and pressure (PT Flash).",
-    "source_url": "https://gist.github.com/DanWBR/4a803cf325ae89a2663d9cdd0e8a61a2",
-    "license": "LGPLv3 / GPLv3"
   },
   {
     "chunk_id": "bd1fbaa0-09be-42f8-9bb8-a3114fc5e91d",
@@ -1030,51 +936,6 @@
     "flag": "INCOMPLETE"
   },
   {
-    "chunk_id": "ca2da9d7-3ddb-41fc-854c-ff0ed2b9c66c",
-    "source_type": "track_a",
-    "software": "DWSIM",
-    "topic": "Model Customization via Python Scripting",
-    "steps": [
-      "Open the Script Manager",
-      "Define custom Python functions to override calculation routines for Unit Operations, Material Streams, or Property Packages",
-      "Associate the code with the Simulation Opened event for automatic execution on file loading"
-    ],
-    "params": {},
-    "ui_paths": [
-      "Script Manager"
-    ],
-    "errors": [],
-    "fixes": [],
-    "theory": "Internal calculation routines for Unit Operations, Material Streams, Fugacity Coefficients, Enthalpy, Entropy, and Flash algorithms can be overridden by custom Python scripts using the Script Manager.",
-    "source_url": "https://dwsim.org/wiki/index.php?title=Model_Customization",
-    "license": "LGPL"
-  },
-  {
-    "chunk_id": "2c35fda1-a697-49dc-af1e-eca63566560d",
-    "source_type": "track_a",
-    "software": "DWSIM",
-    "topic": "Unit Operation / Material Stream Calculation Routine Override",
-    "steps": [
-      "Define a Python function that takes no arguments to perform calculations and set properties of outlet material streams.",
-      "Set the OverrideCalculationRoutine property of the unit operation or material stream to true.",
-      "Set the CalculationRoutineOverride property to the name of the defined Python function.",
-      "Update the code by clicking the 'Run Script' button in the Script Manager.",
-      "Associate the script with the 'Simulation Opened' event to ensure it executes automatically when the file is loaded."
-    ],
-    "params": {
-      "OverrideCalculationRoutine": "true",
-      "CalculationRoutineOverride": "function name"
-    },
-    "ui_paths": [
-      "Script Manager > Run Script"
-    ],
-    "errors": [],
-    "fixes": [],
-    "theory": "DWSIM allows for model customization by overriding the internal calculation logic of unit operations or material streams with custom Python scripts. This is achieved by mapping specific object properties to user-defined function delegates.",
-    "source_url": "https://dwsim.org/wiki/index.php?title=Model_Customization",
-    "license": "LGPL"
-  },
-  {
     "chunk_id": "06f42fec-2363-4a17-857a-a01796187849",
     "source_type": "track_a",
     "software": "DWSIM",
@@ -1331,93 +1192,6 @@
     "flag": "INCOMPLETE"
   },
   {
-    "chunk_id": "06bfcb74-07f2-4439-8852-9538b43b903f",
-    "source_type": "track_a",
-    "software": "DWSIM",
-    "topic": "Thermodynamic Residual Property Calculation (Peng-Robinson EOS)",
-    "steps": [
-      "Calculate dimensionless parameters AG and BG for the cubic equation of state.",
-      "Define coefficients for the cubic equation and solve for real roots to determine the compressibility factor.",
-      "Select the appropriate compressibility factor (Z) root based on whether the state is liquid (minimum root) or vapor (maximum root).",
-      "Calculate the temperature derivative of the mixture attraction parameter (amix) using mixing rules and interaction parameters.",
-      "Compute residual Helmholtz energy (DAres), residual entropy (DSres), and residual enthalpy (DHres) using the compressibility factor and EOS parameters.",
-      "Calculate the final mixture specific enthalpy by adding residual enthalpy to ideal enthalpy and dividing by mixture molar weight."
-    ],
-    "params": {
-      "amix": "Mixture attraction parameter",
-      "bmix": "Mixture co-volume parameter",
-      "P": "Pressure",
-      "T": "Temperature",
-      "R": "Gas constant",
-      "state": "Physical state of the fluid (Liquid or Vapor)",
-      "kij": "Binary interaction parameters",
-      "Vz": "Molar fractions of components",
-      "Tc": "Critical temperature",
-      "Pc": "Critical pressure",
-      "Hid": "Ideal gas enthalpy",
-      "MW": "Mixture molar weight"
-    },
-    "ui_paths": [
-      "Scripting Console",
-      "Model Customization > Custom Property Package"
-    ],
-    "errors": [],
-    "fixes": [],
-    "theory": "This script implements the Peng-Robinson Equation of State (EOS) logic. It calculates the compressibility factor (Z) by solving the cubic EOS equation and subsequently derives residual thermodynamic properties (Helmholtz energy, entropy, and enthalpy) to determine the real fluid enthalpy.",
-    "source_url": "https://dwsim.org/wiki/index.php?title=Model_Customization",
-    "license": "LGPL"
-  },
-  {
-    "chunk_id": "3272caf1-c603-47c3-ae21-2e19c359a5da",
-    "source_type": "track_a",
-    "software": "DWSIM",
-    "topic": "Overriding Calculated Properties",
-    "steps": [
-      "Navigate to the Basis settings in the simulation environment.",
-      "Locate the Added Property Packages section.",
-      "Select an added Property Package from the list.",
-      "Click on the Advanced button.",
-      "Go to the Property Overrides section.",
-      "Write or paste the Python override script.",
-      "Click Save to store the override script on the Property Package.",
-      "Solve the simulation to apply the override and check the calculated value."
-    ],
-    "params": {},
-    "ui_paths": [
-      "Edit > Simulation Settings > Basis > Added Property Packages > Advanced > Property Overrides",
-      "Setup > Basis > Added Property Packages > Advanced > Property Overrides"
-    ],
-    "errors": [],
-    "fixes": [],
-    "theory": "Starting from DWSIM Version 5.1, phase properties can be overridden through Python scripts. This is useful when calculated property values deviate significantly from expected values or when advanced mixing rules are required for mixed phase property calculations.",
-    "source_url": "https://dwsim.org/wiki/index.php?title=Overriding_Calculated_Properties",
-    "license": "LGPL"
-  },
-  {
-    "chunk_id": "6959cfa9-f62c-47f9-9875-dfa9d8278701",
-    "source_type": "track_a",
-    "software": "DWSIM",
-    "topic": "Water/Hydrocarbon Emulsion Viscosity Property Override",
-    "steps": [
-      "Click 'Save' to store the override script on the Property Package.",
-      "Solve the simulation and check the calculated value.",
-      "Open the Property Override editor.",
-      "Enter the provided Python script for the 'OverallLiquid/viscosity' property."
-    ],
-    "params": {
-      "property": "OverallLiquid/viscosity"
-    },
-    "ui_paths": [
-      "Property Package",
-      "Property Override editor"
-    ],
-    "errors": [],
-    "fixes": [],
-    "theory": "The simulation replaces the mass fraction weighted average for liquid mixture viscosity with an emulsion equation: mu = (mu_w / delta_w)[1+1.5*mu_h*delta_h(mu_w+mu_h)], where mu is viscosity and delta is volumetric fraction for water (w) and hydrocarbon (h) phases.",
-    "source_url": "https://dwsim.org/wiki/index.php?title=Overriding_Calculated_Properties",
-    "license": "LGPL"
-  },
-  {
     "chunk_id": "50d33c6c-17eb-4db3-b91f-646f2f4c4977",
     "source_type": "track_a",
     "software": "DWSIM",
@@ -1461,30 +1235,6 @@
     "flag": "INCOMPLETE"
   },
   {
-    "chunk_id": "f0311bb7-ea8d-4eec-a309-55252f6c3e58",
-    "source_type": "track_a",
-    "software": "DWSIM",
-    "topic": "Property Package Selection",
-    "steps": [
-      "Check if the selected thermodynamic model has interaction parameters for the compounds in the simulation",
-      "Open the Property Package Configuration Window",
-      "Go to the Interaction Parameters tab to view the list of IPs",
-      "Use experimental data to check predicted properties or fit thermodynamic models",
-      "Use the Data Regression Utility to calculate binary interaction parameters"
-    ],
-    "params": {},
-    "ui_paths": [
-      "Property Package Configuration Window > Interaction Parameters"
-    ],
-    "errors": [],
-    "fixes": [
-      "Use the Data Regression Utility to regress experimental data and calculate binary interaction parameters if they are missing or need fitting"
-    ],
-    "theory": "Most thermodynamic models utilize binary interaction parameters (IPs) fitted to experimental data. Raoult's Law is recommended for non-polar gases at low pressures (< 10 atm).",
-    "source_url": "https://dwsim.org/wiki/index.php?title=Property_Package_Selection",
-    "license": "LGPL"
-  },
-  {
     "chunk_id": "ce14b692-57ab-450e-99cb-929520ca2502",
     "source_type": "track_a",
     "software": "DWSIM",
@@ -1513,115 +1263,6 @@
     "source_url": "https://dwsim.org/wiki/index.php?title=Property_Package_Selection",
     "license": "LGPL",
     "flag": "INCOMPLETE"
-  },
-  {
-    "chunk_id": "43d73d1c-83c8-4eaf-91fb-71e7e25ff04f",
-    "source_type": "track_a",
-    "software": "DWSIM",
-    "topic": "Using the Compound Creator Utility",
-    "steps": [
-      "Open the Compound Creator Utility using the Welcome screen button or go to File > New > Compound Creator Study",
-      "Select the type of the compound (Standard, Black-Oil or Electrolyte)",
-      "Enter a unique integer ID for the compound",
-      "Enter a name for the compound",
-      "Enter UNIFAC structure information to calculate constant and temperature-dependent properties"
-    ],
-    "params": {
-      "Compound Type": [
-        "Standard",
-        "Black-Oil",
-        "Electrolyte"
-      ],
-      "ID": "Integer (e.g., random 5-digit)",
-      "Name": "String",
-      "Structure Information": "UNIFAC"
-    },
-    "ui_paths": [
-      "File > New > Compound Creator Study",
-      "Welcome screen > Compound Creator Utility"
-    ],
-    "errors": [],
-    "fixes": [],
-    "theory": "The utility uses experimental data and UNIFAC structure information to calculate and/or estimate constant and temperature-dependent properties for compounds not available in default databases.",
-    "source_url": "https://dwsim.org/wiki/index.php?title=Using_the_Compound_Creator_Utility",
-    "license": "LGPL"
-  },
-  {
-    "chunk_id": "af62de94-b1b3-4daa-9f59-1b3b1c2b199c",
-    "source_type": "track_a",
-    "software": "DWSIM",
-    "topic": "Compound Property Definition and Data Regression",
-    "steps": [
-      "Enter UNIFAC structure information to calculate properties automatically",
-      "Input tabulated data into property tables (e.g., Liquid Density)",
-      "Click 'Regress' to generate coefficients from the input data",
-      "Click 'View Regression' to see the fitted equation and data points",
-      "Import compound data from online sources like Korean KDB or Chem\u00e9o"
-    ],
-    "params": {},
-    "ui_paths": [
-      "Compound Creator Utility > Temperature-dependent Properties",
-      "Compound Creator Utility > Liquid Density > Regress",
-      "Compound Creator Utility > Liquid Density > View Regression"
-    ],
-    "errors": [
-      "Regression error"
-    ],
-    "fixes": [
-      "Check the textbox below the buttons for regression error details"
-    ],
-    "theory": "UNIFAC structure information allows DWSIM to estimate properties via group contribution. Temperature-dependent properties use internal routines or regressed experimental data. Models like PC-SAFT, Chao-Seader, and Grayson-Streed require specific properties indicated by blue background textboxes.",
-    "source_url": "https://dwsim.org/wiki/index.php?title=Using_the_Compound_Creator_Utility",
-    "license": "LGPL"
-  },
-  {
-    "chunk_id": "22edf121-cfee-4b2d-a448-e6058f5575f7",
-    "source_type": "track_a",
-    "software": "DWSIM",
-    "topic": "Importing, Exporting, and Loading Compound Data",
-    "steps": [
-      "Navigate to Compound > Import Data from Online Sources to import data from KDB, Chem\u00e9o, or DDB Online Interface.",
-      "Go to Compound > Export Data to XML Database to save compound data to an XML file.",
-      "Export the compound to a single JSON file for easier editing.",
-      "Go to File > Save As to save compound creator data for future modification.",
-      "To load a compound, go to Settings > General Settings > User-Defined Datasets, click Add User Dataset, and select the XML database file.",
-      "Load a compound from a JSON file directly through the Compounds section."
-    ],
-    "params": {},
-    "ui_paths": [
-      "Compound > Import Data from Online Sources",
-      "Compound > Export Data to XML Database",
-      "File > Save As",
-      "Settings > General Settings > User-Defined Datasets > Add User Dataset"
-    ],
-    "errors": [],
-    "fixes": [],
-    "theory": "",
-    "source_url": "https://dwsim.org/wiki/index.php?title=Using_the_Compound_Creator_Utility",
-    "license": "LGPL"
-  },
-  {
-    "chunk_id": "ad7ada43-34bd-4539-b225-c98cead42837",
-    "source_type": "track_a",
-    "software": "DWSIM",
-    "topic": "Loading and Editing Custom Compounds",
-    "steps": [
-      "Load a compound from a JSON file through the Compounds section in the Simulation Configuration Wizard or Simulation Settings Panel.",
-      "Use the Pure Compound Property Utility to edit compound data for the current simulation.",
-      "Use the Compound Creator Utility to save perpetual changes to a compound.",
-      "Activate the 'Use Experimental Liquid Density Data' option on the Property Package configuration window if tabulated liquid density data is provided."
-    ],
-    "params": {},
-    "ui_paths": [
-      "Simulation Configuration Wizard > Compounds",
-      "Simulation Settings Panel > Compounds",
-      "Property Package > configuration window > Use Experimental Liquid Density Data"
-    ],
-    "errors": [],
-    "fixes": [],
-    "theory": "DWSIM defaults to the Rackett correlation for liquid density estimations unless experimental data usage is manually enabled in the Property Package settings.",
-    "source_url": "https://dwsim.org/wiki/index.php?title=Using_the_Compound_Creator_Utility",
-    "license": "LGPL"
   },
   {
     "chunk_id": "7bec5310-1080-47c1-bd78-8ce53c1504e1",
@@ -1682,46 +1323,6 @@
     "source_url": "https://dwsim.org/wiki/index.php?title=Using_the_Data_Regression_Utility",
     "license": "LGPL",
     "flag": "INCOMPLETE"
-  },
-  {
-    "chunk_id": "c44477f9-0bcc-4f4d-8756-86b0d172889e",
-    "source_type": "track_a",
-    "software": "DWSIM",
-    "topic": "Data Regression Utility for Binary Interaction Parameters",
-    "steps": [
-      "Enter a title and a description for the regression case in the Title and Description section.",
-      "Select the compounds (e.g., 1-Propanol and Water) in the Compound Selection section comboboxes.",
-      "Select the Thermo Model (e.g., UNIQUAC) in the Model Selection section combobox.",
-      "Input initial estimates for the binaries in the table or use UNIFAC/Modified UNIFAC structure information to estimate them.",
-      "Select the data type (e.g., Txy) and units for Temperature and Pressure in the Experimental Data section.",
-      "Input experimental data into the table, entering pressure or temperature only in the first cell if it is constant for the data type (Txy or Pxy)."
-    ],
-    "params": {
-      "compounds": [
-        "1-Propanol",
-        "Water"
-      ],
-      "thermo_model": "UNIQUAC",
-      "data_type": "Txy",
-      "variables": [
-        "Temperature",
-        "Pressure",
-        "x1",
-        "x2",
-        "y1"
-      ]
-    },
-    "ui_paths": [
-      "Data Regression Utility > Title and Description",
-      "Data Regression Utility > Compound Selection",
-      "Data Regression Utility > Model Selection",
-      "Data Regression Utility > Experimental Data Input"
-    ],
-    "errors": [],
-    "fixes": [],
-    "theory": "Regressing experimental data (Txy/Pxy) to determine UNIQUAC interaction parameters by minimizing the difference between calculated and experimental values using an optimizer.",
-    "source_url": "https://dwsim.org/wiki/index.php?title=Using_the_Data_Regression_Utility",
-    "license": "LGPL"
   },
   {
     "chunk_id": "d279adcc-9ea7-4782-9816-75a9530a8359",
@@ -2047,94 +1648,6 @@
     "source_url": "https://github.com/DanWBR/dwsim/raw/windows/PlatformFiles/Common/docs/User_Guide.pdf",
     "license": "LGPL",
     "flag": "INCOMPLETE"
-  },
-  {
-    "chunk_id": "cc682524-4588-406e-8b28-b882f011df9f",
-    "source_type": "track_a",
-    "software": "DWSIM",
-    "topic": "Steady-state simulation creation and configuration",
-    "steps": [
-      "Click the 'Create a new steady-state simulation' button in the welcome window.",
-      "Add or remove compounds and petroleum fractions in the Compounds tab.",
-      "Configure Property Packages, flash algorithms, and thermodynamic models in the Basis tab.",
-      "Manage Systems of Units in the System of Units tab.",
-      "Control flowsheeting environment behaviors in the Behavior tab.",
-      "Define object properties for flowsheet floating tables in the Object Properties tab.",
-      "Set simulation information such as title, author, and password in the Information tab."
-    ],
-    "params": {},
-    "ui_paths": [
-      "Welcome Window > Create a new steady-state simulation",
-      "Simulation Configuration Wizard",
-      "Configuration Window > Compounds",
-      "Configuration Window > Basis",
-      "Configuration Window > System of Units",
-      "Configuration Window > Behavior",
-      "Configuration Window > Object Properties",
-      "Configuration Window > Information"
-    ],
-    "errors": [],
-    "fixes": [],
-    "theory": "",
-    "source_url": "https://github.com/DanWBR/dwsim/raw/windows/PlatformFiles/Common/docs/User_Guide.pdf",
-    "license": "LGPL"
-  },
-  {
-    "chunk_id": "5ae6d6c2-5cd9-42ad-bd0c-e175776f4ea7",
-    "source_type": "track_a",
-    "software": "DWSIM",
-    "topic": "Simulation Configuration and Compound Management",
-    "steps": [
-      "Open the Simulation Configuration window via the config wizard or during an active simulation.",
-      "Navigate to the Components/Compounds section.",
-      "Select a compound from the list on the left.",
-      "Click 'Add >' to add the compound to the simulation.",
-      "To remove a compound, select it from the right-hand list and click '< Remove'.",
-      "To view compound data, click the 'View Data' button.",
-      "Import compound data from Online Sources or JSON files using the provided buttons."
-    ],
-    "params": {
-      "compound_databases": [
-        "DWSIM",
-        "ChemSep",
-        "Biodiesel",
-        "CoolProp",
-        "ChEDL",
-        "Electrolytes"
-      ]
-    },
-    "ui_paths": [
-      "Config Wizard > First Page > Simulation Configuration",
-      "Simulation Configuration > Components/Compounds"
-    ],
-    "errors": [],
-    "fixes": [],
-    "theory": "DWSIM requires information regarding available components/compounds and a property package (thermodynamic model) to correctly start a simulation.",
-    "source_url": "https://github.com/DanWBR/dwsim/raw/windows/PlatformFiles/Common/docs/User_Guide.pdf",
-    "license": "LGPL"
-  },
-  {
-    "chunk_id": "9c338ddb-4298-42ec-92c6-65455ba497ca",
-    "source_type": "track_a",
-    "software": "DWSIM",
-    "topic": "Compound Importing and Property Package Configuration",
-    "steps": [
-      "Import compound data from Online Sources or JSON files using the Simulation Configuration Wizard or Simulation Settings panel",
-      "Add one or more Property Packages to the simulation",
-      "Associate Property Packages to unit operations and material streams on an individual basis",
-      "Click the Configure button in the property package configuration interface to show the configuration window"
-    ],
-    "params": {},
-    "ui_paths": [
-      "Simulation Configuration Wizard",
-      "Simulation Settings panel",
-      "Simulation Settings > Property Packages > Configure"
-    ],
-    "errors": [],
-    "fixes": [],
-    "theory": "The Property Package consists in a set of methods and models for the calculation of physical and chemical properties of material streams in the simulation. It is composed of a thermodynamic model - an equation of state or a hybrid model - and methods for property calculation, like the surface tension of the liquid phase.",
-    "source_url": "https://github.com/DanWBR/dwsim/raw/windows/PlatformFiles/Common/docs/User_Guide.pdf",
-    "license": "LGPL"
   },
   {
     "chunk_id": "5d3e6a67-aa5f-491d-9c23-3a275cf48f0f",

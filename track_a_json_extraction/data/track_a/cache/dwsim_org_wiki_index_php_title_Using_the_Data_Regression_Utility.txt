@@ -1,0 +1,133 @@
+Using the Data Regression Utility - DWSIM - Open Source Chemical Process Simulator
+Using the Data Regression Utility
+From DWSIM - Open Source Chemical Process Simulator
+Jump to navigation
+Jump to search
+Contents
+1
+Introduction
+2
+Data Regression - How To
+2.1
+Title and Description
+2.2
+Compound Selection
+2.3
+Model Selection
+2.4
+Experimental Data Input
+2.5
+Regress data
+Introduction
+The Data Regression Utility supports regression of experimental binary data for determination of interaction parameters for the following models:
+PC-SAFT
+Peng-Robinson
+Peng-Robinson-Stryjek-Vera 2
+Soave-Redlich-Kwong
+UNIQUAC
+NRTL
+Lee-Kesler-Plöcker
+The following data sets are supported:
+VLE Temperature and mole fractions (Txy)
+VLE Pressure and mole fractions (Pxy)
+VLE Temperature, Pressure and mole fractions (TPxy)
+LLE Temperature and mole fractions (Txx)
+LLE Pressure and mole fractions (Pxx)
+LLE Temperature, Pressure and mole fractions (TPxx)
+The Data Regression Utility also has some handy additional features like:
+Calculation of initial values for the binaries using UNIFAC/MODFAC structure information
+Calculation of missing experimental data using known models/binaries for determination of parameters for other models
+Optimization method selection
+Objective Function selection (Least Squares of temperature/pressure plus vapor fractions)
+The Data Regression Utility also supports loading and saving of a regression study/case for later use. 
+Currently, there is no way to export the generated binaries for a simulation or a database - you'll have to do this manually.
+Data Regression - How To
+In this example we will regress Txy experimental data for determination of UNIQUAC interaction parameters for the 1-Propanol/Water binary.
+Title and Description
+Enter a title and a description for you regression case.
+Compound Selection
+Select the compounds 1-Propanol and Water on the corresponding comboboxes.
+Model Selection
+Select UNIQUAC in the combobox for the Thermo Model. In the table below you can input your own initial estimates for the binaries, in order to help the optimizer on finding the values that minimize the difference between calculated and experimental values. You can also use the UNIFAC structure information to estimate initial values through UNIFAC and/or Modified UNIFAC models.
+Experimental Data Input
+In the 'Experimental Data' section, select your data type (Txy), and the units for Temperature and Pressure. x1, x2 and y1 will always be in mole fractions.
+Input your experimental data in the table below. If you selected the Txy data type, the pressure only needs to be informed on the first cell of the corresponding column. The same applies for Pxy data, you'll input all pressures and the temperature only has to be informed on the first cell.
+Clearing cell and rows
+DWSIM will only accept the last line as a blank one. If you want to remove data from the table, press the "Del" key after selecting the cells that you want to clear. To remove an entire row, select all cells on the row and press "Shift+Del".
+Calculating missing data
+DWSIM can "complete" your experimental data set by using models with known interaction parameters. Say, for example, that you want to add a few data pairs but you only have the liquid phase mole fraction and pressure information. In this case you can use DWSIM to estimate the missing vapor phase mole fraction and temperature.
+To estimate the missing data, just select the corresponding cells and click with the right mouse button, selecting the model that you want to use to calculate the values. DWSIM will then fill the selected cells with the calculated data.
+Regress data
+In the "Regression Parameters" section, select the optimization method from the "Method" combobox and the Objective Function from the corresponding combobox. Currently, only the Least Squares obj. function is available. Here, You'll have the follwing options:
+Least Squares (min T/P): minimizes the difference between calculated and experimental pressures/temperatures ONLY
+Least Squares (min y): minimizes the difference between calculated and experimental vapor phase mole fractions ONLY
+Least Squares (min T/P+y): minimizes the difference between calculated and experimental pressures/temperatures plus vapor phase mole fractions
+Now click on "Run Regression". DWSIM will then run the optimizer in order to find the optimum values for the binaries using the data you provided. DWSIM will tell you when it is done, and after that you can save your regression case for later use.
+IMPORTANT: the calculated interaction parameters are not copied to the BIP databases - their values are only "shown" in the results textbox. You'll have to input them manually on your simulation.
+DWSIM Data Regression files have the ".dwrsd" file extension.
+Retrieved from "
+https://dwsim.org/wiki/index.php?title=Using_the_Data_Regression_Utility&oldid=193
+"
+Comments
+Please enable JavaScript to view the
+comments powered by Disqus.
+Navigation menu
+Personal tools
+Log in
+Namespaces
+Page
+Discussion
+Variants
+Views
+Read
+View source
+View history
+More
+Search
+Main Page
+Patrons
+Literature
+Award
+Tutorials
+Features
+Features
+CAPE-OPEN
+Excel Add-In
+Automation
+Aqueous Electrolytes
+Property Package
+Extensions (Plugins)
+OPC UA Client
+Capital Cost Estimator
+Neural Network Unit Operation
+Pipe Network Unit Operation
+ThermoC Bridge Library
+Standalone Thermo
+Standalone Thermo Library
+Support
+Support
+Licensing
+API Help
+Forums
+Report a bug
+Mobile Apps
+DWSIM for iPhone/iPad
+DWSIM for Android
+Categories
+Source Code
+Project Summary
+Source Code
+Mailing Lists
+DWSIM Users
+DWSIM Developers
+Tools
+What links here
+Related changes
+Special pages
+Printable version
+Permanent link
+Page information
+This page was last edited on 27 June 2019, at 21:25.
+Privacy policy
+About DWSIM - Open Source Chemical Process Simulator
+Disclaimers

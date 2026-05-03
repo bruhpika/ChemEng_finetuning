@@ -1,14 +1,13 @@
 url,software,track,type,license,status
 https://dwsim.fossee.in/,DWSIM,Track A,Educational Tutorials,CC BY-SA 4.0,READY
-https://dwsim.fossee.in/assets/downloads/DWSIM_User_Guide.pdf,DWSIM,Track A,PDF,LGPL,READY
+https://github.com/DanWBR/dwsim/raw/windows/PlatformFiles/Common/docs/User_Guide.pdf,DWSIM,Track A,PDF,LGPL,READY
 https://dwsim.fossee.in/resources,DWSIM,Track A,HTML,LGPL,READY
 https://dwsim.fossee.in/spoken-tutorial,DWSIM,Track A,HTML,LGPL,READY
 https://dwsim.org/,DWSIM,Track A,Website,GPLv3,READY
-https://dwsim.org/api-docs/,DWSIM,Track A,API Reference,GPLv3,READY
 https://dwsim.org/api_help/html/G_DWSIM.htm,DWSIM,Track A,HTML,LGPL,READY
-https://dwsim.org/automation/,DWSIM,Track A,Automation Guide,GPLv3,READY
-https://dwsim.org/documentation/,DWSIM,Track A,Documentation Main,GPLv3,READY
-https://dwsim.org/wiki/images/DWSIM_Tutorial.pdf,DWSIM,Track A,PDF,LGPL,READY
+https://dwsim.org/wiki/index.php?title=Automation,DWSIM,Track A,HTML,LGPL,READY
+https://dwsim.org/wiki/index.php?title=Tutorials,DWSIM,Track A,Tutorial Hub,LGPL,READY
+
 https://dwsim.org/wiki/index.php?title=Automation,DWSIM,Track A,HTML,LGPL,READY
 https://dwsim.org/wiki/index.php?title=Features_by_Platform,DWSIM,Track A,HTML,LGPL,READY
 https://dwsim.org/wiki/index.php?title=IronPython_Script_Snippets,DWSIM,Track A,HTML,LGPL,READY

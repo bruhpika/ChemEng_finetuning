@@ -1,0 +1,580 @@
+IronPython Script Snippets - DWSIM - Open Source Chemical Process Simulator
+IronPython Script Snippets
+From DWSIM - Open Source Chemical Process Simulator
+Jump to navigation
+Jump to search
+Contents
+1
+Create, connect and manipulate objects
+2
+Getting a reference to a Compound in the simulation
+3
+Executing a script from another tab/section
+4
+Setting the properties of a Material Stream
+5
+Getting Surface Tension and Diffusion Coefficients from a Material Stream
+6
+Create and Display a Two-Dimensional Plot (Classic UI)
+7
+Manipulate a Splliter Block
+8
+Copy PFR data profile (mole fractions) to Spreadsheet
+9
+Create Pseudocompounds from Bulk C7+ Assay Data / Export to JSON files
+10
+Setting Outlet Material Stream Properties on a Python Script Block
+11
+List Reactants and Products in a Reaction
+12
+Get the value of an Environment Variable
+13
+Get the value of a Registry Key
+14
+Other Snippets
+Create, connect and manipulate objects
+Assuming that you're running a simulation with defined compound(s) and property package(s), this will create and connect a cooler and its connections:
+import clr
+clr.AddReference('DWSIM.Interfaces')
+
+from DWSIM import Interfaces
+
+cooler = Flowsheet.AddObject(Interfaces.Enums.GraphicObjects.ObjectType.Cooler, 100, 100, 'COOLER-001')
+heat_out = Flowsheet.AddObject(Interfaces.Enums.GraphicObjects.ObjectType.EnergyStream, 130, 150, 'HEAT_OUT')
+inlet = Flowsheet.AddObject(Interfaces.Enums.GraphicObjects.ObjectType.MaterialStream, 50, 100, 'INLET')
+outlet = Flowsheet.AddObject(Interfaces.Enums.GraphicObjects.ObjectType.MaterialStream, 150, 100, 'OUTLET')
+
+cooler.GraphicObject.CreateConnectors(1, 1)
+inlet.GraphicObject.CreateConnectors(1, 1)
+outlet.GraphicObject.CreateConnectors(1, 1)
+heat_out.GraphicObject.CreateConnectors(1, 1)
+
+Flowsheet.ConnectObjects(inlet.GraphicObject, cooler.GraphicObject, 0, 0)
+Flowsheet.ConnectObjects(cooler.GraphicObject, outlet.GraphicObject, 0, 0)
+Flowsheet.ConnectObjects(cooler.GraphicObject, heat_out.GraphicObject, 0, 0)
+
+# get inlet properties
+inlet_properties = inlet.GetPhase('Overall').Properties
+
+inlet_properties.temperature = 400 # K
+inlet_properties.pressure = 1000000 # Pa
+inlet_properties.massflow = 30 # kg/s
+
+# the following will define all compound mole fractions to the same value so the sum is equal to 1
+inlet.EqualizeOverallComposition()
+
+# set the cooler's outlet temperature to 300 K
+# http://dwsim.inforside.com.br/api_help57/html/T_DWSIM_UnitOperations_UnitOperations_Cooler.htm
+cooler.OutletTemperature = 300
+
+# set the cooler's calculation mode to 'outlet temperature'
+# http://dwsim.inforside.com.br/api_help57/html/T_DWSIM_UnitOperations_UnitOperations_Cooler_CalculationMode.htm
+
+clr.AddReference('DWSIM.UnitOperations')
+from DWSIM import UnitOperations
+cooler.CalcMode = UnitOperations.UnitOperations.Cooler.CalculationMode.OutletTemperature
+
+#calculate the flowsheet
+Flowsheet.RequestCalculation(None, False)
+
+#get the outlet stream temperature and cooler's temperature decrease
+deltat = cooler.DeltaT
+heat_flow = heat_out.EnergyFlow
+
+print('Cooler Temperature Drop (K):'+ str(deltat))
+print('Heat Flow (kW): ' + str(heat_flow))
+Getting a reference to a Compound in the simulation
+mycompound = Flowsheet.SelectedCompounds['Methane']
+
+mycompound2 = Flowsheet.GetSimulationObject['MSTR-001'].Phases[0].Compounds['Methane']
+mycompound
+and
+mycompound2
+are referencing the same object in memory.
+Executing a script from another tab/section
+import clr
+import System
+from System import *
+
+clr.AddReference('System.Core')
+clr.ImportExtensions(System.Linq)
+
+# get the script text from "Functions" using LINQ
+source = Flowsheet.Scripts.Values.Where(lambda x: x.Title == 'Functions').FirstOrDefault().ScriptText.replace('\r', '')
+
+# execute the script
+exec(source)
+Setting the properties of a Material Stream
+ms1 = Flowsheet.GetFlowsheetSimulationObject('MSTR-001')
+
+overall = ms1.GetPhase('Overall')
+overall.Properties.temperature = 200 # set temperature to 200 K
+overall.Properties.pressure = 101325 # set pressure to 101325 Pa
+overall.Properties.massflow = 14 # set mass flow to 14 kg/s
+Getting Surface Tension and Diffusion Coefficients from a Material Stream
+import clr
+import System
+
+# get feed's interfacial tension - method 1
+
+mixphase = feed.GetPhase("Mixture")
+
+sftens = mixphase.Properties.surfaceTension
+
+print str(sftens) + " N/m"
+
+# get feed's interfacial tension - method 2
+
+sftens2 = clr.Reference[System.Object]()
+
+feed.GetTwoPhaseProp("surfacetension", None, "", sftens2)
+
+print str(sftens2.Value[0]) + " N/m"
+
+# diffusion coefficients
+
+phase = feed.GetPhase("Vapor")
+
+compound = phase.Compounds["Methane"]
+
+difc = compound.DiffusionCoefficient
+
+print str(difc) + " m2/s"
+Create and Display a Two-Dimensional Plot (Classic UI)
+import clr
+
+clr.AddReference("OxyPlot")
+clr.AddReference("OxyPlot.WindowsForms")
+clr.AddReference("System.Windows.Forms")
+clr.AddReference("DWSIM.ExtensionMethods.Eto")
+
+import OxyPlot
+
+from OxyPlot.WindowsForms import PlotView
+from System.Windows.Forms import *
+from DWSIM.UI.Shared import *
+from System import Array
+
+from math import * 
+x = [i * 0.1 for i in range(100)]
+
+# generate and display a nice chart
+
+# create a new Plot model
+
+# http://dwsim.inforside.com.br/api_help5/html/T_DWSIM_UI_Shared_Common.htm
+# http://dwsim.inforside.com.br/api_help5/html/T_DWSIM_ExtensionMethods_OxyPlot.htm
+
+chart1 = PlotView()
+chart1.Model = Common.CreatePlotModel(Array[float](x), Array[float]([sin(xi) for xi in x]), "Test", "", "x", "y") 
+
+# update the chart data view
+
+chart1.Model.InvalidatePlot(True)
+
+# setup and display the chart
+
+form1 = Form()
+
+chart1.Dock = DockStyle.Fill
+
+form1.Controls.Add(chart1)
+form1.Invalidate()
+form1.ShowDialog()
+Manipulate a Splliter Block
+# assuming that you have a splitter named "SPLT-001" on your flowsheet, try the following:
+
+splitter = SPLT_001
+
+# print the current operation mode
+# http://dwsim.inforside.com.br/api_help57/html/P_DWSIM_UnitOperations_UnitOperations_Splitter_OperationMode.htm
+
+print splitter.OperationMode
+
+# ratios is an array which stores the relative amount for up to 3 streams. 
+
+print splitter.Ratios[0]
+print splitter.Ratios[1]
+print splitter.Ratios[2]
+
+# the sum of the three values must be equal to 1 to preserve the mass balance.
+
+sum = splitter.Ratios[0] + splitter.Ratios[1] + splitter.Ratios[2]
+
+print sum
+
+# DWSIM will use the ratios when the splitter is in SplitRatios operation mode.
+
+# if calculation mode is StreamMassFlowSpec or StreamMoleFlowSpec, set the StreamFlowSpec 
+# property to the mass (kg/s) or mole (mol/s) flow value, then DWSIM will calculate the value for
+# the second outlet stream to close the balance.
+
+# if there are three outlet streams, you must set both StreamFlowSpec and Stream2FlowSpec.
+Copy PFR data profile (mole fractions) to Spreadsheet
+import clr
+import System
+
+clr.AddReference('System.Core')
+clr.ImportExtensions(System.Linq)
+
+reactor = Flowsheet.GetFlowsheetSimulationObject("REACTOR")
+
+profile = reactor.points
+
+cnames = reactor.ComponentConversions.Keys.ToArray()
+
+n = cnames.Count
+
+Spreadsheet.Worksheets[0].Cells["A1"].Data = "Reactor Length (m)"
+
+for i in range(0, n-1):
+    Spreadsheet.Worksheets[0].Cells[0, i+1].Data = cnames[i]
+
+j = 1
+for pointset in profile:
+    Spreadsheet.Worksheets[0].Cells[j, 0].Data = pointset[0]
+    tmols = 0
+    for i in range (1, n):
+        tmols += pointset[i]
+    for i in range (1, n):
+            Spreadsheet.Worksheets[0].Cells[j, i].Data = pointset[i] / tmols
+    j += 1
+Create Pseudocompounds from Bulk C7+ Assay Data / Export to JSON files
+import clr
+import System
+
+clr.AddReference("DWSIM")
+clr.AddReference("System.Core")
+clr.AddReference("System.Windows.Forms")
+clr.ImportExtensions(System.Linq)
+clr.AddReference("DWSIM.Interfaces")
+clr.AddReference("DWSIM.SharedClasses")
+clr.AddReference("Newtonsoft.Json")
+
+from System import *
+
+from DWSIM import *
+from DWSIM import FormPCBulk
+
+from DWSIM.Interfaces import *
+from DWSIM.Interfaces.Enums import*
+from DWSIM.Interfaces.Enums.GraphicObjects import *
+
+from DWSIM.Thermodynamics import*
+from DWSIM.Thermodynamics.BaseClasses import *
+from DWSIM.Thermodynamics.PropertyPackages.Auxiliary import *
+from DWSIM.Thermodynamics.Utilities.PetroleumCharacterization import GenerateCompounds
+from DWSIM.Thermodynamics.Utilities.PetroleumCharacterization.Methods import *
+
+from Newtonsoft.Json import JsonConvert, Formatting
+
+# assay data from spreadsheet
+
+names = ["NBP46", "NBP65", "NBP85", "NBP105", "NBP115"]
+relative_densities = [677.3/1000.0, 694.2/1000.0, 712.1/1000.0, 729.2/1000.0, 739.7/1000.0] # relative
+nbps = [46 + 273.15, 65 + 273.15, 85 + 273.15, 105 + 273.15, 115 + 273.15] # K
+
+n = 5
+
+# bulk c7+ pseudocompound creator settings
+
+Tccorr = "Riazi-Daubert (1985)"
+Pccorr = "Riazi-Daubert (1985)"
+AFcorr = "Lee-Kesler (1976)"
+MWcorr = "Winn (1956)"
+adjustZR = True
+adjustAf = True
+
+# initial values for MW, SG and NBP
+
+mw0 = 65
+sg0 = 0.65
+nbp0 = 310
+
+# pseudocompound generator
+
+comps = GenerateCompounds()
+
+for i in range(0, n):
+
+    # will generate only 1 pseudocompound for each item on the list of assay data. Normally we generate from 7 to 10 pseudocompounds for each set of assay data (MW, SG and NBP)
+
+    comp_results = comps.GenerateCompounds(names[i], 1, Tccorr, Pccorr, AFcorr, MWcorr, adjustAf, adjustZR, None, relative_densities[i], nbps[i], None, None, None, None, mw0, sg0, nbp0)
+
+    comp_values = list(comp_results.Values)
+    comp_values[0].Name = names[i]
+    comp_values[0].ConstantProperties.Name = names[i]
+    comp_values[0].ComponentName = names[i]
+
+    # save the compound to a JSON file, which can be loaded back on any simulation
+
+    #System.IO.File.WriteAllText("C:\\Users\\[YOURUSERNAME]\\Desktop\\" + str(names[i]) + ".json", JsonConvert.SerializeObject(comp_values[0].ConstantProperties, Formatting.Indented))
+
+    # the following is for calculation quality check only, not required but desired
+
+    myassay = SharedClasses.Utilities.PetroleumCharacterization.Assay.Assay(0, relative_densities[i], nbps[i], 0, 0, 0, 0)
+    ms_check = Streams.MaterialStream("","")
+    ms_check.SetFlowsheet(Flowsheet)
+    ms_check.PropertyPackage = Flowsheet.PropertyPackages.Values.ToList()[0]
+
+    c1 = Compound(names[i], names[i])
+    c1.ConstantProperties = comp_values[0].ConstantProperties
+    
+    ms_check.Phases[0].Compounds.Add(names[i], c1)
+
+    c2 = Compound(names[i], names[i])
+    c2.ConstantProperties = comp_values[0].ConstantProperties
+    
+    ms_check.Phases[1].Compounds.Add(names[i], c2)
+
+    c3 = Compound(names[i], names[i])
+    c3.ConstantProperties = comp_values[0].ConstantProperties
+    
+    ms_check.Phases[2].Compounds.Add(names[i], c3)
+
+    c4 = Compound(names[i], names[i])
+    c4.ConstantProperties = comp_values[0].ConstantProperties
+
+    ms_check.Phases[3].Compounds.Add(names[i], c4)
+
+    c5 = Compound(names[i], names[i])
+    c5.ConstantProperties = comp_values[0].ConstantProperties
+    
+    ms_check.Phases[4].Compounds.Add(names[i], c5)
+
+    c6 = Compound(names[i], names[i])
+    c6.ConstantProperties = comp_values[0].ConstantProperties
+    
+    ms_check.Phases[5].Compounds.Add(names[i], c6)
+
+    c7 = Compound(names[i], names[i])
+    c7.ConstantProperties = comp_values[0].ConstantProperties
+    
+    ms_check.Phases[6].Compounds.Add(names[i], c7)
+
+    c8 = Compound(names[i], names[i])
+    c8.ConstantProperties = comp_values[0].ConstantProperties
+    
+    ms_check.Phases[7].Compounds.Add(names[i], c8)
+
+    ms_check.EqualizeOverallComposition()
+
+    qc = QualityCheck(myassay, ms_check)
+    System.Windows.Forms.MessageBox.Show(str(names[i]) + " quality report:\n\n" + qc.GetQualityCheckReport())
+Setting Outlet Material Stream Properties on a Python Script Block
+import math
+from System import Array
+
+feed = ims1
+
+n = int(feed.GetNumCompounds())
+
+T = feed.GetTemperature()
+P = feed.GetPressure()
+H = feed.GetMassEnthalpy()
+M =  feed.GetMolarFlow()
+W = feed.GetMassFlow()
+Q = feed.GetVolumetricFlow()
+comp = feed.GetOverallComposition()
+
+#Output of Inflow Data
+
+Flowsheet.WriteMessage("Inflow Temperature: " + str(T) + " K")
+Flowsheet.WriteMessage("Inflow Pressure: " + str(P) + " Pa")
+Flowsheet.WriteMessage("Inflow Specific Enthalpy: " + str(H) + " kJ/kg")
+Flowsheet.WriteMessage("Inflow Mole flow: " + str(M) + " kg/s")
+Flowsheet.WriteMessage("Inflow Mass flow: " + str(W) + " mol/s")
+Flowsheet.WriteMessage("Inflow Volumetric flow: " + str(Q) + " m3/s")
+Flowsheet.WriteMessage("Inflow Molar Composition: " + str(comp))
+
+#Set Output
+
+outflow = oms1
+
+# simple way to copy stream - all required parameters are copied
+
+outflow.Clear()
+outflow.Assign(feed)
+
+outflow.Calculate()
+
+Flowsheet.WriteMessage("Results - Simple Method:")
+Flowsheet.WriteMessage("Mass Flow in Output stream: " + str(outflow.GetMassFlow()) + " kg/s")
+Flowsheet.WriteMessage("Mole Flow in Output stream: " + str(outflow.GetMolarFlow()) + " mol/s")
+Flowsheet.WriteMessage("Outflow Temperature: " + str(outflow.GetTemperature()) + " K")
+Flowsheet.WriteMessage("Outflow Pressure: " + str(outflow.GetPressure()) + " Pa")
+Flowsheet.WriteMessage("Outflow Specific Enthalpy: " + str(outflow.GetMassEnthalpy()) + " kJ/kg")
+Flowsheet.WriteMessage("Outflow Molar Composition: " + str(outflow.GetOverallComposition()))
+
+# when working with single compounds, you must copy/set Pressure and Enthalpy because DWSIM will calculate temperature
+# this is because it isn't possible to detect partial vaporization with T and P only.
+
+outflow.Clear()
+outflow.SetPressure(P)
+outflow.SetMassEnthalpy(H)
+outflow.SetMassFlow(W) # only needs to set one of the three possible flows (mass, mole or volumetric)
+outflow.SetOverallComposition(comp)
+
+Flowsheet.WriteMessage("Outflow Specific Enthalpy (before calc): " + str(outflow.GetMassEnthalpy()) + " kJ/kg")
+outflow.Calculate()
+
+Flowsheet.WriteMessage("Results - Standard Method:")
+Flowsheet.WriteMessage("Mass Flow in Output stream (set): " + str(outflow.GetMassFlow()) + " kg/s")
+Flowsheet.WriteMessage("Mole Flow in Output stream (calculated): " + str(outflow.GetMolarFlow()) + " mol/s")
+Flowsheet.WriteMessage("Volumetric Flow in Output stream (calculated): " + str(outflow.GetVolumetricFlow()) + " mol/s")
+Flowsheet.WriteMessage("Outflow Temperature: " + str(outflow.GetTemperature()) + " K")
+Flowsheet.WriteMessage("Outflow Pressure: " + str(outflow.GetPressure()) + " Pa")
+Flowsheet.WriteMessage("Outflow Specific Enthalpy: " + str(outflow.GetMassEnthalpy()) + " kJ/kg")
+Flowsheet.WriteMessage("Outflow Molar Composition: " + str(outflow.GetOverallComposition()))
+
+# or, if you don't have the enthalpy value, you can override this behavior by setting a special property to True
+# http://dwsim.inforside.com.br/api_help60/html/P_DWSIM_Thermodynamics_Streams_MaterialStream_OverrideSingleCompoundFlashBehavior.htm
+
+outflow.Clear()
+outflow.SetPressure(P)
+outflow.SetTemperature(T)
+outflow.SetMassFlow(W)
+outflow.SetOverallComposition(comp)
+outflow.OverrideSingleCompoundFlashBehavior = True
+
+Flowsheet.WriteMessage("Outflow Specific Enthalpy (before calc): " + str(outflow.GetMassEnthalpy()) + " kJ/kg")
+outflow.Calculate()
+
+Flowsheet.WriteMessage("Results - Standard Method for Single Compound Simulations:")
+Flowsheet.WriteMessage("Mass Flow in Output stream (set): " + str(outflow.GetMassFlow()) + " kg/s")
+Flowsheet.WriteMessage("Mole Flow in Output stream (calculated): " + str(outflow.GetMolarFlow()) + " mol/s")
+Flowsheet.WriteMessage("Volumetric Flow in Output stream (calculated): " + str(outflow.GetVolumetricFlow()) + " mol/s")
+Flowsheet.WriteMessage("Outflow Temperature: " + str(outflow.GetTemperature()) + " K")
+Flowsheet.WriteMessage("Outflow Pressure: " + str(outflow.GetPressure()) + " Pa")
+Flowsheet.WriteMessage("Outflow Specific Enthalpy: " + str(outflow.GetMassEnthalpy()) + " kJ/kg")
+Flowsheet.WriteMessage("Outflow Molar Composition: " + str(outflow.GetOverallComposition()))
+
+# using the default behavior and not setting the enthalpy value will make DWSIM do a PH flash with enthalpy equal to 0.
+# resulting temperature will depend on the proeprty package and its reference state for enthalpy.
+
+outflow.Clear()
+outflow.SetPressure(P)
+outflow.SetTemperature(T)
+outflow.SetMassFlow(W)
+outflow.SetOverallComposition(comp)
+outflow.OverrideSingleCompoundFlashBehavior = False
+
+Flowsheet.WriteMessage("Outflow Specific Enthalpy (before calc): " + str(outflow.GetMassEnthalpy()) + " kJ/kg")
+outflow.Calculate()
+
+Flowsheet.WriteMessage("Results - Default Behavior for Single Compound Simulations:")
+Flowsheet.WriteMessage("Mass Flow in Output stream (set): " + str(outflow.GetMassFlow()) + " kg/s")
+Flowsheet.WriteMessage("Mole Flow in Output stream (calculated): " + str(outflow.GetMolarFlow()) + " mol/s")
+Flowsheet.WriteMessage("Volumetric Flow in Output stream (calculated): " + str(outflow.GetVolumetricFlow()) + " mol/s")
+Flowsheet.WriteMessage("Outflow Temperature: " + str(outflow.GetTemperature()) + " K")
+Flowsheet.WriteMessage("Outflow Pressure: " + str(outflow.GetPressure()) + " Pa")
+Flowsheet.WriteMessage("Outflow Specific Enthalpy: " + str(outflow.GetMassEnthalpy()) + " kJ/kg")
+Flowsheet.WriteMessage("Outflow Molar Composition: " + str(outflow.GetOverallComposition()))
+List Reactants and Products in a Reaction
+import clr
+import System
+clr.AddReference('System.Core')
+clr.ImportExtensions(System.Linq)
+
+# https://dwsim.inforside.com.br/api_help60/html/P_DWSIM_Thermodynamics_BaseClasses_Reaction_Components.htm
+
+reaction = Flowsheet.Reactions.Values.Where(lambda r: r.Name == '8 Soluble Protein').FirstOrDefault()
+
+reactants = reaction.Components.Values.Where(lambda c: c.StoichCoeff < 0).Select(lambda c: c.CompName).ToArray()
+
+print('Reactants (R0...Rn): ' + str(list(reactants))) 
+
+products = reaction.Components.Values.Where(lambda c: c.StoichCoeff > 0).Select(lambda c: c.CompName).ToArray()
+
+print('Products (P0...Pn): ' + str(list(products))) 
+
+inerts = reaction.Components.Values.Where(lambda c: c.StoichCoeff == 0).Select(lambda c: c.CompName).ToArray()
+
+print('Inerts (N0...Nn): ' + str(list(inerts)))
+Get the value of an Environment Variable
+import System
+
+value = System.Environment.GetEnvironmentVariable("VARNAME", System.EnvironmentVariableTarget.Machine)
+
+print(value)
+Get the value of a Registry Key
+import Microsoft.Win32
+
+from Microsoft.Win32 import Registry
+
+key = "HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\MediaPlayer\\Preferences";
+valueName = "ObfuscatedSyncPlaylistsPath";
+
+value = Registry.GetValue(key, valueName, 'defaultValueIfNotFound')
+
+print(value)
+Other Snippets
+For more code snippets, go to
+https://sourceforge.net/p/dwsim/discussion/scripting/
+.
+Retrieved from "
+https://dwsim.org/wiki/index.php?title=IronPython_Script_Snippets&oldid=664
+"
+Comments
+Please enable JavaScript to view the
+comments powered by Disqus.
+Navigation menu
+Personal tools
+Log in
+Namespaces
+Page
+Discussion
+Variants
+Views
+Read
+View source
+View history
+More
+Search
+Main Page
+Patrons
+Literature
+Award
+Tutorials
+Features
+Features
+CAPE-OPEN
+Excel Add-In
+Automation
+Aqueous Electrolytes
+Property Package
+Extensions (Plugins)
+OPC UA Client
+Capital Cost Estimator
+Neural Network Unit Operation
+Pipe Network Unit Operation
+ThermoC Bridge Library
+Standalone Thermo
+Standalone Thermo Library
+Support
+Support
+Licensing
+API Help
+Forums
+Report a bug
+Mobile Apps
+DWSIM for iPhone/iPad
+DWSIM for Android
+Categories
+Source Code
+Project Summary
+Source Code
+Mailing Lists
+DWSIM Users
+DWSIM Developers
+Tools
+What links here
+Related changes
+Special pages
+Printable version
+Permanent link
+Page information
+This page was last edited on 2 September 2021, at 16:56.
+Privacy policy
+About DWSIM - Open Source Chemical Process Simulator
+Disclaimers

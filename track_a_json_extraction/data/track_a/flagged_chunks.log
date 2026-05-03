@@ -66,3 +66,160 @@
 [INCOMPLETE] chunk_id=ae3809b5-0333-4481-99e3-7b11274e844b topic=Optimal Control and Trajectory Optimization
 [INCOMPLETE] chunk_id=707e0f93-6167-4264-870c-6ac44e322fd1 topic=repository_metadata
 [FETCH_ERROR] url=https://dwsim.org/wiki/index.php?title=IronPython_Script_Snippets reason=[Errno 22] Invalid argument: 'data/track_a/cache/https__dwsim.org_wiki_index.php?title=IronPython_Script_Snippets.txt'
+[FETCH_ERROR] url=https://dwsim.fossee.in/assets/downloads/DWSIM_User_Guide.pdf reason=404 Client Error: Not Found for url: https://dwsim.fossee.in/assets/downloads/DWSIM_User_Guide.pdf
+[INCOMPLETE] chunk_id=c16d246c-7f55-46f4-a521-72f87c10b7b1 topic=Resources and Support
+[INCOMPLETE] chunk_id=8f2d5930-b49f-4318-8096-748986c77ae2 topic=Publications and Fellowship Reports
+[INCOMPLETE] chunk_id=1b1058fd-3eee-40da-9b92-8710b346b703 topic=Spoken Tutorial Project Overview
+[INCOMPLETE] chunk_id=f79cc8d3-7565-4034-8e80-ccb7a58a3449 topic=DWSIM Tutorial
+[INCOMPLETE] chunk_id=db8c626c-10a1-4509-b6bb-9c15443dbeae topic=Overview and Core Features
+[INCOMPLETE] chunk_id=c3dd5708-dc4d-4863-94ea-322dbd279321 topic=Software Capabilities and Features Overview
+[INCOMPLETE] chunk_id=27e4893f-e8bf-4e5f-a718-523c86132f58 topic=Advanced Thermodynamics, Speciation, and AI Features
+[INCOMPLETE] chunk_id=1c3d0ff8-6348-4b70-9c5e-d95955c4228a topic=AI Features
+[INCOMPLETE] chunk_id=ed1909a0-9545-43bf-8b8d-50511ff189b0 topic=AI Features and Capabilities
+[INCOMPLETE] chunk_id=6bac7ca6-6427-471a-b546-3dd072260993 topic=DWSIM Features, Capabilities, and Simulation Types
+[INCOMPLETE] chunk_id=bf72aeaa-3e23-4729-a355-4fd3bc482808 topic=Industry Applications and Integrations
+[INCOMPLETE] chunk_id=2bd7b10f-9779-429b-8034-0065afa8c50d topic=Integration Capabilities & Patreon Edition Features
+[INCOMPLETE] chunk_id=2e3a5859-e165-4664-8b60-dedd7627c972 topic=Supporter Tiers and Features Overview
+[INCOMPLETE] chunk_id=6c7a9e1d-3b5f-4a0e-8d2c-9f8b7a6d5c4e topic=Support and Capabilities Overview
+[FETCH_ERROR] url=https://dwsim.org/api-docs/ reason=404 Client Error: Not Found for url: https://dwsim.org/api-docs/
+[INCOMPLETE] chunk_id=2cc5c728-e950-4b24-a195-92d7a9860723 topic=DWSIM Namespaces
+[FETCH_ERROR] url=https://dwsim.org/automation/ reason=404 Client Error: Not Found for url: https://dwsim.org/automation/
+[FETCH_ERROR] url=https://dwsim.org/documentation/ reason=404 Client Error: Not Found for url: https://dwsim.org/documentation/
+[FETCH_ERROR] url=https://dwsim.org/wiki/images/DWSIM_Tutorial.pdf reason=403 Client Error: Forbidden for url: https://dwsim.org/wiki/images/DWSIM_Tutorial.pdf
+[FETCH_ERROR] url=https://dwsim.org/wiki/index.php?title=Automation reason=[Errno 22] Invalid argument: 'data/track_a/cache/https__dwsim.org_wiki_index.php?title=Automation.txt'
+[FETCH_ERROR] url=https://dwsim.org/wiki/index.php?title=Features_by_Platform reason=[Errno 22] Invalid argument: 'data/track_a/cache/https__dwsim.org_wiki_index.php?title=Features_by_Platform.txt'
+[FETCH_ERROR] url=https://dwsim.org/wiki/index.php?title=IronPython_Script_Snippets reason=[Errno 22] Invalid argument: 'data/track_a/cache/https__dwsim.org_wiki_index.php?title=IronPython_Script_Snippets.txt'
+[FETCH_ERROR] url=https://dwsim.org/wiki/index.php?title=Model_Customization reason=[Errno 22] Invalid argument: 'data/track_a/cache/https__dwsim.org_wiki_index.php?title=Model_Customization.txt'
+[FETCH_ERROR] url=https://dwsim.org/wiki/index.php?title=Overriding_Calculated_Properties reason=[Errno 22] Invalid argument: 'data/track_a/cache/https__dwsim.org_wiki_index.php?title=Overriding_Calculated_Properties.txt'
+[FETCH_ERROR] url=https://dwsim.org/wiki/index.php?title=Property_Package_Selection reason=[Errno 22] Invalid argument: 'data/track_a/cache/https__dwsim.org_wiki_index.php?title=Property_Package_Selection.txt'
+[FETCH_ERROR] url=https://dwsim.org/wiki/index.php?title=Using_the_Compound_Creator_Utility reason=[Errno 22] Invalid argument: 'data/track_a/cache/https__dwsim.org_wiki_index.php?title=Using_the_Compound_Creator_Utility.txt'
+[FETCH_ERROR] url=https://dwsim.org/wiki/index.php?title=Using_the_Data_Regression_Utility reason=[Errno 22] Invalid argument: 'data/track_a/cache/https__dwsim.org_wiki_index.php?title=Using_the_Data_Regression_Utility.txt'
+[FETCH_ERROR] url=https://fossee.in/data/dwsim/DWSIM_Lab_Manual.pdf reason=404 Client Error: Not Found for url: https://fossee.in/data/dwsim/DWSIM_Lab_Manual.pdf
+[INCOMPLETE] chunk_id=cb537efa-c1f3-457a-9fe7-0763591bba13 topic=DWSIM Python.NET Thermodynamics Library Usage
+[INCOMPLETE] chunk_id=5ab4ce4d-7cfb-4fac-91cf-d6c386f0462d topic=Python.NET API for Standalone Thermodynamics Library
+[INCOMPLETE] chunk_id=bd1fbaa0-09be-42f8-9bb8-a3114fc5e91d topic=Material Stream Phase Equilibria and Scripted Data Access
+[FETCH_ERROR] url=https://github.com/DanWBR/dwsim/blob/windows/PlatformFiles/Common/docs/User_Guide.pdf reason=No /Root object! - Is this really a PDF?
+[FETCH_ERROR] url=https://github.com/DanWessel/DWSIM/blob/master/CODE_GUIDE.md reason=404 Client Error: Not Found for url: https://github.com/DanWessel/DWSIM/blob/master/CODE_GUIDE.md
+[INCOMPLETE] chunk_id=19cfe7c6-8952-45f3-b519-26681277f341 topic=ChemDesign: DWSIM Experiment Toolkit
+[FETCH_ERROR] url=https://dwsim.fossee.in/assets/downloads/DWSIM_User_Guide.pdf reason=404 Client Error: Not Found for url: https://dwsim.fossee.in/assets/downloads/DWSIM_User_Guide.pdf
+[FETCH_ERROR] url=https://dwsim.org/api-docs/ reason=404 Client Error: Not Found for url: https://dwsim.org/api-docs/
+[FETCH_ERROR] url=https://dwsim.org/automation/ reason=404 Client Error: Not Found for url: https://dwsim.org/automation/
+[FETCH_ERROR] url=https://dwsim.org/documentation/ reason=404 Client Error: Not Found for url: https://dwsim.org/documentation/
+[FETCH_ERROR] url=https://dwsim.org/wiki/images/DWSIM_Tutorial.pdf reason=403 Client Error: Forbidden for url: https://dwsim.org/wiki/images/DWSIM_Tutorial.pdf
+[FETCH_ERROR] url=https://dwsim.org/wiki/index.php?title=Automation reason=[Errno 22] Invalid argument: 'data/track_a/cache/https__dwsim.org_wiki_index.php?title=Automation.txt'
+[FETCH_ERROR] url=https://dwsim.org/wiki/index.php?title=Features_by_Platform reason=[Errno 22] Invalid argument: 'data/track_a/cache/https__dwsim.org_wiki_index.php?title=Features_by_Platform.txt'
+[FETCH_ERROR] url=https://dwsim.org/wiki/index.php?title=IronPython_Script_Snippets reason=[Errno 22] Invalid argument: 'data/track_a/cache/https__dwsim.org_wiki_index.php?title=IronPython_Script_Snippets.txt'
+[FETCH_ERROR] url=https://dwsim.org/wiki/index.php?title=Model_Customization reason=[Errno 22] Invalid argument: 'data/track_a/cache/https__dwsim.org_wiki_index.php?title=Model_Customization.txt'
+[FETCH_ERROR] url=https://dwsim.org/wiki/index.php?title=Overriding_Calculated_Properties reason=[Errno 22] Invalid argument: 'data/track_a/cache/https__dwsim.org_wiki_index.php?title=Overriding_Calculated_Properties.txt'
+[FETCH_ERROR] url=https://dwsim.org/wiki/index.php?title=Property_Package_Selection reason=[Errno 22] Invalid argument: 'data/track_a/cache/https__dwsim.org_wiki_index.php?title=Property_Package_Selection.txt'
+[FETCH_ERROR] url=https://dwsim.org/wiki/index.php?title=Using_the_Compound_Creator_Utility reason=[Errno 22] Invalid argument: 'data/track_a/cache/https__dwsim.org_wiki_index.php?title=Using_the_Compound_Creator_Utility.txt'
+[FETCH_ERROR] url=https://dwsim.org/wiki/index.php?title=Using_the_Data_Regression_Utility reason=[Errno 22] Invalid argument: 'data/track_a/cache/https__dwsim.org_wiki_index.php?title=Using_the_Data_Regression_Utility.txt'
+[FETCH_ERROR] url=https://fossee.in/data/dwsim/DWSIM_Lab_Manual.pdf reason=404 Client Error: Not Found for url: https://fossee.in/data/dwsim/DWSIM_Lab_Manual.pdf
+[FETCH_ERROR] url=https://github.com/DanWBR/dwsim/blob/windows/PlatformFiles/Common/docs/User_Guide.pdf reason=No /Root object! - Is this really a PDF?
+[FETCH_ERROR] url=https://github.com/DanWessel/DWSIM/blob/master/CODE_GUIDE.md reason=404 Client Error: Not Found for url: https://github.com/DanWessel/DWSIM/blob/master/CODE_GUIDE.md
+[FETCH_ERROR] url=https://github.com/lcfsantos/dwsimopt reason=404 Client Error: Not Found for url: https://github.com/lcfsantos/dwsimopt
+[FETCH_ERROR] url=https://spoken-tutorial.org/media/videos/86/DWSIM-Manual.pdf reason=404 Client Error: Not Found for url: https://spoken-tutorial.org/media/videos/86/DWSIM-Manual.pdf
+[FETCH_ERROR] url=https://www.iitb.ac.in/dwsim/tutorials.pdf reason=('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+[FETCH_ERROR] url=https://dwsim.fossee.in/assets/downloads/DWSIM_User_Guide.pdf reason=404 Client Error: Not Found for url: https://dwsim.fossee.in/assets/downloads/DWSIM_User_Guide.pdf
+[FETCH_ERROR] url=https://dwsim.org/api-docs/ reason=404 Client Error: Not Found for url: https://dwsim.org/api-docs/
+[FETCH_ERROR] url=https://dwsim.org/automation/ reason=404 Client Error: Not Found for url: https://dwsim.org/automation/
+[FETCH_ERROR] url=https://dwsim.org/documentation/ reason=404 Client Error: Not Found for url: https://dwsim.org/documentation/
+[FETCH_ERROR] url=https://dwsim.org/wiki/images/DWSIM_Tutorial.pdf reason=403 Client Error: Forbidden for url: https://dwsim.org/wiki/images/DWSIM_Tutorial.pdf
+[FETCH_ERROR] url=https://dwsim.fossee.in/assets/downloads/DWSIM_User_Guide.pdf reason=404 Client Error: Not Found for url: https://dwsim.fossee.in/assets/downloads/DWSIM_User_Guide.pdf
+[FETCH_ERROR] url=https://dwsim.org/api-docs/ reason=404 Client Error: Not Found for url: https://dwsim.org/api-docs/
+[FETCH_ERROR] url=https://dwsim.org/automation/ reason=404 Client Error: Not Found for url: https://dwsim.org/automation/
+[FETCH_ERROR] url=https://dwsim.org/documentation/ reason=404 Client Error: Not Found for url: https://dwsim.org/documentation/
+[FETCH_ERROR] url=https://dwsim.org/wiki/images/DWSIM_Tutorial.pdf reason=403 Client Error: Forbidden for url: https://dwsim.org/wiki/images/DWSIM_Tutorial.pdf
+[FETCH_ERROR] url=https://dwsim.fossee.in/assets/downloads/DWSIM_User_Guide.pdf reason=404 Client Error: Not Found for url: https://dwsim.fossee.in/assets/downloads/DWSIM_User_Guide.pdf
+[FETCH_ERROR] url=https://dwsim.org/api-docs/ reason=404 Client Error: Not Found for url: https://dwsim.org/api-docs/
+[FETCH_ERROR] url=https://dwsim.org/automation/ reason=404 Client Error: Not Found for url: https://dwsim.org/automation/
+[FETCH_ERROR] url=https://dwsim.org/documentation/ reason=404 Client Error: Not Found for url: https://dwsim.org/documentation/
+[FETCH_ERROR] url=https://dwsim.org/wiki/images/DWSIM_Tutorial.pdf reason=403 Client Error: Forbidden for url: https://dwsim.org/wiki/images/DWSIM_Tutorial.pdf
+[FETCH_ERROR] url=https://dwsim.fossee.in/assets/downloads/DWSIM_User_Guide.pdf reason=404 Client Error: Not Found for url: https://dwsim.fossee.in/assets/downloads/DWSIM_User_Guide.pdf
+[FETCH_ERROR] url=https://dwsim.org/api-docs/ reason=404 Client Error: Not Found for url: https://dwsim.org/api-docs/
+[FETCH_ERROR] url=https://dwsim.org/automation/ reason=404 Client Error: Not Found for url: https://dwsim.org/automation/
+[FETCH_ERROR] url=https://dwsim.org/documentation/ reason=404 Client Error: Not Found for url: https://dwsim.org/documentation/
+[FETCH_ERROR] url=https://dwsim.org/wiki/images/DWSIM_Tutorial.pdf reason=403 Client Error: Forbidden for url: https://dwsim.org/wiki/images/DWSIM_Tutorial.pdf
+[INCOMPLETE] chunk_id=bf222da0-cf21-4c65-bf52-19a05a77ddda topic=Automation Overview
+[INCOMPLETE] chunk_id=12c88fc2-303c-46c0-8602-7b15eb3471bf topic=Registering DLLs for COM Automation
+[INCOMPLETE] chunk_id=5cc761cf-5394-4887-863a-5d7eed8e9ca1 topic=Automation and API Structure
+[INCOMPLETE] chunk_id=1c424afe-be52-4294-a894-f35402502037 topic=Flowsheet Object Interfaces and Automation
+[INCOMPLETE] chunk_id=0e98406b-7ffc-4ec4-90fd-ca798479334b topic=Automation Interface via Excel VBA
+[INCOMPLETE] chunk_id=62834493-a792-4334-a58b-d33d30d066ac topic=Automation with Excel and VBA
+[INCOMPLETE] chunk_id=b1923bf3-2eab-4683-a9b1-7e5199f76620 topic=VB.NET Automation and Flowsheet Solving
+[INCOMPLETE] chunk_id=c33931e3-fb78-4ef3-ae4b-983ca9472ea7 topic=Automation using CAPE-OPEN interfaces in VB.NET
+[INCOMPLETE] chunk_id=1395a23b-9ea1-48b2-94e9-f31ab76c1b01 topic=DWSIM Automation with C# and VB.NET
+[INCOMPLETE] chunk_id=68101500-7c56-476b-a71b-11c0a3b3e5c4 topic=Automation API CAPE-OPEN Flowsheet Manipulation
+[INCOMPLETE] chunk_id=b43fa6f9-ac95-40a8-bae4-bb2e998896aa topic=Retrieving simulation results via Automation API
+[INCOMPLETE] chunk_id=029585d1-7035-410e-b0db-49e90b4dc305 topic=Support and Community Resources
+[INCOMPLETE] chunk_id=424b251b-ce76-40e3-8916-6ba5104ec9f5 topic=Features by Platform
+[INCOMPLETE] chunk_id=eaa8c748-e21b-4e25-a0c2-98d3b4db300c topic=Supported Unit Operations and Flowsheet Features by Platform
+[INCOMPLETE] chunk_id=76d78e51-2670-4912-b689-4da191e06615 topic=Platform Feature Comparison and Availability
+[FETCH_ERROR] url=https://dwsim.fossee.in/assets/downloads/DWSIM_User_Guide.pdf reason=404 Client Error: Not Found for url: https://dwsim.fossee.in/assets/downloads/DWSIM_User_Guide.pdf
+[FETCH_ERROR] url=https://dwsim.org/api-docs/ reason=404 Client Error: Not Found for url: https://dwsim.org/api-docs/
+[FETCH_ERROR] url=https://dwsim.org/automation/ reason=404 Client Error: Not Found for url: https://dwsim.org/automation/
+[FETCH_ERROR] url=https://dwsim.org/documentation/ reason=404 Client Error: Not Found for url: https://dwsim.org/documentation/
+[FETCH_ERROR] url=https://dwsim.org/wiki/images/DWSIM_Tutorial.pdf reason=403 Client Error: Forbidden for url: https://dwsim.org/wiki/images/DWSIM_Tutorial.pdf
+[INCOMPLETE] chunk_id=58a7cee9-c475-497b-867f-2f7f9d72230b topic=IronPython Scripting: Creating and Connecting Objects
+[INCOMPLETE] chunk_id=92ddfd85-0a94-459d-9883-44b47fbcf0cf topic=Setting up a Cooler unit operation using IronPython scripting
+[INCOMPLETE] chunk_id=859df2c0-0f37-45e4-946f-642a0fd72bae topic=IronPython Scripting for Unit Operations and Material Streams
+[INCOMPLETE] chunk_id=b4a17be2-c524-48b7-985b-b10a2765309c topic=Accessing Stream Properties and Creating Plots via Scripting
+[INCOMPLETE] chunk_id=4dd48f42-aac4-47eb-abd3-d9a23bcd2ff4 topic=Charting and Splitter Block Manipulation via IronPython
+[INCOMPLETE] chunk_id=9e8089ae-e631-48b8-bc63-128cea83d980 topic=IronPython scripting for PFR data export and pseudocompound creation
+[INCOMPLETE] chunk_id=9597eb03-b0df-41d2-af31-ceeb84fe9e8c topic=Pseudocompound generation script using petroleum characterization methods
+[INCOMPLETE] chunk_id=be3de5ff-e75a-474d-ac12-bb79b0c37aa4 topic=Petroleum compound generation and material stream assignment via scripting
+[FETCH_ERROR] url=https://dwsim.fossee.in/assets/downloads/DWSIM_User_Guide.pdf reason=404 Client Error: Not Found for url: https://dwsim.fossee.in/assets/downloads/DWSIM_User_Guide.pdf
+[FETCH_ERROR] url=https://dwsim.org/api-docs/ reason=404 Client Error: Not Found for url: https://dwsim.org/api-docs/
+[FETCH_ERROR] url=https://dwsim.org/automation/ reason=404 Client Error: Not Found for url: https://dwsim.org/automation/
+[FETCH_ERROR] url=https://dwsim.org/documentation/ reason=404 Client Error: Not Found for url: https://dwsim.org/documentation/
+[FETCH_ERROR] url=https://dwsim.org/wiki/images/DWSIM_Tutorial.pdf reason=403 Client Error: Forbidden for url: https://dwsim.org/wiki/images/DWSIM_Tutorial.pdf
+[INCOMPLETE] chunk_id=06f42fec-2363-4a17-857a-a01796187849 topic=Scripting Mixer Unit Operation Calculation
+[INCOMPLETE] chunk_id=654c585f-cda5-43a4-9570-418b81c15e84 topic=Mixer Unit Operation Scripting and Property Calculation
+[INCOMPLETE] chunk_id=fc0920c8-82b0-43d8-a994-a0979455e4c4 topic=Custom Mixer Calculation Scripting
+[INCOMPLETE] chunk_id=fede40f2-2810-41cb-90fa-6ef70dbf0245 topic=Overriding Property Package Fugacity Coefficient Calculation Routines
+[INCOMPLETE] chunk_id=8a7dcfdf-7aea-4861-9efe-780bec6cd17a topic=Equation of State Root Solving and Fugacity Coefficient Calculation
+[INCOMPLETE] chunk_id=4693714a-8dea-4a3e-b6b2-cb8ab51392a0 topic=Peng-Robinson Fugacity Coefficient Calculation Script
+[INCOMPLETE] chunk_id=5c13198f-2069-421a-9afa-33d414150dda topic=Custom Fugacity Coefficient Calculation (Peng-Robinson EOS)
+[INCOMPLETE] chunk_id=0228f5e6-be7c-47e2-ab8e-563c69d3bac3 topic=Customizing Fugacity, Enthalpy, and Entropy calculations for Property Packages
+[INCOMPLETE] chunk_id=eb002f9c-4dc9-4570-8fe7-74e11e379778 topic=Custom Enthalpy Calculation using Peng-Robinson EOS
+[INCOMPLETE] chunk_id=f6707987-eb49-4646-92ea-e64b8179ffcb topic=Peng-Robinson Property Package Customization
+[FETCH_ERROR] url=https://dwsim.fossee.in/assets/downloads/DWSIM_User_Guide.pdf reason=404 Client Error: Not Found for url: https://dwsim.fossee.in/assets/downloads/DWSIM_User_Guide.pdf
+[FETCH_ERROR] url=https://dwsim.org/api-docs/ reason=404 Client Error: Not Found for url: https://dwsim.org/api-docs/
+[FETCH_ERROR] url=https://dwsim.org/automation/ reason=404 Client Error: Not Found for url: https://dwsim.org/automation/
+[FETCH_ERROR] url=https://dwsim.org/documentation/ reason=404 Client Error: Not Found for url: https://dwsim.org/documentation/
+[FETCH_ERROR] url=https://dwsim.org/wiki/images/DWSIM_Tutorial.pdf reason=404 Client Error: Not Found for url: https://dwsim.org/wiki/images/DWSIM_Tutorial.pdf
+[INCOMPLETE] chunk_id=50d33c6c-17eb-4db3-b91f-646f2f4c4977 topic=Overriding Liquid Mixture Viscosity
+[INCOMPLETE] chunk_id=5fe1e4f4-f54b-4cee-8a37-aef761938d43 topic=Overriding Calculated Properties
+[INCOMPLETE] chunk_id=ce14b692-57ab-450e-99cb-929520ca2502 topic=Thermodynamic Model Selection
+[INCOMPLETE] chunk_id=7e424159-4e1e-4e25-9cef-784649702310 topic=Aqueous Electrolytes Property Package Selection
+[INCOMPLETE] chunk_id=7bec5310-1080-47c1-bd78-8ce53c1504e1 topic=Simulator Features and Support Resources
+[INCOMPLETE] chunk_id=7764c74b-44b7-415b-8ec6-ec06fea20078 topic=Data Regression Utility
+[INCOMPLETE] chunk_id=d279adcc-9ea7-4782-9816-75a9530a8359 topic=Data Entry and Estimation in Data Regression Utility
+[INCOMPLETE] chunk_id=3eb2cc43-e0f4-4b47-9298-98d72ca9d157 topic=User Guide Overview and Table of Contents
+[INCOMPLETE] chunk_id=a3b9653e-ea93-46b6-b7ba-3f7f2453cd98 topic=Table of Contents: Flowsheet Operations and Compound Creator
+[INCOMPLETE] chunk_id=3c1c8cd8-551d-4f9a-9a7c-bb0e68dc9c8e topic=Compounds Management, Data Regression, and General Settings Table of Contents
+[INCOMPLETE] chunk_id=9ff9758f-86d2-4e3f-a76c-d0e299f1a380 topic=General Settings and Simulation Configuration Table of Contents
+[INCOMPLETE] chunk_id=a36e41b2-4c67-4aa7-bf19-479f3caa7199 topic=Process Modeling and Material Streams Table of Contents
+[INCOMPLETE] chunk_id=67274e58-8170-45b3-bbeb-52ecb8d25245 topic=Unit Operations and Calculation Methods
+[INCOMPLETE] chunk_id=9b40b516-3bd6-4689-8497-2fb086a9a41f topic=List of Unit Operations in DWSIM
+[INCOMPLETE] chunk_id=9c0537f7-b496-4485-983f-58792214b550 topic=Unit Operations, Reactors, and Logical Operations Table of Contents
+[INCOMPLETE] chunk_id=6a92935d-57ba-4764-98ff-00984f9cdc83 topic=Logical Operations and Dynamic Modeling Table of Contents
+[INCOMPLETE] chunk_id=bc609e1d-96a5-40f7-a25c-8d07c9aa6429 topic=Flowsheet Blocks and Dynamic Simulation Tools
+[INCOMPLETE] chunk_id=41033e9c-8302-479c-9cb0-07e06d1e0f39 topic=Dynamic Simulation and Thermodynamic/Transport Properties Technical Basis
+[INCOMPLETE] chunk_id=fd455d14-7c4a-4535-9d8e-53bb5af30644 topic=Thermodynamic Property Models and Chemical Reactions
+[INCOMPLETE] chunk_id=077ec473-c7cf-4628-b0b8-acacee2eed3a topic=Reaction and Property Estimation Methods Table of Contents
+[INCOMPLETE] chunk_id=c9bc6603-4520-481d-b919-31c9298470ec topic=Petroleum Cold Flow Properties and Methane Steam Reforming Tutorial Contents
+[INCOMPLETE] chunk_id=f54ffeaf-7ef7-4ae3-83f4-362dc30a3f81 topic=Table of Contents: Extractive Distillation, Python Scripting, and Dynamic Simulation
+[INCOMPLETE] chunk_id=fc1c39ce-3083-47e5-a1c1-c6a9290f41f2 topic=Advanced Simulation Topics: PID Control, Python Scripting, and Model Customization
+[INCOMPLETE] chunk_id=e2ab2aad-ad78-4e23-af1a-04ef05f31462 topic=Overriding Calculated Properties and Automation
+[INCOMPLETE] chunk_id=a30c87ec-d287-4613-96ae-70f0cb9a9e1f topic=Excel Automation and CAPE-OPEN Subsystem
+[INCOMPLETE] chunk_id=51acc97a-41aa-4fee-93c5-09f068ef7586 topic=Introduction to DWSIM and User Interfaces
+[INCOMPLETE] chunk_id=7787a4b2-1a76-4348-b734-4b7c0e077510 topic=Classic User Interface Welcome Screen Overview
+[INCOMPLETE] chunk_id=5d3e6a67-aa5f-491d-9c23-3a275cf48f0f topic=Tutorials and Learning Resources Overview
+[INCOMPLETE] chunk_id=a4166d86-c1ae-488c-9f75-e72716508975 topic=Tutorials and Utilities Overview
+[FETCH_ERROR] url=https://fossee.in/data/dwsim/DWSIM_Lab_Manual.pdf reason=404 Client Error: Not Found for url: https://fossee.in/data/dwsim/DWSIM_Lab_Manual.pdf
+[FETCH_ERROR] url=https://github.com/DanWBR/dwsim/blob/windows/PlatformFiles/Common/docs/User_Guide.pdf reason=No /Root object! - Is this really a PDF?
+[FETCH_ERROR] url=https://github.com/DanWessel/DWSIM/blob/master/CODE_GUIDE.md reason=404 Client Error: Not Found for url: https://github.com/DanWessel/DWSIM/blob/master/CODE_GUIDE.md
+[FETCH_ERROR] url=https://github.com/lcfsantos/dwsimopt reason=404 Client Error: Not Found for url: https://github.com/lcfsantos/dwsimopt
+[FETCH_ERROR] url=https://spoken-tutorial.org/media/videos/86/DWSIM-Manual.pdf reason=404 Client Error: Not Found for url: https://spoken-tutorial.org/media/videos/86/DWSIM-Manual.pdf
+[FETCH_ERROR] url=https://www.iitb.ac.in/dwsim/tutorials.pdf reason=('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
