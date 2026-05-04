@@ -1,0 +1,103 @@
+GitHub - PSORLab/Chemical_Engineering_Analysis_Notebooks: Literate Programming Examples for Chemical Engineering Analysis · GitHub
+Skip to content
+You signed in with another tab or window.
+Reload
+to refresh your session.
+You signed out in another tab or window.
+Reload
+to refresh your session.
+You switched accounts on another tab or window.
+Reload
+to refresh your session.
+Dismiss alert
+PSORLab
+/
+Chemical_Engineering_Analysis_Notebooks
+Public
+Notifications
+You must be signed in to change notification settings
+Fork
+5
+Star
+16
+master
+Branches
+Tags
+Go to file
+Code
+Open more actions menu
+Folders and files
+Name
+Name
+Last commit message
+Last commit date
+Latest commit
+History
+54 Commits
+54 Commits
+tutorial
+tutorial
+LICENSE
+LICENSE
+README.md
+README.md
+View all files
+Repository files navigation
+Chemical Engineering - Analysis Notebooks
+Literate Programming Examples for Chemical Engineering Analysis
+Authors
+Matthew Wilhelm, Chenyu Wang, Matthew Stuber
+Overview of Content
+This repository contains a series of supplemental notebooks intended for use
+in courses centered around application of numerical methods with a chemical engineering
+context. This content was originally developed for the junior level, Chemical
+Engineering Analysis course at the University of Connecticut through funding provided by a Mini Grant from the Center for Education, Teaching, and Learning (CETL) and from the CACHE Organization.
+This original course made use of Dorfman and Daoutidis's "Numerical Methods with Chemical Engineering Applications" as a primary textbook. A list of the chapters of Dorfman and Daoutidis that correspond to each tutorial is provided below. We should, however, note that the enclosed material was designed to be used in a stand-alone fashion and may be readily integrated into other courses.
+Tutorial #0 (Introduction to Matlab/Julia) - N/A
+Tutorial #1 (Linear Algebraic Systems) - Chapter 2
+Tutorial #2 (Nonlinear Algebraic Systems) - Chapter 3
+Tutorial #3 (ODEs, Initial Value Problems) - Chapter 4
+Tutorial #4 (ODEs, Boundary Value Problems) - Chapter 6
+Tutorial #5 (Partial Differential Equations) - Chapter 7
+Tutorial #6 (Optimization) - N/A
+References
+Dorfman, Kevin D., and Prodromos Daoutidis. Numerical Methods with Chemical Engineering Applications. Cambridge University Press, 2017.
+About
+Literate Programming Examples for Chemical Engineering Analysis
+Resources
+Readme
+License
+MIT license
+Uh oh!
+There was an error while loading.
+Please reload this page
+.
+Activity
+Custom properties
+Stars
+16
+stars
+Watchers
+1
+watching
+Forks
+5
+forks
+Report repository
+Releases
+No releases published
+Packages
+0
+Uh oh!
+There was an error while loading.
+Please reload this page
+.
+Contributors
+Uh oh!
+There was an error while loading.
+Please reload this page
+.
+Languages
+Jupyter Notebook
+100.0%
+You can’t perform that action at this time.

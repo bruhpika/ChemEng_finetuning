@@ -1,0 +1,377 @@
+WMTSA Wavelet Toolkit for MATLAB
+WMTSA Wavelet Toolkit for MATLAB
+Contents
+Introduction
+Getting
+Started
+Downloading
+the Toolkit
+Installation
+Platform Compability
+Required MATLAB Toolboxes
+Testing Installation
+Using the Toolkit
+Nomenclature
+MODWT Transform - Key
+Functions
+MODWT Workflow
+Examples
+Documentation
+Bugs and Feedback
+ToDo/Wish List
+Resources
+Credits
+Introduction
+The WMTSA Wavelet Toolkit for MATLAB is a software package for the
+analysis of a data series using wavelet methods.  It is an
+implementation of the wavelet-based techniques for the analysis of time
+series presented in:
+Percival, D. B. and A. T. Walden (2000)
+Wavelet Methods for
+Time Series Analysis
+.
+Cambridge: Cambridge University Press
+henceforth referred to as WMTSA.  The WMTSA toolkit follows the
+terminology, symbology, algorithms and plotting presentation contained
+ in WMTSA wherever possible.
+The Toolkit consists of:
+the WMTSA toolbox for MATLAB containing functions for
+computing several versions of the discrete wavelet transform
+(DWT)
+analyzing variability as a function of scale
+displaying results
+the MUnit tool toolbox for MATLAB containing functions for
+testing the WMTSA toolbox.
+example scripts and data demonstrating use of the toolbox
+documentation of toolbox functions.
+Getting Started
+Downloading the Toolkit
+The WMTSA toolkit is available for download from the WMTSA toolkit web
+site:
+http://www.atmos.washington.edu/~wmtsa
+The current version
+is
+0.2.6
+release on
+2006-Aug-23
+.
+For updates and changes made in current release please consult
+README.txt
+and
+ChangeLog
+files.
+The toolkit packaged as gzip and zip archives can be downloaded here:
+wmtsa-matlab-0.2.6.tar.gz
+wmtsa-matlab-0.2.6.zip
+Installation
+The archive package has subdirectories containing:
+WMTSA MATLAB toolbox (wmtsa)
+examples (wmtsa/Examples)
+documentation (wmtsa/doc)
+MUnit MATLAB toolbox (munit)
+Units tests (wmtsa/Tools)
+To install the toolbox:
+Download archive wmtsa-matlab-X.X.X.tar.gz or
+wmtsa-matlab-X.X.X.zip and move to location for unpacking:  e.g.
+/tmp on UNIX/Linux, Desktop on Windows or MacOS X.
+Unpack the archive to <unpack_directory>
+UNIX/Linux:  cd <unpack_directory>; gzip -d -c
+wmtsa-matlab-X.X.X.tar.gz | tar
+-xvf
+-
+WINDOWS:  Use WinZip or other utility to unzip
+wmtsa-matlab-X.X.X.tar.gz.
+MacOS X:  If enabled, Stuffit utility should automatically
+open and unpack the archive wmtsa-matlab-X.X.X.tar.gz  on the
+Desktop or other default location.
+Note: This will create a folder named 'wmtsa' and unpack ith
+archive in the same folder as the archive..
+Copy the unpacked wmtsa toolbox subdirectories to the preferred
+toolbox installation location <installation_directory>.
+The subdirectories under <unpack_directory>
+contains two directories, wmtsa and munit, that need to be copied to
+the the preferred toolbox directory.
+For a personal installation, install into ~/matlab/toolbox
+directory.
+Create personal matlab and toolbox diretories, if neccessary.
+mkdir ~/matlab
+mkdir ~/matlab/toolbox
+The toolboxes may be installed in locations elsewhere. Follow
+these installation instructions but install toolboxes to
+<installation_directory> , instead of ~/matlab/toolbox.  For
+additional details on alternative or site installation, consult MATLAB
+documentation and your sys admin.
+UNIX/Linux
+cd <unpack_directory>
+cd wmtsa/toolbox
+cp -r wmtsa munit
+~/matlab/toolbox            
+# Personal toolbox installation
+cp -r wmtsa munit <installaton_directory>   #
+Other location toolbox installation
+Windows
+Use File Manager open the toolbox subdirectory in wmtsa
+directory.  Copy and paste the wmtsa and munit subdirectories to
+personal toolbox directory.
+To determine your home directory for MATLAB, start MATLAB and
+at the command prompt type: cd ~; pwd.  This will display your
+home directory.
+MacOS X
+Open the wmtsa folder, then the to the toolbox folder.
+Copy and paste the wmtsa and munit subdirectories in your
+personal toolbox directory:  ~/matlab/toolbox
+Edit startup.m file to add WMTSA and MUnit toolboxes.
+For personal installation, the personal startup file is found
+at: ~/matlab/startup.m.  If one does not exist, create one.
+To modify the site startup file. consult MATLAB documentation
+and your sys admin.
+Add the following lines to startup.m with full paths to wmtsa
+startup.m file and munit toolbox.
+run ~/toolbox/wmtsa/startup.m     % Setup
+paths for wmtsa toolboxes and, if necessary, compiles MEX function
+binary executables from C source files (modwtj.c, imodwtj.c, dwtj.c).
+addpath ~/toolbox/munit/munit     % Add
+MUnit toolbox to path.
+Platform Compability
+The WMTSA toolbox has been developed using MATLAB 7.x on the Linux
+platform.  It has been compiled and tested on the following
+platforms:
+OS
+MATLAB Version
+Linux (Redhat EL 3.0 WS)
+7.2 (R2006a)
+Linux (Redhat EL 4.0 x86_64)
+7.2 (R2006a)
+Windows 2000
+7.2 (R2006a)
+The distributed WMTSA package does not include compiled MEX function binaries.  
+Compilation will occur automatically during the first execution of the toolkit.  To re-compile
+Launch MATLAB.
+In MATLAB command window, change to wmtsa toolbox directory (i.e.
+cd <installation_directory>/wmtsa
+Clean existing MEX function binaries - Type:  make clean
+Compile MEX function binaries - Type:  make all
+Required MATLAB Toolboxes
+The WMTSA toolbox requires only the basic MATLAB license.
+Toolbox Directory Organization
+The WMTSA toolbox functions are organized in subdirectories under the
+wmtsa/matlab/toolbox/wmtsa root as follows:
+dwt            --
+ Core WMTSA wavelet
+analysis transform, ANOVA, plotting, utility and support functions.
+plotutils     --  Plotting utility functions.
+utils           --
+ Utility functions for application support.
+data           
+--  Sample datasets.
+third-party --  Functions from third-party sources.
+stats            --
+Statistical functions.
+signal         -- Signal
+processing functions.
+Tests          -- Tests
+suite.
+Testing Installation
+You can test your installation of the WMTSA toolbox by
+Running the examples in MATLAB
+Change to figure directory - Type:  cd
+<unpack_directory>/wmtsa/toolkit/wmtsa/Examples/WMTSA_Book/Figures.
+List directory contents for list of figure scripts.
+Run a figure script, e.g. Type:  run figure183.
+Function display_figures displays all figure scripts in the
+Figures directory.
+Unit Tests
+MUnit, , a unit
+testing harness for MATLAB, is included with the WMTSA toolkit is the
+MUnit toobox
+Add the munit toolbox to your path:  addpath
+<installation_directory>/wmtsa/toolbox/munit/munit
+Change to WMTSA toolkit Tests directory - Type: cd
+<installation_directory>/wmtsa/Tests.
+Change to a subdirectory corresponding to a wmtsa toolbox
+subdirectory, e.g. dwt
+List directory contents for test cases:  e.g. ls *tcase.m
+Run a test case using the test case  driver routine, e.g.
+run_tcase(@modwt_functionality_tcase)
+Using the Toolkit
+Currently the WMTSA toolbox implements the
+D
+iscrete
+W
+avelet
+T
+ransform (
+DWT
+) and the
+M
+aximal
+O
+verlap
+D
+iscrete
+W
+avelet
+T
+ransform (
+MODWT
+) and their inverse functions.
+Nomenclature
+Prefaces to function names are used to categorize functions as follows:
+modwt_        =  MODWT transform and
+analysis functions
+imodwt_       =  inverse MODWT transform
+and analysis functions
+plot_             =  plotting
+functions
+MODWT Transform - Key
+Functions
+MODWT Transform
+modwt -- Compute the (partial) maximal overlap discrete wavelet
+transform (MODWT).
+imodwt_mra -- Calculate multi-resolution details and smooths via
+inverse maximal overlap discrete wavelet transform (IMODWT).
+modwt_filter -- Define the WMTSA MODWT wavelet and scaling filter
+coefficients and filter length.
+modwt_cir_shift -- Circularly shift (advance) MODWT coefficients for
+alignment with original time series.
+plot_modwt_coef -- Plot the MODWT wavelet and scaling coefficients and
+the original time series.
+plot_imodwt_mra -- Plot the inverse MODWT multiresolution analysis
+detail and smooth coefficients and original time series.
+Analysis of  Variance
+modwt_wvar -- Calculate wavelet variance of MODWT wavelet coefficients.
+modwt_wvar_sdf -- Calculate estimate of average spectral density
+function from MODWT wavelet variance.
+modwt_wcor -- Calculate the wavelet correlation of MODWT wavelet
+coefficients.
+modwt_wcov -- Calculate the wavelet covariance of MODWT wavelet
+coefficients.
+modwt_running_wcov -- Calculate running wavelet covariance of
+circularly-shifted MODWT wavelet coefficients.
+modwt_running_wvar -- Calculate running wavelet variance of
+circularly-shifted MODWT wavelet coefficients.
+plot_wvar -- Plot the wavelet variance and confidence intervals.
+loglog_modwt_sdf -- Log-log plot of MODWT estimate of spectral density
+function (SDF).
+plot_wcor -- Plot the wavelet correlation and (optionally) confidence
+intervals.
+plot_wcov -- Plot the wavelet covariance and confidence intervals.
+MODWT Workflow
+For analyzing a single signal:
+X = vector series of observations
+|
+|
+modwt
+|
+|
+[WJt, VJ0t]   --->  plot_modwt_coef
+|
+|------------->  modwt_wvar 
+--->  plot_wvar
+|       
+                 
+|
+|          
+  
+            |
+|    
+              
+modwt_wvar_sdf  --> loglog_modwt_sdf
+|
+imodwt_mra
+|
+|
+[DJt, SJ0t]   --->  plot_imodwt_mra
+For analyzing a pair of
+signals:
+X           
+Y  = vector series of two sets of observations
+|     
+        |
+|        
+     |
+modwt    modwt
+|     
+        |
+|        
+     |
+[WJXt]   [WJYt]
+\           /
+\         /
+\       /
+\     /
+\   /
+\ /
+V
+modwt_wcor  --->  plot_wcor
+modwt_wcov  --->  plot_wcov
+Examples
+Examples illustrating the use of the WMTSA toolbox are in
+wmtsa/matlab/examples directory.
+The Figures subdirectory contains MATLAB scripts that replicate figures
+contained in WMTSA.  To display a figure, type:
+run figureXXX
+where XXX is the figure number.
+Reviewing the MATLAB scripts in the Figures directory will demonstrate
+how to use the WMTSA toolbox functions in MATLAB.
+The data subdirectory contains data (.dat) files used by the figure
+scripts.  These data files originally from the WMTSA web site have
+been formatted for loading into MATLAB.
+Documentation
+Help information about a WMTSA toolbox function can be viewed within
+MATLAB by typing: help <function>.
+Each WMTSA function uses a standardized header describing usage/syntax,
+input and output arguments, detailed description, algorithm
+description,
+and references.  Documentation has been extracted from function
+headers using
+ROBODoc
+to create an online manual of WMTSA toolbox functions which can be
+viewed
+here
+.
+Bugs and Feedback
+We appreciate your feedback and suggestions about the WMTSA toolkit for
+MATLAB. Please send bug reports and comments to:
+wmtsa@atmos.washington.edu
+ToDo/Wish List
+The WMTSA wavelet toolkit for MATLAB is undergoing further development
+and refinement.  Here are some of the features we plan to add in
+the future:
+Complete full implementation of DWT wavelet transform.
+Implment packet versions of DWT and MODWT transforms.
+Implement additional plotting and other utility functions.
+Add scripts to replicate other figures from WMTSA.
+Add other examples.
+Write additional documentation about using the toolkit.
+Add a tutorial.
+Add additional test drivers.
+Resources
+Online
+More information about the methods implemented in the WMTSA wavelet
+toolkit for MATLAB can be viewed at the WMTSA book
+website
+.
+Books
+Percival, D. B. and A. T. Walden (2000)
+Wavelet Methods for
+Time Series Analysis
+.
+Cambridge: Cambridge University Press
+Credits
+Authors
+The WMTSA wavelet toolkit for MATLAB has been developed by:
+Charlie Cornish
+Dept of Atmospheric Sciences
+University of Washington
+Box 351640
+Seattle, WA  98195-1640
+email:
+wmtsa@atmos.washington.edu
+Acknowledgements
+This material is based upon work supported by the National Science
+Foundation under Grant No. 0222115. Any opinions, findings, and
+conclusions or recommendations expressed in this material are those of
+the author(s) and do not necessarily reflect the views of the National
+Science Foundation.
+Last Update:  2006-06-23

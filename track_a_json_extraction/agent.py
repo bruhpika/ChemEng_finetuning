@@ -31,7 +31,7 @@ genai.configure(api_key=api_keys[current_key_idx])
 MODEL = genai.GenerativeModel("gemini-flash-latest")  # instantiate ONCE
 
 PATHS = {
-    "csv":      "data/sources_dwsim.csv",
+    "csv":      "data/sources_matlab.csv",
     "cache":    "data/track_a/cache/",          # raw text cache
     "out":      "data/track_a/chunks_{}.json",
     "flag_log": "data/track_a/flagged_chunks.log",

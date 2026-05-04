@@ -1,0 +1,124 @@
+GitHub - asanet/chemeng-solved: Classic problems in chemical engineering solved with matlab · GitHub
+Skip to content
+You signed in with another tab or window.
+Reload
+to refresh your session.
+You signed out in another tab or window.
+Reload
+to refresh your session.
+You switched accounts on another tab or window.
+Reload
+to refresh your session.
+Dismiss alert
+asanet
+/
+chemeng-solved
+Public
+Notifications
+You must be signed in to change notification settings
+Fork
+2
+Star
+22
+master
+Branches
+Tags
+Go to file
+Code
+Open more actions menu
+Folders and files
+Name
+Name
+Last commit message
+Last commit date
+Latest commit
+History
+25 Commits
+25 Commits
+AuxFunctions
+AuxFunctions
+Extractors.m
+Extractors.m
+Furnace_Wall.m
+Furnace_Wall.m
+Heat_transfer_fins.m
+Heat_transfer_fins.m
+MPC_tank_reactor.m
+MPC_tank_reactor.m
+Parameter_estimation.m
+Parameter_estimation.m
+Reaction_diffusion.m
+Reaction_diffusion.m
+Robertson_kinetics.m
+Robertson_kinetics.m
+Steady_state_PFR.m
+Steady_state_PFR.m
+Tubular_reactor_2D.m
+Tubular_reactor_2D.m
+license.txt
+license.txt
+readme.md
+readme.md
+View all files
+Repository files navigation
+CHEMical ENGineering Problems solved!
+This is a repository with classical chemical engineering problems solved in MatLab.
+(IN PROGRESS)
+Author
+Ataíde Neto
+-
+ataide@peq.coppe.ufrj.br
+About
+Classic problems in chemical engineering solved with matlab
+Topics
+optimization
+matlab
+templates
+chemical-engineering
+mit-license
+differential-equations
+parameter-estimation
+numerical-methods
+discretization
+collocation
+differential-algebraic-equations
+orthogonal
+process-control
+mpc-control
+collocation-method
+Resources
+Readme
+License
+MIT license
+Uh oh!
+There was an error while loading.
+Please reload this page
+.
+Activity
+Stars
+22
+stars
+Watchers
+1
+watching
+Forks
+2
+forks
+Report repository
+Releases
+No releases published
+Packages
+0
+Uh oh!
+There was an error while loading.
+Please reload this page
+.
+Contributors
+Uh oh!
+There was an error while loading.
+Please reload this page
+.
+Languages
+MATLAB
+100.0%
+You can’t perform that action at this time.

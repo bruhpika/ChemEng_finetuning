@@ -223,3 +223,97 @@
 [FETCH_ERROR] url=https://github.com/lcfsantos/dwsimopt reason=404 Client Error: Not Found for url: https://github.com/lcfsantos/dwsimopt
 [FETCH_ERROR] url=https://spoken-tutorial.org/media/videos/86/DWSIM-Manual.pdf reason=404 Client Error: Not Found for url: https://spoken-tutorial.org/media/videos/86/DWSIM-Manual.pdf
 [FETCH_ERROR] url=https://www.iitb.ac.in/dwsim/tutorials.pdf reason=('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+[FETCH_ERROR] url=https://fossee.in/data/dwsim/DWSIM_Lab_Manual.pdf reason=404 Client Error: Not Found for url: https://fossee.in/data/dwsim/DWSIM_Lab_Manual.pdf
+[FETCH_ERROR] url=https://github.com/DanWBR/dwsim/blob/windows/PlatformFiles/Common/docs/User_Guide.pdf reason=No /Root object! - Is this really a PDF?
+[FETCH_ERROR] url=https://github.com/DanWessel/DWSIM/blob/master/CODE_GUIDE.md reason=404 Client Error: Not Found for url: https://github.com/DanWessel/DWSIM/blob/master/CODE_GUIDE.md
+[FETCH_ERROR] url=https://github.com/lcfsantos/dwsimopt reason=404 Client Error: Not Found for url: https://github.com/lcfsantos/dwsimopt
+[FETCH_ERROR] url=https://spoken-tutorial.org/media/videos/86/DWSIM-Manual.pdf reason=404 Client Error: Not Found for url: https://spoken-tutorial.org/media/videos/86/DWSIM-Manual.pdf
+[FETCH_ERROR] url=https://www.iitb.ac.in/dwsim/tutorials.pdf reason=('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+[INCOMPLETE] chunk_id=85abd7ff-a8fe-4a72-91b5-6f2bf29c8ace topic=Community API
+[INCOMPLETE] chunk_id=baf34dcc-5e90-4594-8387-5368bc278a91 topic=WMTSA Wavelet Toolkit Introduction and Setup
+[INCOMPLETE] chunk_id=78542078-c7a3-4d03-9fc3-efbe934a9d8c topic=WMTSA toolkit installation
+[INCOMPLETE] chunk_id=fd5ff686-83f4-4fe9-821f-5f7d4c8667ce topic=WMTSA and MUnit Toolbox Installation
+[INCOMPLETE] chunk_id=06947901-232c-47f0-9b5d-0e61fce20e89 topic=WMTSA and MUnit Toolbox Installation and Compilation
+[INCOMPLETE] chunk_id=39766caa-b685-4460-b3c6-82be92f7114d topic=Installation and testing of the WMTSA toolbox
+[INCOMPLETE] chunk_id=c655ae10-818b-4073-b586-3a50b35e7318 topic=WMTSA Toolbox Testing and MODWT Functions
+[INCOMPLETE] chunk_id=d817ed17-3c6e-438f-a7a5-d80bb7c410ba topic=MODWT Multiresolution Analysis and Wavelet Statistics
+[INCOMPLETE] chunk_id=caca8119-4b55-45e4-82b4-75423c3817ed topic=WMTSA Wavelet Correlation and Covariance Analysis
+[INCOMPLETE] chunk_id=d91ccdcd-3bf1-47d9-8b18-34a04c69cf87 topic=WMTSA toolkit development roadmap and project information
+[INCOMPLETE] chunk_id=1ea0c250-915b-43c4-a525-00bc4cf058c1 topic=Disclaimers and Acknowledgments
+[INCOMPLETE] chunk_id=19aca831-bec0-40e9-b74a-381bc9fac5e1 topic=CODES Toolbox General Information and Namespaces
+[INCOMPLETE] chunk_id=b630adf8-9f34-4d36-9528-2deeeebb2909 topic=CODES Toolbox namespace management, data conventions, and help access
+[INCOMPLETE] chunk_id=6b22d76a-e3db-4c6c-ac88-b7f79ce45fcb topic=Software Compatibility and Copyright Information
+[FETCH_ERROR] url=https://doi.org/10.25405/data.ncl.27055339 reason=HTML extraction returned empty text
+[FETCH_ERROR] url=https://engineering.purdue.edu/~ragu/matlab/matlab_che.pdf reason=404 Client Error: Not Found for url: https://engineering.purdue.edu/~ragu/matlab/matlab_che.pdf
+[INCOMPLETE] chunk_id=6fc6cf5b-7dae-4bd2-8538-41c5d4abb8d4 topic=Combustion and high-speed flow thermochemical framework
+[INCOMPLETE] chunk_id=62db669b-3d47-48fd-85a3-e44011425080 topic=Combustion Toolbox Overview and Modules
+[INCOMPLETE] chunk_id=366eb724-fabe-4f89-858e-4ad90e098716 topic=Citations and general overview of Combustion Toolbox
+[INCOMPLETE] chunk_id=6f2b9ced-1fe5-42e7-8da6-ae5ad6ab05cc topic=Combustion Toolbox features and metadata
+[INCOMPLETE] chunk_id=15613afb-5bdd-4475-b44d-ee73021c6258 topic=MataveControl Toolbox Overview
+[INCOMPLETE] chunk_id=816e5d56-cf83-4160-a608-c6c416643d86 topic=MataveControl toolbox usage and development
+[INCOMPLETE] chunk_id=29488763-bb33-4b98-896e-53ca2550187b topic=MataveControl capabilities and Model Predictive Control implementation
+[INCOMPLETE] chunk_id=96dae5b2-c84a-44fc-baa5-fcba84c2ef11 topic=Model Predictive Control (MPC) Simulation
+[INCOMPLETE] chunk_id=5df0cf21-c503-46d9-8198-5b4f1536fae3 topic=MPC with Kalman Filter for Microcontrollers
+[INCOMPLETE] chunk_id=dc4d6a18-d54b-4246-a404-7487936e460b topic=Mass-Spring-Damper State-Space Modeling
+[INCOMPLETE] chunk_id=4deab6e5-8b7b-469f-94af-5eadf4704f2f topic=System Modeling and MPC Parameter Configuration
+[INCOMPLETE] chunk_id=7c20498e-6a47-4d33-ad7d-13e633869eb2 topic=MPC and Kalman Filter Configuration
+[INCOMPLETE] chunk_id=a5c95065-912a-4bfc-91cf-e3c818919815 topic=MPC with Kalman Filter and MataveControl Installation
+[INCOMPLETE] chunk_id=cca26da3-abf7-402c-b976-db6f3c3730e0 topic=Updating and setting up MataveControl toolbox
+[INCOMPLETE] chunk_id=4f44c630-0bb7-4116-95f5-ab8eefe44cca topic=Chemical Engineering Analysis Notebooks Overview
+[INCOMPLETE] chunk_id=60e90e73-78cb-4e5d-bca8-e90388b702c4 topic=Numerical Methods for Chemical Engineering Course Overview
+[INCOMPLETE] chunk_id=776e4a68-75cb-4db9-96b8-64881f0f5c94 topic=GitHub Repository Metadata Loading Error
+[INCOMPLETE] chunk_id=c7835684-a44c-4207-bf2f-a1c59aa4be55 topic=Chemical Reaction Engineering (CRE) toolkit setup and folder structure
+[INCOMPLETE] chunk_id=456989e9-705b-48fb-9001-5377d3ce1d00 topic=Chemical Reaction Engineering repository structure
+[INCOMPLETE] chunk_id=74dfdf01-085d-4b5e-89e8-36ce69f495f2 topic=GitHub Page Loading Error
+[INCOMPLETE] chunk_id=280213a1-e33c-45dc-ba08-d19b9296b0e3 topic=Classical Chemical Engineering Problems
+[INCOMPLETE] chunk_id=faa8d65c-27b0-41a7-aafe-aeb0e8c7f9ce topic=Chemical engineering problems solved with MATLAB
+[INCOMPLETE] chunk_id=dad2a245-6987-4337-bc77-2438eeec01b1 topic=CVX disciplined convex programming repository overview
+[INCOMPLETE] chunk_id=63d70d70-2c29-4a53-94f5-f0df6b193402 topic=CVX introduction and installation
+[INCOMPLETE] chunk_id=025cdd56-d15e-48c4-b9d2-747319b6d013 topic=CVX Support and Documentation Resources
+[INCOMPLETE] chunk_id=77eb0677-048e-44a8-a632-15628414e90d topic=Troubleshooting and Bug Reporting for CVX
+[INCOMPLETE] chunk_id=925b1ad7-1038-40b8-987d-5eb11f85e919 topic=CVX support, citation guidelines, and licensing information
+[INCOMPLETE] chunk_id=f5261e1f-2ad7-4000-b9e4-b614ca7c61c0 topic=CVX GitHub repository metadata and page loading error
+[INCOMPLETE] chunk_id=ff1c8357-7b5e-4e61-89d5-b526465807b4 topic=Introduction to NeqSim Matlab interface
+[INCOMPLETE] chunk_id=f9de382e-b137-4d3d-86c4-d7f07265fe2d topic=NeqSim Java-MATLAB Integration
+[INCOMPLETE] chunk_id=27ec7ab3-b62c-40ec-abce-2f8312ff6e2d topic=NeqSim MATLAB Integration and Setup
+[INCOMPLETE] chunk_id=5d2653a9-8ec4-4e02-a856-86855c9c2c7c topic=NeqSim Integration and TP Flash Calculation
+[INCOMPLETE] chunk_id=bdaf020d-5aaf-4eed-ba25-b51b3e029b66 topic=Retrieving thermodynamic properties and integrating NeqSim as a simulation toolbox
+[INCOMPLETE] chunk_id=e5c02479-9bd2-4fd0-af6b-003f8146b9a4 topic=NeqSim MATLAB integration and project structure
+[INCOMPLETE] chunk_id=cb92c748-b771-41a5-bf5c-faf8fa6baccf topic=NeqSim Matlab Interface Overview
+[INCOMPLETE] chunk_id=21311f81-1a34-488a-999a-86bac3cc58b8 topic=Graph and Network Analysis Toolbox
+[INCOMPLETE] chunk_id=be8b93d7-e6bb-4fa0-9a53-60ea8becb0f1 topic=Network analysis and graph theory functions
+[INCOMPLETE] chunk_id=6c6d0f00-a3cf-4f5b-a3c0-dd4259a8e95b topic=Graph and network analysis functions
+[INCOMPLETE] chunk_id=bce5c97f-7e6c-4b91-9d4d-d771bafbfa49 topic=Graph and network analysis toolbox
+[INCOMPLETE] chunk_id=b764218f-7cf0-434e-97f1-46878b6f5d19 topic=Toolbox categorization, documentation, and licensing
+[INCOMPLETE] chunk_id=09d17c58-2054-485f-ae53-0da48bb02ff5 topic=Licensing and introduction to graph analysis toolbox
+[INCOMPLETE] chunk_id=d34597ea-4217-4049-8d0b-66fd93da1a60 topic=Graph and Network Analysis Toolbox
+[INCOMPLETE] chunk_id=deb02eba-3f0b-4497-9f48-2664f0c275ae topic=Curated list of chemical engineering education resources
+[INCOMPLETE] chunk_id=c17eac65-3358-4360-812e-cafa350dc518 topic=Chemical Engineering Educational Course Resources
+[INCOMPLETE] chunk_id=582a4333-e806-4a35-8a18-86163d2efc28 topic=Chemical Engineering Course Resources
+[INCOMPLETE] chunk_id=858c16f8-5be1-4ff0-b229-d708d14837f4 topic=Chemical Engineering Course Resources
+[INCOMPLETE] chunk_id=6c90a547-b71f-4d88-a55e-e86aba584bbf topic=Chemical Engineering Educational Resources and Courses
+[INCOMPLETE] chunk_id=b23864b3-82d1-4ed3-9277-72dc911dd927 topic=Chemical Engineering Educational Resources
+[INCOMPLETE] chunk_id=9fa93dad-371b-467b-8d6e-08cd880b8d8b topic=Chemical Engineering Educational Resources and Software
+[INCOMPLETE] chunk_id=ed3d59be-38dd-48e9-8bf9-53637af8fa31 topic=Chemical Engineering Education Resources
+[INCOMPLETE] chunk_id=22fedea8-15b7-48bb-a063-a392124e9cfb topic=Chemical engineering education resources repository
+[INCOMPLETE] chunk_id=0e03c130-2fe1-4092-81b4-aa377a791332 topic=Process engineering simulator
+[INCOMPLETE] chunk_id=fa530c2e-bdcd-47c8-95a7-1775835f3063 topic=Sim21 chemical simulation development updates
+[INCOMPLETE] chunk_id=e6de2245-0ca9-4987-bc46-5aa7a906de2e topic=Chemical Process Simulation Features and Thermodynamics
+[INCOMPLETE] chunk_id=5aa99649-d42a-47ca-989e-c0a79e51bd22 topic=Process simulation with rigorous thermodynamics
+[INCOMPLETE] chunk_id=744ee5a9-355b-4022-97dd-0fdfa52546fd topic=Exporting figures to SVG format
+[INCOMPLETE] chunk_id=50508bb8-77e1-40a7-9c65-2e1c571c5d8e topic=Exporting figures to SVG format
+[INCOMPLETE] chunk_id=fb444208-e3db-4ed4-ae68-02893c84ff23 topic=Documentation Fragment
+[INCOMPLETE] chunk_id=37a5c3b3-5abf-4ce2-a4ce-3aaa7b998957 topic=Sum of Squares (SOS) optimization toolbox introduction
+[INCOMPLETE] chunk_id=593fe336-4f77-4d1f-8bdc-7012855337e3 topic=Introduction to SOSTOOLS and Sum of Squares (SOS) optimization
+[INCOMPLETE] chunk_id=6de48482-7e0f-4115-ba6a-7a6371d59f2a topic=SOSTOOLS Applications and System Requirements
+[INCOMPLETE] chunk_id=f2449b29-6d6e-45b5-8095-87497e27ed88 topic=SOSTOOLS requirements and background
+[INCOMPLETE] chunk_id=c6665fb1-074b-4ad8-adcd-8ea251f1e134 topic=SOSTOOLS references, citation, and add-ons
+[INCOMPLETE] chunk_id=95a016d3-9133-45a6-b931-90921567e7d6 topic=Repository Metadata and Releases
+[INCOMPLETE] chunk_id=5b070f7d-b592-4355-bb25-9536097b4333 topic=MATLAB Tensor Toolbox repository structure and files
+[INCOMPLETE] chunk_id=e0b7faec-7e43-4bfb-9c8b-73d0f6f35272 topic=Tensor Toolbox function manifest
+[INCOMPLETE] chunk_id=6fdc7c01-2711-468f-9125-a33870230b11 topic=Tensor Toolbox for MATLAB Version 3.6 Release Notes and File List
+[INCOMPLETE] chunk_id=11ec85bd-ac70-4aca-9e3b-84a7e062eddf topic=Tensor Toolbox updates, performance improvements, and randomized least squares functionality
+[INCOMPLETE] chunk_id=fb0adce2-2318-4569-98b6-b31ad579ee37 topic=MATLAB Tensor Toolbox Version Updates and Functional Enhancements
+[INCOMPLETE] chunk_id=cd6cc809-98d8-4bba-9d43-ef33a227d8d7 topic=Tensor Toolbox Updates for Symmetric CP Decomposition and Optimization
+[FETCH_ERROR] url=https://doi.org/10.25405/data.ncl.27055339 reason=HTML extraction returned empty text
+[FETCH_ERROR] url=https://engineering.purdue.edu/~ragu/matlab/matlab_che.pdf reason=404 Client Error: Not Found for url: https://engineering.purdue.edu/~ragu/matlab/matlab_che.pdf
