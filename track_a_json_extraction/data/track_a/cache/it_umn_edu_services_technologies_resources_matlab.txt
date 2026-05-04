@@ -1,0 +1,145 @@
+MATLAB | IT@UMN | The people behind the technology
+Skip to main content
+Skip to main content
+MATLAB
+Manufacturer
+The MathWorks
+A proprietary multi-paradigm programming language and numeric computing environment developed by MathWorks.
+Overview
+MATLAB is a high-level language and interactive environment that enables you to perform computationally intensive tasks faster than with traditional programming languages such as C, C++, and Fortran.
+Getting Access
+Access to software licensed by the University is based on University affiliation and sometimes the device on which the software is installed.
+It is your responsibility to make sure you are using the software in accordance with the University's
+Acceptable Use of Information Technology Resources
+policy and
+software terms and conditions
+, plus any vendor terms listed below.
+Faculty and Staff at UMN on OIT-Managed Devices
+How to Get It
+Self Service: Manage Software on University Mac Devices
+or
+Software Center: Manage Software on Your University Windows Device
+Cost
+Funded by a consortium of units. No charge for those eligible.
+License Dates
+January 1, 2025
+-
+December 31, 2025
+License Details
+Available only for UMN teaching, learning, or research.
+Funded by a consortium of departments
+through the College of Science and Engineering.
+Allowed Uses
+Research
+Teaching and Learning
+Faculty and Staff at UMN on University-Owned Devices Not Managed by OIT
+How to Get It
+Vendor Site:
+MATLAB
+Cost
+Funded by a consortium of units. No charge for those eligible.
+License Dates
+January 1, 2025
+-
+December 31, 2025
+License Details
+Available only for UMN teaching, learning, or research.
+Funded by a consortium of departments
+through the College of Science and Engineering.
+Allowed Uses
+Research
+Teaching and Learning
+Faculty and Staff at UMN on Individually-Owned Devices
+How to Get It
+Vendor Site:
+MATLAB
+Cost
+Funded by a consortium of units. No charge for those eligible.
+License Dates
+January 1, 2025
+-
+December 31, 2025
+License Details
+Available only for UMN teaching, learning, or research.
+Funded by a consortium of departments
+through the College of Science and Engineering.
+Allowed Uses
+Research
+Teaching and Learning
+Students at UMN on Individually-Owned Devices
+How to Get It
+Vendor Site:
+MATLAB
+Cost
+Funded by a consortium of units. No charge for those eligible.
+License Dates
+January 1, 2025
+-
+December 31, 2025
+License Details
+Available only for UMN teaching, learning, or research.
+Funded by a consortium of departments
+through the College of Science and Engineering.
+Allowed Uses
+Research
+Teaching and Learning
+Cost
+Faculty and Staff
+Funded by a consortium of units.
+Students
+Funded by a consortium of units.
+Operating Systems
+Linux
+Mac
+Windows
+Featured Resources
+How-Tos
+MATLAB: Download and Install
+Access MATLAB using Single Sign-on (SSO).
+Signing in to Mathworks
+Go to MATLAB
+Click
+Sign In
+button
+Enter your University of...
+How to install MATLAB article.
+Was this page helpful?
+Yes
+No
+How could this page be better?
+If you have a technology question, contact
+Technology Help
+. If you have feedback about this webpage, please share it below.
+Leave this field blank
+Additional Resources
+Find Software
+Software | College of Science and Engineering
+Software | College of Biological Sciences
+Software | CFANS
+MathWorks Help Center
+MathWorks support
+MathWorks Release Notes
+MathWorks Videos and Webinars
+MathWorks Hardware Support
+MATLAB Courseware
+Services & Technologies
+Request & Manage Accounts & Password
+Use Communication & Conferencing Tools
+Use Technology for Courses
+Find & Maintain Hardware & Software
+Connect to the Internet & Networks
+Manage Data & Documents
+Produce Video, Media & Graphics
+Create, Publish, & Evaluate Websites
+Manage Grants & Research Projects
+Access Administrative Systems
+Find Health Sciences Technology Services
+New to Campus
+New Students
+New Instructors
+New Researchers
+New Staff
+News & Events
+News & Alerts
+Academic Technology Training & Events
+Technology Training & Events

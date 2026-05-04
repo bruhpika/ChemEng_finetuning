@@ -1,21 +1,21 @@
 # Agent Extraction Progress Tracker
 
-**Last Updated:** Mon May  4 07:33:44 2026
+**Last Updated:** Mon May  4 22:14:55 2026
 
 ## 📊 Run Statistics
 
-- **Total Gemini Calls:** `0`
+- **Total Gemini Calls:** `5`
 - **Total Documents Fetched:** `0`
-- **Skipped (Already Parsed):** `18`
-- **Fetch Errors:** `2`
+- **Skipped (Already Parsed):** `28`
+- **Fetch Errors:** `18`
 - **Parse Errors:** `0`
-- **Incomplete Chunks:** `0`
+- **Incomplete Chunks:** `5`
 
 ## 🔑 API Key Status
 
-- **Current API Key Index:** `1` / `4` 
-- **Cycling Status:** Active
+- **Current API Key Index:** `4` / `4` 
+- **Cycling Status:** Waiting for reset
 
-## 🔄 Currently Processing
+## ✅ Current Status
 
-**URL:** `https://gitlab.com/tensors/tensor_toolbox`
+Ready or Idle.

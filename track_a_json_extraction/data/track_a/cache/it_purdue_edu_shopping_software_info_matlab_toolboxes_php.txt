@@ -1,0 +1,65 @@
+| Purdue University IT
+Skip to main content
+MATLAB Toolboxes
+In addition to MATLAB, several MATLAB Toolboxes are included in Purdue's MATLAB agreement and served via the MATLAB Campus License Server.
+Some Toolboxes have an extremely limited number of licenses.  Like MATLAB, Toolbox licenses are handled by a license server.  If all licenses for a particular toolbox are unavailable, check later to see if a license has been released.
+For the exact number of licenses under our agreement for a particular Toolbox, please send e-mail to
+itap-licensing@purdue.edu
+.
+We cannot provide data on Toolbox licenses in use
+.
+High Availability (75 - 100)
+Simulink
+Control System Toolbox
+Curve Fitting Toolbox
+Image Processing Toolbox
+Optimization Toolbox
+Signal Processing Toolbox
+Statistics Toolbox
+Symbolic Math Toolbox
+Limited Availability (15 - 50)
+Aerospace Toolbox
+Bioinformatics Toolbox
+Communications System Toolbox
+DSP System Toolbox
+Econometrics Toolbox
+Embedded Coder
+Financial Toolbox
+Fixed-Point Toolbox
+Gauges Blockset
+Global Optimization
+Instrument Control Toolbox
+Mapping Toolbox
+MATLAB Coder
+MATLAB Compiler
+Neural Network Toolbox
+Parallel Computing Toolbox
+Partial Differential Equation Toolbox
+Real-Time Windows Target
+SimHydraulics
+SimPowerSystems
+Simscape
+Simulink Coder
+Simulink Control Design
+Stateflow
+System Identification Toolbox
+Wavelet Toolbox
+xPC Target
+Low Availability (1 -10)
+Aerospace Blockset
+Data Acquisition Toolbox
+Database Toolbox
+Datafeed Toolbox
+Fuzzy Logic Toolbox
+Image Acquisition Toolbox
+Instrument Control Toolbox
+Model Predictive Control Toolbox
+Model-Based Calibration Toolbox
+Robust Control Toolbox
+SimBiology
+SimMechanics
+Simulink 3D Animation
+Simulink Design Optimization
+Simulink Fixed Point
+Simulink Verification and Validation
+Spreadsheet Link EX

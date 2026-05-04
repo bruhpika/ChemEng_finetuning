@@ -1,0 +1,11 @@
+Language Fundamentals
+Syntax, array indexing and manipulation, data types, operators
+
+MATLAB is an abbreviation for "matrix laboratory." While other programming languages usually work with numbers one at a time, MATLAB® operates on whole matrices and arrays. Language fundamentals include basic operations, such as creating variables, array indexing, arithmetic, and data types.
+
+Categories
+- Entering Commands: Build and run MATLAB statements
+- Matrices and Arrays: Array creation, combining, reshaping, rearranging, and indexing
+- Data Types: Numeric arrays, characters and strings, tables, structures, and cell arrays; data type conversion
+- Operators and Elementary Operations: Arithmetic, relational, and logical operators, special characters, rounding, set functions
+- Loops and Conditional Statements: Control flow and branching using keywords, such as if, for, and while

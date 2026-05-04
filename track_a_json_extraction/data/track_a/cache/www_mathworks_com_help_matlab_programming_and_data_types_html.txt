@@ -1,0 +1,14 @@
+Programming
+Scripts, functions, and classes
+
+The simplest type of MATLAB® program is a script, which contains a sequence of commands and function calls. For more flexibility, create functions that accept input arguments and return output arguments. You can also use object-oriented programming to create classes and specialized data structures.
+
+Categories
+- Scripts: Basic program files containing sets of commands
+- Functions: Code that accepts inputs and returns outputs
+- Live Scripts and Functions: Program files with formatted text, images, and interactive output
+- Classes: Object-oriented programming support
+- Files and Folders: Information on file operations and the MATLAB search path
+- Background and Parallel Processing: Running code in the background or at specific times
+- Security: Considerations for sensitive information in MATLAB code
+- Advanced Evaluation: Techniques for evaluating expressions and handling exceptions

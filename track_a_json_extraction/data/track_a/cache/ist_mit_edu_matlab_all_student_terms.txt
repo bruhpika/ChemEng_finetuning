@@ -1,0 +1,15 @@
+Student MATLAB: Terms and Conditions | Information Systems & Technology
+Skip to main content
+Student MATLAB: Terms and Conditions
+This software is being made available to you by IS&T at no cost in order to support your education at MIT. By using MIT's MATLAB Student License you agree to the following terms and conditions:
+You may only install the software on computer(s) that you personally own or lease.
+You may not install the software on MIT-owned computers (except computers you have personally leased).
+You may run the software on, at most, two real or virtual computers at any given time.
+The software is licensed to you personally (the user you specify at installation time). You may not let anyone else copy or access the software.
+You may not let anyone else copy the license key contained in the software or provide access to it.
+You may only use the software for non-profit educational purposes while you are an MIT student.
+If you sell or donate your computer to someone else, or return a leased computer, you must completely delete all versions of the software and the software license keys you have installed on it.
+Your right to use the software terminates when you leave MIT. At that point you must stop using the software and delete it (including the license file) from your computer(s).
+You must comply with all other terms in the
+MATLAB License Agreement
+.

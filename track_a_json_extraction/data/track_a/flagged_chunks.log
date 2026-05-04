@@ -317,3 +317,98 @@
 [INCOMPLETE] chunk_id=cd6cc809-98d8-4bba-9d43-ef33a227d8d7 topic=Tensor Toolbox Updates for Symmetric CP Decomposition and Optimization
 [FETCH_ERROR] url=https://doi.org/10.25405/data.ncl.27055339 reason=HTML extraction returned empty text
 [FETCH_ERROR] url=https://engineering.purdue.edu/~ragu/matlab/matlab_che.pdf reason=404 Client Error: Not Found for url: https://engineering.purdue.edu/~ragu/matlab/matlab_che.pdf
+[FETCH_ERROR] url=https://doi.org/10.25405/data.ncl.27055339 reason=HTML extraction returned empty text
+[FETCH_ERROR] url=https://engineering.purdue.edu/~ragu/matlab/matlab_che.pdf reason=404 Client Error: Not Found for url: https://engineering.purdue.edu/~ragu/matlab/matlab_che.pdf
+[INCOMPLETE] chunk_id=b9a034a8-bd27-45a7-a05d-6a8250d6742e topic=Tensor Toolbox Repository
+[INCOMPLETE] chunk_id=3a32dfec-2568-4b25-98b3-80b2ebcc4aaa topic=Student License Terms and Conditions
+[INCOMPLETE] chunk_id=0893127b-3777-497d-8d40-623346fa6b4a topic=Licensing Agreement Compliance
+[INCOMPLETE] chunk_id=d62e045b-cd73-4b31-90d0-51a6005f3823 topic=MATLAB Licensing and Available Toolboxes
+[INCOMPLETE] chunk_id=385ed6a3-e6e9-489c-982a-29ffa3ea18cc topic=Available MATLAB Toolboxes and Products
+[INCOMPLETE] chunk_id=9a223c51-6dc2-4991-8084-dbe9ed34079f topic=MATLAB Licensing and Purchase (Cornell University)
+[INCOMPLETE] chunk_id=62fa0eb7-ab76-4c4f-a5e1-f1677bac5159 topic=Licensing and Download Procedures
+[INCOMPLETE] chunk_id=a2a725d9-a0b8-4283-a3fc-bd3ea862a7fd topic=MATLAB availability, installation information, and technical support
+[INCOMPLETE] chunk_id=18d4f93a-03d0-4ead-b77b-3aa969fab95e topic=MATLAB Toolbox license availability at Purdue University
+[INCOMPLETE] chunk_id=ab0ffba0-1721-4978-89be-efa1ba280340 topic=Available Toolboxes and Blocksets
+[INCOMPLETE] chunk_id=a984cc74-83a5-4b82-98bb-a871a73abd48 topic=Access and Licensing
+[INCOMPLETE] chunk_id=9fa62e0f-c742-4418-9abb-4a5140d41027 topic=Licensing and Access Information
+[INCOMPLETE] chunk_id=a52ad622-73b9-40a9-8135-a2039bd63ff4 topic=Academic Technology Training & Events
+[INCOMPLETE] chunk_id=85670527-c5da-4061-bad3-e3f4ad5ec6ad topic=MATLAB license availability and campus lab locations
+[INCOMPLETE] chunk_id=573b5947-f4f3-4441-97ef-f0fcbd50a3af topic=Remote access and physical lab locations
+[INCOMPLETE] chunk_id=a7e546f3-5a18-4fd9-9d12-669617bb62c4 topic=License Information and Usage Policies
+[INCOMPLETE] chunk_id=f3cddebf-120f-4029-b31b-ba26a2057bfc topic=Licensing and support information
+[INCOMPLETE] chunk_id=9abcb610-6b62-4614-8b98-4454f2abcf0c topic=Licensed Products List (R2025a)
+[INCOMPLETE] chunk_id=61c96459-5abb-41f6-a96c-a8408ab4d92f topic=List of available MATLAB toolboxes and products
+[INCOMPLETE] chunk_id=3c928b5f-7b01-44e1-8f89-fe52df7c80a6 topic=Staged Equilibrium Separations Intro
+[FETCH_ERROR] url=https://user.eng.umd.edu/~adomaiti/ench426/matlab_intro/matlab_intro.pdf reason=404 Client Error: Not Found for url: https://user.eng.umd.edu/~adomaiti/ench426/matlab_intro/matlab_intro.pdf
+[FETCH_ERROR] url=https://www.che.psu.edu/faculty/mri/matlab_guide.pdf reason=404 Client Error: Not Found for url: https://www.che.psu.edu/faculty/mri/matlab_guide.pdf
+[FETCH_ERROR] url=https://www.che.utah.edu/~sutherland/Classes/ChE1010/matlab.pdf reason=403 Client Error: Forbidden for url: https://www.che.utah.edu/~sutherland/Classes/ChE1010/matlab.pdf
+[FETCH_ERROR] url=https://www.colorado.edu/chemicalengineering/matlab_tutorial.pdf reason=404 Client Error: Not Found for url: https://www.colorado.edu/chemicalengineering/matlab_tutorial.pdf
+[FETCH_ERROR] url=https://www.mathworks.com/help/index.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/help/index.html
+[FETCH_ERROR] url=https://www.mathworks.com/help/matlab/2-d-and-3-d-plots.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/help/matlab/2-d-and-3-d-plots.html
+[FETCH_ERROR] url=https://www.mathworks.com/help/matlab/error-handling.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/help/matlab/error-handling.html
+[FETCH_ERROR] url=https://www.mathworks.com/help/matlab/getting-started-with-matlab.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/help/matlab/getting-started-with-matlab.html
+[FETCH_ERROR] url=https://www.mathworks.com/help/matlab/index.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/help/matlab/index.html
+[FETCH_ERROR] url=https://www.mathworks.com/help/matlab/language-fundamentals.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/help/matlab/language-fundamentals.html
+[FETCH_ERROR] url=https://www.mathworks.com/help/matlab/learn_matlab/desktop.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/help/matlab/learn_matlab/desktop.html
+[FETCH_ERROR] url=https://www.mathworks.com/help/matlab/math/choose-an-ode-solver.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/help/matlab/math/choose-an-ode-solver.html
+[FETCH_ERROR] url=https://www.mathworks.com/help/matlab/math/troubleshoot-common-ode-problems.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/help/matlab/math/troubleshoot-common-ode-problems.html
+[FETCH_ERROR] url=https://www.mathworks.com/help/matlab/programming-and-data-types.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/help/matlab/programming-and-data-types.html
+[FETCH_ERROR] url=https://www.mathworks.com/help/matlab/ref/ode15s.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/help/matlab/ref/ode15s.html
+[FETCH_ERROR] url=https://www.mathworks.com/help/matlab/ref/ode45.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/help/matlab/ref/ode45.html
+[FETCH_ERROR] url=https://www.mathworks.com/help/simulink/gs/getting-started-with-simulink.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/help/simulink/gs/getting-started-with-simulink.html
+[FETCH_ERROR] url=https://www.mathworks.com/help/simulink/slref/solvers.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/help/simulink/slref/solvers.html
+[FETCH_ERROR] url=https://www.mathworks.com/matlabcentral/content/fx/fx-transition-faq.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/matlabcentral/content/fx/fx-transition-faq.html
+[FETCH_ERROR] url=https://www.mathworks.com/matlabcentral/content/terms-of-use.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/matlabcentral/content/terms-of-use.html
+[FETCH_ERROR] url=https://www.mathworks.com/matlabcentral/fileexchange/27850-mixture-property-calculations-using-pr-rk-and-srk-eos reason=403 Client Error: Forbidden for url: https://www.mathworks.com/matlabcentral/fileexchange/27850-mixture-property-calculations-using-pr-rk-and-srk-eos
+[FETCH_ERROR] url=https://www.mathworks.com/matlabcentral/fileexchange/88331-web-apps-for-chemical-reaction-engineering reason=403 Client Error: Forbidden for url: https://www.mathworks.com/matlabcentral/fileexchange/88331-web-apps-for-chemical-reaction-engineering
+[FETCH_ERROR] url=https://www.umkc.edu/is/resources/lab-information/matlab-toolboxes.html reason=404 Client Error: Not Found for url: https://www.umkc.edu/is/resources/lab-information/matlab-toolboxes.html
+[FETCH_ERROR] url=https://doi.org/10.25405/data.ncl.27055339 reason=HTML extraction returned empty text
+[FETCH_ERROR] url=https://engineering.purdue.edu/~ragu/matlab/matlab_che.pdf reason=404 Client Error: Not Found for url: https://engineering.purdue.edu/~ragu/matlab/matlab_che.pdf
+[FETCH_ERROR] url=https://user.eng.umd.edu/~adomaiti/ench426/matlab_intro/matlab_intro.pdf reason=404 Client Error: Not Found for url: https://user.eng.umd.edu/~adomaiti/ench426/matlab_intro/matlab_intro.pdf
+[FETCH_ERROR] url=https://www.che.psu.edu/faculty/mri/matlab_guide.pdf reason=HTTPSConnectionPool(host='www.che.psu.edu', port=443): Max retries exceeded with url: /faculty/mri/matlab_guide.pdf (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.che.psu.edu', port=443) at 0x2659ab0c050>, 'Connection to www.che.psu.edu timed out. (connect timeout=30)'))
+[FETCH_ERROR] url=https://www.che.utah.edu/~sutherland/Classes/ChE1010/matlab.pdf reason=403 Client Error: Forbidden for url: https://www.che.utah.edu/~sutherland/Classes/ChE1010/matlab.pdf
+[FETCH_ERROR] url=https://www.colorado.edu/chemicalengineering/matlab_tutorial.pdf reason=404 Client Error: Not Found for url: https://www.colorado.edu/chemicalengineering/matlab_tutorial.pdf
+[FETCH_ERROR] url=https://www.mathworks.com/help/index.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/help/index.html
+[FETCH_ERROR] url=https://www.mathworks.com/help/matlab/2-d-and-3-d-plots.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/help/matlab/2-d-and-3-d-plots.html
+[INCOMPLETE] chunk_id=6c16ae0a-4130-428d-9150-6d0fe70acdd7 topic=Error Handling
+[INCOMPLETE] chunk_id=6ec9e1a1-141f-4f1e-aff5-8197f93a35c2 topic=Error Handling and Warning Management
+[INCOMPLETE] chunk_id=65973532-54cd-461e-8412-814e74035ec0 topic=Getting Started and Desktop Basics
+[INCOMPLETE] chunk_id=c6d0e06d-063e-45fb-8497-a6ad3cab60e9 topic=MATLAB Fundamentals
+[FETCH_ERROR] url=https://www.mathworks.com/help/matlab/index.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/help/matlab/index.html
+[FETCH_ERROR] url=https://www.mathworks.com/help/matlab/language-fundamentals.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/help/matlab/language-fundamentals.html
+[FETCH_ERROR] url=https://www.mathworks.com/help/matlab/learn_matlab/desktop.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/help/matlab/learn_matlab/desktop.html
+[FETCH_ERROR] url=https://www.mathworks.com/help/matlab/math/choose-an-ode-solver.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/help/matlab/math/choose-an-ode-solver.html
+[FETCH_ERROR] url=https://www.mathworks.com/help/matlab/math/troubleshoot-common-ode-problems.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/help/matlab/math/troubleshoot-common-ode-problems.html
+[FETCH_ERROR] url=https://www.mathworks.com/help/matlab/programming-and-data-types.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/help/matlab/programming-and-data-types.html
+[FETCH_ERROR] url=https://www.mathworks.com/help/matlab/ref/ode15s.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/help/matlab/ref/ode15s.html
+[FETCH_ERROR] url=https://www.mathworks.com/help/matlab/ref/ode45.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/help/matlab/ref/ode45.html
+[FETCH_ERROR] url=https://www.mathworks.com/help/simulink/gs/getting-started-with-simulink.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/help/simulink/gs/getting-started-with-simulink.html
+[FETCH_ERROR] url=https://www.mathworks.com/help/simulink/slref/solvers.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/help/simulink/slref/solvers.html
+[FETCH_ERROR] url=https://www.mathworks.com/matlabcentral/content/fx/fx-transition-faq.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/matlabcentral/content/fx/fx-transition-faq.html
+[FETCH_ERROR] url=https://www.mathworks.com/matlabcentral/content/terms-of-use.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/matlabcentral/content/terms-of-use.html
+[FETCH_ERROR] url=https://www.mathworks.com/matlabcentral/fileexchange/27850-mixture-property-calculations-using-pr-rk-and-srk-eos reason=403 Client Error: Forbidden for url: https://www.mathworks.com/matlabcentral/fileexchange/27850-mixture-property-calculations-using-pr-rk-and-srk-eos
+[FETCH_ERROR] url=https://www.mathworks.com/matlabcentral/fileexchange/88331-web-apps-for-chemical-reaction-engineering reason=403 Client Error: Forbidden for url: https://www.mathworks.com/matlabcentral/fileexchange/88331-web-apps-for-chemical-reaction-engineering
+[FETCH_ERROR] url=https://www.umkc.edu/is/resources/lab-information/matlab-toolboxes.html reason=404 Client Error: Not Found for url: https://www.umkc.edu/is/resources/lab-information/matlab-toolboxes.html
+[FETCH_ERROR] url=https://doi.org/10.25405/data.ncl.27055339 reason=HTML extraction returned empty text
+[FETCH_ERROR] url=https://engineering.purdue.edu/~ragu/matlab/matlab_che.pdf reason=404 Client Error: Not Found for url: https://engineering.purdue.edu/~ragu/matlab/matlab_che.pdf
+[FETCH_ERROR] url=https://user.eng.umd.edu/~adomaiti/ench426/matlab_intro/matlab_intro.pdf reason=404 Client Error: Not Found for url: https://user.eng.umd.edu/~adomaiti/ench426/matlab_intro/matlab_intro.pdf
+[FETCH_ERROR] url=https://www.che.psu.edu/faculty/mri/matlab_guide.pdf reason=404 Client Error: Not Found for url: https://www.che.psu.edu/faculty/mri/matlab_guide.pdf
+[FETCH_ERROR] url=https://www.che.utah.edu/~sutherland/Classes/ChE1010/matlab.pdf reason=403 Client Error: Forbidden for url: https://www.che.utah.edu/~sutherland/Classes/ChE1010/matlab.pdf
+[FETCH_ERROR] url=https://www.colorado.edu/chemicalengineering/matlab_tutorial.pdf reason=404 Client Error: Not Found for url: https://www.colorado.edu/chemicalengineering/matlab_tutorial.pdf
+[FETCH_ERROR] url=https://www.mathworks.com/help/index.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/help/index.html
+[INCOMPLETE] chunk_id=1e2111e5-f446-41ad-80b7-a6a9768ac45d topic=2-D and 3-D Plots
+[FETCH_ERROR] url=https://www.mathworks.com/help/matlab/index.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/help/matlab/index.html
+[INCOMPLETE] chunk_id=f6cd83de-b8d3-46f0-8bb7-2ac316a262a2 topic=Language Fundamentals
+[INCOMPLETE] chunk_id=999b91ca-2f25-4a30-93a7-f9d84611afb6 topic=Desktop Basics
+[INCOMPLETE] chunk_id=d95f1cc2-f787-4e4b-a3f1-efc4a4cbb02c topic=ODE Solver Selection
+[INCOMPLETE] chunk_id=c98ee9ee-7e75-4894-8fee-ec1ca0b39c21 topic=Troubleshoot Common ODE Problems
+[FETCH_ERROR] url=https://www.mathworks.com/help/matlab/programming-and-data-types.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/help/matlab/programming-and-data-types.html
+[FETCH_ERROR] url=https://www.mathworks.com/help/matlab/ref/ode15s.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/help/matlab/ref/ode15s.html
+[FETCH_ERROR] url=https://www.mathworks.com/help/matlab/ref/ode45.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/help/matlab/ref/ode45.html
+[FETCH_ERROR] url=https://www.mathworks.com/help/simulink/gs/getting-started-with-simulink.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/help/simulink/gs/getting-started-with-simulink.html
+[FETCH_ERROR] url=https://www.mathworks.com/help/simulink/slref/solvers.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/help/simulink/slref/solvers.html
+[FETCH_ERROR] url=https://www.mathworks.com/matlabcentral/content/fx/fx-transition-faq.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/matlabcentral/content/fx/fx-transition-faq.html
+[FETCH_ERROR] url=https://www.mathworks.com/matlabcentral/content/terms-of-use.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/matlabcentral/content/terms-of-use.html
+[FETCH_ERROR] url=https://www.mathworks.com/matlabcentral/fileexchange/27850-mixture-property-calculations-using-pr-rk-and-srk-eos reason=403 Client Error: Forbidden for url: https://www.mathworks.com/matlabcentral/fileexchange/27850-mixture-property-calculations-using-pr-rk-and-srk-eos
+[FETCH_ERROR] url=https://www.mathworks.com/matlabcentral/fileexchange/88331-web-apps-for-chemical-reaction-engineering reason=403 Client Error: Forbidden for url: https://www.mathworks.com/matlabcentral/fileexchange/88331-web-apps-for-chemical-reaction-engineering
+[FETCH_ERROR] url=https://www.umkc.edu/is/resources/lab-information/matlab-toolboxes.html reason=404 Client Error: Not Found for url: https://www.umkc.edu/is/resources/lab-information/matlab-toolboxes.html

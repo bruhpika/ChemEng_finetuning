@@ -1,0 +1,9 @@
+Troubleshoot Common ODE Problems
+This topic describes common issues you might encounter when solving ODEs with solver functions.
+
+Key Troubleshooting Tips:
+- Error Tolerances: RelTol (relative) and AbsTol (absolute) control accuracy. |e(i)| ≤ max(RelTol*abs(y(i)),AbsTol(i)).
+- Problem Scale: For stiff problems, solvers allocate an n-by-n Jacobian matrix. Use JPattern for large sparse systems.
+- Solution Smoothness: Increase Refine to get more output points and smoother plots.
+- Stiffness: If a nonstiff solver (like ode45) is extremely slow, the problem is likely stiff. Switch to ode15s.
+- Discontinuities: If the ODE function is not smooth, break the integration interval into pieces.
