@@ -1,0 +1,44 @@
+Source: https://www.mathworks.com/help/matlab/index.html
+
+MATLAB
+Release Notes
+PDF Documentation
+PDF Documentation
+Release Notes
+PDF Documentation
+PDF Documentation
+Millions of engineers and scientists worldwide use MATLAB
+®
+to analyze and design the systems and products transforming our world. The
+        matrix-based MATLAB language is the world’s most natural way to express computational mathematics.
+        Built-in graphics make it easy to visualize and gain insights from data. The desktop
+        environment invites experimentation, exploration, and discovery. These MATLAB tools and capabilities are all rigorously tested and designed to work
+        together.
+MATLAB helps you take your ideas beyond the desktop. You can run your analyses on
+        larger data sets, and scale up to clusters and clouds. MATLAB code can be integrated with other languages, enabling you to deploy algorithms
+        and applications within web, enterprise, and production systems.
+Get Started
+Learn the basics of MATLAB
+Language Fundamentals
+Syntax, array indexing and manipulation, data types, operators
+Data Import and Analysis
+Import and export data, including large files; preprocess data, visualize and
+                explore
+Mathematics
+Linear algebra, differentiation and integrals, Fourier transforms, and other
+    mathematics
+Graphics
+Two- and three-dimensional plots, images, animation
+Programming
+Scripts, functions, and classes
+App Building
+Create self-contained apps, embedded Live Editor tasks, and custom UI
+        components
+Software Development
+Debugging and testing, organizing projects, source control integration, toolbox
+                packaging
+External Language Interfaces
+External language and library interfaces, including Python, Java, C, C++, .NET,
+                and Web services
+Environment and Settings
+Settings, platform differences, adding hardware and optional features

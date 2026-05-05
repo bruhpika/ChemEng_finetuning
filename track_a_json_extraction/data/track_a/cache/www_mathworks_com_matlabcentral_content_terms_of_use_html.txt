@@ -1,0 +1,183 @@
+Source: https://www.mathworks.com/matlabcentral/content/terms-of-use.html
+
+MATLAB Central Terms of Use
+By accessing MATLAB Central (the “Site” or the “Site” or the “Services”, which shall include all Content other than Your Content, both as defined below, and may also be deemed to refer to a single Service or component of a Service, as the context may require), you agree to become bound by all the terms and conditions of these Terms of Use (the “Terms”). If you (the individual or entity with whom MathWorks enters into these Terms, who is responsible for complying with these Terms) do not agree to these Terms, do not access the Site.
+These Terms specifically exclude products and services which you may receive under separate agreements with MathWorks, including Software Maintenance Service, Consulting, Training, and any other products and services MathWorks may provide that are not set forth below. The
+MathWorks Privacy Policy
+describes MathWorks’ practices regarding the personal information that is collected and used through the Services. MathWorks’ collection, use, and disclosure of your personal information is governed at all times by the then-current version of the Privacy Policy.
+Sections 1-3 and 5-6 of these Terms (“Generally Applicable Terms”) apply to all Services. The subsections of Section 4 of these Terms apply only to the Service(s) named in the heading of the relevant subsection. In the event of any conflict between Section 4 of this Agreement and the Generally Applicable Terms, Section 4 shall prevail.
+Your Content
+Access to and Use of Services; Restrictions
+Content and Third Party Services
+Services
+MATLAB Answers
+File Exchange
+Cody
+Discussions
+Community API
+General
+Claims of Copyright Infringement
+1. Your Content
+“Content” is text, software, scripts, code, models, graphics, photos, sounds, music, videos, audiovisual combinations, data, information, form submissions, and all other materials and/or artifacts users of the Services enter, submit, upload, share, connect to, or otherwise make available, store, or contribute to the Services, in any format. “Your Content” is Content from you.
+You retain your rights in Your Content. MathWorks does not claim ownership of Your Content. MathWorks will use Your Content only for these limited purposes: (i) to enable you to use the Services, (ii) to enable you to share Your Content with others (for example, file sharing, collaboration, and publishing Your Content) as you may choose or as may be inherent in the Service (for example, MATLAB Answers and Discussions), (iii) to store, share, copy, transmit, repackage, and publicly display Your Content, as may be reasonably necessary or appropriate, in order to provide the Services, (iv) to create backups of Your Content (including the retention of server copies of Your Content that has been removed or deleted), (v) to comply with applicable law, (vi) to enforce any part of this Agreement, (vii) to detect, prevent, or resolve any fraud, security, or technical issues, and (viii) in aggregate with other Content, to improve the Services and MathWorks products. The rights you grant to MathWorks in this Section are non-exclusive, worldwide, irrevocable, perpetual, and royalty-free.
+You understand that when you share Your Content using sharing features provided through the Services: (i) Your Content may be accessible from any part of the world, both within and outside the country from which you shared Your Content; (ii) you grant users with whom you share Your Content (all users of the Services and MathWorks, if you share Your Content publicly through the Services) a nonexclusive, worldwide license to use Your Content in accordance with the terms of this Agreement; and (iii) you grant to MathWorks a non-exclusive, worldwide, irrevocable, perpetual, royalty-free, and fully sublicensable license to perform and display Your Content to users with whom you share Your Content (all users of the Services and MathWorks, if you share Your Content publicly through the Services).
+You represent and warrant that you are the owner of, or have all the necessary rights to use, Your Content. You represent that you have the necessary rights to grant the licenses to Your Content as set forth in this Agreement. Your Content must not violate or infringe on any patent, copyright, other intellectual property right, or any other legal right of any party. You understand that you, and not MathWorks, are entirely responsible for Your Content.
+You understand that when you share Your Content through the Services, you do so free of charge.
+Any of Your Content required by MathWorks to be submitted (for example, the title, abstract, description, and requirements for a File Exchange submission) must be complete and accurate.
+Your Content must not (i) be libelous, defamatory, abusive, threatening, harassing, offensive, or otherwise violate any law; (ii) be malicious or destructive in nature, or contain a virus, Trojan horse, worm, malware, or other computer programming routine or engine that is intended to damage or otherwise interfere with any system, data, or information; or (iii) directly compete with products or services offered by MathWorks.
+You agree not to submit, upload, share, otherwise make available, or store any Content through the Services that, as a matter of law, you are not permitted to submit, upload, share, otherwise make available, or store, or not permitted to submit, upload, share, otherwise make available, or store outside of your country.
+2. Access to and Use of Services; Restrictions
+As long as you comply with this Agreement, MathWorks grants you a personal, non-exclusive, non-transferable, limited, revocable, and temporary authorization to access and use the Services, as set forth herein and in any MathWorks documentation (in any medium or format) related to the Services, including without limitation the user guides and/or operating instructions, if any, accompanying the Services, as may be updated from time to time, as well as any reports or other feedback that MathWorks may provide to you. Any other use is expressly prohibited by this Agreement. The Services are commercially valuable to MathWorks. The design and development of the Services reflect the efforts of skilled development experts and the investment of considerable time and expense. MathWorks and its licensors reserve all rights not expressly granted in and to the Services, which are protected by copyright and other intellectual property laws.
+In order to access some features of the Services, you will need a MathWorks Account. You may not use another person’s MathWorks Account.
+You agree not to, and shall not cause or permit any third party to, directly or indirectly:
+copy (except for archival purposes), distribute, transmit, broadcast, display, sell, license, alter, modify, create derivative works from, frame, mirror, republish, or otherwise exploit all or any part of the Services unless explicitly permitted by MathWorks;
+use the Services for any act which infringes copyright of a Service, for instance, by developing, producing, or testing a service or content containing a feature or functionality that is substantially similar in its expression to the expression contained in a Service;
+adapt, translate, copy, convert, use, test, benchmark, or determine the expression or design of, a Service or any materials derived from or generated by a Service, in order to make or distribute a another service or other application, a principal purpose of which, as reasonably determined by MathWorks, is to perform the same or similar functions as any of the Services, or which replaces any component of any of the Services, or any other technology, materials, products, or services licensed or provided by MathWorks;
+rent, lease, time share, loan, or otherwise provide or allow access (directly or indirectly) to any of the Services to any third party;
+sell, license, sublicense, provide access, publish, display, distribute, disseminate, assign, or otherwise transfer to a third party the Services, or any license or other rights thereto, in whole or in part, without MathWorks’ prior written consent;
+disassemble or reverse engineer any of the Services, or attempt to gain access to any method of operation or source code contained therein;
+alter, remove, or obscure any copyright, patent, trademark, logo, proprietary and/or other legal notices or license files included with the Services;
+infringe any intellectual property rights in or to the Services, including developing, producing, or testing software containing a feature or functionality that is substantially similar in its expression to the expression contained in MathWorks software products;
+use the Services to sell or market your products or services to others, nor use the communication systems provided by the Services (e.g., comments) for any commercial solicitation purposes, except as may be expressly permitted by MathWorks;
+use the Services to upload, post, email, or otherwise transmit any “spam” or “junk mail”;
+use the Services for any purpose that is unlawful or prohibited by this Agreement, including without limitation any harassment of any other users of the Services;
+submit to (except for the purpose of creating a MathWorks Account or as specifically set forth herein), collect from, or harvest from the Services, any personally identifiable information of any individual, including account names;
+circumvent, disable, or otherwise interfere with any technical and/or other limitations, including security-related features and features that prevent or restrict use or copying of any Content, of the Services, or your or anyone else’s MathWorks Account; and
+use the Services in any manner that could damage, disable, overburden, disrupt, or impair any MathWorks systems, interfere with any other party's systems or use of the Services, engage in any activity that diminishes the Services, their security, and/or MathWorks’ systems and networks; nor attempt to gain unauthorized access to any feature of the Services.
+MathWorks reserves the right to temporarily suspend or permanently terminate your access to any or all Services, or cease providing any or all Services, in whole or in part, in its sole discretion. If you breach this Agreement, your authorization to use the Services automatically terminates. Either party may otherwise terminate this Agreement at any time, for any reason. Upon termination of this Agreement, the Services may no longer be accessible to you, all rights granted hereunder immediately terminate, and you agree to promptly cease all access and use of the Services. Those provisions that by their nature are intended to survive termination or expiration of this Agreement shall so survive. MathWorks reserves the right to discontinue or modify any aspect of the Services, including any technical support, if offered, at any time.
+MathWorks has no obligation to monitor, screen, edit, or review the Content. However, MathWorks reserves the right, in its sole discretion, for any reason and at any time, to refuse to post any Content, and to remove any Content from the Services.
+3. Content and Third Party Services
+MathWorks does not control the Content posted by users of the Services and does not guarantee the accuracy, integrity, or quality of any Content. Views expressed by users of the Services are not endorsed by MathWorks. You understand that by using the Services, you may be exposed to Content that is offensive, indecent, or objectionable. Under no circumstances will MathWorks be liable in any way for any Content, including but not limited to, any errors or omissions in any Content, or for any loss or damage of any kind incurred as a result of any Content. It is your responsibility to evaluate the accuracy and completeness of all Content accessed from the Services.
+Use of the Services may require your acceptance of third party license terms. These third party license terms are accessible at
+https://www.mathworks.com/content/dam/mathworks/mathworks-dot-com/company/aboutus/policies_statements/online-services-third-party-licenses.pdf
+or from within the applicable Service, and may be updated by MathWorks from time to time. If the Lesser General Public License applies, you may make modifications of the work identified in Section 6 of the Lesser General Public License for your own use and reverse engineering for debugging such modifications. The materials licensed under such third party license terms are provided on an “as-is”, pass-through basis, and as such are provided to you without warranty, indemnification, support or other representation by MathWorks. MathWorks bears no liability with respect to such materials.
+The Services may link to, connect to, display, or publish third party content, services, websites, or other sources that are not owned or controlled by MathWorks (collectively, “Third Party Services”). MathWorks has no control over, and assumes no responsibility for, the content, privacy policies or practices of any Third Party Services. In the event that you use the Services together with any Third Party Services, you acknowledge and agree that you, and not MathWorks, shall be solely responsible for full compliance with any terms that may apply to your use of such Third Party Services.
+4. Services
+MATLAB Answers.
+You agree that Your Content that you contribute to this Service will be licensed under the
+Creative Commons Attribution Share Alike 3.0 license
+.
+File Exchange.
+You are responsible for the support and maintenance of any of Your Content submitted to File Exchange. Submissions that receive numerous bug reports or are not maintained may be removed from File Exchange.
+Use of software that you download from File Exchange, including software from File Exchange entries connected to GitHub repositories, is subject to the terms of any applicable software license agreement for such software. The applicable software license agreement will typically accompany or be provided at the time you download or otherwise access the software.
+If you choose to connect Your Content from a GitHub repository to File Exchange, or maintain an existing connection between Your Content from a GitHub repository to File Exchange, you grant to MathWorks the additional rights to store and repackage such of Your Content for the additional purposes of: providing File Exchange users with file previews and downloads, enabling you to reuse content from your GitHub repository as your File Exchange submission description at your option, and repackaging Your Content into MATLAB package formats for use by File Exchange users at your option. You represent and warrant that with respect to all Your Content you choose to connect from a GitHub repository to File Exchange, you are the owner of or have all necessary rights to grant to MathWorks the additional rights to store and repackage such of Your Content, as described above.
+Cody.
+MathWorks grants you a personal, non-exclusive, non-transferable, limited authorization to modify Content submitted to Cody (“Cody Submissions”), only as necessary to use Cody. MathWorks, and all submitters of Cody Submissions, also grant a personal, non-exclusive, non-transferable, limited authorization to users of MATLAB Grader to copy and use Cody Submissions for the purpose of using MATLAB Grader.
+Discussions.
+You agree that Your Content that you contribute to this Service will be licensed under the
+Creative Commons Attribution Share Alike 3.0 license
+.
+Community API.
+Community API users may create an integration between a third party application or service and Community API that displays Content made available through Community API.
+5. General
+You affirm that you are either more than 18 years of age, an emancipated minor, or possess legal parental or guardian consent, and are fully able and competent to enter into this Agreement. In any case, you affirm that you are over the age of 13, as the Services are not intended for children under 13. If you are under 13 years of age, you are not authorized to use the Services unless your parent or guardian has provided MathWorks with advance written consent.
+This Agreement, and any rights and licenses granted hereunder, may not be transferred or assigned by you without the written consent of MathWorks. You agree that MathWorks may withhold such consent for any reason, in its sole discretion. This Agreement may be transferred or assigned by MathWorks without restriction. In the case of any permitted assignment or transfer, the terms of this Agreement shall be binding upon, and inure to the benefit of, the transferee or assignee.
+The Services, including without limitation any Content provided by MathWorks or MathWorks employees, are provided “as is” and with all faults, without any obligation of technical support by MathWorks. You assume the sole responsibility and risk for your use of the Services and the results obtained therefrom, including all risks associated with any data transfer and storage that may occur as an incident to your use of the Services. Your Content that is uploaded or stored by you using the Services is maintained by MathWorks and/or a third party. Neither MathWorks nor such third party is responsible for any loss, disruption or termination of storage of Your Content. To the fullest extent permitted by law, MathWorks, its officers, directors, employees, agents and affiliates disclaim all warranties, express or implied, including without limitation, implied warranties of merchantability, fitness for a particular purpose, and non-infringement, in connection with the Services and your use thereof. MathWorks makes no warranties or representations about the accuracy or completeness of the Services or any sites linked from the Services, and assumes no liability or responsibility for any (i) errors, mistakes or inaccuracies in the Services; (ii) personal injury or property damage, of any nature whatsoever, resulting from your use of the Services; (iii) any unauthorized access to or use of MathWorks' servers and/or any and all information, including personal information, stored therein; (iv) any interruption or cessation of transmission to or from the Services; and (v) any loss of profits, loss of business, loss of opportunity, loss of data, loss of use of any computer hardware or software, or loss of any other kind incurred as a result of your use of the Services. MathWorks also expressly disclaims any warranties that may be implied from usage of trade, course of dealing, or course of performance. The Services are provided with all faults, and the entire risk of satisfactory quality, performance, and accuracy is with you. The Services should not be relied on as the sole basis to solve a problem or implement a design whose incorrect solution or implementation could result in injury to person or property, and MathWorks and its affiliates explicitly disclaim all liability for such misuse to the fullest extent allowed by law. MathWorks’ and its affiliates’ liability for death or personal injury resulting from negligence or for any other matter in relation to which liability by law cannot be excluded or limited shall not be excluded or limited.
+In no event shall MathWorks, its officers, directors, employees, agents, and/or affiliates, be liable to you for any direct, indirect, incidental, special, punitive, or consequential damages whatsoever resulting from your use of the Services, whether based on warranty, contract, tort, or any other legal theory, whether foreseeable or otherwise, and whether or not MathWorks is advised of the possibility of such damages. The foregoing limitation of liability shall apply to the fullest extent permitted by law in the applicable jurisdiction. In no event shall MathWorks’ or its affiliates’ aggregate liability arising out of or related to this Agreement exceed US one hundred dollars ($100.00 USD). Some states do not allow the exclusion or limitation of incidental or consequential damages, so the above exclusion or limitation may not apply to you. You may also have other rights which vary from state to state and country to country.
+You agree to indemnify and hold harmless MathWorks, its officers, directors, employees, agents, and affiliates to the fullest extent allowed by law from and against any and all claims, damages, obligations, losses, liabilities, costs, debt, and expenses (including without limitation attorneys' fees), collectively, “Claims”, arising from or relating to: (i) your use of and access to the Services; (ii) your use of any Third Party Services.; (iii) your breach of this Agreement; (iii) your violation of any other party’s right, including without limitation copyright, property, or privacy right; (iv) any claim that Your Content caused damage to another party; and (v) your violation of any applicable law, rule, or regulation. MathWorks reserves the right, in its sole discretion, to assume the exclusive defense and control of any Claims. You agree to reasonably cooperate as requested by MathWorks in the defense of any Claims. This indemnification obligation shall survive this Agreement and your use of the Services.
+This Agreement shall be interpreted, enforced, and construed, and the rights of the parties hereunder governed, in all respects by the laws of the State of Delaware, United States of America, without regard to its conflicts of law provisions.
+To the extent any governing law, treaty, or regulation is in conflict with this Agreement, the conflicting terms of this Agreement shall be superseded only to the extent required by such law, treaty, or regulation. If any provision of this Agreement shall be otherwise unlawful, void, or otherwise unenforceable, that provision shall be enforced to the maximum extent permissible. In either case, the remainder of this Agreement shall not be affected.
+The Services, including without limitation the software related to the Services, are subject to U.S. export control laws and may be subject to applicable export and import laws and regulations in other jurisdictions. Your Content, and your use, download, import, export or re-export of any Content, must not violate any applicable laws, rules, or regulations, including without limitation any applicable export control laws, rules, and regulations. Notwithstanding any other term of this Agreement or third party agreement, your rights under this Agreement may not be exercised by you or any third party in violation of such laws and regulations, nor may this Agreement be transferred to any party where doing so would result in such a violation. You represent and warrant that (i) you are not located in a country that is subject to a U.S. Government embargo, or that has been designated by the U.S. Government as a “terrorist supporting” country; and (ii) you are not listed on any U.S. Government list of prohibited or restricted parties. The terms of any limitation on the use, transfer or re-export of the Services, including without limitation the software related to the Services, included in any Destination Control Statement or other document provided by MathWorks for the purpose of export control shall prevail over any term in this Agreement. It is your responsibility to comply with the latest United States or other governmental export and import regulations with respect to all use of the Services.
+This Agreement and the documentation related to the Services contain the entire understanding between you and MathWorks and may not be modified or amended except by MathWorks' posting of a revision as described above. This Agreement supersedes, and its terms govern, all prior proposals, agreements, and/or other communications between the parties, oral or written, regarding the Services.
+Notices to MathWorks under this Agreement shall be sufficient only if in writing and transmitted via personal delivery, delivered by a major commercial delivery service, or by certified or registered mail, return receipt requested, to: The MathWorks, Inc., Attention: Legal Services, 3 Apple Hill Drive, Natick, Massachusetts 01760. Notices to you may be made via posting through the Services or to your MathWorks Account, by e-mail, or by regular mail, at MathWorks' discretion.
+6. Claims of Copyright Infringement
+If you believe your work has been copied in a way that constitutes infringement and appears through the Services, please provide the following information in writing to MathWorks' Copyright Agent at the address below (please consult your legal counsel to confirm these requirements:
+An electronic or physical signature of a person authorized to act on behalf of the owner of the copyright interest;
+A description of the copyrighted work that you claim has been infringed;
+A description of where the material that you claim is infringing is located through the Services;
+Your address, telephone number, and email address;
+A statement by you that you have a good faith belief that the disputed use is not authorized by the copyright owner, its agent, or the law; and
+A statement by you, made under penalty of perjury, that the above information in your notice is accurate and that you are the copyright owner or authorized to act on the copyright owner's behalf.
+Upon receiving your notification containing the information listed above, MathWorks shall (1) remove or disable access to the material alleged to be infringing; (2) forward the written notification to the alleged infringer; and (3) take reasonable steps to promptly notify the alleged infringer that it has removed or disabled access to the material.
+If you have received notice from MathWorks that material you have posted is alleged to be infringing and believe that such material is the wrongful subject of a copyright takedown notice, you may file a counter notification with MathWorks by providing the following information in writing to MathWorks' Copyright Agent at the address below (please consult your legal counsel to confirm these requirements):
+Your electronic or physical signature;
+A description of the material that has been removed or to which access has been disabled, and the location at which the material appeared before it was removed or access to it was disabled;
+A statement under penalty of perjury that you have a good faith belief that the material was removed or disabled as a result of mistake or misidentification of the material to be removed or disabled; and
+Your name, address, and telephone number, and a statement that you consent to the jurisdiction of Federal District Court for the judicial district in which your address is located, or if your address is outside the United States, for any judicial district in which MathWorks may be found, and that you will accept service of process from the person who provided the infringement notification, or an agent of such person.
+Upon receiving a counter notification containing the information listed above, MathWorks shall (1) promptly provide the complaining party with a copy of the counter notification; (2) inform that complaining party that MathWorks will replace the removed material or cease disabling access to it within ten (10) business days; and (3) replace the removed material or cease disabling access to it within ten (10) to fourteen (14) business days following receipt of the counter notification, provided MathWorks' Copyright Agent has not received notice from the complaining party that an action has been filed seeking a court order to restrain the alleged infringer from engaging in infringing activity relating to the allegedly infringing material accessible through the Services.
+MathWorks Copyright Agent
+Copyright Agent
+The MathWorks, Inc.
+3 Apple Hill Drive
+Natick, MA 01760
+(508) 647-7724
+dmca@mathworks.com
+For clarity, only claims of copyright infringement should be sent to the Copyright Agent noted above; other inquiries regarding the Services should be sent via
+https://www.mathworks.com/support/contact_us.html
+.
+Last updated: 26-Oct-2023
+Select a Web Site
+Choose a web site to get translated content where available and see local events and offers. Based on your location, we recommend that you select:
+India
+.
+India
+India
+(English)
+India
+(Deutsch)
+India
+(Français)
+India
+（简体中文）
+India
+(English)
+You can also select a web site from the following list
+How to Get Best Site Performance
+Select the China site (in Chinese or English) for best site performance. Other MathWorks country sites are not optimized for visits from your location.
+Americas
+América Latina
+(Español)
+Canada
+(English)
+United States
+(English)
+Europe
+Belgium
+(English)
+Denmark
+(English)
+Deutschland
+(Deutsch)
+España
+(Español)
+Finland
+(English)
+France
+(Français)
+Ireland
+(English)
+Italia
+(Italiano)
+Luxembourg
+(English)
+Netherlands
+(English)
+Norway
+(English)
+Österreich
+(Deutsch)
+Portugal
+(English)
+Sweden
+(English)
+Switzerland
+Deutsch
+English
+Français
+United Kingdom
+(English)
+Asia Pacific
+Australia
+(English)
+India
+(English)
+New Zealand
+(English)
+中国
+简体中文
+English
+日本
+(日本語)
+한국
+(한국어)
+Contact your local office

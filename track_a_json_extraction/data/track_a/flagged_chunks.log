@@ -412,3 +412,38 @@
 [FETCH_ERROR] url=https://www.mathworks.com/matlabcentral/fileexchange/27850-mixture-property-calculations-using-pr-rk-and-srk-eos reason=403 Client Error: Forbidden for url: https://www.mathworks.com/matlabcentral/fileexchange/27850-mixture-property-calculations-using-pr-rk-and-srk-eos
 [FETCH_ERROR] url=https://www.mathworks.com/matlabcentral/fileexchange/88331-web-apps-for-chemical-reaction-engineering reason=403 Client Error: Forbidden for url: https://www.mathworks.com/matlabcentral/fileexchange/88331-web-apps-for-chemical-reaction-engineering
 [FETCH_ERROR] url=https://www.umkc.edu/is/resources/lab-information/matlab-toolboxes.html reason=404 Client Error: Not Found for url: https://www.umkc.edu/is/resources/lab-information/matlab-toolboxes.html
+[INCOMPLETE] chunk_id=6ffcedb7-935a-4a2a-a75e-7c37af4dfed2 topic=JavaScript verification
+[FETCH_ERROR] url=https://engineering.purdue.edu/~ragu/matlab/matlab_che.pdf reason=404 Client Error: Not Found for url: https://engineering.purdue.edu/~ragu/matlab/matlab_che.pdf
+[FETCH_ERROR] url=https://user.eng.umd.edu/~adomaiti/ench426/matlab_intro/matlab_intro.pdf reason=404 Client Error: Not Found for url: https://user.eng.umd.edu/~adomaiti/ench426/matlab_intro/matlab_intro.pdf
+[FETCH_ERROR] url=https://www.che.psu.edu/faculty/mri/matlab_guide.pdf reason=404 Client Error: Not Found for url: https://www.che.psu.edu/faculty/mri/matlab_guide.pdf
+[FETCH_ERROR] url=https://www.che.utah.edu/~sutherland/Classes/ChE1010/matlab.pdf reason=403 Client Error: Forbidden for url: https://www.che.utah.edu/~sutherland/Classes/ChE1010/matlab.pdf
+[FETCH_ERROR] url=https://www.colorado.edu/chemicalengineering/matlab_tutorial.pdf reason=404 Client Error: Not Found for url: https://www.colorado.edu/chemicalengineering/matlab_tutorial.pdf
+[INCOMPLETE] chunk_id=4cbbb14f-ee2c-4091-a4f2-011874b05bd1 topic=Help Center Navigation and Region Selection
+[INCOMPLETE] chunk_id=597e849a-d9a4-48bc-a0be-b7b1c346ed38 topic=Website Region Selection
+[INCOMPLETE] chunk_id=25a943ed-b1cb-4319-86e1-843ae226abeb topic=MATLAB Overview and Core Capabilities
+[INCOMPLETE] chunk_id=b96c422e-e767-4c13-9b9a-16ab5e2e1293 topic=MATLAB Documentation Categories and Environment Settings
+[INCOMPLETE] chunk_id=c9e8c84b-15ab-41b2-9756-2ef8802e3a88 topic=Website Region and Language Selection
+[INCOMPLETE] chunk_id=7757caa1-00f9-4b92-9bf2-eb29fa0372bc topic=Programming Fundamentals (Scripts, Functions, and Classes)
+[INCOMPLETE] chunk_id=463b8c14-d476-4246-adf1-81c3514fdfdc topic=Stiff ODE and DAE Solver
+[INCOMPLETE] chunk_id=d517e882-8c87-4818-9e0c-e1d472d98f54 topic=Continuous evaluation of ODE solutions
+[INCOMPLETE] chunk_id=d4f9ef61-9044-4a7b-aa6a-074e5cca76b7 topic=Solving nonstiff differential equations using ode45
+[INCOMPLETE] chunk_id=f729fb83-fec7-4b0a-af13-b232f15b6f4c topic=Solving ODEs with options and event location using ode45
+[INCOMPLETE] chunk_id=09cc6824-5141-4c97-8a43-b7b68675fa10 topic=Solving ODEs with ode45
+[INCOMPLETE] chunk_id=c0fd697a-6c65-42ff-9aa9-f383308c65d4 topic=Solving van der Pol ODE using ode45
+[INCOMPLETE] chunk_id=0578db86-6017-4758-a358-549174e6dd5f topic=Passing extra parameters to ODE solvers
+[INCOMPLETE] chunk_id=0df51b2c-608e-42af-bbd7-a6a5203af93a topic=Solve ODE with Multiple Initial Conditions
+[INCOMPLETE] chunk_id=8573ada2-4df9-4638-9540-fb1fa2e3c75e topic=Solving ODEs with multiple initial conditions using ode45
+[INCOMPLETE] chunk_id=ad8f6615-e657-42b6-b3cb-5153a0012588 topic=Solving ODEs with Time-Dependent Terms
+[INCOMPLETE] chunk_id=8082eb58-5071-4656-a047-3e834c1b30e2 topic=Solving ODEs with ode45
+[INCOMPLETE] chunk_id=ee619aa8-a62b-4ff3-824c-b383a544f0eb topic=Solving and extending ODE solutions
+[INCOMPLETE] chunk_id=a62661d4-7862-414e-bff5-05c6769cc1d4 topic=Extending ODE solutions and odefun definition
+[INCOMPLETE] chunk_id=ae9afa3f-4539-414b-8bb8-e8711ca4c8dc topic=ODE solver integration interval (tspan)
+[INCOMPLETE] chunk_id=b2164b98-c89a-4eff-b98f-27e09b3493c5 topic=ODE Solver tspan and y0 Parameters
+[INCOMPLETE] chunk_id=6fae6649-909c-4844-8c84-412db296c038 topic=ODE solver input and output arguments
+[INCOMPLETE] chunk_id=247e3970-ac00-4282-bb1c-0a4c316a4101 topic=Community API
+[INCOMPLETE] chunk_id=2f594caa-6950-48a9-bfb0-bf404f689cb9 topic=General Information and Namespaces in CODES Toolbox
+[INCOMPLETE] chunk_id=d8f1a272-fba3-4307-b92e-aba692c18d09 topic=Namespace management and data conventions for CODES toolbox
+[INCOMPLETE] chunk_id=2e31e32d-4973-4c0a-bc80-ac12138a421d topic=CODES toolbox version compatibility
+[INCOMPLETE] chunk_id=b9a29463-a9aa-44c5-97fc-4bd3a72c4b70 topic=JavaScript verification required
+[FETCH_ERROR] url=https://engineering.purdue.edu/~ragu/matlab/matlab_che.pdf reason=404 Client Error: Not Found for url: https://engineering.purdue.edu/~ragu/matlab/matlab_che.pdf
+[INCOMPLETE] chunk_id=0115512e-e72b-4912-a253-736abcbb768a topic=MATLAB Toolbox licensing and availability at Purdue University

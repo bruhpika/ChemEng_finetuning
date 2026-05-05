@@ -1,5 +1,5 @@
-MATLAB: General Information | Office of Information Technology
-Skip to main
+Source: https://oit.duke.edu/help/articles/kb0030777
+
 MATLAB: General Information
 License Information
 Total Academic Headcount License (Faculty/Staff)
@@ -141,5 +141,3 @@ Article number:
 KB0030777
 Valid to:
 July 2, 2026
-Live chat
-Get help now

@@ -101,7 +101,7 @@ Return ONLY this JSON (no markdown, no explanation):
 
 If a list field has no data, return [].
 If params has no data, return {{}}.
-Add "flag": "INCOMPLETE" if steps=[] OR ui_paths=[].
+Only include a "flag": "INCOMPLETE" field if the chunk contains no useful theory, steps, OR UI paths. Otherwise, omit the "flag" field entirely.
 """
     global current_key_idx, MODEL
     max_attempts = len(api_keys) + 3
@@ -298,10 +298,16 @@ def main():
                     parsed["schema_errors"] = errs
                     log_flag(f"[SCHEMA_ERROR] chunk_id={parsed['chunk_id']} errors={errs}")
 
-                if not parsed.get("steps") or not parsed.get("ui_paths"):
-                    parsed["flag"] = parsed.get("flag", "INCOMPLETE")
+                # Flexible INCOMPLETE logic: 
+                # For CLI tools, ui_paths are expected to be empty.
+                # Only flag if we have neither steps nor ui_paths AND it's not a theory-only chunk.
+                if not parsed.get("steps") and not parsed.get("ui_paths") and not parsed.get("theory"):
+                    parsed["flag"] = "INCOMPLETE"
                     log_flag(f"[INCOMPLETE] chunk_id={parsed['chunk_id']} topic={parsed.get('topic')}")
                     stats["incomplete"] += 1
+                elif "flag" in parsed and parsed["flag"] == "INCOMPLETE":
+                    # If model added it but we have theory/steps, remove it
+                    del parsed["flag"]
 
                 if parsed.get("flag") == "PARSE_ERROR":
                     stats["parse_errors"] += 1
