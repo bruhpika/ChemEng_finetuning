@@ -1,21 +1,21 @@
 # Agent Extraction Progress Tracker
 
-**Last Updated:** Tue May  5 07:20:47 2026
+**Last Updated:** Wed May  6 07:54:18 2026
 
 ## 📊 Run Statistics
 
-- **Total Gemini Calls:** `0`
+- **Total Gemini Calls:** `68`
 - **Total Documents Fetched:** `0`
-- **Skipped (Already Parsed):** `0`
-- **Fetch Errors:** `0`
+- **Skipped (Already Parsed):** `48`
+- **Fetch Errors:** `11`
 - **Parse Errors:** `0`
-- **Incomplete Chunks:** `0`
+- **Incomplete Chunks:** `32`
 
 ## 🔑 API Key Status
 
-- **Current API Key Index:** `1` / `4` 
-- **Cycling Status:** Active
+- **Current API Key Index:** `4` / `4` 
+- **Cycling Status:** Waiting for reset
 
 ## 🔄 Currently Processing
 
-**URL:** `https://api.mathworks.com/community/docs`
+**URL:** `https://www.mathworks.com/matlabcentral/fileexchange/27850-mixture-property-calculations-using-pr-rk-and-srk-eos`

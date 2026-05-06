@@ -243,89 +243,98 @@ def main():
 
     print("Track A Parser starting...\n")
 
-    with open(PATHS["csv"], newline='', encoding='utf-8') as f:
-        for row in csv.DictReader(f):
-            url, software, license_str = row["url"], row["software"], row["license"]
-            update_progress_tracker(stats, total_calls, url)
+    # Find all source CSVs in data/
+    source_files = [f for f in os.listdir("data") if f.startswith("sources_") and f.endswith(".csv") and f != "sources_test.csv"]
+    
+    for source_file in source_files:
+        csv_path = os.path.join("data", source_file)
+        print(f"\n--- Processing source file: {source_file} ---")
+        
+        with open(csv_path, newline='', encoding='utf-8') as f:
+            for row in csv.DictReader(f):
+                url, software, license_str = row["url"], row["software"], row["license"]
+                update_progress_tracker(stats, total_calls, url)
 
-            
-            # quota guard
-            if total_calls >= MAX_CHUNKS_PER_RUN:
-                print(f"Chunk limit ({MAX_CHUNKS_PER_RUN}) reached. Stop here, resume tomorrow.")
-                break
-
-            # deduplication
-            existing_urls = load_existing_urls(software)
-            if url in existing_urls:
-                print(f"Skipping (already parsed): {url}")
-                stats["skipped_dup"] += 1
-                continue
-
-            print(f"Fetching: {url}")
-
-            # check cache first
-            full_text = get_cached_text(url)
-            if full_text:
-                print("   (from cache)")
-            else:
-                try:
-                    full_text = pdf_extractor(url) if url.lower().endswith('.pdf') else html_extractor(url)
-                    save_cache(url, full_text)
-                    stats["fetched"] += 1
-                except Exception as e:
-                    log_flag(f"[FETCH_ERROR] url={url} reason={e}")
-                    stats["fetch_errors"] += 1
-                    continue
-
-            chunks = text_chunker(full_text)
-            if not chunks:
-                log_flag(f"[ZERO_CHUNKS] url={url}")
-                continue
-
-            if software not in all_chunks:
-                all_chunks[software] = []
-
-            for i, chunk_text in enumerate(chunks):
+                # quota guard
                 if total_calls >= MAX_CHUNKS_PER_RUN:
+                    print(f"Chunk limit ({MAX_CHUNKS_PER_RUN}) reached. Stop here, resume tomorrow.")
                     break
 
-                print(f"   chunk {i+1}/{len(chunks)} -> Gemini...")
-                parsed = gemini_flash_parse(chunk_text, software, url, license_str)
-                total_calls += 1
+                # deduplication
+                existing_urls = load_existing_urls(software)
+                if url in existing_urls:
+                    print(f"Skipping (already parsed): {url}")
+                    stats["skipped_dup"] += 1
+                    continue
 
-                valid, errs = schema_validator(parsed)
-                if not valid:
-                    parsed["schema_errors"] = errs
-                    log_flag(f"[SCHEMA_ERROR] chunk_id={parsed['chunk_id']} errors={errs}")
+                print(f"Fetching: {url}")
 
-                # Flexible INCOMPLETE logic: 
-                # For CLI tools, ui_paths are expected to be empty.
-                # Only flag if we have neither steps nor ui_paths AND it's not a theory-only chunk.
-                if not parsed.get("steps") and not parsed.get("ui_paths") and not parsed.get("theory"):
-                    parsed["flag"] = "INCOMPLETE"
-                    log_flag(f"[INCOMPLETE] chunk_id={parsed['chunk_id']} topic={parsed.get('topic')}")
-                    stats["incomplete"] += 1
-                elif "flag" in parsed and parsed["flag"] == "INCOMPLETE":
-                    # If model added it but we have theory/steps, remove it
-                    del parsed["flag"]
-
-                if parsed.get("flag") == "PARSE_ERROR":
-                    stats["parse_errors"] += 1
-
-                all_chunks[software].append(parsed)
-                
-                # INCREMENTAL SAVE
-                out_path = PATHS["out"].format(software)
-                existing = []
-                if os.path.exists(out_path):
+                # check cache first
+                full_text = get_cached_text(url)
+                if full_text:
+                    print("   (from cache)")
+                else:
                     try:
-                        with open(out_path, "r", encoding="utf-8") as f:
-                            existing = json.load(f)
-                    except: pass
-                with open(out_path, "w", encoding="utf-8") as f:
-                    json.dump(existing + [parsed], f, indent=2)
-                
-                update_progress_tracker(stats, total_calls, url)
+                        full_text = pdf_extractor(url) if url.lower().endswith('.pdf') else html_extractor(url)
+                        save_cache(url, full_text)
+                        stats["fetched"] += 1
+                    except Exception as e:
+                        log_flag(f"[FETCH_ERROR] url={url} reason={e}")
+                        stats["fetch_errors"] += 1
+                        continue
+
+                chunks = text_chunker(full_text)
+                if not chunks:
+                    log_flag(f"[ZERO_CHUNKS] url={url}")
+                    continue
+
+                if software not in all_chunks:
+                    all_chunks[software] = []
+
+                for i, chunk_text in enumerate(chunks):
+                    if total_calls >= MAX_CHUNKS_PER_RUN:
+                        break
+
+                    print(f"   chunk {i+1}/{len(chunks)} -> Gemini...")
+                    parsed = gemini_flash_parse(chunk_text, software, url, license_str)
+                    total_calls += 1
+
+                    valid, errs = schema_validator(parsed)
+                    if not valid:
+                        parsed["schema_errors"] = errs
+                        log_flag(f"[SCHEMA_ERROR] chunk_id={parsed['chunk_id']} errors={errs}")
+
+                    # Flexible INCOMPLETE logic: 
+                    # For CLI tools, ui_paths are expected to be empty.
+                    # Only flag if we have neither steps nor ui_paths AND it's not a theory-only chunk.
+                    if not parsed.get("steps") and not parsed.get("ui_paths") and not parsed.get("theory"):
+                        parsed["flag"] = "INCOMPLETE"
+                        log_flag(f"[INCOMPLETE] chunk_id={parsed['chunk_id']} topic={parsed.get('topic')}")
+                        stats["incomplete"] += 1
+                    elif "flag" in parsed and parsed["flag"] == "INCOMPLETE":
+                        # If model added it but we have theory/steps, remove it
+                        del parsed["flag"]
+
+                    if parsed.get("flag") == "PARSE_ERROR":
+                        stats["parse_errors"] += 1
+
+                    all_chunks[software].append(parsed)
+                    
+                    # INCREMENTAL SAVE
+                    out_path = PATHS["out"].format(software)
+                    existing = []
+                    if os.path.exists(out_path):
+                        try:
+                            with open(out_path, "r", encoding="utf-8") as f:
+                                existing = json.load(f)
+                        except: pass
+                    with open(out_path, "w", encoding="utf-8") as f:
+                        json.dump(existing + [parsed], f, indent=2)
+                    
+                    update_progress_tracker(stats, total_calls, url)
+
+            if total_calls >= MAX_CHUNKS_PER_RUN:
+                break
 
     print("\nProcessing finished.")
     update_progress_tracker(stats, total_calls, None)
