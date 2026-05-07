@@ -3,6 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 import google.generativeai as genai
 import uuid, json, time, io, csv, os, re
+from playwright.sync_api import sync_playwright
 
 # ── CONFIG ──────────────────────────────────────────────
 api_keys = []
@@ -56,23 +57,40 @@ def pdf_extractor(url: str) -> str:
         return text
 
 def html_extractor(url: str) -> str:
-    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"}
-    resp = requests.get(url, timeout=20, headers=headers)
-    resp.raise_for_status()
-    soup = BeautifulSoup(resp.text, "html.parser")
-    for tag in soup(["script", "style", "nav", "footer", "header", "aside"]):
+    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
+    try:
+        resp = requests.get(url, timeout=20, headers=headers)
+        resp.raise_for_status()
+        html_content = resp.text
+    except requests.exceptions.RequestException as e:
+        print(f"   [requests failed: {e}] falling back to Playwright...")
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            page = browser.new_page(user_agent=headers["User-Agent"])
+            page.goto(url, timeout=60000)
+            time.sleep(3)
+            html_content = page.content()
+            browser.close()
+
+    soup = BeautifulSoup(html_content, "html.parser")
+    for tag in soup(["script", "style", "nav", "footer", "header", "aside", "form"]):
         tag.decompose()
     text = soup.get_text(separator="\n", strip=True)
+    text = re.sub(r'\n\s*\n', '\n\n', text)
     if not text:
         raise ValueError("HTML extraction returned empty text")
     return text
 
 
-def text_chunker(text: str, chunk_size: int = 1500) -> list[str]:
-    OVERLAP = 200
+def text_chunker(text: str, chunk_size: int = 2800) -> list[str]:
+    OVERLAP = 400
     chunks, start = [], 0
     while start < len(text):
-        chunks.append(text[start:start + chunk_size])
+        chunk = text[start:start + chunk_size]
+        if len(chunk.split()) < 30:
+            start += chunk_size - OVERLAP
+            continue
+        chunks.append(chunk)
         start += chunk_size - OVERLAP
     return chunks
 
@@ -101,7 +119,7 @@ Return ONLY this JSON (no markdown, no explanation):
 
 If a list field has no data, return [].
 If params has no data, return {{}}.
-Only include a "flag": "INCOMPLETE" field if the chunk contains no useful theory, steps, OR UI paths. Otherwise, omit the "flag" field entirely.
+Only include a "flag": "INCOMPLETE" field if the chunk is PURELY boilerplate (e.g. copyright, navigation links) and contains ABSOLUTELY NO useful theory, definitions, steps, OR UI paths. Otherwise, omit the "flag" field entirely. Be generous in extracting "theory" - any technical definition or description of a function's purpose counts as theory.
 """
     global current_key_idx, MODEL
     max_attempts = len(api_keys) + 3
@@ -305,9 +323,9 @@ def main():
                         log_flag(f"[SCHEMA_ERROR] chunk_id={parsed['chunk_id']} errors={errs}")
 
                     # Flexible INCOMPLETE logic: 
-                    # For CLI tools, ui_paths are expected to be empty.
-                    # Only flag if we have neither steps nor ui_paths AND it's not a theory-only chunk.
-                    if not parsed.get("steps") and not parsed.get("ui_paths") and not parsed.get("theory"):
+                    # Only flag if we have absolutely nothing useful.
+                    has_content = parsed.get("steps") or parsed.get("ui_paths") or parsed.get("theory")
+                    if not has_content:
                         parsed["flag"] = "INCOMPLETE"
                         log_flag(f"[INCOMPLETE] chunk_id={parsed['chunk_id']} topic={parsed.get('topic')}")
                         stats["incomplete"] += 1

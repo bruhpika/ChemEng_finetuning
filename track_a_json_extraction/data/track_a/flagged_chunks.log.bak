@@ -1,0 +1,27 @@
+[FETCH_ERROR] url=https://fossee.in/data/dwsim/DWSIM_Lab_Manual.pdf reason=404 Client Error: Not Found for url: https://fossee.in/data/dwsim/DWSIM_Lab_Manual.pdf
+[FETCH_ERROR] url=https://github.com/DanWBR/dwsim/blob/windows/PlatformFiles/Common/docs/User_Guide.pdf reason=No /Root object! - Is this really a PDF?
+[FETCH_ERROR] url=https://github.com/DanWessel/DWSIM/blob/master/CODE_GUIDE.md reason=404 Client Error: Not Found for url: https://github.com/DanWessel/DWSIM/blob/master/CODE_GUIDE.md
+[FETCH_ERROR] url=https://github.com/lcfsantos/dwsimopt reason=404 Client Error: Not Found for url: https://github.com/lcfsantos/dwsimopt
+[FETCH_ERROR] url=https://spoken-tutorial.org/media/videos/86/DWSIM-Manual.pdf reason=404 Client Error: Not Found for url: https://spoken-tutorial.org/media/videos/86/DWSIM-Manual.pdf
+[FETCH_ERROR] url=https://www.iitb.ac.in/dwsim/tutorials.pdf reason=('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+[INCOMPLETE] chunk_id=cba72121-0c12-40fc-984a-d936f0fccb9e topic=Community API
+[INCOMPLETE] chunk_id=27ea3596-ced3-46ee-847a-74886db03299 topic=WMTSA feedback, roadmap, and project metadata
+[INCOMPLETE] chunk_id=6597c2b2-e5de-460a-8014-57bb73e5504c topic=Disclaimer and Acknowledgments
+[INCOMPLETE] chunk_id=03111b99-5882-47b8-9688-353b3d135e1f topic=MATLAB Version Compatibility and Copyright
+[FETCH_ERROR] url=https://doi.org/10.25405/data.ncl.27055339 reason=HTML extraction returned empty text
+[FETCH_ERROR] url=https://engineering.purdue.edu/~ragu/matlab/matlab_che.pdf reason=404 Client Error: Not Found for url: https://engineering.purdue.edu/~ragu/matlab/matlab_che.pdf
+[INCOMPLETE] chunk_id=ee35f4f8-a8c8-4f67-bc13-a85f8eda5c4e topic=Available Toolboxes and Low Availability Software List
+[INCOMPLETE] chunk_id=65d6eada-bc3e-45de-a4cd-6cd16ff814c2 topic=List of Licensed Products as of R2025a
+[INCOMPLETE] chunk_id=5550565f-19b7-4737-b421-6fa008a45fff topic=Available MATLAB toolboxes and products
+[FETCH_ERROR] url=https://user.eng.umd.edu/~adomaiti/ench426/matlab_intro/matlab_intro.pdf reason=404 Client Error: Not Found for url: https://user.eng.umd.edu/~adomaiti/ench426/matlab_intro/matlab_intro.pdf
+[FETCH_ERROR] url=https://www.che.psu.edu/faculty/mri/matlab_guide.pdf reason=404 Client Error: Not Found for url: https://www.che.psu.edu/faculty/mri/matlab_guide.pdf
+[FETCH_ERROR] url=https://www.che.utah.edu/~sutherland/Classes/ChE1010/matlab.pdf reason=403 Client Error: Forbidden for url: https://www.che.utah.edu/~sutherland/Classes/ChE1010/matlab.pdf
+[FETCH_ERROR] url=https://www.colorado.edu/chemicalengineering/matlab_tutorial.pdf reason=404 Client Error: Not Found for url: https://www.colorado.edu/chemicalengineering/matlab_tutorial.pdf
+[FETCH_ERROR] url=https://www.mathworks.com/help/index.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/help/index.html
+[FETCH_ERROR] url=https://www.mathworks.com/help/matlab/index.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/help/matlab/index.html
+[FETCH_ERROR] url=https://www.mathworks.com/help/matlab/ref/ode45.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/help/matlab/ref/ode45.html
+[FETCH_ERROR] url=https://www.mathworks.com/matlabcentral/content/fx/fx-transition-faq.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/matlabcentral/content/fx/fx-transition-faq.html
+[FETCH_ERROR] url=https://www.mathworks.com/matlabcentral/content/terms-of-use.html reason=403 Client Error: Forbidden for url: https://www.mathworks.com/matlabcentral/content/terms-of-use.html
+[FETCH_ERROR] url=https://www.mathworks.com/matlabcentral/fileexchange/27850-mixture-property-calculations-using-pr-rk-and-srk-eos reason=403 Client Error: Forbidden for url: https://www.mathworks.com/matlabcentral/fileexchange/27850-mixture-property-calculations-using-pr-rk-and-srk-eos
+[FETCH_ERROR] url=https://www.mathworks.com/matlabcentral/fileexchange/88331-web-apps-for-chemical-reaction-engineering reason=403 Client Error: Forbidden for url: https://www.mathworks.com/matlabcentral/fileexchange/88331-web-apps-for-chemical-reaction-engineering
+[FETCH_ERROR] url=https://www.umkc.edu/is/resources/lab-information/matlab-toolboxes.html reason=404 Client Error: Not Found for url: https://www.umkc.edu/is/resources/lab-information/matlab-toolboxes.html
