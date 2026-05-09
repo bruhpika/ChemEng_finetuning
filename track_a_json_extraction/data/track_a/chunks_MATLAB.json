@@ -1874,5 +1874,175 @@
     "source_url": "local://matlab_docs_pdfs/3.pdf",
     "license": "public/no-login",
     "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "02f01366-c14b-4f34-b200-19120c033626",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "PARSE_ERROR",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Extraction failed: PARSE_ERROR"
+    ],
+    "fixes": [],
+    "theory": "",
+    "source_url": "local://matlab_docs_pdfs/3.pdf",
+    "license": "public/no-login",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "1d310fa4-fc0e-411d-8ebc-bf146af3843f",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "PARSE_ERROR",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Extraction failed: PARSE_ERROR"
+    ],
+    "fixes": [],
+    "theory": "",
+    "source_url": "local://matlab_docs_pdfs/4.pdf",
+    "license": "public/no-login",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "66997930-305c-4105-a332-251629afd57b",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "PARSE_ERROR",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Extraction failed: PARSE_ERROR"
+    ],
+    "fixes": [],
+    "theory": "",
+    "source_url": "local://matlab_docs_pdfs/5.pdf",
+    "license": "public/no-login",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "623427a9-a898-4941-bb80-113c2203a40d",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "PARSE_ERROR",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Extraction failed: PARSE_ERROR"
+    ],
+    "fixes": [],
+    "theory": "",
+    "source_url": "local://matlab_docs_pdfs/6.pdf",
+    "license": "public/no-login",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "088e7bfd-a0c4-4fcd-92cb-29f084b63863",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "PARSE_ERROR",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Extraction failed: PARSE_ERROR"
+    ],
+    "fixes": [],
+    "theory": "",
+    "source_url": "local://matlab_docs_pdfs/7.pdf",
+    "license": "public/no-login",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "a52e1b4a-f2ed-486f-97b4-ecd6f57ae148",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "PARSE_ERROR",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Extraction failed: PARSE_ERROR"
+    ],
+    "fixes": [],
+    "theory": "",
+    "source_url": "local://matlab_docs_pdfs/8.pdf",
+    "license": "public/no-login",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "d422a8cd-e968-4c61-9122-62176c046757",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "PARSE_ERROR",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Extraction failed: PARSE_ERROR"
+    ],
+    "fixes": [],
+    "theory": "",
+    "source_url": "local://matlab_docs_pdfs/9.pdf",
+    "license": "public/no-login",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "99f5bd40-48b4-4352-abbc-f3a1ae3c6f39",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "PARSE_ERROR",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Extraction failed: PARSE_ERROR"
+    ],
+    "fixes": [],
+    "theory": "",
+    "source_url": "local://matlab_docs_pdfs/10.pdf",
+    "license": "public/no-login",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "1153abaa-6ef1-4160-8b70-a8f14141f7b4",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "PARSE_ERROR",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Extraction failed: PARSE_ERROR"
+    ],
+    "fixes": [],
+    "theory": "",
+    "source_url": "local://matlab_docs_pdfs/11.pdf",
+    "license": "public/no-login",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "9886ad31-2719-4265-94a5-c1b23403fe34",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "UPLOAD_FAILED",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Extraction failed: UPLOAD_FAILED"
+    ],
+    "fixes": [],
+    "theory": "",
+    "source_url": "local://matlab_docs_pdfs/12.pdf",
+    "license": "public/no-login",
+    "flag": "INCOMPLETE"
   }
 ]
