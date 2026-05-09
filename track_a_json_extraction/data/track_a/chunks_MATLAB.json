@@ -1651,5 +1651,228 @@
     "theory": "Numerical modeling of chemical separations using equilibrium data interpolation, nonlinear root-finding, and thermodynamic phase diagrams.",
     "source_url": "https://user.eng.umd.edu/~adomaiti/ench426/matlab_intro/matlab_intro.html",
     "license": "Educational use - University of Maryland"
+  },
+  {
+    "chunk_id": "42e691b0-3ccd-4db5-af66-162fc3d0c68e",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "MATLAB Fundamentals and Environment",
+    "steps": [
+      "Enter statements at the command line to execute instructions.",
+      "Define variables to store data in the Workspace.",
+      "Call functions by enclosing input arguments in parentheses.",
+      "Use indexing to access specific elements of an array or matrix.",
+      "Create scripts to execute sequences of commands.",
+      "Utilize graphics functions for 2-D and 3-D data visualization."
+    ],
+    "params": {
+      "Matrix": "A two-dimensional array used for linear algebra.",
+      "Array": "The primary data structure in MATLAB, can be multidimensional.",
+      "Script": "A program file containing a sequence of commands and function calls.",
+      "Workspace": "The memory area containing variables created or imported into MATLAB."
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "MATLAB is a matrix-based computational language. All variables are arrays, and the environment supports linear algebra, data visualization, and algorithm deployment across clusters or clouds.",
+    "source_url": "https://www.mathworks.com/help/matlab/getting-started-with-matlab.html",
+    "license": "public/no-login"
+  },
+  {
+    "chunk_id": "51e7e353-ab8b-463b-880f-f441efcf1f38",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Solving Stiff ODEs and DAEs with ode15s",
+    "steps": [
+      "Define ODE function handle: odefun = @(t,y) ...",
+      "Specify time interval tspan = [t0 tf] and initial conditions y0",
+      "Optional: Create settings using odeset (e.g., 'RelTol', 'AbsTol', 'Mass', 'Events')",
+      "Execute solver: [t,y] = ode15s(odefun, tspan, y0, options)",
+      "For continuous evaluation, use sol = ode15s(...) then deval(sol, tq)"
+    ],
+    "params": {
+      "odefun": "Function handle for system y' = f(t,y) or M(t,y)y' = f(t,y)",
+      "tspan": "Integration interval [t0 tf]",
+      "y0": "Initial condition vector",
+      "options": "Integration settings structure from odeset",
+      "t": "Output column vector of time points",
+      "y": "Output array of solutions at each time step",
+      "te, ye, ie": "Event output: time, solution, and index of triggered event",
+      "sol": "Structure for solution evaluation via deval"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Variable-step, variable-order (orders 1–5) multistep solver based on Numerical Differentiation Formulas (NDFs) or Backward Differentiation Formulas (BDFs/Gear's method). Optimized for stiff systems and Differential-Algebraic Equations (DAEs) where ode45 is inefficient.",
+    "source_url": "https://www.mathworks.com/help/matlab/ref/ode15s.html",
+    "license": "public/no-login"
+  },
+  {
+    "chunk_id": "2d4e81b3-6111-4320-906d-0288ebdb7bc1",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Stiff ODE and DAE Solvers",
+    "steps": [
+      "Identify stiffness if standard solvers are inefficient",
+      "Use specialized solvers for Index-1 differential-algebraic equations (DAEs)"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Numerical integration of stiff systems and Index-1 DAEs requiring variable-order methods (e.g., ode15s) for computational efficiency.",
+    "source_url": "https://www.mathworks.com/help/matlab/ref/ode15s.html",
+    "license": "public/no-login"
+  },
+  {
+    "chunk_id": "1db9b55a-a5b7-4525-b452-56b2273d3b04",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Solving nonstiff ODEs via ode45",
+    "steps": [
+      "Define odefun as function handle y' = f(t,y).",
+      "Specify tspan [t0 tf] and initial conditions y0.",
+      "Optional: Define options (tolerances, mass matrix, events) using odeset.",
+      "Execute [t,y] = ode45(odefun, tspan, y0, options).",
+      "Use deval with sol output for continuous evaluation."
+    ],
+    "params": {
+      "odefun": "Function handle for system of ODEs.",
+      "tspan": "Vector [t0 tf] defining integration interval.",
+      "y0": "Initial condition vector.",
+      "options": "Structure from odeset (AbsTol, RelTol, Mass, Events).",
+      "t": "Column vector of time points.",
+      "y": "Solution array; rows correspond to times in t.",
+      "te, ye, ie": "Event times, solutions at events, and event indices."
+    },
+    "ui_paths": [],
+    "errors": [
+      "Stiff problems - Use alternative solvers like ode15s if ode45 is inefficient."
+    ],
+    "fixes": [],
+    "theory": "Medium-order explicit Runge-Kutta (4,5) Dormand-Prince single-step solver. Solves y' = f(t,y) or M(t,y)y' = f(t,y). Recommended as first-choice solver for nonstiff systems.",
+    "source_url": "https://www.mathworks.com/help/matlab/ref/ode45.html",
+    "license": "public/no-login"
+  },
+  {
+    "chunk_id": "5ee655a5-d4f9-4e81-b9b0-359da59960f9",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "ode45 single-step solver properties",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Single-step solver (Dormand-Prince formula) that computes y(tn) using only the solution at the immediately preceding time point y(tn-1).",
+    "source_url": "https://www.mathworks.com/help/matlab/ref/ode45.html",
+    "license": "public/no-login"
+  },
+  {
+    "chunk_id": "8b65ff41-1b31-42e7-be92-866dad332acd",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "ODE Solver Selection and Implementation",
+    "steps": [
+      "Define system as first-order ODE function dy/dt = f(t,y)",
+      "For complex ODEs, manually split into real and imaginary components or use SeparateComplexParts",
+      "Identify stiffness: use ode45 for nonstiff; use ode15s for stiff or DAEs",
+      "Define tspan and initial conditions y0",
+      "Execute solver: [t,y] = solver(@odefun, tspan, y0, options)"
+    ],
+    "params": {
+      "ode45": "Nonstiff Runge-Kutta; first choice for most problems",
+      "ode15s": "Variable order stiff solver (BDFs); use if ode45 fails or is slow",
+      "ode15i": "Solver for fully implicit ODEs and DAEs f(t,y,y') = 0",
+      "RelTol": "Relative error tolerance",
+      "AbsTol": "Absolute error tolerance",
+      "Jacobian": "Analytical Jacobian to improve stiff solver performance",
+      "Mass": "Mass matrix for solving DAEs or differential-algebraic systems",
+      "Events": "Locates points where the solution meets specific conditions"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Numerical integration for IVPs. Stiff systems involve widely varying timescales, requiring implicit methods (ode15s, ode23s) to maintain stability without excessively small step sizes. Nonstiff problems use explicit methods (ode45). DAEs are solved using solvers supporting a Mass matrix.",
+    "source_url": "local://matlab_docs_pdfs/1.pdf",
+    "license": "public/no-login"
+  },
+  {
+    "chunk_id": "c781ec0a-d671-4872-ba5d-6d2caf5eef7d",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "ODE Solver Selection and Configuration",
+    "steps": [
+      "Select solver based on stiffness (ode45 non-stiff, ode15s stiff)",
+      "Configure tolerances and events using odeset",
+      "Execute solver (e.g., ode45(f, tspan, y0, options))",
+      "Extend integration range using odextend"
+    ],
+    "params": {
+      "NonNegative": "Constraints solution components to be non-negative",
+      "RelTol": "Relative error tolerance",
+      "AbsTol": "Absolute error tolerance",
+      "Events": "Function to detect discontinuities or terminations",
+      "OutputFcn": "Function called after each successful time step",
+      "Jacobian": "Jacobian matrix for stiff system performance (ode15s)"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "ode45 is a variable-step Runge-Kutta solver for non-stiff systems (e.g., orbitode, rigidode). ode15s is a variable-order solver for stiff systems (e.g., vdpode). odeset manages solver options; odextend continues previous solutions.",
+    "source_url": "https://www.mathworks.com/help/matlab/math/choose-an-ode-solver.html",
+    "license": "public/no-login"
+  },
+  {
+    "chunk_id": "9db4ec55-ff5d-4694-83b8-a7a343d73e36",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Troubleshooting ODE Solvers and Tolerance Settings",
+    "steps": [
+      "Configure solver options using odeset.",
+      "Use ode15s, ode23s, ode23t, or ode23tb for stiff problems.",
+      "Define JPattern for sparse Jacobian problems to improve efficiency.",
+      "Use odextend to continue simulations past the final time point.",
+      "Adjust Refine parameter to increase output resolution without reducing step size."
+    ],
+    "params": {
+      "RelTol": "Relative error tolerance; controls significant digits.",
+      "AbsTol": "Absolute error tolerance; threshold for components near zero.",
+      "InitialStep": "Suggested initial step size for integration.",
+      "Refine": "Integer factor to increase the number of output points.",
+      "JPattern": "Sparsity pattern of the Jacobian matrix for stiff solvers.",
+      "OutputFcn": "Function called by solver after each successful time step."
+    },
+    "ui_paths": [],
+    "errors": [
+      "Accuracy issues - Decrease RelTol/AbsTol.",
+      "Slow performance on stiff systems - Switch from ode45 to ode15s/ode23s.",
+      "Integration failure at start - Decrease InitialStep."
+    ],
+    "fixes": [
+      "Set RelTol to 1e-3 (default) or smaller (e.g., 1e-6) for higher precision.",
+      "Pass tspan as [t0 tf] or a vector of specific time points.",
+      "Ensure tspan directionality: t0 > tf for backward integration."
+    ],
+    "theory": "Error control is governed by |e(i)| <= max(RelTol*abs(y(i)), AbsTol(i)). Stiff equations require implicit solvers to maintain stability when the step size is limited by stability rather than accuracy.",
+    "source_url": "local://matlab_docs_pdfs/2.pdf",
+    "license": "public/no-login"
+  },
+  {
+    "chunk_id": "85c3578a-eb83-47e2-81f3-cb12e968a114",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "PARSE_ERROR",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Extraction failed: PARSE_ERROR"
+    ],
+    "fixes": [],
+    "theory": "",
+    "source_url": "local://matlab_docs_pdfs/3.pdf",
+    "license": "public/no-login",
+    "flag": "INCOMPLETE"
   }
 ]

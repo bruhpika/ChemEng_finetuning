@@ -253,5 +253,69 @@
     "source_url": "https://github.com/NeuroJSON/jsonlab",
     "license": "BSD 3-Clause / GPLv3 dual license",
     "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "80667329-f500-43b5-a57f-fd5b5e57e8fe",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "GitHub Repository Metadata",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Error while loading - Reload the page"
+    ],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://github.com/PSORLab/Chemical_Engineering_Analysis_Notebooks",
+    "license": "MIT License",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "be2458ed-34a7-49e6-90ba-40c1caf65d25",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "GitHub Repository Metadata",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://github.com/acuoci/Matlab4CRE",
+    "license": "GPL-3.0",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "8038f65c-72a9-472d-b0d1-cb8234086c61",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Boilerplate UI Text",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://github.com/kpatvt/sim21",
+    "license": "MIT License",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "a75a938b-30af-4f0f-95b9-0f8c38dfd807",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Repository Metadata and Loading Errors",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Error while loading page - Reload the page"
+    ],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://github.com/kupiqu/fig2svg",
+    "license": "BSD 2-Clause",
+    "flag": "INCOMPLETE"
   }
 ]

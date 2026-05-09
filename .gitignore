@@ -4,6 +4,9 @@ blackbord.md
 # Extractor Cache
 track_a_json_extraction/data/track_a/cache/
 
+# Local PDF dumps (user-downloaded, not for repo)
+track_a_json_extraction/data/track_a/matlab_docs_pdfs/
+
 # Backup and logs
 *.bak
 *.log

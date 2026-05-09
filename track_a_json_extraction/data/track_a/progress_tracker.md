@@ -1,21 +1,38 @@
-# Agent Extraction Progress Tracker
+# PDF Extraction Progress Tracker
 
-**Last Updated:** Sat May  9 07:56:17 2026
+**Last Updated:** Sat May  9 09:28:17 2026
+**Script:** `extract_local_pdfs.py` (Gemini File API OCR mode)
 
-## 📊 Run Statistics
+## Progress
 
-- **Total Gemini Calls:** `53`
-- **Total Documents Fetched:** `23`
-- **Skipped (Already Parsed):** `23`
-- **Fetch Errors:** `2`
-- **Parse Errors:** `0`
-- **Incomplete Chunks:** `4`
+```
+[------------------------------] 3%  (2/61 PDFs)
+```
 
-## 🔑 API Key Status
+## Run Statistics
 
-- **Current API Key Index:** `3` / `4` 
-- **Cycling Status:** Active
+| Metric | Value |
+|---|---|
+| PDFs Found | `61` |
+| Successfully Extracted | `0` |
+| Skipped (already done) | `2` |
+| Failed (no chunks) | `0` |
+| Good Chunks Added | `0` |
+| Gemini API Calls | `0` |
+| Remaining PDFs | `59` |
 
-## 🔄 Currently Processing
+## API Key Status
 
-**URL:** `https://www.mathworks.com/help/matlab/math/choose-an-ode-solver.html`
+- **Current Key:** `1` / `4`
+- **Status:** Active
+
+## Currently Processing
+
+**File:** `3.pdf [uploading to Gemini File API...]`
+
+## Extraction Log
+
+| # | File | Method | Good Chunks | Status |
+|---|---|---|---|---|
+| 1 | `1.pdf` | — | — | SKIPPED (done) |
+| 2 | `2.pdf` | — | — | SKIPPED (done) |

@@ -63,26 +63,53 @@ def html_extractor(url: str) -> str:
         resp.raise_for_status()
         html_content = resp.text
     except requests.exceptions.RequestException as e:
-        print(f"   [requests failed: {e}] falling back to Playwright...")
+        print(f"   [requests failed: {e}] falling back to Playwright (Mobile Stealth)...")
         with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
-            # Use a more complete context to appear more human
-            context = browser.new_context(
-                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
-                viewport={'width': 1920, 'height': 1080}
+            # Use a random user data dir to simulate a persistent session
+            user_data_dir = os.path.join(os.getcwd(), "data", "track_a", "browser_session")
+            browser_context = p.chromium.launch_persistent_context(
+                user_data_dir,
+                headless=True,
+                user_agent="Mozilla/5.0 (iPhone; CPU iPhone OS 17_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4.1 Mobile/15E148 Safari/604.1",
+                viewport={'width': 390, 'height': 844},
+                is_mobile=True,
+                has_touch=True,
+                locale="en-US"
             )
-            page = context.new_page()
+            page = browser_context.pages[0] if browser_context.pages else browser_context.new_page()
             try:
-                page.goto(url, timeout=90000, wait_until="networkidle")
-                # Wait for content to load, or a generic main/article tag
-                page.wait_for_selector("main, article, #doc_center_content", timeout=30000)
-                time.sleep(5) # Extra buffer for JS-rendered content
+                # Set extra headers to look like a real iPhone
+                page.set_extra_http_headers({
+                    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                    "Accept-Language": "en-US,en;q=0.9",
+                    "Sec-Fetch-Dest": "document",
+                    "Sec-Fetch-Mode": "navigate",
+                    "Sec-Fetch-Site": "none"
+                })
+                
+                page.goto(url, timeout=60000, wait_until="domcontentloaded")
+                
+                # Check for "Access Denied" and try to wait/scroll if found
+                content = page.content()
+                if "Access Denied" in content or "403 Forbidden" in content:
+                    print("   [Access Denied still detected] trying a slow scroll...")
+                    page.evaluate("window.scrollTo(0, document.body.scrollHeight/2)")
+                    time.sleep(5)
+                    page.reload(wait_until="domcontentloaded")
+
+                # Wait for content
+                try:
+                    page.wait_for_selector("main, article, #doc_center_content, .content_container", timeout=15000)
+                except:
+                    pass
+                
+                time.sleep(3)
                 html_content = page.content()
             except Exception as pe:
-                print(f"   [Playwright also failed: {pe}]")
-                html_content = page.content() # Try to get whatever we have
+                print(f"   [Playwright failed: {pe}]")
+                html_content = page.content()
             finally:
-                browser.close()
+                browser_context.close()
 
     soup = BeautifulSoup(html_content, "html.parser")
     for tag in soup(["script", "style", "nav", "footer", "header", "aside", "form"]):
