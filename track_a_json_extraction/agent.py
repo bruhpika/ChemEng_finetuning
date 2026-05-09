@@ -42,7 +42,7 @@ REQUIRED_KEYS = {
     "steps", "params", "ui_paths", "errors", "fixes",
     "theory", "source_url", "license"
 }
-MAX_CHUNKS_PER_RUN = 600  # quota guard — ~40% of daily free limit
+MAX_CHUNKS_PER_RUN = 50  # Lowered to preserve tokens for the test run
 
 # ── TOOLS ───────────────────────────────────────────────
 
@@ -66,11 +66,23 @@ def html_extractor(url: str) -> str:
         print(f"   [requests failed: {e}] falling back to Playwright...")
         with sync_playwright() as p:
             browser = p.chromium.launch(headless=True)
-            page = browser.new_page(user_agent=headers["User-Agent"])
-            page.goto(url, timeout=60000)
-            time.sleep(3)
-            html_content = page.content()
-            browser.close()
+            # Use a more complete context to appear more human
+            context = browser.new_context(
+                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+                viewport={'width': 1920, 'height': 1080}
+            )
+            page = context.new_page()
+            try:
+                page.goto(url, timeout=90000, wait_until="networkidle")
+                # Wait for content to load, or a generic main/article tag
+                page.wait_for_selector("main, article, #doc_center_content", timeout=30000)
+                time.sleep(5) # Extra buffer for JS-rendered content
+                html_content = page.content()
+            except Exception as pe:
+                print(f"   [Playwright also failed: {pe}]")
+                html_content = page.content() # Try to get whatever we have
+            finally:
+                browser.close()
 
     soup = BeautifulSoup(html_content, "html.parser")
     for tag in soup(["script", "style", "nav", "footer", "header", "aside", "form"]):
@@ -95,8 +107,9 @@ def text_chunker(text: str, chunk_size: int = 2800) -> list[str]:
     return chunks
 
 def gemini_flash_parse(chunk_text: str, software: str, source_url: str, license_str: str) -> dict:
-    prompt = f"""Convert the following documentation chunk into a JSON object for ChemE-LLM.
-Software: {software}
+    prompt = f"""Convert the following documentation chunk into a highly concise JSON object. 
+The goal is to train an AI model to help chemical engineering undergraduate students learn how to use {software}.
+Extract only the most essential technical facts, step-by-step workflows, and parameter definitions. Do not include fluff or long verbatim quotes. Keep token count low.
 
 CHUNK TEXT:
 {chunk_text}
@@ -106,13 +119,13 @@ Return ONLY this JSON (no markdown, no explanation):
   "chunk_id": "{uuid.uuid4()}",
   "source_type": "track_a",
   "software": "{software}",
-  "topic": "<short topic label>",
-  "steps": ["<step 1>"],
-  "params": {{}},
+  "topic": "<short descriptive topic>",
+  "steps": ["<concise step 1>", "<concise step 2>"],
+  "params": {{"<param>": "<brief definition>"}},
   "ui_paths": ["<Menu > Sub > Option>"],
-  "errors": [],
+  "errors": ["<error> - <fix>"],
   "fixes": [],
-  "theory": "",
+  "theory": "<very brief, high-density technical summary>",
   "source_url": "{source_url}",
   "license": "{license_str}"
 }}
@@ -123,6 +136,7 @@ Only include a "flag": "INCOMPLETE" field if the chunk is PURELY boilerplate (e.
 """
     global current_key_idx, MODEL
     max_attempts = len(api_keys) + 3
+    response = None
     for attempt in range(max_attempts):
         try:
             time.sleep(5)
@@ -144,9 +158,22 @@ Only include a "flag": "INCOMPLETE" field if the chunk is PURELY boilerplate (e.
                         genai.configure(api_key=api_keys[current_key_idx])
                         MODEL = genai.GenerativeModel("gemini-flash-latest")
                     else:
-                        raise e
+                        print(f"\nFailed to get API response after {max_attempts} attempts.")
+                        break
             else:
-                raise e
+                print(f"   [API Error: {e}]")
+                break
+
+    if not response:
+        return {
+            "chunk_id": str(uuid.uuid4()),
+            "source_type": "track_a", "software": software,
+            "topic": "API_EXHAUSTED", "steps": [], "params": {},
+            "ui_paths": [], "errors": ["Failed to get API response"],
+            "fixes": [], "theory": "",
+            "source_url": source_url, "license": license_str,
+            "flag": "INCOMPLETE"
+        }
 
     # FIX: regex extract JSON blob — handles all markdown fence variations
     match = re.search(r'\{.*\}', response.text, re.DOTALL)
@@ -271,6 +298,12 @@ def main():
         with open(csv_path, newline='', encoding='utf-8') as f:
             for row in csv.DictReader(f):
                 url, software, license_str = row["url"], row["software"], row["license"]
+                status = row.get("status", "READY")
+                
+                if status.startswith("BROKEN"):
+                    print(f"Skipping broken URL: {url}")
+                    continue
+                
                 update_progress_tracker(stats, total_calls, url)
 
                 # quota guard

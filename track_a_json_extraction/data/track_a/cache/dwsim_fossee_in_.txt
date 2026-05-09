@@ -1,0 +1,12 @@
+Home | DWSIM
+Different unit operations available in DWSIM.
+Simulation of the reactive distillation column in DWSIM for esterification of acetic acid with methanol to form methyl acetate.
+Simulation of distillation column sequence in DWSIM for Natural Gas separation.
+Home
+DWSIM
+is a multiplatform, CAPE-OPEN compliant chemical process simulator for Windows, Linux, Android, macOS, and iOS. It is available for download from
+here
+.
+DWSIM allows chemical engineering students and practicing engineers to model process plants using rigorous thermodynamic and unit operations models. Since DWSIM is free/libre and open-source, they can see how the calculations are being done by inspecting the code during execution using free/libre tools available elsewhere.
+DWSIM's powerful Thermodynamics engine is also available as a standalone dynamic link library (DLL)
+that can be linked against proprietary applications.

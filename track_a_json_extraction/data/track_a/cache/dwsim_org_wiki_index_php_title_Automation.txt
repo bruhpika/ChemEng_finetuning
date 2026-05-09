@@ -1,0 +1,388 @@
+Automation - DWSIM - Open Source Chemical Process Simulator
+Automation
+From DWSIM - Open Source Chemical Process Simulator
+Jump to navigation
+Jump to search
+Automation
+enables software packages to expose their unique features to scripting tools and other applications. Using Automation, you can:
+Create applications and programming tools that expose objects.
+Create and manipulate objects exposed in one application from another application.
+Create tools that access and manipulate objects. These tools can include embedded macro languages, external programming tools, object browsers, and compilers.
+On a Windows environment, the objects an application or programming tool exposes are called ActiveX objects. Applications and programming tools that access those objects are called ActiveX clients. ActiveX objects and clients interact as follows: Applications and other software packages that support ActiveX technology define and expose objects which can be acted on by ActiveX components. ActiveX components are physical files (for example .exe and .dll files) that contain classes, which are definitions of objects. Type information describes the exposed objects, and can be used by ActiveX components at either compile time or at run time.
+Contents
+1
+Automation support in DWSIM
+2
+Registering DLLs for COM Automation
+3
+Introduction to Interfaces
+4
+API Reference Documentation
+5
+DWSIM Flowsheet Class Structure
+6
+Sample Automation
+6.1
+About Cavett's Problem
+6.2
+Excel VBA
+6.2.1
+Code
+6.3
+VB.NET
+6.3.1
+Code
+6.4
+C#
+6.4.1
+Code
+Automation support in DWSIM
+Starting from version 4.2, DWSIM exposes its main Classes and Interfaces to Automation via COM/.NET. Automating DWSIM enables you to manipulate flowsheets and run sensitivity/optimization studies directly from Microsoft Excel, for instance, without the need of opening DWSIM directly. Interfacing DWSIM with Excel through VBA macros results in a powerful tool in process engineering activities, such as design, optimization and process evaluation.
+The simulation results may be output to an Excel spreadsheet in the development of the Heat and Material Balance for the process design, enabling quick manipulation of the resulting data through a well-known tool for every Chemical Engineer.
+Registering DLLs for COM Automation
+You can register DWSIM DLLs for automation during the installation process. You can also run the
+automation_reg.bat
+batch file (located in DWSIM's current installation directory) with admin privileges to register. To de-register, run
+automation_unreg.bat
+also as admin. When you uninstall DWSIM, the DLLs are automatically deregistered.
+If your automation project is based on a .NET language, there's no need to register the DLLs. You'll only need to add a reference to them.
+Automating DWSIM through COM is limited to Windows, though .NET is recommended as the default mechanism. On a Linux environment, you can use Mono to create and/or run an automation project in C#.
+Introduction to Interfaces
+Before proceeding, read this text to get used to Interfaces and their implementation in actual Classes:
+Interfaces in Object-Oriented Programming
+API Reference Documentation
+Automation Class:
+https://dwsim.org/api_help/html/T_DWSIM_Automation_Automation3.htm
+Interface Definitions:
+https://dwsim.org/api_help/html/G_DWSIM_Interfaces.htm
+Unit Operations:
+https://dwsim.org/api_help/html/G_DWSIM_UnitOperations.htm
+Thermodynamics:
+https://dwsim.org/api_help/html/G_DWSIM_Thermodynamics.htm
+Base Class Shared Library:
+https://dwsim.org/api_help/html/G_DWSIM_SharedClasses.htm
+Flowsheet GUI and DWSIM main executable:
+https://dwsim.org/api_help/html/N_DWSIM.htm
+CAPE-OPEN Reference:
+http://www.colan.org/specifications/
+DWSIM Flowsheet Class Structure
+The Flowsheet class in DWSIM provides access to all objects in the simulation:
+Thermodynamics Subsystem
+: includes Compounds, Property Packages, Flash Algorithms and Reactions/Reaction Sets collections.
+Simulation Objects Subsystem
+: includes Material & Energy Streams and Unit Operation blocks.
+Graphical User Interface
+: provides access to the displayed objects in the flowsheet and the connections between them.
+Accessories
+: includes added utilities, sensitivity & optimization studies, system of units definitions and other simulation definitions.
+The
+Flowsheet
+object in DWSIM implements various interfaces, including
+IFlowsheet
+,
+IFlowsheetBag
+,
+IFlowsheetGUI
+and
+IFlowsheetOptions
+.
+IFlowsheet
+: this is the main interface implemented by the Flowsheet class. It provides direct access to the various flowsheet components and helper functions to manipulate objects.
+https://dwsim.org/api_help/html/T_DWSIM_Interfaces_IFlowsheet.htm
+IFlowsheetBag
+: provides direct access to collections of flowsheet objects.
+https://dwsim.org/api_help/html/T_DWSIM_Interfaces_IFlowsheetBag.htm
+IFlowsheetGUI
+: this is an interface which defines helper functions to a Flowsheet GUI implementation.
+https://dwsim.org/api_help/html/T_DWSIM_Interfaces_IFlowsheetGUI.htm
+IFlowsheetOptions
+: this interface defines the flowsheet settings and other properties.
+https://dwsim.org/api_help/html/T_DWSIM_Interfaces_IFlowsheetOptions.htm
+When you use the
+Automation
+class to load a simulation, an
+IFlowsheet
+object is returned, which is actually an instance of the
+Flowsheet
+class. You can cast the returned object to any of the interfaces implemented by the Flowsheet class to access all available functions, properties and procedures.
+Sample Automation
+This sample automation code will run Cavett's Problem (simulation file located in the
+samples
+folder) with four different feed mass flow values, check outlet mass flows and calculate the mass balance of the flowsheet, displaying the results to the user.
+About Cavett's Problem
+A simulation problem proposed by Cavett (1963) has been used to test various chemical engineering simulation programs. It provides a useful benchmark to compare and contrast various tear stream locations and convergence algorithms. The process is equivalent to a four theoretical stage near isothermal distillation flash tanks.
+Feed Stream: 2
+Vapor Outlet Stream: 8
+Liquid Outlet Stream: 18
+Excel VBA
+To run this sample, create a new Excel VBA project and add a reference to
+CAPE-OPEN 1.1 Type Library
+(
+http://www.colan.org/software-tools/cape-open-type-libraries-and-primary-interop-assemblies/
+,
+DWSIM Simulator Automation Interface
+and
+DWSIM Simulator Interface Definitions Library
+.
+Code
+Public Sub Sub1()
+
+    'create automation manager
+    Dim interf As DWSIM_Automation.Automation3
+    Set interf = New DWSIM_Automation.Automation3
+
+    'declare the flowsheet variable
+    Dim sim As DWSIM_Interfaces.IFlowsheet
+
+    'load Cavett's Problem simulation file
+    Set sim = interf.LoadFlowsheet(Application.ActiveWorkbook.Path & "\Cavett's Problem.dwxml")
+
+    'use CAPE-OPEN interfaces to manipulate objects
+    Dim feed As CAPEOPEN110.ICapeThermoMaterialObject
+    Dim vap_out As CAPEOPEN110.ICapeThermoMaterialObject
+    Dim liq_out As CAPEOPEN110.ICapeThermoMaterialObject
+
+    Set feed = sim.GetFlowsheetSimulationObject("2")
+    Set vap_out = sim.GetFlowsheetSimulationObject("8")
+    Set liq_out = sim.GetFlowsheetSimulationObject("18")
+
+    'mass flow rate values in kg/s
+    Dim flows(4) As Variant
+
+    flows(0) = 170#
+    flows(1) = 180#
+    flows(2) = 190#
+    flows(3) = 200#
+
+    'vapor and liquid flows
+    Dim vflow, lflow As Double
+
+    For i = 0 To 3
+        'set feed mass flow
+        Call feed.SetProp("totalflow", "overall", Nothing, "", "mass", Array(flows(i)))
+        'calculate the flowsheet (run the simulation)
+        MsgBox "Running simulation with F = " & flows(i) & " kg/s, please wait..."
+        Call interf.CalculateFlowsheet(sim, Nothing)
+        'check for errors during the last run
+        If sim.Solved = False Then
+            MsgBox "Error solving flowsheet: " & sim.ErrorMessage
+        End If
+        'get vapor outlet mass flow value
+        vflow = vap_out.GetProp("totalflow", "overall", Nothing, "", "mass")(0)
+        'get liquid outlet mass flow value
+        lflow = liq_out.GetProp("totalflow", "overall", Nothing, "", "mass")(0)
+        'display results
+        MsgBox "Simulation run #" & (i + 1) & " results:" & vbCrLf & "Feed: " & flows(i) & ", Vapor: " & vflow & ", Liquid: " & lflow & " kg/s" & vbCrLf & "Mass balance error: " & (flows(i) - vflow - lflow) & " kg/s"
+    Next
+
+    MsgBox "Finished OK!"
+
+End Sub
+VB.NET
+To run this sample, create a new VB.NET Console Application project and add a reference to
+DWSIM.Automation.dll
+,
+DWSIM.Interfaces.dll
+and
+CapeOpen.dll
+.
+Code
+Module Module1
+
+    Sub Main()
+
+        System.IO.Directory.SetCurrentDirectory("C:/Program Files/DWSIM8") ' replace with DWSIM's installation directory on your computer
+
+        'create automation manager
+        Dim interf As New DWSIM.Automation.Automation3
+
+        Dim sim As Interfaces.IFlowsheet
+
+        'load Cavett's Problem simulation file
+        sim = interf.LoadFlowsheet("samples" & IO.Path.DirectorySeparatorChar & "Cavett's Problem.dwxml")
+
+        '(optional) set a listener to catch solver messages
+        sim.SetMessageListener(Sub(msg As String)
+                                   Console.WriteLine(msg)
+                               End Sub)
+
+        'use CAPE-OPEN interfaces to manipulate objects
+        Dim feed, vap_out, liq_out As CapeOpen.ICapeThermoMaterialObject
+
+        feed = sim.GetFlowsheetSimulationObject1("2")
+        vap_out = sim.GetFlowsheetSimulationObject1("8")
+        liq_out = sim.GetFlowsheetSimulationObject1("18")
+
+        'mass flow rate values in kg/s
+        Dim flows(3) As Double
+
+        flows(0) = 170.0#
+        flows(1) = 180.0#
+        flows(2) = 190.0#
+        flows(3) = 200.0#
+
+        'vapor and liquid flows
+        Dim vflow, lflow As Double
+
+        For i = 0 To flows.Length - 1
+            'set feed mass flow
+            feed.SetProp("totalflow", "overall", Nothing, "", "mass", New Double() {flows(i)})
+            'calculate the flowsheet (run the simulation)
+            Console.WriteLine("Running simulation with F = " & flows(i) & " kg/s, please wait...")
+            interf.CalculateFlowsheet(sim, Nothing)
+            'check for errors during the last run
+            If sim.Solved = False Then
+                Console.WriteLine("Error solving flowsheet: " & sim.ErrorMessage)
+            End If
+            'get vapor outlet mass flow value
+            vflow = vap_out.GetProp("totalflow", "overall", Nothing, "", "mass")(0)
+            'get liquid outlet mass flow value
+            lflow = liq_out.GetProp("totalflow", "overall", Nothing, "", "mass")(0)
+            'display results
+            Console.WriteLine("Simulation run #" & (i + 1) & " results:" & vbCrLf & "Feed: " & flows(i) & ", Vapor: " & vflow & ", Liquid: " & lflow & " kg/s" & vbCrLf & "Mass balance error: " & (flows(i) - vflow - lflow) & " kg/s")
+        Next
+
+        Console.WriteLine("Finished OK! Press any key to close.")
+        Console.ReadKey()
+
+    End Sub
+
+End Module
+C#
+To run this sample, create a new C# Console Application project and add a reference to
+DWSIM.Automation.dll
+,
+DWSIM.Interfaces.dll
+and
+CapeOpen.dll
+.
+Code
+using System;
+
+static class Module1
+{
+
+    public static void Main()
+    {
+
+        System.IO.Directory.SetCurrentDirectory("C:/Program Files/DWSIM8"); // replace with DWSIM's installation directory on your computer
+
+        //create automation manager
+        DWSIM.Automation.Automation3 interf = new DWSIM.Automation.Automation3();
+
+        DWSIM.Interfaces.IFlowsheet sim;
+
+        //load Cavett's Problem simulation file
+        sim = interf.LoadFlowsheet("samples" + System.IO.Path.DirectorySeparatorChar + "Cavett's Problem.dwxml");
+
+        //use CAPE-OPEN interfaces to manipulate objects
+        CapeOpen.ICapeThermoMaterialObject feed, vap_out, liq_out;
+
+        feed = (CapeOpen.ICapeThermoMaterialObject)sim.GetFlowsheetSimulationObject("2");
+        vap_out = (CapeOpen.ICapeThermoMaterialObject)sim.GetFlowsheetSimulationObject("8");
+        liq_out = (CapeOpen.ICapeThermoMaterialObject)sim.GetFlowsheetSimulationObject("18");
+
+        //mass flow rate values in kg/s
+        double[] flows = new double[4];
+
+        flows[0] = 170.0;
+        flows[1] = 180.0;
+        flows[2] = 190.0;
+        flows[3] = 200.0;
+
+        //vapor and liquid flows
+        double vflow = 0;
+        double lflow = 0;
+
+        for (var i = 0; i <= flows.Length - 1; i++)
+        {
+            //set feed mass flow
+            feed.SetProp("totalflow", "overall", null, "", "mass", new double[] { flows[i] });
+            //calculate the flowsheet (run the simulation)
+            Console.WriteLine("Running simulation with F = " + flows[i] + " kg/s, please wait...");
+            interf.CalculateFlowsheet(sim, null);
+            //check for errors during the last run
+            if (sim.Solved == false)
+            {
+                Console.WriteLine("Error solving flowsheet: " + sim.ErrorMessage);
+            }
+            //get vapor outlet mass flow value
+            vflow = ((double[])vap_out.GetProp("totalflow", "overall", null, "", "mass"))[0];
+            //get liquid outlet mass flow value
+            lflow = ((double[])liq_out.GetProp("totalflow", "overall", null, "", "mass"))[0];
+            //display results
+            Console.WriteLine("Simulation run #" + (i + 1) + " results:\nFeed: " + flows[i] + ", Vapor: " + vflow + ", Liquid: " + lflow + " kg/s\nMass balance error: " + (flows[i] - vflow - lflow) + " kg/s");
+        }
+
+        Console.WriteLine("Finished OK! Press any key to close.");
+        Console.ReadKey();
+
+    }
+
+}
+Retrieved from "
+https://dwsim.org/wiki/index.php?title=Automation&oldid=731
+"
+Comments
+Please enable JavaScript to view the
+comments powered by Disqus.
+Navigation menu
+Personal tools
+Log in
+Namespaces
+Page
+Discussion
+Variants
+Views
+Read
+View source
+View history
+More
+Search
+Main Page
+Patrons
+Literature
+Award
+Tutorials
+Features
+Features
+CAPE-OPEN
+Excel Add-In
+Automation
+Aqueous Electrolytes
+Property Package
+Extensions (Plugins)
+OPC UA Client
+Capital Cost Estimator
+Neural Network Unit Operation
+Pipe Network Unit Operation
+ThermoC Bridge Library
+Standalone Thermo
+Standalone Thermo Library
+Support
+Support
+Licensing
+API Help
+Forums
+Report a bug
+Mobile Apps
+DWSIM for iPhone/iPad
+DWSIM for Android
+Categories
+Source Code
+Project Summary
+Source Code
+Mailing Lists
+DWSIM Users
+DWSIM Developers
+Tools
+What links here
+Related changes
+Special pages
+Printable version
+Permanent link
+Page information
+This page was last edited on 21 July 2023, at 12:08.
+Privacy policy
+About DWSIM - Open Source Chemical Process Simulator
+Disclaimers

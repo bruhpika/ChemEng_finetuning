@@ -1,0 +1,147 @@
+GitHub - Spogis/DWSIMChemDesign: ChemDesign: DWSIM Experiment Toolkit · GitHub
+Skip to content
+You signed in with another tab or window.
+Reload
+to refresh your session.
+You signed out in another tab or window.
+Reload
+to refresh your session.
+You switched accounts on another tab or window.
+Reload
+to refresh your session.
+Dismiss alert
+Spogis
+/
+DWSIMChemDesign
+Public
+Notifications
+You must be signed in to change notification settings
+Fork
+3
+Star
+7
+master
+Branches
+Tags
+Go to file
+Code
+Open more actions menu
+Folders and files
+Name
+Name
+Last commit message
+Last commit date
+Latest commit
+History
+28 Commits
+28 Commits
+Examples
+Examples
+Source Code
+Source Code
+Toolkit Installer
+Toolkit Installer
+.gitignore
+.gitignore
+AUTHORS.rst
+AUTHORS.rst
+LICENSE.txt
+LICENSE.txt
+README.md
+README.md
+certificado_5120240006831710322528540.pdf
+certificado_5120240006831710322528540.pdf
+requirements.txt
+requirements.txt
+View all files
+Repository files navigation
+ChemDesign: DWSIM Experiment Toolkit
+Introduction
+ChemDesign: DWSIM Experiment Toolkit is a groundbreaking toolkit designed to revolutionize the way you perform Design of Experiments (DOE) within the DWSIM open source chemical process simulation software. This toolkit aims to simplify and automate the DOE process, enabling engineers, researchers, and students to optimize their chemical process designs with greater efficiency and accuracy.
+Key Features
+Seamless Integration with DWSIM: Designed to work flawlessly with DWSIM, providing a smooth workflow for conducting experiments.
+Automation of DOE Processes: Automates the cumbersome steps involved in the DOE, from setup to execution and analysis, saving valuable time and reducing the potential for human error.
+Intuitive User Interface: Features an easy-to-use interface that guides users through the process of designing and running experiments.
+Example Datasets
+In the
+Examples
+directory, you will find example datasets that can assist you.
+Support
+If you encounter any problems or have any questions, do not hesitate to open an issue in the GitHub repository or contact us directly.
+How to cite ChemDesign: DWSIM Experiment Toolkit in your publications
+If you find Grid Convergence Lab to be useful, please consider citing it in your published work:
+@misc{DWSIMChemDesign,
+    author = {SPOGIS, N.},
+    title = {ChemDesign: DWSIM Experiment Toolkit},
+    subtitle = {A Python package for DOE Analysis},
+    note = "https://github.com/Spogis/GridConvergenceLab",
+    year = {2024},
+}
+or, via Zenodo:
+@software{nicolas_spogis_2024_13293154,
+    author       = {Nicolas Spogis},
+    title        = {Spogis/DWSIMChemDesign: v1.0.3},
+    month        = aug,
+    year         = 2024,
+    publisher    = {Zenodo},
+    version      = {v1.0.3},
+    doi          = {10.5281/zenodo.13293154},
+    url          = {https://doi.org/10.5281/zenodo.13293154}    
+}
+Contact:
+https://linktr.ee/Ai4Tech
+We hope you enjoy using ChemDesign: DWSIM Experiment Toolkit
+About
+ChemDesign: DWSIM Experiment Toolkit
+linktr.ee/Ai4Tech
+Topics
+extension
+toolkit
+design-of-experiments
+doe
+latin-hypercube-sampling
+dwsim
+Resources
+Readme
+License
+Apache-2.0 license
+Uh oh!
+There was an error while loading.
+Please reload this page
+.
+Activity
+Stars
+7
+stars
+Watchers
+1
+watching
+Forks
+3
+forks
+Report repository
+Releases
+5
+ChemDesign - v2.0.1
+Latest
+Aug 9, 2025
++ 4 releases
+Packages
+0
+Uh oh!
+There was an error while loading.
+Please reload this page
+.
+Contributors
+Uh oh!
+There was an error while loading.
+Please reload this page
+.
+Languages
+HTML
+94.6%
+Visual Basic .NET
+3.9%
+Python
+1.5%
+You can’t perform that action at this time.

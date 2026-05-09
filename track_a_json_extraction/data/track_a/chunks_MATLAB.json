@@ -1,0 +1,461 @@
+[
+  {
+    "chunk_id": "932c6462-eecb-4c92-9ec8-7ec2ee6378e4",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "API_EXHAUSTED",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Failed to get API response"
+    ],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://atmos.uw.edu/~wmtsa/",
+    "license": "NSF Grant No. 0222115 - explicit license undefined",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "b4770593-4686-40c5-afdf-1cbec4a59887",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "API_EXHAUSTED",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Failed to get API response"
+    ],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://atmos.uw.edu/~wmtsa/",
+    "license": "NSF Grant No. 0222115 - explicit license undefined",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "a45084b2-e5ac-429c-b7c6-3f8d96f86bab",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "API_EXHAUSTED",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Failed to get API response"
+    ],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://atmos.uw.edu/~wmtsa/",
+    "license": "NSF Grant No. 0222115 - explicit license undefined",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "b0397621-b646-430d-be67-bfaea05a75dc",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "API_EXHAUSTED",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Failed to get API response"
+    ],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://atmos.uw.edu/~wmtsa/",
+    "license": "NSF Grant No. 0222115 - explicit license undefined",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "15fc3c91-fa2b-46be-be40-f405a9df75f2",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "API_EXHAUSTED",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Failed to get API response"
+    ],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://atmos.uw.edu/~wmtsa/",
+    "license": "NSF Grant No. 0222115 - explicit license undefined",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "ae2313a4-8a77-4b78-9590-cec5938681bd",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "API_EXHAUSTED",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Failed to get API response"
+    ],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://codes.arizona.edu/toolbox/help/html/general.html",
+    "license": "Copyright asserted - U of Arizona",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "376b8c98-bd9d-4980-b58e-682605c2b6f7",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "API_EXHAUSTED",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Failed to get API response"
+    ],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://codes.arizona.edu/toolbox/help/html/general.html",
+    "license": "Copyright asserted - U of Arizona",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "4cc2809d-5138-441b-811b-79328fd8ec42",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "API_EXHAUSTED",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Failed to get API response"
+    ],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://github.com/CombustionToolbox/combustion_toolbox",
+    "license": "GPL-3.0",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "4b0244c1-1d06-483d-8dad-a97e696d6550",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "API_EXHAUSTED",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Failed to get API response"
+    ],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://github.com/CombustionToolbox/combustion_toolbox",
+    "license": "GPL-3.0",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "d0134457-8ebe-4ec2-be0a-9f5d017cf3c8",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "API_EXHAUSTED",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Failed to get API response"
+    ],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://github.com/DanielMartensson/MataveControl",
+    "license": "MIT License",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "f2f3c11d-3f90-46ff-aa85-009825219c93",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Control System Analysis and Model Predictive Control (MPC)",
+    "steps": [
+      "Define state-space model: mc.ss(A, B, C, D)",
+      "Convert to discrete: mc.c2d(sys, sample_time)",
+      "Simulate Linear MPC: mc.lmpc(sysd, N, R, T, lambda)",
+      "Simulate Quadratic MPC: mc.qmpc(sysd, N, R, T, lambda, Umax, S, I, x0)",
+      "Generate plots: bode(sys), nyquist(sys), step(sys)"
+    ],
+    "params": {
+      "R": "Reference/setpoint vector",
+      "N": "Prediction horizon constant",
+      "T": "Horizon time constant",
+      "lambda": "Input smoothing regularization",
+      "I": "Integral action constant",
+      "Umax": "Maximum input signal vector",
+      "S": "Slack variable (output tolerance above reference)",
+      "x0": "Initial state vector"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "MataveControl uses Linear (Simplex) or Quadratic (Hildreth's Method) programming for MPC. Hildreth's method is computationally faster in MATLAB. Integral action (I) and slack variables (S) handle steady-state error and output constraints.",
+    "source_url": "https://github.com/DanielMartensson/MataveControl",
+    "license": "MIT License"
+  },
+  {
+    "chunk_id": "208c364b-2867-496f-9b59-e08cb902fafd",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "MPC with Kalman-Bucy Filter and Mass-Spring-Damper System",
+    "steps": [
+      "Define physical parameters m, k, and b for the system.",
+      "Construct the state-space system matrix A.",
+      "Initialize MPC parameters including lambda, reference R, and initial state x0.",
+      "Simulate MPC using mc.qmpc with quadratic programming.",
+      "Plot the control signal results."
+    ],
+    "params": {
+      "lambda": "Regularization factor for smooth control inputs",
+      "x0": "Initial state vector",
+      "sysd": "Discrete-time system model",
+      "N": "Prediction horizon",
+      "R": "Reference vector",
+      "Umax": "Maximum control input constraint",
+      "m": "Mass (kg)",
+      "k": "Spring constant (N/m)",
+      "b": "Damping coefficient (Ns/m)",
+      "A": "System matrix [0 1; -k/m -b/m]"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "MPC implementation for microcontrollers using a Kalman-Bucy filter and integral action added to the reference vector R prior to QP optimization. Models a second-order mass-spring-damper system (m*ddx + b*dx + k*x = F) converted to first-order state-space.",
+    "source_url": "https://github.com/DanielMartensson/MataveControl",
+    "license": "MIT License"
+  },
+  {
+    "chunk_id": "aec9ebe9-c74b-4752-95fc-d0390136baa6",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "API_EXHAUSTED",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Failed to get API response"
+    ],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://github.com/DanielMartensson/MataveControl",
+    "license": "MIT License",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "e66f9d20-2e68-440f-9b2e-f17c85a577e2",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "API_EXHAUSTED",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Failed to get API response"
+    ],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://github.com/DanielMartensson/MataveControl",
+    "license": "MIT License",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "805a8f6a-5aa5-42b6-9104-c74b7f95eb52",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "API_EXHAUSTED",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Failed to get API response"
+    ],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://github.com/DanielMartensson/MataveControl",
+    "license": "MIT License",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "33b57256-656e-4025-bff1-76f678d3efe0",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "JSON and Binary-JSON (BJData) encoding/decoding via JSONLab",
+    "steps": [
+      "Encode MATLAB data structures into JSON or binary BJData formats",
+      "Decode JSON/BJData files into MATLAB variables",
+      "Use jdict for creating portable hierarchical data containers",
+      "Apply Base64 or Blosc2 encoding for binary data compression and transmission"
+    ],
+    "params": {
+      "jdict": "Portable hierarchical data container/dictionary structure",
+      "bjdata": "Binary JSON format optimized for scientific data",
+      "base64": "Encoding scheme for representing binary data in ASCII string format",
+      "blosc2": "High-performance compressor for binary data within JSON structures",
+      "encodevarname/decodevarname": "Functions to ensure MATLAB variable name compatibility with JSON keys"
+    },
+    "ui_paths": [],
+    "errors": [
+      "Parsing mixed-type scalars arrays in bjdata - Fixed in May 2026 update",
+      "Base64 newline issues when using zmat - Fixed in Dec 2025 update"
+    ],
+    "fixes": [],
+    "theory": "JSONLab is a toolbox for converting MATLAB data structures (structs, arrays, cells) into JSON and binary-JSON formats. It enables cross-platform data exchange, supports hierarchical data via jdict, and provides utilities for variable name sanitization and data compression to handle large-scale engineering datasets.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license"
+  },
+  {
+    "chunk_id": "ff54e868-430a-4c4c-8725-02290d6284d5",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "API_EXHAUSTED",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Failed to get API response"
+    ],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "e897220a-1a1f-4dc3-bf9a-ae03f68158ee",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "API_EXHAUSTED",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Failed to get API response"
+    ],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "c378de74-22ff-4ae8-987c-e394b3767c99",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "JSONLab toolbox for JSON/Binary-JSON encoding and decoding",
+    "steps": [
+      "Install JSONLab via OS package manager (Fedora, Debian, Ubuntu, Arch) or manual download",
+      "Use savejson/loadjson for standard JSON text conversion",
+      "Use savebj/loadbj for Binary JData (BJData) processing",
+      "Use jdataencode/jdatadecode to transform MATLAB structures into JData-compliant formats",
+      "Utilize jsave/jload for portable workspace sharing",
+      "Apply {zlib,gzip,base64,lzma,lz4,zstd}encode/decode for in-memory data compression"
+    ],
+    "params": {
+      "savejson.m": "Encodes MATLAB data structures into JSON text",
+      "loadjson.m": "Parses JSON files or strings into MATLAB structures",
+      "savebj.m": "Encodes MATLAB variables into binary BJData format",
+      "jsave.m/jload.m": "Saves/loads entire workspace variables to/from JSON/BJData",
+      "jdataencode.m": "Pre-processes MATLAB data into JData specification format",
+      "varargin2struct.m": "Converts function input arguments to a structure"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [
+      "Optimized parsers updated for compatibility with MATLAB R2010 and Octave 5.2"
+    ],
+    "theory": "Official reference library for JData (V1 Draft-3) and BJData (V1 Draft-2) specifications. Provides portable, robust encoding/decoding of MATLAB structures. Supports JSON-Mmap and multiple compression algorithms including zlib, lz4, and zstd for high-density data storage.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license"
+  },
+  {
+    "chunk_id": "64ac397e-24d7-41f0-b21b-2c6a00ec7ddd",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "JSONLab v2.9.8 JSON/BJData processing and neuroimaging data handling",
+    "steps": [
+      "Use savejson/loadjson with BuiltinJSON option for native MATLAB encoding/decoding",
+      "Employ jsonget/jsonset for memory-mapped reading and writing of JSON/binary files",
+      "Query data structures using jsonpath with deep-scan operators",
+      "Load .nii, .h5, .snirf, .tsv, and .csv files directly via loadjd.m",
+      "Utilize jsoncache and jdlink for on-demand download of dynamic datasets"
+    ],
+    "params": {
+      "BuiltinJSON": "Option to utilize native MATLAB/Octave jsonencode/jsondecode",
+      "BJData V1 Draft 2": "Updated specification setting Little-Endian as default byte order",
+      "Blosc2": "High-performance meta-compressor for large N-D array storage",
+      "containers.Map": "Data type used automatically when keys exceed 63 characters"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [
+      "Added octavezmat as a fallback for zlib/gzip compression in Octave when ZMat is absent"
+    ],
+    "theory": "JSONLab is the official reference library for JData and BJData specifications. It facilitates language-independent data annotation and high-performance serialization, supporting memory-mapping, JSONPath queries, and multi-format parsing for scalable neuroimaging data management.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license"
+  },
+  {
+    "chunk_id": "de438c8e-ad40-4974-85e5-80df6afea4cd",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "JSONLab data serialization and JSONPath syntax",
+    "steps": [
+      "Use savejd/loadjd for JSON/BJData I/O.",
+      "Access deep struct levels using jsonpath with '..' operator.",
+      "Manage remote data caching with jdlink and jsoncache.",
+      "Use jsonset/jsonget for key-value manipulation."
+    ],
+    "params": {
+      "NO_ZMAT": "Flag to disable ZMat compression.",
+      "maxlinklevel": "Limit for recursive data link resolution.",
+      "automap": "Auto-switch to map objects for keys > 63 characters.",
+      "jsonpath": "Query syntax supporting deep scans and dot escaping."
+    },
+    "ui_paths": [],
+    "errors": [
+      "error_pos - triggered by non-existent input files."
+    ],
+    "fixes": [],
+    "theory": "JSONLab facilitates JSON/BJData/HDF5 serialization in MATLAB/Octave. It supports BJData Draft-2, JSONPath for deep-level structure queries, and automated dictionary/Map conversion for compatibility with long struct field names.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license"
+  },
+  {
+    "chunk_id": "e9d2ca43-cf85-4d0e-85c5-149bb4446185",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "JSONLab data serialization and compression",
+    "steps": [
+      "Install Octave via conda on macOS to prevent installation hangs",
+      "Use {:} to expand varargin for function arguments",
+      "Save JSON with UTF-8 encoding to ensure character compatibility",
+      "Use zstdencode/zstddecode for Zstandard compression via ZMat",
+      "Link binary jdata files directly inside JSON objects"
+    ],
+    "params": {
+      "NO_ZMAT": "Flag to disable ZMat compression library and use fallbacks",
+      "EmptyArrayAsNull": "Option to toggle encoding of empty arrays as null",
+      "blosc2": "Codec support for high-performance data compression",
+      "pmat": "Portable MAT file format (renamed from jamm)"
+    },
+    "ui_paths": [],
+    "errors": [
+      "Octave 6.4+ regexp non-utf8 error - Replace regexp with ismember",
+      "containers.Map indentation bug - Fixed for single-element maps",
+      "fread issue - Resolved via NO_ZMAT flag logic"
+    ],
+    "fixes": [
+      "Speed up string encoding and decoding routines",
+      "Fix loadjd and savejd file extension matching for jbids",
+      "Implement fallback zlib/glib support on Octave using file-based zip/unzip"
+    ],
+    "theory": "JSONLab facilitates cross-platform data exchange between MATLAB/Octave and JSON/JData formats. It supports advanced compression (Zstd, Blosc2), portable data hashing (jdatahash), and specific handling for containers.Map, numeric cells, and UTF-8 encoding.",
+    "source_url": "https://github.com/NeuroJSON/jsonlab",
+    "license": "BSD 3-Clause / GPLv3 dual license"
+  }
+]

@@ -1,0 +1,157 @@
+Using the Compound Creator Utility - DWSIM - Open Source Chemical Process Simulator
+Using the Compound Creator Utility
+From DWSIM - Open Source Chemical Process Simulator
+Jump to navigation
+Jump to search
+Contents
+1
+Introduction
+2
+Data Input
+2.1
+Constant Properties
+2.2
+Temperature-dependent Properties
+2.3
+Importing Data from Online Sources
+3
+Creating the Compound
+4
+Adding the Compound to a Simulation
+4.1
+Loading Compounds from XML Databases
+4.2
+Loading Compounds from JSON files
+5
+Remarks
+Introduction
+The new
+Compound Creator Utility
+is an all-in-one replacement for the User Compound and Hypothetical Creator utilities in DWSIM. It enables usage of experimental data as well as UNIFAC structure information to calculate and/or estimate all constant and temperature-dependent properties for a compound that isn't available on any of the default databases (DWSIM and ChemSep).
+To open the utility, you can use the corresponding button on the Welcome screen or go to
+File
+>
+New
+>
+Compound Creator Study
+.
+Data Input
+Constant Properties
+Select the type of the compound (Standard, Black-Oil or Electrolyte) and enter an unique ID for the compound. It can be any integer number (a random 5-digit integer is ok). Enter a name for the compound.
+If the fluid is of standard type, a lot of data is required to define the compound. DWSIM makes it easier to calculate most properties if you enter some UNIFAC structure information. With UNIFAC structure info, DWSIM will calculate all properties that have its adjacent checkbox checked. Nothing stops you from entering your own value on these textboxes, but if the checkbox is checked and you change the UNIFAC structure info, DWSIM will update the value with its own calculation.
+Property textboxes that have a blue background are not essential, but are required if you're planning to use your compound in a simulation with PC-SAFT, Chao-Seader and/or Grayson-Streed models, for example.
+Temperature-dependent Properties
+By default, temperature-dependent properties will be calculated by internal DWSIM routines, but if you have some tabulated data available, you can use it to make DWSIM generate coefficients and use them instead.
+For instance, let's say that you have some liquid density data available. You can input it on the
+Liquid Density
+table (just make sure that the current units are the same as yours) and click on "Regress". DWSIM will let you know if anything went wrong during the regression on the textbox below the buttons.
+To view the regressed data, click on "View Regression". You should see your points and a line representing the fitted equation that will be used by DWSIM on your simulations.
+Importing Data from Online Sources
+You can import compound data from some online sources like the
+Korean KDB Thermo Database
+, the
+Cheméo Database
+and UNIFAC/MODFAC Structure Data from the
+Dortmund Data Bank Online Interface
+. Go to
+Compound
+>
+Import Data from Online Sources
+and explore the available options.
+After you finish importing data from the online sources, any data previously input on the textboxes will be overriden for the properties you've selected.
+Creating the Compound
+If everything is ok, you can save your compound data to a XML database file. Go to
+Compound
+>
+Export Data to XML Database
+. The XML database has the advantage of handling multiple compounds in a single file.
+You can also export your compound to a single JSON file. The JSON file format is very easy to edit if you need to:
+You can also save your compound creator data to a file if you think you'll need to change it later, or use it as a starting point for another compound (
+File
+>
+Save As
+):
+Adding the Compound to a Simulation
+Loading Compounds from XML Databases
+To load your compound into a simulation, go to
+Settings
+>
+General Settings
+>
+User-Defined Datasets
+and click on
+Add User Dataset
+. Select your XML database file and click Open. Create a new simulation and check if your compound is on the list (it should be the last one):
+Loading Compounds from JSON files
+You can load a compound from a JSON file directly through the Compounds section in the Simulation Configuration Wizard and in the Simulation Settings Panel.
+Remarks
+When you add your compound to the simulation, you can use the
+Pure Compound Property Utility
+to edit the data, but those changes will be made only for the current simulation. If you need to make perpertual changes, you'll have to use the Compound Creator Utility to save your compound, or edit the XML or the JSON file directly and reload it.
+If you input tabulated liquid density data to create an experimental curve, remember to activate the "Use Experimental Liquid Density Data" option on the Property Package configuration window, otherwise DWSIM will use the Rackett correlation for liquid density estimations.
+Retrieved from "
+https://dwsim.org/wiki/index.php?title=Using_the_Compound_Creator_Utility&oldid=191
+"
+Comments
+Please enable JavaScript to view the
+comments powered by Disqus.
+Navigation menu
+Personal tools
+Log in
+Namespaces
+Page
+Discussion
+Variants
+Views
+Read
+View source
+View history
+More
+Search
+Main Page
+Patrons
+Literature
+Award
+Tutorials
+Features
+Features
+CAPE-OPEN
+Excel Add-In
+Automation
+Aqueous Electrolytes
+Property Package
+Extensions (Plugins)
+OPC UA Client
+Capital Cost Estimator
+Neural Network Unit Operation
+Pipe Network Unit Operation
+ThermoC Bridge Library
+Standalone Thermo
+Standalone Thermo Library
+Support
+Support
+Licensing
+API Help
+Forums
+Report a bug
+Mobile Apps
+DWSIM for iPhone/iPad
+DWSIM for Android
+Categories
+Source Code
+Project Summary
+Source Code
+Mailing Lists
+DWSIM Users
+DWSIM Developers
+Tools
+What links here
+Related changes
+Special pages
+Printable version
+Permanent link
+Page information
+This page was last edited on 27 June 2019, at 21:21.
+Privacy policy
+About DWSIM - Open Source Chemical Process Simulator
+Disclaimers
