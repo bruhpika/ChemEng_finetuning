@@ -42,7 +42,7 @@ REQUIRED_KEYS = {
     "steps", "params", "ui_paths", "errors", "fixes",
     "theory", "source_url", "license"
 }
-MAX_CHUNKS_PER_RUN = 50  # Lowered to preserve tokens for the test run
+MAX_CHUNKS_PER_RUN = 2000  # Increased to finish the full extraction
 
 # ── TOOLS ───────────────────────────────────────────────
 
@@ -87,9 +87,27 @@ def html_extractor(url: str) -> str:
     soup = BeautifulSoup(html_content, "html.parser")
     for tag in soup(["script", "style", "nav", "footer", "header", "aside", "form"]):
         tag.decompose()
+
+    # GitHub-specific cleaner: Only grab the README markdown body if it exists
+    if "github.com" in url:
+        markdown_body = soup.find(class_="markdown-body")
+        if markdown_body:
+            soup = markdown_body
+
     text = soup.get_text(separator="\n", strip=True)
     text = re.sub(r'\n\s*\n', '\n\n', text)
-    if not text:
+    
+    # Filter out common GitHub/UI garbage lines
+    clean_lines = []
+    garbage_phrases = ["Uh oh!", "There was an error while loading", "Please reload this page", "Fork", "Star", "Watch", "Releases", "Packages"]
+    for line in text.split('\n'):
+        if len(line.strip()) < 30 and any(g in line for g in garbage_phrases):
+            continue
+        clean_lines.append(line)
+        
+    text = '\n'.join(clean_lines)
+
+    if not text.strip():
         raise ValueError("HTML extraction returned empty text")
     return text
 

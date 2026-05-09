@@ -1,2 +1,10 @@
 gemini_api_key.txt
 blackbord.md
+
+# Extractor Cache
+track_a_json_extraction/data/track_a/cache/
+
+# Backup and logs
+*.bak
+*.log
+__pycache__/

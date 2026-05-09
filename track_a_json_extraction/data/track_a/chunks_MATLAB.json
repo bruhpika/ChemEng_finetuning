@@ -457,5 +457,1199 @@
     "theory": "JSONLab facilitates cross-platform data exchange between MATLAB/Octave and JSON/JData formats. It supports advanced compression (Zstd, Blosc2), portable data hashing (jdatahash), and specific handling for containers.Map, numeric cells, and UTF-8 encoding.",
     "source_url": "https://github.com/NeuroJSON/jsonlab",
     "license": "BSD 3-Clause / GPLv3 dual license"
+  },
+  {
+    "chunk_id": "e08109ee-e1eb-42b9-95b1-eda8c6e44042",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Open Optimal Control Library (OpenOCL) for Trajectory Optimization and MPC",
+    "steps": [
+      "Download toolbox from openocl.github.io",
+      "Execute 'doc ocl' for API documentation",
+      "Run 'ocl.examples.cartpole' to execute cartpole example",
+      "Run 'open ocl.examples.cartpole' to inspect example source code"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "OpenOCL is a toolbox for Trajectory Optimization and non-linear Model Predictive Control (MPC) leveraging numerical optimization and control theory to solve optimal control problems.",
+    "source_url": "https://github.com/OpenOCL/OpenOCL",
+    "license": "BSD-3-Clause"
+  },
+  {
+    "chunk_id": "1f8aa58c-431c-47cf-8dfc-748e9383a9e8",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "OpenOCL GitHub Repository Metadata",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "OpenOCL (Open Optimal Control Library) v7.04 is a software package implemented primarily in MATLAB (99.1%) for numerical optimization and optimal control.",
+    "source_url": "https://github.com/OpenOCL/OpenOCL",
+    "license": "BSD 3-Clause"
+  },
+  {
+    "chunk_id": "b92b97a4-7777-4d68-a463-56aafbb42270",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Numerical Methods in Chemical Engineering Analysis",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Numerical solution of linear/nonlinear algebraic systems, ODE IVPs and BVPs, PDEs, and optimization problems using literate programming for chemical engineering applications.",
+    "source_url": "https://github.com/PSORLab/Chemical_Engineering_Analysis_Notebooks",
+    "license": "MIT License"
+  },
+  {
+    "chunk_id": "80667329-f500-43b5-a57f-fd5b5e57e8fe",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "GitHub Repository Metadata",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Error while loading - Reload the page"
+    ],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://github.com/PSORLab/Chemical_Engineering_Analysis_Notebooks",
+    "license": "MIT License",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "3bc1bd60-9e2b-4011-a5ce-01d050776d9d",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Chemical Reaction Engineering (CRE) Simulation and Design",
+    "steps": [
+      "Add 'kinetics' folder to MATLAB search path using addpath()",
+      "Select subfolder based on problem type (e.g., simulation, design, regressions)",
+      "Run scripts to solve specific reactor or kinetic problems"
+    ],
+    "params": {
+      "kinetics": "Classes for kinetic mechanisms, thermodynamics, and transport properties",
+      "simulation": "Codes for tubular and transient perfectly stirred reactors",
+      "regressions": "Kinetic parameter evaluation in batch reactors",
+      "design": "Isothermal ideal reactor sizing",
+      "reactive_distillation": "Semi-batch reactor coupled with reactive distillation"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Numerical modeling of CRE problems including kinetic mechanisms, isothermal reactor design, transient CSTR and tubular reactor simulations, and parameter estimation via regression.",
+    "source_url": "https://github.com/acuoci/Matlab4CRE",
+    "license": "GPL-3.0"
+  },
+  {
+    "chunk_id": "be2458ed-34a7-49e6-90ba-40c1caf65d25",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "GitHub Repository Metadata",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://github.com/acuoci/Matlab4CRE",
+    "license": "GPL-3.0",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "b381fc4d-89ce-4623-baf4-65a7b8b4ed5e",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Numerical methods for chemical engineering problems",
+    "steps": [
+      "Solve steady-state PFR and 2D tubular reactor models",
+      "Model heat transfer in furnace walls and fins",
+      "Implement Model Predictive Control (MPC) for tank reactors",
+      "Apply orthogonal collocation and discretization to differential-algebraic equations (DAEs)",
+      "Perform parameter estimation for kinetic models",
+      "Solve stiff systems like Robertson kinetics"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Numerical solution of ODEs, PDEs, and DAEs using discretization and orthogonal collocation; application of optimization for parameter estimation and MPC in process control.",
+    "source_url": "https://github.com/asanet/chemeng-solved",
+    "license": "MIT License"
+  },
+  {
+    "chunk_id": "d4275fc0-c89e-486a-91a4-1df8ada977bb",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "CVX Installation and Solver Integration",
+    "steps": [
+      "Download cvx.zip or cvx.tgz from the GitHub Releases page.",
+      "Unpack the archive into a MATLAB-accessible directory.",
+      "Execute cvx_setup.m in the MATLAB command window to configure solvers and MEX files.",
+      "Use cvx_startup.m to initialize the environment for new sessions."
+    ],
+    "params": {
+      "cvx_setup.m": "Script to automate solver detection and system configuration.",
+      "cvx_startup.m": "Initializes CVX paths and environment variables.",
+      "SeDuMi": "Built-in solver for symmetric cone optimization.",
+      "SDPT3": "Built-in solver for semidefinite-quadratic-linear programming.",
+      "Shims": "Interface layers for external solvers Gurobi, Mosek, and GLPK."
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "CVX implements disciplined convex programming (DCP) to transform high-level convex optimization models into standard forms required by numerical solvers.",
+    "source_url": "https://github.com/cvxr/CVX",
+    "license": "GPL"
+  },
+  {
+    "chunk_id": "33c8cef2-ccff-4cd3-8655-fbf6eadb2eaa",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "CVX Support and Debugging Workflow",
+    "steps": [
+      "Consult User Guide and example library in examples/ subdirectory",
+      "Review CVX Forum FAQ for model acceptance and convexity issues",
+      "Verify model adheres to Disciplined Convex Programming (DCP) framework",
+      "Address numerical scaling or solver-specific limitations",
+      "Submit bug report to issue tracker only after excluding formulation or scaling errors"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Non-convex model - Verify convexity via FAQ and DCP rules",
+      "DCP violation - Ensure model strictness conforms to framework",
+      "Numerical scaling - Adjust model units or solver parameters"
+    ],
+    "fixes": [],
+    "theory": "CVX implements Disciplined Convex Programming (DCP), requiring users to follow specific ruleset to guarantee problem convexity. Most user errors originate from non-convexity, DCP non-compliance, or poor numerical scaling.",
+    "source_url": "https://github.com/cvxr/CVX",
+    "license": "GPLv3"
+  },
+  {
+    "chunk_id": "eab9f93b-8213-4879-ae0c-820f2e4ed975",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "CVX support, citation, and licensing",
+    "steps": [
+      "Consult CVX Forum before filing issues",
+      "Report bugs via GitHub issue tracker",
+      "Cite CVX in research using provided BiBTeX code"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Unresponsive support emails - Direct queries to CVX Forum",
+      "Closed issues - Non-bug reports are closed without response"
+    ],
+    "fixes": [],
+    "theory": "CVX is a modeling system for disciplined convex programming (DCP) that enables solving convex optimization problems within MATLAB.",
+    "source_url": "https://github.com/cvxr/CVX",
+    "license": "GPLv3 (Standard), Public Domain (Examples)"
+  },
+  {
+    "chunk_id": "926f2bc8-fabd-4399-8bf2-67d516a43c4f",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "NeqSim-Matlab Interface and Integration",
+    "steps": [
+      "Clone the neqsim-matlab repository",
+      "Run 'pathNeqSim.m' to add NeqSim Java libraries to the MATLAB classpath",
+      "Access NeqSim Java APIs directly within the MATLAB environment"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "NeqSim is a Java-based library for thermodynamic and process simulation. It integrates with MATLAB via a native Java bridge (JVM/JIT), enabling direct access to unit operations and phase behavior solvers without wrappers. Applications include CO2 transport, electrolyte systems, hydrogen projects, and flow assurance.",
+    "source_url": "https://github.com/equinor/neqsim-matlab",
+    "license": "Apache-2.0"
+  },
+  {
+    "chunk_id": "bcc65cff-8f47-414a-99b0-dd52bae1628a",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "NeqSim Java API Integration and Thermodynamic Calculations",
+    "steps": [
+      "Build NeqSim JAR using 'mvn -DskipTests package' or locate prebuilt JARs.",
+      "Clone neqsimmatlab repo using 'git clone https://github.com/equinor/neqsimmatlab.git'.",
+      "Add JAR directory to MATLAB classpath using 'javaaddpath' in a loop or 'javaclasspath.txt'.",
+      "Import NeqSim packages: 'import neqsim.thermo.system.*' and 'import neqsim.thermodynamicOperations.*'.",
+      "Define system (e.g., SystemSrkEos), add components, set mixing rules, and execute flash (e.g., TPflash)."
+    ],
+    "params": {
+      "SystemSrkEos(T, P)": "Constructor for Soave-Redlich-Kwong EOS; T in K, P in bar.",
+      "addComponent(name, n)": "Adds chemical component with specified mole fraction.",
+      "setMixingRule(type)": "Defines thermodynamic mixing rule (e.g., 'classic').",
+      "init(0)": "Initializes thermodynamic system properties.",
+      "TPflash()": "Executes Temperature-Pressure flash calculation."
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "NeqSim is a Java-based production-grade toolbox for CO2 transport, electrolytes, and flow assurance. It interfaces with MATLAB via the JVM, allowing direct calls to Java APIs for flash calculations and unit operations.",
+    "source_url": "https://github.com/equinor/neqsim-matlab",
+    "license": "Apache-2.0"
+  },
+  {
+    "chunk_id": "e2eed79d-2a38-4fb0-95c6-b3514b79ea3a",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "NeqSim Thermodynamic Flash Calculations",
+    "steps": [
+      "Import neqsim.thermo.system and neqsim.thermodynamicOperations packages.",
+      "Instantiate EOS system (e.g., SystemSrkEos) with temperature (K) and pressure (bar).",
+      "Add components and mole fractions using sys.addComponent.",
+      "Set mixing rules and initialize system with sys.init(0).",
+      "Execute flash calculation using ThermodynamicOperations(sys).TPflash().",
+      "Retrieve phase properties using getPhase(i) methods."
+    ],
+    "params": {
+      "SystemSrkEos(T, P)": "Initializes Soave-Redlich-Kwong EOS at T (K) and P (bar).",
+      "addComponent(name, fraction)": "Adds component with specified mole fraction.",
+      "setMixingRule('classic')": "Applies classic mixing rules to the EOS.",
+      "TPflash()": "Calculates phase equilibrium at constant T and P.",
+      "getZ()": "Returns compressibility factor.",
+      "getDensity('unit')": "Returns phase density in specified units.",
+      "getBeta(i)": "Returns molar fraction of phase i."
+    },
+    "ui_paths": [],
+    "errors": [
+      "JVM Mismatch - Rebuild NeqSim if MATLAB's bundled JVM version differs from build version.",
+      "Missing JARs - Ensure all NeqSim dependencies are added to the MATLAB classpath."
+    ],
+    "fixes": [],
+    "theory": "NeqSim is a Java-based thermodynamic library allowing MATLAB to execute complex EOS calculations, flash operations, and property estimations (density, Z-factor) through the MATLAB-Java interface.",
+    "source_url": "https://github.com/equinor/neqsim-matlab",
+    "license": "Apache-2.0"
+  },
+  {
+    "chunk_id": "99c1720e-94f8-45bc-9b2c-a25fee5ecaaf",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "NeqSim library for fluid behavior and thermodynamics",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "NeqSim is a thermodynamic library for calculating fluid behavior, phase equilibrium, and process simulation in oil and gas production applications.",
+    "source_url": "https://github.com/equinor/neqsim-matlab",
+    "license": "Apache-2.0"
+  },
+  {
+    "chunk_id": "82c35f99-1caf-4487-ab22-396eb736b688",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Graph and Network Analysis Toolbox",
+    "steps": [
+      "Add toolbox folder to MATLAB search path",
+      "Define graph using adjacency matrix (adj), adjacency list (adjL), or edge list (edgeL)",
+      "Convert between graph representations using conversion functions (e.g., adj2edgeL)",
+      "Calculate network metrics like average degree, clustering coefficients, or centrality",
+      "Generate synthetic networks using models like Price or Forest Fire",
+      "Visualize graph structures using drawCircGraph or dotMatrixPlot"
+    ],
+    "params": {
+      "adj": "Square adjacency matrix where A(i,j) represents edge between nodes i and j",
+      "adjL": "Adjacency list representation of graph connectivity",
+      "edgeL": "Edge list (typically mx3 matrix for m edges: [node1, node2, weight])",
+      "inc": "Incidence matrix representation"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "A library for graph theory and network topology analysis. Includes algorithms for pathfinding (Dijkstra, BFS), connectivity (Fiedler vector, algebraic connectivity), centrality (eigen, closeness, betweenness), and structural properties (diameter, clustering coefficient, spectrum). Supports generative models for network growth and various matrix-based graph data structures.",
+    "source_url": "https://github.com/ivanbrugere/matlab-networks-toolbox",
+    "license": "BSD 3-Clause"
+  },
+  {
+    "chunk_id": "ac543062-7ac6-4587-8476-bddb00dbdf39",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Graph and Network Analysis Toolbox",
+    "steps": [
+      "Add the toolbox folder to the MATLAB/Octave path",
+      "Call functions directly from the command prompt"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Toolbox for network theory metrics including degree sequences, graph spectrum, adjacency/Laplacian matrices, connectivity tests, centrality (node betweenness), community detection (Louvain, Newman), and spanning trees.",
+    "source_url": "https://github.com/ivanbrugere/matlab-networks-toolbox",
+    "license": "BSD 3-Clause"
+  },
+  {
+    "chunk_id": "49c7a744-02dd-45dd-86a2-fce7bd8f84bf",
+    "source_type": "track_a",
+    "software": "MATLAB/Octave",
+    "topic": "Networks Toolbox installation and function categories",
+    "steps": [
+      "Add toolbox folder to path",
+      "Call functions directly from the prompt: e.g., numNodes(adj_matrix)"
+    ],
+    "params": {
+      "adj_matrix": "Square matrix representing graph connectivity"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Toolbox for network analysis covering 11 categories: basic routines, diagnostics, centralities, distances, motifs, linear algebra, modularity, graph models, and visualization.",
+    "source_url": "https://github.com/ivanbrugere/matlab-networks-toolbox",
+    "license": "BSD 3-Clause"
+  },
+  {
+    "chunk_id": "c398fdf5-fc3b-4afc-91ca-74ae74f58fad",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Graph and network analysis toolbox",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "A collection of functions for graph and network analysis, originally developed for Octave and modified for MATLAB compatibility.",
+    "source_url": "https://github.com/ivanbrugere/matlab-networks-toolbox",
+    "license": "BSD-3-Clause"
+  },
+  {
+    "chunk_id": "09dd8afb-3baf-4fba-9d68-57fcdd03f6c9",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Chemical Engineering Computational Curriculum Resources",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Computational chemical engineering education focuses on applying numerical methods (MATLAB/Python) to Material and Energy Balances, ODEs, linear algebra, PDEs, statistics, and data visualization for process modeling.",
+    "source_url": "https://github.com/kevingreenman/awesome-chemical-engineering-education",
+    "license": "CC0 1.0 Universal"
+  },
+  {
+    "chunk_id": "f2caac85-accf-4203-964f-c2f7402ccd2c",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Chemical Engineering Computational Curriculum",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Core computational pillars in chemical engineering include numerical methods for ODEs, PDEs, and linear algebra. Technical domains requiring modeling include chemical kinetics, reactor design, process dynamics, feedback control, and advanced thermodynamics. Statistical analysis and machine learning are integrated with laboratory measurement and unit operations for data-driven modeling.",
+    "source_url": "https://github.com/kevingreenman/awesome-chemical-engineering-education",
+    "license": "CC0 1.0 Universal"
+  },
+  {
+    "chunk_id": "86eae15a-2d30-4319-ad86-9264a01d9633",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Chemical Engineering Educational Resource Index",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Curriculum directory covering laboratory measurement, process safety (SAChE), molecular simulation, process operations, and computational chemistry. Key digital resources for simulations and computational problem solving include LearnChemE, CACHE (Computer Aids for Chemical Engineering), and AIChE Academy.",
+    "source_url": "https://github.com/kevingreenman/awesome-chemical-engineering-education",
+    "license": "CC0 1.0 Universal"
+  },
+  {
+    "chunk_id": "2e3da290-023a-440c-8a03-fc183909ad5e",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Chemical Engineering Educational Resources and Numerical Methods",
+    "steps": [
+      "Utilize ChemEng Solved for MATLAB-based problem sets",
+      "Reference MATLAB Start to Finish for undergraduate thermodynamics modeling",
+      "Apply Open ChemE numerical functions for root finding, ODE solving, and optimization",
+      "Simulate process control models using transfer functions or state space representations",
+      "Access LearnChemE for simulations and modular virtual labs"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Computational chemical engineering leverages numerical techniques like ODE integration, root finding, and optimization for thermodynamics, reaction kinetics, and process control. Modeling involves transfer functions, state-space representations, and equations of state for unit operation design.",
+    "source_url": "https://github.com/kevingreenman/awesome-chemical-engineering-education",
+    "license": "CC0 1.0 Universal"
+  },
+  {
+    "chunk_id": "9a78d534-a217-4bf4-9f79-8373632ad543",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Computational Methods in Chemical Engineering",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Numerical techniques for chemical engineering including root finding, solving ordinary differential equations (ODEs), and optimization algorithms.",
+    "source_url": "https://github.com/kevingreenman/awesome-chemical-engineering-education",
+    "license": "CC0 1.0 Universal"
+  },
+  {
+    "chunk_id": "753d6b39-2126-4ec4-b81d-614fbf0ca470",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Process simulation and thermodynamics modeling",
+    "steps": [
+      "Select thermodynamics model (IFC-97 Steam, NRTL, Wilson, PR, or SRK EOS)",
+      "Define unit operations (Distillation, Flash, PipeSegment, Compressors, Expanders)",
+      "Set operation specifications (Recoveries, degree of subcooling, efficiencies)",
+      "Input performance curves for rotating equipment",
+      "Solve flowsheet for convergence"
+    ],
+    "params": {
+      "IFC-97": "High-accuracy steam/water property model",
+      "NRTL/Wilson": "Activity coefficient models for liquid phase non-ideality",
+      "PR/SRK EOS": "Equations of State for gas/oil thermodynamic calculations",
+      "Recovery/Subcooling": "Column specification parameters",
+      "Efficiency/Performance curves": "Input parameters for compressor and expander modeling"
+    },
+    "ui_paths": [],
+    "errors": [
+      "Flash unitops failing on one-phase results - fixed in latest version"
+    ],
+    "fixes": [
+      "Ensure phase results are correctly handled in Flash units for single-phase convergence"
+    ],
+    "theory": "Rigorous thermodynamic simulation utilizing Equations of State (PR/SRK) and Activity Coefficient models (NRTL/Wilson). Supports IFC-97 steam tables and multi-stage distillation with varied specifications (recovery, subcooling). Provides modeling for ASU, natural gas separation, and refrigeration loops.",
+    "source_url": "https://github.com/kpatvt/sim21",
+    "license": "MIT License"
+  },
+  {
+    "chunk_id": "79c05e6e-8f50-4ac7-8d14-4de7d4338aaa",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Chemical Process Simulation and Thermodynamics",
+    "steps": [
+      "Select thermodynamic model (Peng-Robinson, SRK, or IFC-97 Steam)",
+      "Load components from 400+ ChemSep database",
+      "Configure unit operations (Towers, Compressors, Heat Exchangers)",
+      "Execute two-phase flashes using inside-out method"
+    ],
+    "params": {
+      "IFC-97": "High accuracy steam model based on IAPWS97",
+      "PR/SRK": "Cubic Equation of State providers for vapor-liquid equilibrium",
+      "Pumparounds": "Tower model feature for heat removal/recycle",
+      "Performance curves": "Inputs for compressor/expander efficiency modeling"
+    },
+    "ui_paths": [],
+    "errors": [
+      "PH-solver failure - inadequate convergence in certain ranges",
+      "Critical properties - missing support for phase envelope generation"
+    ],
+    "fixes": [
+      "Implement Newton-based solver to improve flash calculation speed"
+    ],
+    "theory": "Rigorous process simulation focusing on refinery and chemical engineering applications. Utilizes inside-out flash algorithms and Cubic EOS for distillation (DeC1, DeC2, C3 splitter) and multi-sided heat exchangers (coldboxes).",
+    "source_url": "https://github.com/kpatvt/sim21",
+    "license": "MIT License"
+  },
+  {
+    "chunk_id": "8038f65c-72a9-472d-b0d1-cb8234086c61",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Boilerplate UI Text",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://github.com/kpatvt/sim21",
+    "license": "MIT License",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "7c44e79e-1c55-4fa0-b6d3-9de3b7cd00e8",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Exporting Figures to SVG",
+    "steps": [
+      "Use fig2svg to convert MATLAB figures to SVG format",
+      "Use svg_fix_viewbox to fix scaling issues in exported SVGs"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "SVG files do not scale/restricted to figure size - Use svg_fix_viewbox to fix",
+      "plot2svg deprecated - Use fig2svg instead"
+    ],
+    "fixes": [],
+    "theory": "fig2svg is a toolbox for converting MATLAB/Octave figures to Scalable Vector Graphics (SVG). It provides enhanced compatibility for MATLAB graphics > 2014a and supports bar/scatter plots, legends, colorbars, and 3D plots (azimuth).",
+    "source_url": "https://github.com/kupiqu/fig2svg",
+    "license": "BSD 2-Clause"
+  },
+  {
+    "chunk_id": "a75a938b-30af-4f0f-95b9-0f8c38dfd807",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Repository Metadata and Loading Errors",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Error while loading page - Reload the page"
+    ],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://github.com/kupiqu/fig2svg",
+    "license": "BSD 2-Clause",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "27b2a942-c518-40ba-8f00-e909f9bc921a",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "SOSTOOLS Sum of Squares (SOS) Optimization",
+    "steps": [
+      "Initialize problem using sosprogram",
+      "Define decision variables with sosdecvar and polynomial variables with sospolyvar",
+      "Add constraints using sosineq (inequality), soseq (equality), or sosmatrixineq",
+      "Set linear objective function via sossetobj",
+      "Execute solver using sossolve",
+      "Extract numerical solutions with sosgetsol"
+    ],
+    "params": {
+      "u_i": "Scalar decision variables",
+      "P_i(x)": "Multivariate polynomial constraints required to be sums of squares",
+      "A_ij(x)": "Fixed multivariate polynomials",
+      "c_i": "Objective function coefficients"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "SOS programs are convex optimization problems that minimize linear objectives subject to polynomial constraints being sums of squares. SOSTOOLS automates the conversion of these problems into Semidefinite Programs (SDP) compatible with solvers like SeDuMi, SDPT3, and Mosek. Applications include Lyapunov stability analysis and polynomial optimization.",
+    "source_url": "https://github.com/oxfordcontrol/SOSTOOLS",
+    "license": "Free"
+  },
+  {
+    "chunk_id": "1d164e35-3481-4f30-a77f-7058729f1bac",
+    "source_type": "track_a",
+    "software": "MATLAB / SOSTOOLS",
+    "topic": "Sum of Squares (SOS) Optimization",
+    "steps": [
+      "Install MATLAB v6.0 or later",
+      "Install MATLAB Symbolic Math Toolbox (v2.1.2+ for old SOSTOOLS, current for v3.00+)",
+      "Install an SDP solver (SeDuMi, SDPT3, CSDP, SDPNAL+, CDCS, SDPA, or Mosek)",
+      "Run SOSTOOLS using MATLAB sparse matrix representation"
+    ],
+    "params": {
+      "SDP solver": "Engine for solving semidefinite programs (e.g., SeDuMi, Mosek)",
+      "Symbolic Math Toolbox": "Required for polynomial symbolic manipulation",
+      "u_i": "Feasible set variables in convex optimization"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Convex optimization problem with linear objective functions and convex feasible sets. Uses Sum of Squares (SOS) relaxations to solve polynomial inequalities, Lyapunov function discovery, and semialgebraic set problems via semidefinite programming.",
+    "source_url": "https://github.com/oxfordcontrol/SOSTOOLS",
+    "license": "GPLv3"
+  },
+  {
+    "chunk_id": "f0bf0775-4798-4c34-a3ff-d465d4772618",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Sum of Squares (SOS) Optimization Toolbox",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "SOSTOOLS formulates and solves sum of squares (SOS) optimization programs by applying semidefinite programming (SDP) relaxations to semialgebraic problems and polynomial minimization.",
+    "source_url": "https://github.com/oxfordcontrol/SOSTOOLS",
+    "license": "GPLv3"
+  },
+  {
+    "chunk_id": "8a2f7ddb-fc65-46d5-8127-b721fe0b9943",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Tensor Toolbox for Multidimensional Data Analysis",
+    "steps": [
+      "Instantiate tensor objects from multiway arrays using tensor() or sptensor().",
+      "Convert between tensors and matrices using tenmat() or sptenmat().",
+      "Perform CP decomposition using alternating least squares (cp_als) or optimization (cp_opt).",
+      "Execute Tucker decomposition using higher-order singular value decomposition (hosvd).",
+      "Compute specialized products such as the Khatri-Rao product using khatrirao()."
+    ],
+    "params": {
+      "tensor": "Dense multiway array object.",
+      "sptensor": "Sparse multiway array object.",
+      "ktensor": "Kruskal-format tensor defined by factor matrices and weights (CP model).",
+      "ttensor": "Tucker-format tensor defined by a core tensor and factor matrices.",
+      "cp_als": "Function for CP decomposition via Alternating Least Squares.",
+      "cp_apr": "Function for CP decomposition via Alternating Poisson Regression.",
+      "hosvd": "Higher-Order Singular Value Decomposition algorithm.",
+      "tenmat": "Object representing a tensor unfolded into a matrix."
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The toolbox provides classes for multidimensional arrays (tensors) and algorithms for CP and Tucker decompositions, which are extensions of SVD/PCA to higher-order data used in signal processing and data mining.",
+    "source_url": "https://github.com/sandialabs/tensor_toolbox",
+    "license": "BSD 3-Clause"
+  },
+  {
+    "chunk_id": "eee12ced-036f-4800-8ae1-105bd74c1c37",
+    "source_type": "track_a",
+    "software": "MATLAB Tensor Toolbox v3.6",
+    "topic": "Tensor decomposition and operations",
+    "steps": [
+      "unfold/vec: Convert tensors to matrices/vectors",
+      "cp_orth_als: Execute Orthogonalized Alternating Least Squares",
+      "cp_arls_lev: Perform randomized ALS via leverage score sampling",
+      "ttm: Use pagemtimes for efficient tensor-matrix multiplication"
+    ],
+    "params": {
+      "lambda": "Scaling factors in ktensor tovec; must be 1 if not explicitly included",
+      "pagemtimes": "Default computational method in ttm.m for speed",
+      "fibers": "Extracts fiber-wise data from tensors or sptensors"
+    },
+    "ui_paths": [],
+    "errors": [
+      "gcp_opt: Error when using stratified sampling on dense tensors",
+      "tt_sample_zeros: Input argument count check failure",
+      "ktensor/tovec: Error if lambda not provided and values != 1"
+    ],
+    "fixes": [
+      "Update ttm to use pagemtimes for performance",
+      "Use cp_orth_als for principled tensor decomposition"
+    ],
+    "theory": "Low-rank tensor decomposition using Alternating Least Squares (ALS). Enhancements include orthogonalization for stability and leverage-based randomized sampling for efficiency in large-scale data.",
+    "source_url": "https://www.tensortoolbox.org",
+    "license": "BSD 2-Clause"
+  },
+  {
+    "chunk_id": "ea2ccce7-3f59-404f-a365-fe4047b2ba11",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Tensor Toolbox: CP Decomposition, Optimization, and Sparse Operations",
+    "steps": [
+      "Perform randomized CP decomposition using leverage score sampling: `cp_arls_lev`.",
+      "Remove empty hyperslices in sparse tensors: `sptensor/squash`.",
+      "Reconstruct partial or downsampled Tucker tensors: `ttensor/reconstruct`.",
+      "Compute symmetric CP decompositions via Subspace Power Method: `cp_ispm`.",
+      "Execute optimization-based CP decomposition using `cp_opt` with `fmincon` or `lbfgsb` wrappers.",
+      "Calculate function and gradient for ktensors: `ktensor/fg`."
+    ],
+    "params": {
+      "scale": "Option in cp_opt to scale factor matrices.",
+      "ttsv": "Tensor-times-same-vector operation for symktensor.",
+      "mttkrp": "Matricized tensor-times-Khatri-Rao product; optimized for sparse tensors."
+    },
+    "ui_paths": [],
+    "errors": [
+      "Negative Binomial loss bug in tt_gcp_fg_setup - Fixed in v3.4",
+      "ktensor/fg.m gradient off-by-2 bug - Fixed in v3.4"
+    ],
+    "fixes": [
+      "Integrated L-BFGS-B library into 'library/lbfgsb'.",
+      "Enhanced mttkrp speed by 2-3X for sparse tensors.",
+      "Updated tt_sample_zeros to use efficient ismembc."
+    ],
+    "theory": "Implements CP-ARLS-LEV for randomized least squares using leverage scores for efficient sampling. Supports Generalized Canonical Polyadic (GCP) decomposition with various loss functions. Symmetric CP decomposition is handled via the Subspace Power Method (SPM).",
+    "source_url": "https://github.com/sandialabs/tensor_toolbox",
+    "license": "BSD 2-Clause"
+  },
+  {
+    "chunk_id": "71cae9a7-e76e-4762-b56f-e96af45c32e0",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Tensor Toolbox optimization and decomposition",
+    "steps": [
+      "Use cp_opt for optimization-based CP decomposition",
+      "Apply cp_isym for implicit symmetric CP decomposition of higher-order moments",
+      "Execute tt_opt_adam or tt_opt_lbfgs for standardized optimization",
+      "Use scale with bsxfun for efficient tensor shifting",
+      "Invoke eig_geap for Shifted Power Method in generalized tensor eigenproblems"
+    ],
+    "params": {
+      "M": "ktensor with unit weights",
+      "X": "target tensor for objective function",
+      "cp_arls iterations": "Default iterations per epoch (set to 5)",
+      "viz weight": "Toggle between actual and relative weights in visualizations"
+    },
+    "ui_paths": [],
+    "errors": [
+      "0 * NaN = NaN - Fixed in cp_wopt by properly zeroing NaNs via weight tensor"
+    ],
+    "fixes": [
+      "sptensor/mttkrp performance optimization for >100k nonzeros",
+      "export_data formatting for sptensor and lambda values",
+      "ktensor support for vectorized construction"
+    ],
+    "theory": "Calculates F(M) = ||M-X||^2/||X||^2 for ktensors. Implements Implicit Symmetric CP Decomposition for symmetric ktensors and Shifted Power Method for tensor eigenproblems.",
+    "source_url": "https://github.com/sandialabs/tensor_toolbox",
+    "license": "BSD 2-Clause"
+  },
+  {
+    "chunk_id": "d819720f-5909-4a14-98d7-1bbca7826989",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Tensor Toolbox Optimization and Symmetric Decompositions",
+    "steps": [
+      "Use tt_opt wrappers (adam, fminunc, lbfgs, lbfgsb) for optimization",
+      "Call eig_geap for Shifted Power Method in generalized eigenproblems",
+      "Apply cp_sym or tucker_sym for symmetric tensor decomposition",
+      "Invoke cp_arls for randomized least squares CP fitting",
+      "Visualize ktensor factors using the viz function",
+      "Export ktensor objects via export_data.m"
+    ],
+    "params": {
+      "ktensor": "Kruskal tensor storage format",
+      "sptenmat": "Sparse tensor in matricized format",
+      "sumtensor": "Implicit sum of tensors without forming results",
+      "symtensor": "Class for symmetric tensors",
+      "symktensor": "Symmetric Kruskal tensor class"
+    },
+    "ui_paths": [],
+    "errors": [
+      "tucker_sym input type - requires tensor class, not symtensor",
+      "ktensor/score zero lambda - failed on dual zero inputs",
+      "sparse complex tensors - ttt and ttm operations failed"
+    ],
+    "fixes": [
+      "Corrected gcp_opt default lower bound",
+      "Optimized symktensor/normalize using bsxfun",
+      "Added input validation to sptenmat constructor",
+      "Fixed ktensor/full for complex values"
+    ],
+    "theory": "Generalized CP (GCP_OPT) utilizes optimization wrappers for non-Gaussian data. CP-ARLS employs alternating randomized least squares to reduce computational cost. Symmetric decompositions (CP_SYM, TUCKER_SYM) leverage tensor symmetry for reduced storage and complexity. Shifted Power Method (GEAP) addresses generalized tensor eigenvalue problems.",
+    "source_url": "https://github.com/sandialabs/tensor_toolbox",
+    "license": "BSD"
+  },
+  {
+    "chunk_id": "665f261f-4377-4bec-991d-b074afbe791d",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Tensor Toolbox Functions and Decompositions",
+    "steps": [
+      "Add toolbox root directory to MATLAB path for standard functionality.",
+      "Generate test problems using create_problem or create_problem_binary.",
+      "Initialize models with create_guess.",
+      "Execute CP decomposition using cp_als or cp_apr (2nd-order optimization).",
+      "Compute tensor eigenpairs using eig_geap or eig_sshopm.",
+      "Handle data I/O for sptensor and ktensor via import_data and export_data."
+    ],
+    "params": {
+      "printitn": "Iteration interval for status printing in CP algorithms.",
+      "adaptive shift": "Default setting for eig_sshopm to improve convergence.",
+      "fixsigns": "Optional call in cp_als to standardize factor sign conventions."
+    },
+    "ui_paths": [],
+    "errors": [
+      "cp_als normalization bug - fixed in v2.5",
+      "sptensor subs type error in import_data - fixed in v2.5",
+      "ktensor arrange bug (reported by Jason Mattax) - fixed to force dense matrices"
+    ],
+    "fixes": [],
+    "theory": "Tensor decomposition suite providing CANDECOMP/PARAFAC (CP) via Alternating Least Squares (ALS) and Alternating Poisson Regression (APR). Supports sparse tensors (sptensor), Kruskal tensors (ktensor), and eigenvalue computation through Generalized Eigenproblem for Antisymmetric Products (GEAP) and Shifted Power Methods (SSHOPM). MTTKRP and Khatri-Rao products optimized for performance.",
+    "source_url": "https://github.com/sandialabs/tensor_toolbox",
+    "license": "BSD 2-Clause"
+  },
+  {
+    "chunk_id": "cda7ed33-2dea-47d3-861b-023dc4fbfab5",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Tensor Toolbox v2.4 Core Functions and Tensor Classes",
+    "steps": [
+      "Generate test problems and guesses using create_problem and create_guess.",
+      "Initialize tensors with tenzeros, tenrand, or tenones using size arrays [5 4 3] or lists (5,4,3).",
+      "Compute tensor eigenpairs via Shifted Symmetric Higher-Order Power Method using sshopm.",
+      "Perform Poisson Tensor Factorization using cp_apr.",
+      "Symmetrize tensors using symmetrize and verify with issymmetric.",
+      "Execute tensor-times-same-vector operations using ttsv.",
+      "Import/Export tensor data via import_data and export_data functions."
+    ],
+    "params": {
+      "tenzeros": "Creates zero tensor; syntax tenzeros(N*ones(1,M)) for size N and order M.",
+      "ttsv": "Computes tensor times the same vector in every mode.",
+      "score": "Computes factor match score for two ktensors.",
+      "redistribute": "Moves weights from lambda into a specified mode of a ktensor.",
+      "teneye": "Creates an identity tensor."
+    },
+    "ui_paths": [],
+    "errors": [
+      "tenzeros(M,N) deprecated - Use tenzeros(N*ones(1,M)) for multidimensional zeros.",
+      "Empty tensor bugs - Fixed in tensor constructor, permute, collapse, and tenones.",
+      "Negative norm - Fixed in ktensor/norm using max(0,val)."
+    ],
+    "fixes": [],
+    "theory": "Provides classes for dense (tensor), sparse (sptensor), Kruskal (ktensor), and Tucker (ttensor) formats. Supports CP decomposition via ALS, OPT, and Poisson regression (CP_APR). Includes methods for symmetric tensor eigenpairs (SSHOPM).",
+    "source_url": "https://github.com/sandialabs/tensor_toolbox",
+    "license": "BSD 2-Clause"
+  },
+  {
+    "chunk_id": "2c78984d-bea6-47ff-86a5-62e77621ef06",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Tensor Toolbox Algorithm Updates and Class Methods",
+    "steps": [
+      "Create mth-order tensor of size n in every mode: tenzeros(m,n)",
+      "Compute CP/weighted CP via optimization: cp_opt(X,R) or cp_wopt(X,W,R)",
+      "Normalize ktensor factors: normalize(K)",
+      "Extract ktensor components: extract(K, subset)",
+      "Rearrange ktensor components: arrange(K, permutation)",
+      "Convert ktensor to cell array: tocell(K)",
+      "Run Memory Efficient Tucker: tucker_me(X,R)"
+    ],
+    "params": {
+      "tenzeros(m,n)": "m = order, n = size for all modes",
+      "cp_als": "Supports parameter-value pairs; calculates Unew = (Y \\ Unew')'",
+      "normalize": "Normalizes factor matrix columns to length 1 and absorbs weights into lambda",
+      "ncomponents": "Returns number of rank-one components in a ktensor"
+    },
+    "ui_paths": [],
+    "errors": [
+      "Negative values from small errors - Handled via max(0,val)",
+      "Empty tensor errors in permute/spmatrix/double - Added empty checks",
+      "tt_subscheck errors - Replaced ~isnan/~isinf with isfinite",
+      "Matlab 7.8 compatibility - Replaced '~' with 'junk' in sptensor"
+    ],
+    "fixes": [],
+    "theory": "Provides functional updates for ktensor, ttensor, and sptensor classes. Implements Alternating Least Squares (ALS) and optimization-based (CP-OPT) methods for tensor decomposition. MET package enables Memory Efficient Tucker decompositions.",
+    "source_url": "https://github.com/sandialabs/tensor_toolbox",
+    "license": "BSD 2-Clause"
+  },
+  {
+    "chunk_id": "bcc40db2-777e-4016-9b39-34a12c0d7453",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Tensor Toolbox updates and core functional improvements",
+    "steps": [
+      "Call cp_als for Alternating Least Squares CP decomposition (replaces parafac_als)",
+      "Use cp_nmu for nonnegative tensor factorization via multiplicative updates",
+      "Apply reshape and spmatrix for tensor dimension and structure modification",
+      "Use find on tensors to return column vector indices of elements",
+      "Perform scalar division using ldivide or rdivide on tensors/sptensors"
+    ],
+    "params": {
+      "n": "Iteration interval for printing cp_als status",
+      "R": "Rank parameter for decomposition"
+    },
+    "ui_paths": [],
+    "errors": [
+      "transpose/ctranspose - Throws error (not supported for tensors)",
+      "Subscripts out of range - Fixed via constructor input validation",
+      "Complex value insertion - Fixed in sptensor subsasgn",
+      "log(1) nonzeros - Fixed in elemfun to remove zeroed entries"
+    ],
+    "fixes": [
+      "Fixed squeeze and collapse for empty or zero-element sptensors",
+      "Optimized Tucker residual calculation efficiency",
+      "Standardized find function to return column vectors for tensors",
+      "Enabled cp_als to handle R=1 cases"
+    ],
+    "theory": "Provides dense (tensor) and sparse (sptensor) classes for multidimensional arrays. Supports CP decomposition via ALS or Multiplicative Updates (Lee & Seung) and Tucker decomposition. Elements support scalar-tensor arithmetic but not traditional transposition.",
+    "source_url": "https://github.com/sandialabs/tensor_toolbox",
+    "license": "BSD 2-Clause"
+  },
+  {
+    "chunk_id": "bed256a3-5fcf-4325-9039-a40195f29cf4",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Tensor Toolbox classes and functional updates",
+    "steps": [
+      "Use 'tensor' for dense multi-way arrays",
+      "Use 'sptensor' for sparse multi-way arrays",
+      "Use 'ktensor' for Kruskal/CP decomposition formats",
+      "Use 'ttensor' for Tucker decomposition formats",
+      "Map tensors to matrices using 'tenmat'",
+      "Perform element-wise multi-array operations via 'tenfun'",
+      "Compute tensor-tensor products using 'ttt' and tensor-matrix products via 'ttm'",
+      "Calculate inner products and norms using 'innerprod' and 'norm'"
+    ],
+    "params": {
+      "tensor": "Class for dense multi-dimensional arrays",
+      "sptensor": "Class for sparse multi-dimensional arrays",
+      "tenfun": "Applies specified functions to tensor elements",
+      "ttt": "Tensor-tensor multiplication (contracted product)",
+      "ttm": "Tensor-matrix multiplication",
+      "nnz": "Number of non-zero tensor elements",
+      "nvecs": "Computes leading eigenvectors of tensor unfoldings",
+      "collapse": "Reduces tensor dimensions via summation"
+    },
+    "ui_paths": [],
+    "errors": [
+      "Subscript confusion - Fixed index 58 vs ':' character bug",
+      "Dense-sparse mismatch - Fixed tenfun relational operation errors",
+      "Empty tensor calls - Fixed failures in full() and subsref",
+      "Dimension mismatch - Added size checks to innerprod"
+    ],
+    "fixes": [
+      "Improved nvecs efficiency using MATLAB sparse eigs",
+      "Optimized ttt via major functional overhaul",
+      "Subscripted assignment now supports dimension growth and scalar expansion",
+      "Logical operators on sptensors now consistent with sparse matrix behavior"
+    ],
+    "theory": "The toolbox implements multi-linear algebra by extending MATLAB's 2D sparse/dense capabilities to N-way arrays. It provides specialized classes for decomposed formats (CP/Tucker) to enable efficient computation and storage of high-dimensional data.",
+    "source_url": "https://github.com/sandialabs/tensor_toolbox",
+    "license": "BSD 2-Clause"
+  },
+  {
+    "chunk_id": "98d6b35a-72f0-44b6-aa99-3df46885f3e2",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Tensor Toolbox Classes and Functions",
+    "steps": [
+      "Represent sparse data using sptensor and sptenmat classes",
+      "Model tensors using ktensor (CP) or ttensor (Tucker) representations",
+      "Perform CANDECOMP/PARAFAC or Tucker decompositions via ALS algorithms",
+      "Execute tensor operations: collapse, contract, innerprod, mttkrp, nvecs, scale"
+    ],
+    "params": {
+      "sptensor": "Sparse tensor storage class",
+      "tenmat": "Tensor converted to matrix representation",
+      "ktensor": "Kruskal/CP tensor format (formerly cp_tensor)",
+      "ttensor": "Tucker tensor format (formerly tucker_tensor)",
+      "tenfun": "Function for multi-array operations",
+      "mttkrp": "Matricized tensor-times Khatri-Rao product"
+    },
+    "ui_paths": [
+      "MATLAB Help Navigator"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "Tensor Toolbox enables efficient multidimensional array operations. It supports sparse tensor objects and provides Alternating Least Squares (ALS) methods for CANDECOMP/PARAFAC and Tucker decompositions.",
+    "source_url": "https://github.com/sandialabs/tensor_toolbox",
+    "license": "BSD 2-Clause"
+  },
+  {
+    "chunk_id": "3a5c5a23-8891-444f-a71c-58755a216be8",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "MIT Student License Terms",
+    "steps": [
+      "Install only on personally owned or leased computers",
+      "Limit usage to maximum two concurrent devices (real or virtual)",
+      "Delete software and license keys before hardware disposal or leaving MIT"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "MIT student license permits non-profit educational use restricted to the registered individual on personal hardware, governed by a two-device activation limit and termination upon graduation.",
+    "source_url": "https://ist.mit.edu/matlab/all/student/terms",
+    "license": "Educational use only - MIT specific"
+  },
+  {
+    "chunk_id": "87f715b2-4306-497d-b1ff-43d46ba7563a",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Licensing and Toolbox Availability",
+    "steps": [
+      "Students: Access for student-owned equipment at no cost",
+      "Faculty/Staff: Obtain via departmental funds for Cornell-owned equipment"
+    ],
+    "params": {
+      "Student License": "No-cost; personal hardware only",
+      "Academic License": "Fee-based; university hardware only",
+      "Product Suite": "Includes MATLAB, Simulink, and 49+ toolboxes"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Numerical computing environment and programming language. Suite includes specialized toolboxes for optimization, control systems, signal processing, and biological modeling (SimBiology).",
+    "source_url": "https://it.cornell.edu/software-licensing/matlab-licensing",
+    "license": "Educational use only - Cornell specific"
+  },
+  {
+    "chunk_id": "ba5212f3-2336-4e24-95cd-5ef669446130",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Cornell University Licensing and Installation",
+    "steps": [
+      "Order license via Cornell Software Licensing page.",
+      "Register MathWorks account using NetID@cornell.edu.",
+      "Download installer from MathWorks or request local server link from CU Software Licensing."
+    ],
+    "params": {
+      "Single-user license": "One Cornell-owned machine + one personal/home machine for assigned users.",
+      "Network license": "Concurrent use on subnet-connected machines via designated license server.",
+      "Student license": "Free; personal property only; installation on Cornell-owned hardware prohibited.",
+      "License Cycle": "Annual term from August 1 to July 31."
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "MATLAB toolboxes (e.g., Simulink, Statistics, Symbolic Math) extend core computation. Licensing models partition access by hardware ownership (Institutional vs. Student) and deployment (Single-user vs. Networked concurrent).",
+    "source_url": "https://it.cornell.edu/software-licensing/matlab-licensing",
+    "license": "Educational use only - Cornell specific"
+  },
+  {
+    "chunk_id": "3d2ab4e1-9979-4f66-ab2d-3eb46b51365d",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Download and Installation Options",
+    "steps": [
+      "Download software directly from MathWorks or Cornell local server.",
+      "Contact CU Software Licensing for local link if vendor download is impractical.",
+      "Specify release version and OS (Windows, macOS, or Linux) when requesting."
+    ],
+    "params": {
+      "Release": "Specific MATLAB version requested (e.g., R2023b).",
+      "OS": "Target operating system for the installer."
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Locally-hosted Cornell installers include all licensed components in a single, large file. Standard installs are typically sourced from MathWorks.",
+    "source_url": "https://it.cornell.edu/software-licensing/matlab-licensing",
+    "license": "Educational use only - Cornell specific"
+  },
+  {
+    "chunk_id": "dee73e9d-820f-4d3f-bcca-569df2431626",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Purdue Toolbox Licensing Tiers",
+    "steps": [
+      "Access toolboxes via Campus License Server",
+      "Retry access if licenses are fully utilized",
+      "Email itap-licensing@purdue.edu for exact license counts"
+    ],
+    "params": {
+      "High Availability": "75-100 concurrent licenses",
+      "Limited Availability": "15-50 concurrent licenses",
+      "Low Availability": "1-10 concurrent licenses"
+    },
+    "ui_paths": [],
+    "errors": [
+      "Licenses unavailable - Wait for license release from another user"
+    ],
+    "fixes": [],
+    "theory": "Purdue University manages MATLAB toolboxes through a network license server with fixed concurrent seat limits categorized by availability tiers.",
+    "source_url": "https://it.purdue.edu/shopping/software/info/matlab_toolboxes.php",
+    "license": "Informational only"
+  },
+  {
+    "chunk_id": "03e65125-c187-40a8-b966-3862f5a06bb9",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "UMN Software Access and Installation",
+    "steps": [
+      "Identify device type (Managed vs. Individual)",
+      "Access installer via Self Service (Mac), Software Center (Windows), or MathWorks site",
+      "Authenticate using University Single Sign-on (SSO)",
+      "Download and install for Linux, Mac, or Windows"
+    ],
+    "params": {},
+    "ui_paths": [
+      "Self Service > MATLAB",
+      "Software Center > MATLAB",
+      "MathWorks Vendor Site > SSO Login"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "A proprietary high-level multi-paradigm programming language and environment optimized for numeric computing and computationally intensive tasks.",
+    "source_url": "https://it.umn.edu/services-technologies/resources/matlab",
+    "license": "Educational use only - UMN specific"
+  },
+  {
+    "chunk_id": "e3310063-d706-4e7e-9402-825319c7e29d",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "UMN access and installation",
+    "steps": [
+      "Access MATLAB portal using Single Sign-on (SSO)",
+      "Click Sign In on the MathWorks site",
+      "Enter University credentials",
+      "Download and install via the provided installer link"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Institutional license providing full MATLAB access on Linux, Mac, and Windows for teaching, learning, and research through federated authentication.",
+    "source_url": "https://it.umn.edu/services-technologies/resources/matlab",
+    "license": "Educational use only - UMN specific"
+  },
+  {
+    "chunk_id": "b6569920-af34-4f83-87fc-07acf86b91be",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "K-State Licensing and Lab Access",
+    "steps": [
+      "Access MATLAB at K-State computer labs (Hale, Cardwell, Union, etc.)",
+      "Use remote access for Calvin 306/318 or Dickens 001",
+      "Acquire individual licenses via Mathworks website if campus seats are unavailable"
+    ],
+    "params": {
+      "Concurrent Seats": "25 MATLAB seats shared campus-wide",
+      "Toolbox Seats": "5 seats each for Simulink, Control System, Neural Network, Optimization, Robust Control, Simulink Control Design, Signal Processing, and Symbolic Math",
+      "Availability": "First-come, first-served basis"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Kansas State University provides shared concurrent MATLAB licenses for academic and research use across specific physical and remote computer labs.",
+    "source_url": "https://k-state.edu/it/resources/access-software/applications/matlab",
+    "license": "Educational use only - Kansas State specific"
+  },
+  {
+    "chunk_id": "8afc02bf-a8b0-4f80-957a-8d5caf55eff0",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Duke University Licensing and Support",
+    "steps": [
+      "Register a MathWorks account using Duke credentials",
+      "Download software directly from MathWorks website",
+      "Install on personal devices (students) or Duke-owned/personal devices (faculty/staff)"
+    ],
+    "params": {
+      "Total Academic Headcount (TAH)": "Faculty/Staff license for Duke-owned/leased and personal computers",
+      "Total Student Headcount": "Student license for personal computers (max 2 simultaneous machines)"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [
+      "Contact support@mathworks.com for technical assistance",
+      "Call (508) 647-7000 for MathWorks phone support"
+    ],
+    "theory": "Duke provides MATLAB, Simulink, and specialized toolboxes (R2025a) for noncommercial academic use. Licenses are restricted to faculty/staff (research/teaching) and students (coursework/study) within North America.",
+    "source_url": "https://oit.duke.edu/help/articles/kb0030777",
+    "license": "Educational use only - Duke specific"
+  },
+  {
+    "chunk_id": "6a820618-2068-4dbd-a010-35a0d089cd97",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Licensed Products R2025a",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "R2025a license provides access to computational tools essential for chemical engineering, including Control System, Curve Fitting, Optimization, Partial Differential Equation, Simscape (Fluids/Electrical), and Statistics and Machine Learning toolboxes.",
+    "source_url": "https://oit.duke.edu/help/articles/kb0030777",
+    "license": "Educational use only - Duke specific (Valid through July 2026)"
+  },
+  {
+    "chunk_id": "f9858013-cd2e-4783-bd0e-6c14b6f0143b",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Staged Equilibrium Separations",
+    "steps": [
+      "Generate Temperature-Composition (T-x-y) diagrams",
+      "Apply splines for data smoothing",
+      "Implement functions for iterative calculations",
+      "Use Newton's Method for nonlinear solving",
+      "Construct Enthalpy-Concentration (H-x-y) plots",
+      "Calculate equilibrium tie lines"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Numerical modeling of chemical separations using equilibrium data interpolation, nonlinear root-finding, and thermodynamic phase diagrams.",
+    "source_url": "https://user.eng.umd.edu/~adomaiti/ench426/matlab_intro/matlab_intro.html",
+    "license": "Educational use - University of Maryland"
   }
 ]
