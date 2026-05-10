@@ -2516,5 +2516,341 @@
     "theory": "Cost estimation utilizes the Factorial Method (R. K. Sinott). Total Capital and Operating costs are derived from equipment mapping, material flows, and utility consumption. Equipment costs use base prices adjusted by correction factors and size-based expressions.",
     "source_url": "https://dwsim.org/wiki/index.php?title=Capital_Cost_Estimator",
     "license": "GPL-3.0"
+  },
+  {
+    "chunk_id": "9539a9ed-68d9-4a2f-93f7-2856c6c55f5a",
+    "source_type": "track_a",
+    "software": "DWSIM",
+    "topic": "Capital Cost Estimation Basis",
+    "steps": [
+      "Access User Database editor via the cog toolbar button."
+    ],
+    "params": {
+      "Preliminary estimate": "30% accuracy; used for initial feasibility and coarse design choices.",
+      "Authorisation estimate": "10-15% accuracy; used for budgeting and fund authorization based on flow-sheets.",
+      "Detailed estimate": "5-10% accuracy; used for cost control and fixed price contracts based on firm quotations."
+    },
+    "ui_paths": [
+      "Toolbar > Cog Button"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "Based on Sinott's Factorial Method. Accuracy correlates with design detail: Preliminary (approximate), Authorisation (budgeting), and Detailed (quotation). Estimation cost ranges from 0.1% to 2% of total project cost.",
+    "source_url": "https://dwsim.org/wiki/index.php?title=Capital_Cost_Estimator",
+    "license": "GPL-3.0"
+  },
+  {
+    "chunk_id": "9b43bcc8-cb22-4fe6-92b3-649f9b2f3719",
+    "source_type": "track_a",
+    "software": "DWSIM",
+    "topic": "Capital Cost Estimation and Cost Indices",
+    "steps": [
+      "Obtain historical equipment/project cost (Cost A) at time A.",
+      "Identify cost index for base period (Index A) and target period (Index B).",
+      "Calculate updated cost (Cost B) using: Cost B = Cost A * (Index B / Index A)."
+    ],
+    "params": {
+      "Cost Index": "Dimensionless ratio of actual price in a period to a base period, scaled by 100.",
+      "CE Index": "Chemical Engineering Plant Cost Index based on BLS data.",
+      "IC Index": "Intratec cost index based on BLS data.",
+      "Accuracy vs Cost": "0.1% of project cost for 30% accuracy; 2% for 5% accuracy."
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Cost indices adjust historical capital costs for inflation/deflation by weighting labor, material, and energy costs. They allow for long-range budgeting and escalating contract costs when actual chemical plant data is insufficient.",
+    "source_url": "https://dwsim.org/wiki/index.php?title=Capital_Cost_Estimator",
+    "license": "GPL-3.0"
+  },
+  {
+    "chunk_id": "7b676724-2a51-42ca-8a7a-7739b293b810",
+    "source_type": "track_a",
+    "software": "DWSIM",
+    "topic": "Capital Cost Indexing and Escalation",
+    "steps": [
+      "Identify cost at Period A and corresponding Index at A",
+      "Identify Index at Period B",
+      "Calculate Cost at B = Cost at A * (Index at B / Index at A)"
+    ],
+    "params": {
+      "CEPCI": "Chemical Engineering Plant Cost Index; components: equipment, labor, buildings, engineering",
+      "M&S Index": "Marshall and Swift; composite of process and all-industry equipment averages",
+      "ENR Index": "Engineering News-Record; general construction index (steel, cement, lumber, labor)",
+      "IPC": "Intratec Chemical Plant Construction Index"
+    },
+    "ui_paths": [],
+    "errors": [
+      "Time gap > 10 years - Cost escalation estimates lose accuracy beyond budget-level error margins"
+    ],
+    "fixes": [],
+    "theory": "Cost indexes adjust historical equipment/project costs to current values by accounting for inflation and price variation. Selection depends on industry; CEPCI and M&S are standard for chemical processes. Most indices have a reporting lag (approx. 3 months for CEPCI).",
+    "source_url": "https://dwsim.org/wiki/index.php?title=Capital_Cost_Estimator",
+    "license": "GPL-3.0"
+  },
+  {
+    "chunk_id": "900ac304-ffff-4f08-9a0c-b4470f69b3ff",
+    "source_type": "track_a",
+    "software": "DWSIM",
+    "topic": "Capital Cost Indexing and Location Factors",
+    "steps": [],
+    "params": {
+      "IPC": "Intratec Chemical Plant Construction Index; includes 12-month forecast.",
+      "NF": "Nelson-Farrar Indexes; specifically for petroleum and petrochemical refinery construction.",
+      "LF": "Location Factor; dimensionless ratio adjusting cost relative to a basis (usually USGC).",
+      "Factorial Method": "Capital cost estimation based on major equipment purchase cost multiplied by specific factors."
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Capital cost estimation utilizes time-based indexes (IPC, NF) to adjust historical costs. Geographic variance is addressed via the Location Factor (LF), where Cost_A = Cost_Basis * LF_A. LF can be estimated by adding 10% to the reference index for every 1000 miles from a major industrial hub. The Factorial Method derives total plant cost from individual equipment costs.",
+    "source_url": "https://dwsim.org/wiki/index.php?title=Capital_Cost_Estimator",
+    "license": "GPL-3.0"
+  },
+  {
+    "chunk_id": "78b86220-192a-4d7e-a929-e9ba14d0971a",
+    "source_type": "track_a",
+    "software": "DWSIM",
+    "topic": "Factorial Capital Cost Estimation",
+    "steps": [
+      "Identify and size major equipment items from preliminary flowsheets.",
+      "Calculate total delivered cost (Ce) of major equipment.",
+      "Apply Lang factor (fL) to determine fixed capital cost (CfD) for quick estimates.",
+      "Refine accuracy by applying individual cost factors for erection, piping, electrical, instruments, buildings, and utilities."
+    ],
+    "params": {
+      "CfD": "Fixed capital cost of the project.",
+      "Ce": "Total delivered cost of major equipment (tanks, reactors, columns, exchangers).",
+      "fL": "Lang factor; process-dependent multiplier used to estimate total cost from equipment cost."
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The factorial method estimates fixed capital cost as a function of major equipment purchase costs. Basic Lang factor method (CfD = fL * Ce) provides early-stage estimates, while detailed factorial estimates break down costs into specific direct components like piping, electrical, and site preparation.",
+    "source_url": "https://dwsim.org/wiki/index.php?title=Capital_Cost_Estimator",
+    "license": "GPL-3.0"
+  },
+  {
+    "chunk_id": "374b203f-0329-46d3-915e-491ed7092ea0",
+    "source_type": "track_a",
+    "software": "DWSIM",
+    "topic": "Capital and Operating Cost Estimation",
+    "steps": [
+      "Divide process into sub-units for detailed factor-based estimation.",
+      "Estimate direct capital costs for materials and installation labor.",
+      "Apply percentage factors for indirect costs based on direct capital.",
+      "Categorize operating costs into fixed and variable components for viability analysis."
+    ],
+    "params": {
+      "Design_Engineering_Costs": "20-30% of direct capital costs.",
+      "Contractor_Fees": "5-10% of direct capital costs.",
+      "Contingency_Allowance": "5-10% of direct capital costs.",
+      "Fixed_Operating_Costs": "Maintenance, labor, lab costs, supervision, overheads, capital charges, taxes, insurance, royalties.",
+      "Variable_Operating_Costs": "Raw materials, miscellaneous materials, utilities, shipping, packaging."
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Capital cost estimation utilizes factorial methods based on direct costs. Accuracy scales with the level of equipment detail and sub-unit identification. Operating costs assess viability via fixed (production-independent) and variable (production-dependent) expenses derived from flowsheets.",
+    "source_url": "https://dwsim.org/wiki/index.php?title=Capital_Cost_Estimator",
+    "license": "GPL-3.0"
+  },
+  {
+    "chunk_id": "ebd3e14f-aa25-468d-9ec8-0678ad74b0c4",
+    "source_type": "track_a",
+    "software": "DWSIM",
+    "topic": "Operating Cost Classification and Estimation",
+    "steps": [],
+    "params": {
+      "Fixed Costs": "Expenses independent of production rate: maintenance, labor, lab costs, supervision, plant overheads, capital charges, taxes, insurance, licenses.",
+      "Variable Costs": "Expenses proportional to production rate: raw materials, utilities, shipping, packaging, miscellaneous operating materials.",
+      "General Operating Expenses": "Company-wide costs including R&D, sales, and general overheads; adds approximately 20-30% to direct production costs."
+    },
+    "ui_paths": [
+      "Features > Capital Cost Estimator"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "Production costs are divided into direct site costs (fixed and variable) and general company operating expenses. Fixed costs are typically items outside plant supervision control, while variable costs are those for which supervision is held accountable. Total product cost includes site costs plus a 20-30% markup for corporate overheads, R&D, and sales.",
+    "source_url": "https://dwsim.org/wiki/index.php?title=Capital_Cost_Estimator",
+    "license": "GPL-3.0"
+  },
+  {
+    "chunk_id": "ce382c1a-a0df-40e5-9250-0db7c5b191b8",
+    "source_type": "track_a",
+    "software": "DWSIM",
+    "topic": "DWSIM Extended Features and Modules",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "DWSIM supports advanced simulation features including CAPE-OPEN compliance, Excel automation, aqueous electrolyte thermodynamics, neural network unit operations, pipe network analysis, and capital cost estimation.",
+    "source_url": "https://dwsim.org/wiki/index.php?title=Capital_Cost_Estimator",
+    "license": "GPL-3.0"
+  },
+  {
+    "chunk_id": "59cb01a9-6ed7-4d07-b56c-41996e429800",
+    "source_type": "track_a",
+    "software": "DWSIM",
+    "topic": "Command Line Mode Execution",
+    "steps": [
+      "Create an error-free .dwsim simulation file.",
+      "Prepare an input XML file defining parameter changes and output requests.",
+      "Execute dwsim.exe with the -commandline argument and paths for simfile, input, and output."
+    ],
+    "params": {
+      "-commandline": "Enables CLI mode.",
+      "-nosplash": "Suppresses splash screen.",
+      "-savechanges": "Persists variable modifications to the .dwsim file.",
+      "-show <0|1>": "Hides (0) or shows (1) calculation details window.",
+      "-locale <val>": "Sets locale (en-US, pt-BR, es); defines decimal separators.",
+      "-simfile <path>": "Path to target .dwsim file.",
+      "-input <path>": "Path to XML file defining input parameters.",
+      "-output <path>": "Path to XML file where results are written."
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Headless execution allows external software to optimize simulations by programmatically modifying variables and reading calculated properties via XML data exchange.",
+    "source_url": "https://dwsim.org/wiki/index.php?title=Command_Line_Mode",
+    "license": "GPL-3.0"
+  },
+  {
+    "chunk_id": "0bf5fddf-f5ec-47df-b399-e730e997aece",
+    "source_type": "track_a",
+    "software": "DWSIM",
+    "topic": "Command Line Mode and XML Input Structure",
+    "steps": [
+      "Place .dwsim file, input XML, and dwsim.exe in the same directory.",
+      "Run command: dwsim.exe -commandline -nosplash -show 1 -locale [lang] -simfile [file] -input [in.xml] -output [out.xml]",
+      "Configure simulation via <Configuration> node (Units, Pure Properties, Interaction Parameters).",
+      "Define object values in <InputParameters> and requested results in <OutputParameters>."
+    ],
+    "params": {
+      "-commandline": "Enables CLI mode execution.",
+      "-simfile": "Specifies the DWSIM simulation file.",
+      "-input/output": "XML files for input data and result storage.",
+      "UnitsSystem Mode": "'Default' uses simulation settings; 'Custom' requires a Name.",
+      "NumberOfRuns": "Total times the flowsheet executes.",
+      "InteractionParameter": "Defines binary interaction coefficients (kij) for property packages.",
+      "PureCompoundProperties": "Overrides Molar_Weight, Critical_Temperature, Critical_Pressure, and Acentric_Factor."
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "DWSIM supports headless execution via XML configuration, allowing external manipulation of compound properties, thermodynamic parameters, and simulation object variables for automated workflows.",
+    "source_url": "https://dwsim.org/wiki/index.php?title=Command_Line_Mode",
+    "license": "GPL-3.0"
+  },
+  {
+    "chunk_id": "96349c15-00bd-41ef-8e7a-e882e2f92512",
+    "source_type": "track_a",
+    "software": "DWSIM",
+    "topic": "XML Automation and Parameter Configuration",
+    "steps": [
+      "Select UnitsSystem mode (Default/Custom) and name.",
+      "Set Simulation NumberOfRuns and FormattedOutput for XML reporting.",
+      "Identify Compound String IDs from Pure Compound Properties Utility.",
+      "Define PureCompoundProperties (Name, Property ID, Value, Unit).",
+      "Configure PropertyPackage parameters and binary interaction coefficients (kij, A12, etc.).",
+      "Specify InputParameters (Object Name, Property ID, Value) to modify before simulation."
+    ],
+    "params": {
+      "UnitsSystem/Mode": "System of units selection (Default or Custom).",
+      "NumberOfRuns": "Executions before XML output.",
+      "Compound/Name": "String ID found in brackets in Pure Compound Properties Utility.",
+      "InteractionParameter": "Binary interaction coefficients (kij, kji, A12, A21, alpha12) for specific compound pairs.",
+      "Property/ID": "Identifier for the specific property to be modified/read.",
+      "InputParameters": "Objects modified prior to simulation execution."
+    },
+    "ui_paths": [
+      "Pure Compound Properties Utility > compound selector combo box"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "DWSIM utilizes XML-based configuration files to automate simulation runs by programmatically overriding pure component properties, thermodynamic interaction parameters, and unit operation inputs.",
+    "source_url": "https://dwsim.org/wiki/index.php?title=Command_Line_Mode",
+    "license": "GPL-3.0"
+  },
+  {
+    "chunk_id": "9bf82419-7158-486f-8114-73b435a3a4ed",
+    "source_type": "track_a",
+    "software": "DWSIM",
+    "topic": "Automation Interface and Property Package Configuration",
+    "steps": [
+      "Define OutputParameters by specifying Object Name and Property ID to retrieve values post-simulation.",
+      "Configure Property Package via XML by setting ID attributes and values corresponding to flash tolerances and iteration limits."
+    ],
+    "params": {
+      "PP_PHFILT/PSFILT/PTFILT": "Internal loop tolerances for flash calculations.",
+      "PP_PHFMEI/PSFMEI/PTFMEI": "Maximum external iterations for flash calculations.",
+      "PP_FLASHALGORITHM": "Flash method selection: 0=Default, 1=IO, 2=Global, 3=3P-IO, 4=2P-Gibbs, 5=3P-Gibbs, 6=3P-Hybrid.",
+      "PP_USE_EOS_VOLUME_SHIFT": "Toggle Peneloux Volume Translation (0=Off, 1=On).",
+      "Molar_Weight": "Molecular Weight of pure compound.",
+      "Critical_Temperature/Pressure/Volume": "Pure compound critical state properties.",
+      "Acentric_Factor": "Compound acentric factor."
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "DWSIM automation uses XML-defined parameters to control the thermodynamics engine. Configuration involves setting convergence tolerances (PH/PS/PT flashes), maximum iterations, and selecting specific flash algorithms or EOS corrections (like Peneloux volume translation) to ensure simulation stability and accuracy.",
+    "source_url": "https://dwsim.org/wiki/index.php?title=Command_Line_Mode",
+    "license": "GPL-3.0"
+  },
+  {
+    "chunk_id": "4c732aff-8a5f-4494-b16e-d6268d2186af",
+    "source_type": "track_a",
+    "software": "DWSIM",
+    "topic": "Pure Compound Property Parameters and Density Configuration",
+    "steps": [],
+    "params": {
+      "OS_LIQDENS": "Flag (0/1) to use Equation of State for liquid density calculation.",
+      "PP_USE_EOS_VOLUME_SHIFT": "Flag (0/1) to enable Peneloux volume translation correction.",
+      "Molar_Weight": "Molecular weight of the compound.",
+      "Critical_Temperature/Pressure/Volume/Compressibility": "Critical point properties (Tc, Pc, Vc, Zc).",
+      "Acentric_Factor": "Pitzer acentric factor.",
+      "Z_Rackett": "Rackett parameter for liquid density.",
+      "PR/SRK_Volume_Translation_Coefficient": "Volume translation constants (si = ci/bi) for PR/SRK EOS.",
+      "CS_Acentric/Solubility/Molar_Volume": "Chao-Seader specific model parameters.",
+      "IG_Entropy/Enthalpy/Gibbs_of_Formation_25C": "Standard state ideal gas formation properties at 25C.",
+      "Dipole_Moment": "Molecular dipole moment.",
+      "Vapor_Pressure_Constant_EqNo/A-E": "Constants for temperature-dependent vapor pressure equations.",
+      "Ideal_Gas_Heat_Capacity_Const_EqNo/A-E": "Constants for ideal gas heat capacity (Cp) equations.",
+      "Liquid_Viscosity_Const_EqNo/A-E": "Constants for liquid viscosity equations.",
+      "Liquid_Density_Const_EqNo/A-E": "Constants for liquid density equations.",
+      "Normal_Boiling_Point": "Boiling temperature at 1 atm.",
+      "HVapA-D": "Constants for heat of vaporization equations."
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "DWSIM utilizes a standardized set of Parameter IDs to map pure component physical, critical, and thermodynamic properties. These include binary flags for density calculation methods (EOS vs. correlation) and coefficients for ChemSep-style temperature-dependent property equations (VP, Cp, Visc, Density).",
+    "source_url": "https://dwsim.org/wiki/index.php?title=Command_Line_Mode",
+    "license": "GPL-3.0"
+  },
+  {
+    "chunk_id": "8aea15f4-db45-4eef-83c3-c9e45d326ddb",
+    "source_type": "track_a",
+    "software": "DWSIM",
+    "topic": "Compound Parameters, Binary Interaction Sets, and XML I/O Structure",
+    "steps": [
+      "Define input variables in <InputParameters><SimulationObjects> using Property IDs and values.",
+      "Execute simulation via command line to process the XML file.",
+      "Retrieve calculated results from the <OutputParameters> section of the generated XML file."
+    ],
+    "params": {
+      "Liquid_Density_Const_B-E": "Constants for liquid density correlation equations.",
+      "HVapA-D": "Constants for Heat of Vaporization equation.",
+      "UNIQUAC_R/Q": "Molecular volume (R) and surface area (Q) parameters for UNIQUAC model.",
+      "kij": "Binary interaction parameter for EOS models (PR, SRK, PC-SAFT, PRSV2).",
+      "NRTL A/B/C": "NRTL interaction parameters: A (cal/mol), B (cal/mol.K), C (cal/mol.K\u00b2).",
+      "UNIQUAC A/B/C": "UNIQUAC interaction parameters: A (cal/mol), B (cal/mol.K), C (cal/mol.K\u00b2)."
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "DWSIM maps thermodynamic property packages to specific Binary Interaction Parameter (IP) sets. EOS models (PR, SRK) primarily utilize kij values. Activity coefficient models (NRTL, UNIQUAC) utilize multi-term temperature-dependent parameters (A, B, and C). The XML interface allows automated simulation execution by mirroring input structures into an output format containing solved property values.",
+    "source_url": "https://dwsim.org/wiki/index.php?title=Command_Line_Mode",
+    "license": "GPL-3.0"
   }
 ]
