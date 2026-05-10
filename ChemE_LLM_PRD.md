@@ -29,7 +29,7 @@ No prior work: (a) extracts knowledge from YouTube walkthroughs, (b) combines do
 
 ## 3. User Personas & Use Cases
 
-### Persona A — Priya, 3rd-Year ChE Undergraduate
+### Persona A , 3rd-Year ChE Undergraduate
 
 *Context:* Has DWSIM access via university lab, but lab hours are limited. Learns best by watching tutorials and trying things at home.
 
