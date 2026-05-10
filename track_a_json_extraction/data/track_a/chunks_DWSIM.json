@@ -2852,5 +2852,199 @@
     "theory": "DWSIM maps thermodynamic property packages to specific Binary Interaction Parameter (IP) sets. EOS models (PR, SRK) primarily utilize kij values. Activity coefficient models (NRTL, UNIQUAC) utilize multi-term temperature-dependent parameters (A, B, and C). The XML interface allows automated simulation execution by mirroring input structures into an output format containing solved property values.",
     "source_url": "https://dwsim.org/wiki/index.php?title=Command_Line_Mode",
     "license": "GPL-3.0"
+  },
+  {
+    "chunk_id": "2ca15d95-4ddf-44a7-b1b7-c7046f9c7f7c",
+    "source_type": "track_a",
+    "software": "DWSIM",
+    "topic": "Command Line Mode XML Structure and Property IDs",
+    "steps": [
+      "Identify the Object Name and Property ID for the target variable",
+      "Format input data within the <InputParameters> XML section",
+      "Execute the simulation via command line",
+      "Extract results from the <OutputParameters> XML section"
+    ],
+    "params": {
+      "Property ID": "Unique code defining an object property (e.g., PROP_MS_0 for Temperature)",
+      "PROP_MS_0": "Temperature (Material Stream)",
+      "PROP_MS_7": "Mixture Specific Enthalpy (Material Stream)",
+      "PROP_VA_3": "Temperature Drop (Valve)"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Command line mode enables automated simulation by interfacing with a structured XML file where objects and their attributes are identified by unique alphanumeric Property IDs.",
+    "source_url": "https://dwsim.org/wiki/index.php?title=Command_Line_Mode",
+    "license": "GPL-3.0"
+  },
+  {
+    "chunk_id": "d20e2ef9-3591-4fa4-8c63-12fa1287fa0f",
+    "source_type": "track_a",
+    "software": "DWSIM",
+    "topic": "DTL Standalone Thermodynamics Library Integration",
+    "steps": [
+      ".NET: Reference DWSIM.Thermodynamics.dll in project; access via DTL.Thermodynamics.Calculator.",
+      "COM: Register using RegAsm.exe /tlb:DWSIM.Thermodynamics.tlb DWSIM.Thermodynamics.dll /codebase with Admin privileges."
+    ],
+    "params": {
+      "PTFlash": "Requires Property Package, compound names, mole fractions, T (K), P (Pa).",
+      "Output Matrix": "(n+2)x3 string matrix containing phase names, phase mole fractions, and compound mole fractions.",
+      "GetPropPackList": "Returns array of available property packages.",
+      "GetCompoundList": "Returns array of available chemical compounds."
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "DTL is a .NET/COM-callable DLL providing DWSIM's thermo engine. Calculates single compound/phase properties and 2/3-phase equilibrium flashes (PT, PH, PS, PVF, TVF).",
+    "source_url": "https://dwsim.org/wiki/index.php?title=DTL",
+    "license": "LGPL-3.0"
+  },
+  {
+    "chunk_id": "d482d4ae-c0dc-4ba5-afe6-887c7f21f3d7",
+    "source_type": "track_a",
+    "software": "DWSIM",
+    "topic": "DTL Flash Calculation Matrix Output Structure",
+    "steps": [],
+    "params": {
+      "n": "Number of compounds in the mixture",
+      "String Matrix": "(n+2) x 3 or (n+3) x 3 array containing calculation results",
+      "PH, PS, TVF, PVF": "Flash types returning an extra row for Temperature (K) or Pressure (Pa)"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "DWSIM Thermodynamic Library (DTL) flash functions return data in a string matrix. Row 1: Phase names. Row 2: Phase mole fractions. Rows 3 to n+2: Compound mole fractions per phase. For specific flashes (PH, PS, TVF, PVF), the final row contains equilibrium T or P.",
+    "source_url": "https://dwsim.org/wiki/index.php?title=DTL",
+    "license": "GPL-3.0"
+  },
+  {
+    "chunk_id": "12992663-05b9-4413-95e6-ce90bfe274a8",
+    "source_type": "track_a",
+    "software": "DWSIM",
+    "topic": "Overview and Feature List",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "DWSIM is an open-source chemical process simulator featuring CAPE-OPEN support, property packages, aqueous electrolyte models, neural network and pipe network unit operations, and capital cost estimation.",
+    "source_url": "https://dwsim.org/wiki/index.php?title=DWSIM",
+    "license": "GPL-3.0"
+  },
+  {
+    "chunk_id": "7a6468d3-8571-48d4-85f7-64f9d706045a",
+    "source_type": "track_a",
+    "software": "DWSIM",
+    "topic": "Excel Add-In for Thermodynamic Calculations",
+    "steps": [
+      "Install DWSIM Windows Desktop version.",
+      "In Excel, navigate to File > Options > Add-Ins > Manage > Go > Browse.",
+      "Select DWSIM.xll (32-bit) or DWSIM_64.xll (64-bit) from the DWSIM installation directory.",
+      "Access thermodynamic functions via the 'DWSIM' category in Excel.",
+      "Use Ctrl+Shift+Enter for functions returning arrays/matrices (e.g., PTFlash)."
+    ],
+    "params": {
+      "PTFlash": "Calculates equilibrium; requires Property Package, Compound names, Mole Fractions, T (K), P (Pa).",
+      "GetPropPackList": "Returns list of available Property Packages.",
+      "GetCompoundList": "Returns list of compounds in the simulation.",
+      "GetPropList": "Returns available property identifiers.",
+      "Interaction Parameters": "Optional overrides for internal DWSIM binary parameters."
+    },
+    "ui_paths": [
+      "File > Options > Add-Ins > Manage > Go > Browse"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "Exposes DWSIM's internal thermodynamic engines to Excel. Supports single compound constant/temp-dependent properties, single-phase mixture properties, and Flash algorithms (PT, PH, PS, PVF, TVF).",
+    "source_url": "https://dwsim.org/wiki/index.php?title=Excel_Add-In_for_Thermodynamic_Calculations",
+    "license": "GPL-3.0"
+  },
+  {
+    "chunk_id": "6ffe9b82-8e7f-4061-84ae-046ecf6ef117",
+    "source_type": "track_a",
+    "software": "DWSIM",
+    "topic": "Excel Add-In Flash Calculations and Interaction Parameters",
+    "steps": [
+      "Provide compound names, mole fractions, temperature (K), and pressure (Pa)",
+      "Optional: Provide n x n interaction parameter matrices to override defaults",
+      "Call flash function (PH, PS, TVF, or PVF)",
+      "Read results from the returned (n+2) x 4 matrix"
+    ],
+    "params": {
+      "Temperature": "Input in Kelvin (K)",
+      "Pressure": "Input in Pascal (Pa)",
+      "Interaction Parameters": "n x n matrices used to override internal Property Package values",
+      "Output Matrix": "(n+2)x4 table: Row1=Phase names, Row2=Phase mole fractions, Rows3+=Compound mole fractions",
+      "kij": "Interaction parameter used by PC-SAFT, PR, SRK, PR/LK, UNIFAC, LKP, COSMO-SAC",
+      "NRTL/UNIQUAC Constants": "Includes Aij, Bij, Cij (cal/mol units) and Alpha for activity coefficient models"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Flash calculations via Excel return a matrix containing phase distributions. User-defined interaction parameters can override defaults for specific Property Packages (EOS or Activity Models) using structured n x n input matrices.",
+    "source_url": "https://dwsim.org/wiki/index.php?title=Excel_Add-In_for_Thermodynamic_Calculations",
+    "license": "GPL-3.0"
+  },
+  {
+    "chunk_id": "81cc1702-7822-4c1d-85e0-fd42792b7ba9",
+    "source_type": "track_a",
+    "software": "DWSIM",
+    "topic": "Flash Algorithms and Property Methods",
+    "steps": [
+      "Identify phase complexity (VLE, VLLE, SLE) of the system",
+      "Select flash algorithm based on mixture characteristics",
+      "Verify existence of Binary Interaction Parameters (BIPs)",
+      "Validate thermodynamic model suitability for the specific mixture"
+    ],
+    "params": {
+      "Nested Loops": "Default for VLE; versions available for VLLE and SLE (Eutectic/Solid Solution)",
+      "Inside-Out": "Optimized for petroleum; 3-phase option handles free water",
+      "Gibbs Minimization": "Suitable for difficult, highly non-ideal chemical systems",
+      "3-phase immiscible": "Fast VLLE algorithm assuming first compound is immiscible",
+      "Lee-Kesler-Pl\u00f6cker": "Property method for specific thermodynamic correlations",
+      "IAPWS-IF97": "Steam tables for water properties",
+      "COSMO-SAC": "Activity coefficient model for chemical systems"
+    },
+    "ui_paths": [],
+    "errors": [
+      "Incorrect results - missing binary interaction parameters (BIPs)",
+      "Convergence failure - unsuitable flash algorithm for mixture type",
+      "Invalid predictions - inadequate background theory for selected model"
+    ],
+    "fixes": [],
+    "theory": "Flash Algorithms determine thermodynamic equilibrium phase distributions, amounts, and compositions at specific conditions (T, P, H, S). Complexity and calculation time increase with the number of co-existing phases (VLE < VLLE < SLE).",
+    "source_url": "https://dwsim.org/wiki/index.php?title=Excel_Add-In_for_Thermodynamic_Calculations",
+    "license": "GPL-3.0"
+  },
+  {
+    "chunk_id": "e3be4b88-9626-4567-88ba-ad911cbb3be2",
+    "source_type": "track_a",
+    "software": "DWSIM",
+    "topic": "Excel Add-In Thermodynamic Validation and Property Identifiers",
+    "steps": [
+      "Select thermodynamic model and flash algorithm based on expected phase behavior (e.g., 3-phase for water/hydrocarbons).",
+      "Calculate Gibbs Free Energy (G = H - TS) using Excel Add-In functions.",
+      "Validate phase split by ensuring Gibbs Free Energy decreases; if no split, G remains constant."
+    ],
+    "params": {
+      "acentricFactor": "Pitzer acentric factor",
+      "criticalDensity": "Critical density (mol/m3)",
+      "criticalPressure": "Critical pressure (Pa)",
+      "criticalTemperature": "Critical temperature (K)",
+      "criticalVolume": "Critical volume (m3/mol)",
+      "heatOfFusionAtNormalFreezingPoint": "Enthalpy of melting at 101325 Pa (J/mol)",
+      "heatOfVaporizationAtNormalBoilingPoint": "Enthalpy of vaporization at 101325 Pa (J/mol)"
+    },
+    "ui_paths": [],
+    "errors": [
+      "NotImplemented - Requested property is not available in DWSIM"
+    ],
+    "fixes": [
+      "Use 3-phase flash algorithms for immiscible mixtures like water/hydrocarbons.",
+      "Verify presence of Binary Interaction Parameters (BIPs) for chosen model."
+    ],
+    "theory": "Flash calculations require suitable background theory, BIPs, and algorithms. Thermodynamic stability is confirmed when phase splits result in a decrease in Gibbs Free Energy (G = H - TS).",
+    "source_url": "https://dwsim.org/wiki/index.php?title=Excel_Add-In_for_Thermodynamic_Calculations",
+    "license": "GPL-3.0"
   }
 ]
