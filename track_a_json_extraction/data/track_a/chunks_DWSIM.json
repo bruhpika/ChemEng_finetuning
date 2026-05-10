@@ -2241,5 +2241,280 @@
     "source_url": "https://dwsim.org/wiki/index.php?title=Advanced_EOS_Library",
     "license": "GPL-3.0",
     "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "a072156e-ca08-4aca-9cb0-d754d0460a64",
+    "source_type": "track_a",
+    "software": "DWSIM",
+    "topic": "API_EXHAUSTED",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Failed to get API response"
+    ],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://dwsim.org/wiki/index.php?title=Advanced_EOS_Library",
+    "license": "GPL-3.0",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "dc4ee368-3205-4240-963b-ac53a886486e",
+    "source_type": "track_a",
+    "software": "DWSIM",
+    "topic": "API_EXHAUSTED",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Failed to get API response"
+    ],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://dwsim.org/wiki/index.php?title=Aqueous_Electrolytes_Property_Package",
+    "license": "GPL-3.0",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "e9bfd75c-bd3e-4115-a933-97aecb1fdda6",
+    "source_type": "track_a",
+    "software": "DWSIM",
+    "topic": "API_EXHAUSTED",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Failed to get API response"
+    ],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://dwsim.org/wiki/index.php?title=Aqueous_Electrolytes_Property_Package",
+    "license": "GPL-3.0",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "29b9bbfc-8f2b-49d3-9689-229242a54193",
+    "source_type": "track_a",
+    "software": "DWSIM",
+    "topic": "API_EXHAUSTED",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Failed to get API response"
+    ],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://dwsim.org/wiki/index.php?title=Black-Oil_Simulations",
+    "license": "GPL-3.0",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "4eb25fbd-2960-4237-bb7f-f45291ca11c4",
+    "source_type": "track_a",
+    "software": "DWSIM",
+    "topic": "Black-Oil Simulations",
+    "steps": [
+      "Create and load Black-Oil compounds using the Compound Creator.",
+      "Add Black-Oil compounds to a new simulation.",
+      "Add the Black-Oil Property Package (Flash Algorithm setting is ignored).",
+      "Define compound amounts in a Material Stream.",
+      "Calculate the stream to view equilibrium phase properties."
+    ],
+    "params": {},
+    "ui_paths": [
+      "Compound Creator",
+      "Property Package > Black-Oil Property Package",
+      "Utilities > Pure Compound Properties Utility"
+    ],
+    "errors": [
+      "Black-Oil fluids incompatible with standard Property Packages - These fluids lack the full parameters required by regular EOS models."
+    ],
+    "fixes": [],
+    "theory": "Black-Oil simulations require a dedicated Property Package and internal flash algorithm. Black-oil fluids are defined only by specialized properties, making them incompatible with general EOS models like Peng-Robinson or SRK.",
+    "source_url": "https://dwsim.org/wiki/index.php?title=Black-Oil_Simulations",
+    "license": "GPL-3.0"
+  },
+  {
+    "chunk_id": "0e430b97-39bb-4b21-855f-07f99bc8e873",
+    "source_type": "track_a",
+    "software": "DWSIM",
+    "topic": "CAPE-OPEN Interoperability",
+    "steps": [
+      "Add a Property Package of type 'CAPE-OPEN' to the flowsheet",
+      "Click 'Configure' to open setup window",
+      "Select a Thermo Server or Property Package Manager",
+      "Choose specific Property Package from the selection list",
+      "Map external compounds and phases to internal DWSIM databases"
+    ],
+    "params": {
+      "Thermo Server": "Provider of CAPE-OPEN thermodynamic calculations (Thermo 1.0/1.1)",
+      "Property Package Manager": "Utility for managing and selecting external thermo models",
+      "Compound/Phase Mapping": "Alignment of external chemical species and phases with DWSIM internal definitions"
+    },
+    "ui_paths": [
+      "Property Packages > Add > CAPE-OPEN",
+      "Property Package > Configure > Thermo Server"
+    ],
+    "errors": [
+      "Unmapped compounds/phases - Forces mismatch between external calculator and DWSIM solver"
+    ],
+    "fixes": [
+      "Ensure mapping is performed after selecting or editing an external Property Package"
+    ],
+    "theory": "CAPE-OPEN standards utilize COM/CORBA technologies to allow interoperability between different process modeling software, enabling DWSIM to use external property packages, unit operations (reactors), and flowsheet monitoring plugins.",
+    "source_url": "https://dwsim.org/wiki/index.php?title=CAPE-OPEN",
+    "license": "GPL-3.0"
+  },
+  {
+    "chunk_id": "e6fcb58e-b4b6-4272-a305-190875d5de97",
+    "source_type": "track_a",
+    "software": "DWSIM",
+    "topic": "CAPE-OPEN Property Packages and Unit Operations",
+    "steps": [
+      "Select CAPE version and server/provider to load Property Package (PP).",
+      "Map compounds and phases to DWSIM equivalents in 'Compound Mapping' and 'Phase Mapping' tabs.",
+      "Drag 'CAPE-OPEN Unit Operation' to flowsheet and select specific operation.",
+      "Connect Material/Energy Streams and configure via Property Grid."
+    ],
+    "params": {
+      "Compound Mapping": "Matching internal DWSIM components to external CAPE-OPEN package components.",
+      "Phase Mapping": "Linking external phases to DWSIM-compatible phases.",
+      "Thermo 1.1": "Interface standard allowing DWSIM to expose its property packages to external simulators."
+    },
+    "ui_paths": [
+      "Property Package > Edit > Compound/Component Mapping",
+      "Property Package > Edit > Phase Mapping",
+      "Unit Operations > CAPE-OPEN Unit Operation",
+      "Plugins > CAPE-OPEN Add-ins"
+    ],
+    "errors": [
+      "Compound count mismatch - Ensure DWSIM and external PP have identical compound counts.",
+      "Blank phase label - Select 'Disable' for missing phases; do not leave blank.",
+      "Invalid phase mapping - Do not associate 'Overall' or 'Mixture' phases with DWSIM phases."
+    ],
+    "fixes": [
+      "Set identical associated Property Packages for all streams connected to a CAPE-OPEN Unit Operation for consistency."
+    ],
+    "theory": "CAPE-OPEN standardizes thermodynamic and unit operation interfaces. DWSIM can act as a socket for external components or as a server (Thermo 1.1) exposing its own property packages and script-based unit operations (IronPython/IronRuby) to third-party software like COCO/COFE.",
+    "source_url": "https://dwsim.org/wiki/index.php?title=CAPE-OPEN",
+    "license": "GPL-3.0"
+  },
+  {
+    "chunk_id": "37a24fa7-9e12-43fd-b176-48204a75528f",
+    "source_type": "track_a",
+    "software": "DWSIM",
+    "topic": "CAPE-OPEN Script Unit Operation Interoperability",
+    "steps": [
+      "Register DWSIM types during the installation process.",
+      "Open a CAPE-OPEN compliant simulator (e.g., COCO/COFE).",
+      "Locate and insert the 'IronPython/IronRuby Script Unit Operation' from the available components."
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "CAPE-OPEN interface standards enable interoperability between process simulation software. DWSIM uses IronPython and IronRuby to expose custom script-based unit operations to external compliant simulators.",
+    "source_url": "https://dwsim.org/wiki/index.php?title=CAPE-OPEN",
+    "license": "GPL-3.0"
+  },
+  {
+    "chunk_id": "3651bc5b-04de-4a7d-b720-1ae4af75aeca",
+    "source_type": "track_a",
+    "software": "DWSIM",
+    "topic": "Capital and Operating Cost Estimator",
+    "steps": [
+      "Open tool via DWSIM plugin or standalone app",
+      "Configure report setup and basis",
+      "Perform equipment mapping from flowsheet data",
+      "Map material streams and utility requirements",
+      "Review Capital and Yearly Operating Cost summaries",
+      "Export results to spreadsheet or document formats"
+    ],
+    "params": {
+      "Direct costs": "Physical plant components and installation expenses",
+      "Indirect costs": "Engineering, supervision, and construction overhead",
+      "Fixed costs": "Production-independent operating expenses",
+      "Variable costs": "Production-dependent operating expenses (raw materials, utilities)",
+      "Cost Index": "Numerical ratio used to adjust historical costs for inflation",
+      "Lang Factor": "Multipliers applied to delivered equipment cost to estimate total capital investment"
+    },
+    "ui_paths": [
+      "Plugin > Capital Cost Estimator"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "Estimates CAPEX using the Factorial Method/Lang factors and OPEX via fixed/variable cost aggregation. Includes cost escalation via historical indexes to adjust literature-based data to current values.",
+    "source_url": "https://dwsim.org/wiki/index.php?title=Capital_Cost_Estimator",
+    "license": "GPL-3.0"
+  },
+  {
+    "chunk_id": "9133165e-e682-40bf-a2d3-a22186ab555f",
+    "source_type": "track_a",
+    "software": "DWSIM",
+    "topic": "Capital Cost Estimator Plugin",
+    "steps": [
+      "Install Plugin: Unzip package and copy DLL/PDB files to DWSIM 'plugins' folder.",
+      "Open DWSIM and load flowsheet.",
+      "Launch Plugin via Plugins menu.",
+      "Map flowsheet Unit Operations and Streams to Equipment, Materials, and Utilities.",
+      "Adjust parameters and generate Cost Report."
+    ],
+    "params": {
+      "CEPCI": "Chemical Engineering Plant Cost Index for price correction.",
+      "IPC": "Cost Index for price correction.",
+      "Equipment Mapping": "Automatic linking of simulation objects to cost estimation models."
+    },
+    "ui_paths": [
+      "Plugins > Capital Cost Estimator",
+      "New Report",
+      "Load Report",
+      "Save Report"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "Estimates Capital (CapEx) and Yearly Operating (OpEx) costs using automated mapping of simulation objects to cost models, incorporating CEPCI/IPC indexing for inflation and currency conversion.",
+    "source_url": "https://dwsim.org/wiki/index.php?title=Capital_Cost_Estimator",
+    "license": "GPL-3.0"
+  },
+  {
+    "chunk_id": "cd3c17ae-b406-495d-a3e3-a7f3defa533f",
+    "source_type": "track_a",
+    "software": "DWSIM",
+    "topic": "Capital and Operating Cost Estimation",
+    "steps": [
+      "Create or load a Cost Report via the menu",
+      "Configure Report Setup with name, date, cost index, and currency",
+      "Map Unit Operations to Equipment and apply correction factors",
+      "Map Material Streams to Raw Materials/Products for operating costs",
+      "Map Material/Energy Streams to Utilities based on mass/energy flow",
+      "Review and adjust Capital and Yearly Operating Cost summaries",
+      "Export results to document (DOC, PDF) or spreadsheet (XLS) formats",
+      "Use the User Database editor (cog icon) to define custom equipment expressions"
+    ],
+    "params": {
+      "Cost Index": "Value used to adjust historical equipment costs to current date",
+      "Correction Factors": "Multipliers applied to base prices for specific equipment conditions",
+      "Calculation Basis": "Method (Percentage or Absolute) used to determine cost summary items",
+      "Equipment Size Expression": "User-defined mathematical formula for cost calculation"
+    },
+    "ui_paths": [
+      "New Report",
+      "Compare Reports",
+      "Report Setup",
+      "Equipment Mapping",
+      "Material Stream Mapping",
+      "Utility Mapping",
+      "Capital Cost Summary",
+      "Yearly Operating Cost Summary",
+      "Export Results",
+      "Toolbar > Cog button (User Database)"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "Cost estimation utilizes the Factorial Method (R. K. Sinott). Total Capital and Operating costs are derived from equipment mapping, material flows, and utility consumption. Equipment costs use base prices adjusted by correction factors and size-based expressions.",
+    "source_url": "https://dwsim.org/wiki/index.php?title=Capital_Cost_Estimator",
+    "license": "GPL-3.0"
   }
 ]

@@ -157,3 +157,7 @@
 [FETCH_ERROR] url=https://github.com/DanWBR/dwsim/blob/windows/PlatformFiles/Common/docs/User_Guide.pdf reason=No /Root object! - Is this really a PDF?
 [INCOMPLETE] chunk_id=96a4fd69-5e80-4ff3-bdf2-9f6b192a940b topic=API_EXHAUSTED
 [INCOMPLETE] chunk_id=2bbc876e-268e-4969-9dc5-fdf2ca6ca060 topic=API_EXHAUSTED
+[INCOMPLETE] chunk_id=a072156e-ca08-4aca-9cb0-d754d0460a64 topic=API_EXHAUSTED
+[INCOMPLETE] chunk_id=dc4ee368-3205-4240-963b-ac53a886486e topic=API_EXHAUSTED
+[INCOMPLETE] chunk_id=e9bfd75c-bd3e-4115-a933-97aecb1fdda6 topic=API_EXHAUSTED
+[INCOMPLETE] chunk_id=29b9bbfc-8f2b-49d3-9689-229242a54193 topic=API_EXHAUSTED

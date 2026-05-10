@@ -8268,5 +8268,344 @@
     "theory": "Ideal gas entropy accounts for temperature changes via heat capacity integration, pressure departures from a reference state, and the statistical entropy increase resulting from mixing different species.",
     "source_url": "local://matlab_docs_pdfs/FILENAME",
     "license": "public/no-login"
+  },
+  {
+    "chunk_id": "4d9a8c12-3f1b-4a5d-9e6b-7c8d9e0f1a2b",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Distillation Column State and Input Variable Mapping",
+    "steps": [
+      "Define state variables for liquid and vapor compositions, flow rates, and temperature.",
+      "Assign manipulated variables including pressure and heat duties.",
+      "Identify disturbance variables such as feed composition and enthalpy.",
+      "Assemble equality constraints for mass, energy, and summation balances."
+    ],
+    "params": {
+      "x": "Liquid phase compositions",
+      "y": "Vapor phase compositions",
+      "L": "Liquid flow rate",
+      "V": "Vapor flow rate",
+      "T": "Temperature",
+      "P": "Column pressure",
+      "Q": "Heat duty",
+      "z": "Feed composition",
+      "F": "Feed flow rate",
+      "HF": "Feed enthalpy"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Dynamic distillation models partition variables into states, manipulated inputs, and disturbances to solve the underlying MESH (Mass, Equilibrium, Summation, and Enthalpy) equations using numerical solvers.",
+    "source_url": "local://matlab_docs_pdfs/distillation_modeling.pdf",
+    "license": "public/no-login"
+  },
+  {
+    "chunk_id": "5e1b2c3d-4f5a-6b7c-8d9e-0f1a2b3c4d5e",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Thermodynamic and Physical Property Configuration",
+    "steps": [
+      "Select thermodynamic package (e.g., 'PR', 'SRK', or 'RK').",
+      "Input critical pressure (pc) and critical temperature (Tc) for each component.",
+      "Convert units from imperial (psia, F) to SI (Pa, K).",
+      "Define binary interaction parameters (k) as a symmetric matrix.",
+      "Specify ideal gas heat capacity coefficients (cpig) and enthalpies/Gibbs energies of formation."
+    ],
+    "params": {
+      "Thermo": "Selection of thermodynamic model (PR: Peng-Robinson, SRK: Soave-Redlich-Kwong, RK: Redlich-Kwong)",
+      "pc": "Critical pressure (converted to Pa)",
+      "Tc": "Critical temperature (converted to K)",
+      "w": "Acentric factor",
+      "k": "Binary interaction parameter matrix",
+      "cpig": "Ideal gas heat capacity coefficients [J/mol-K]",
+      "DHf": "Standard enthalpy of formation [J/mol]",
+      "DGf": "Standard Gibbs energy of formation [J/mol]"
+    },
+    "ui_paths": [],
+    "errors": [
+      "Incorrect matrix dimensions for binary parameters k",
+      "Unconverted units leading to solver divergence"
+    ],
+    "fixes": [
+      "Ensure k is symmetric using k = k + k'",
+      "Multiply psia by 1e5/14.5038 and convert Fahrenheit to Kelvin using (F-32)/1.8 + 273.15"
+    ],
+    "theory": "Physical property initialization provides the constant parameters required for cubic equations of state to estimate non-ideal fluid behavior and phase equilibrium.",
+    "source_url": "local://matlab_docs_pdfs/distillation_modeling.pdf",
+    "license": "public/no-login"
+  },
+  {
+    "chunk_id": "a1b2c3d4-e5f6-7a8b-9c0d-e1f2a3b4c5d6",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Equation of State Property Calculation (prsrk)",
+    "steps": [
+      "Input component mole fractions, pressure, and temperature into the prsrk function.",
+      "Calculate the standard entropy of formation (DSf).",
+      "Select model constants (epsilon, sigma, omega, psi) based on the specified EoS flag.",
+      "Compute molar volume, compressibility factor (Z), and fugacity coefficients (phi).",
+      "Derive thermodynamic properties including Enthalpy (H), Entropy (S), and Gibbs energy (G)."
+    ],
+    "params": {
+      "z": "Number of moles of all species (column vector)",
+      "p": "Pressure [Pa]",
+      "T": "Temperature [K]",
+      "ph": "Phase identifier ('L' for Liquid, 'V' for Vapor)",
+      "flag": "EoS selection ('PR', 'SRK', or 'RK')",
+      "rho": "Molar density/volume output",
+      "Z": "Compressibility factor",
+      "phi": "Fugacity coefficient"
+    },
+    "ui_paths": [],
+    "errors": [
+      "Convergence failure in cubic EoS root finding",
+      "Incorrect phase selection ('L' vs 'V') for flash calculations"
+    ],
+    "fixes": [
+      "Verify T and p are within reasonable physical bounds",
+      "Check the acentric factor values for high-molecular weight components"
+    ],
+    "theory": "The prsrk function utilizes cubic Equations of State (EoS) to calculate fundamental thermodynamic departures, allowing for the determination of fugacity and enthalpy in non-ideal mixtures.",
+    "source_url": "local://matlab_docs_pdfs/distillation_modeling.pdf",
+    "license": "public/no-login"
+  },
+  {
+    "chunk_id": "8b51263d-4c37-4b6c-8e41-0498305c4864",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Cubic Equation of State Parameter Selection",
+    "steps": [
+      "Define the EoS model using a switch-case for 'PR' (Peng-Robinson), 'SRK' (Soave-Redlich-Kwong), or 'RK' (Redlich-Kwong)",
+      "Assign model-specific constants: epsilon (epsi), sigma (sigm), omega (omeg), and psi",
+      "Calculate the parameter 'm' based on acentric factor (w) and critical temperature ratios"
+    ],
+    "params": {
+      "flag": "String identifying the EoS model ('PR', 'SRK', or 'RK')",
+      "w": "Acentric factor",
+      "Tc": "Critical temperature",
+      "T": "System temperature"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Initializes fundamental constants for various cubic equations of state used to calculate thermodynamic deviations from ideal gas behavior.",
+    "source_url": "local://matlab_docs_pdfs/FILENAME",
+    "license": "public/no-login"
+  },
+  {
+    "chunk_id": "f2e964a1-0925-4d04-98ae-364779836371",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "EoS Mixing Rules and Alpha Calculation",
+    "steps": [
+      "Calculate the alpha (alfa) temperature-dependent scaling factor",
+      "Compute individual component parameters ai and bi",
+      "Apply quadratic mixing rules using composition vector z and interaction parameters k to find bulk parameters a and b",
+      "Calculate the temperature derivative of a (dadT) for enthalpy calculations"
+    ],
+    "params": {
+      "z": "Mole fraction vector",
+      "k": "Binary interaction parameter matrix",
+      "R": "Universal gas constant",
+      "pc": "Critical pressure"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Employs Van der Waals one-fluid mixing rules to determine the effective attraction and repulsion parameters for a multicomponent mixture.",
+    "source_url": "local://matlab_docs_pdfs/FILENAME",
+    "license": "public/no-login"
+  },
+  {
+    "chunk_id": "77cc9a41-325d-4f1b-9a40-3580718693c2",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Solving Cubic Roots for Molar Volume",
+    "steps": [
+      "Construct a 4-element coefficient vector 'c' representing the cubic equation in V",
+      "Use the MATLAB 'roots' function to find potential molar volumes",
+      "Filter out imaginary components and handle near-zero imaginary values",
+      "Select the minimum root for liquid phase ('L') or maximum root for vapor phase ('V')"
+    ],
+    "params": {
+      "p": "System pressure",
+      "ph": "Phase identifier ('L' or 'V')",
+      "c": "Vector of polynomial coefficients"
+    },
+    "ui_paths": [],
+    "errors": [
+      "MATLAB assigns tiny values for imaginary parts of real roots"
+    ],
+    "fixes": [
+      "Use 'abs(imag(r)) <= 1e-8' to identify and convert near-real roots to real numbers"
+    ],
+    "theory": "Determines the physical molar volume by solving the cubic form of the equation of state and selecting the root corresponding to the specified phase stable state.",
+    "source_url": "local://matlab_docs_pdfs/FILENAME",
+    "license": "public/no-login"
+  },
+  {
+    "chunk_id": "a9012e12-6543-4b6c-8291-76543210abcd",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Residual Thermodynamic Property Calculation",
+    "steps": [
+      "Calculate the compressibility factor Z = PV/(RT)",
+      "Compute the Residual Helmholtz energy (AR) and Residual Entropy (SR)",
+      "Calculate the Residual Enthalpy (HR) using the temperature derivative of a"
+    ],
+    "params": {
+      "V": "Molar volume",
+      "Z": "Compressibility factor",
+      "Bs": "Dimensionless b parameter (b*p/RT)"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Residual properties quantify the difference between the actual thermodynamic state and an ideal gas state at the same temperature and pressure.",
+    "source_url": "local://matlab_docs_pdfs/FILENAME",
+    "license": "public/no-login"
+  },
+  {
+    "chunk_id": "c12d45e6-7890-4f1a-b2c3-d4e5f6g7h8i9",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Aly-Lee Ideal Gas Calculations",
+    "steps": [
+      "Retrieve 5-parameter coefficients (C1-C5) for the Aly-Lee heat capacity model",
+      "Integrate the Aly-Lee expression to calculate Ideal Gas Enthalpy (Hig)",
+      "Integrate the Aly-Lee expression to calculate Ideal Gas Entropy (Sig) including the pressure correction term"
+    ],
+    "params": {
+      "cpig": "Matrix of Aly-Lee coefficients for each component",
+      "DHf": "Standard enthalpy of formation",
+      "DSf": "Standard entropy of formation",
+      "Tref": "Reference temperature",
+      "Pref": "Reference pressure"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The Aly-Lee model provides a precise, self-consistent method for calculating temperature-dependent ideal gas heat capacities and their integrals for enthalpy and entropy.",
+    "source_url": "local://matlab_docs_pdfs/FILENAME",
+    "license": "public/no-login"
+  },
+  {
+    "chunk_id": "d9876543-210b-4c32-10a9-876543210fed",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Component Fugacity and Total Thermodynamic State",
+    "steps": [
+      "Calculate partial molar attraction and repulsion terms (abar, bbar)",
+      "Determine the fugacity coefficient (phi) for each component in the mixture",
+      "Sum Ideal and Residual contributions to find total Enthalpy (H), Entropy (S), Internal Energy (U), and Gibbs Free Energy (G)"
+    ],
+    "params": {
+      "phi": "Fugacity coefficient vector",
+      "H": "Total Enthalpy",
+      "G": "Gibbs Free Energy"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Combines ideal gas contributions with EoS-derived residual departures to provide the complete thermodynamic state and chemical potential (via fugacity) for equilibrium calculations.",
+    "source_url": "local://matlab_docs_pdfs/FILENAME",
+    "license": "public/no-login"
+  },
+  {
+    "chunk_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Calculation of Fundamental Thermodynamic Potentials",
+    "steps": [
+      "Calculate total Enthalpy (H) by summing ideal gas enthalpy (Hig) and residual enthalpy (HR).",
+      "Calculate total Entropy (S) by summing ideal gas entropy (Sig) and residual entropy (SR).",
+      "Compute Internal Energy (U) using the relation U = H - p*V.",
+      "Compute Helmholtz Free Energy (A) using the relation A = U - T*S.",
+      "Compute Gibbs Free Energy (G) using the relation G = H - T*S."
+    ],
+    "params": {
+      "H": "Total enthalpy of the system",
+      "S": "Total entropy of the system",
+      "U": "Internal energy",
+      "A": "Helmholtz free energy",
+      "G": "Gibbs free energy",
+      "Hig": "Ideal gas enthalpy contribution",
+      "HR": "Residual enthalpy contribution",
+      "Sig": "Ideal gas entropy contribution",
+      "SR": "Residual entropy contribution",
+      "p": "System pressure",
+      "V": "Molar volume",
+      "T": "System temperature"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "State functions for real fluids are determined by combining ideal gas properties with residual properties derived from an Equation of State (EOS). These fundamental relations allow for the derivation of all energetic properties from temperature, pressure, and volume data.",
+    "source_url": "local://matlab_docs_pdfs/FILENAME",
+    "license": "public/no-login"
+  },
+  {
+    "chunk_id": "89eb921c-d731-4a4b-9742-0f836c283021",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Fugacity Coefficient Calculation from EOS",
+    "steps": [
+      "Define mixing parameters a and b for the mixture.",
+      "Calculate partial molar parameters abar and bbar using mole fractions (z) and interaction matrices (Q).",
+      "Evaluate the compressibility factor (Z) for the given V, p, and T.",
+      "Solve for the fugacity coefficient (phi) using the integrated form of the cubic equation of state."
+    ],
+    "params": {
+      "phi": "Fugacity coefficient vector for components in the mixture",
+      "Z": "Compressibility factor (PV/RT)",
+      "V": "Molar volume",
+      "a": "EOS attractive parameter for the mixture",
+      "b": "EOS co-volume parameter for the mixture",
+      "abar": "Partial molar attractive parameter vector",
+      "bbar": "Partial molar co-volume parameter vector",
+      "epsi": "EOS-specific constant (e.g., for Peng-Robinson or SRK)",
+      "sigm": "EOS-specific constant (e.g., for Peng-Robinson or SRK)",
+      "z": "Mole fraction vector"
+    },
+    "ui_paths": [],
+    "errors": [
+      "Negative argument in log function during phi calculation"
+    ],
+    "fixes": [
+      "Ensure molar volume V is greater than the co-volume parameter b."
+    ],
+    "theory": "The fugacity coefficient represents the deviation of a chemical species from ideal gas behavior in a mixture. It is calculated by integrating the partial molar volume deviation over pressure or volume using a cubic Equation of State.",
+    "source_url": "local://matlab_docs_pdfs/FILENAME",
+    "license": "public/no-login"
+  },
+  {
+    "chunk_id": "c33d42fe-1191-4561-9c63-45609804561a",
+    "source_type": "track_a",
+    "software": "MATLAB",
+    "topic": "Ideal Gas Property Integration",
+    "steps": [
+      "Define reference temperature (Tref) and reference pressure (Pref).",
+      "Input component-specific heat capacity coefficients (cpig).",
+      "Integrate the temperature-dependent heat capacity terms (including exponential terms for vibrational contributions).",
+      "Account for the entropy of mixing using the term R*z'*log(z).",
+      "Subtract the pressure correction term R*log(p/Pref) for entropy calculations."
+    ],
+    "params": {
+      "cpig": "Matrix of ideal gas heat capacity coefficients",
+      "Tref": "Reference temperature (usually 298.15 K)",
+      "Pref": "Reference pressure (usually 1 bar or 101325 Pa)",
+      "R": "Universal gas constant",
+      "z": "Mole fraction vector"
+    },
+    "ui_paths": [],
+    "errors": [
+      "Division by zero at T=0 in exponential terms"
+    ],
+    "fixes": [
+      "Ensure temperature T is defined in Kelvin and is greater than zero."
+    ],
+    "theory": "Ideal gas properties are calculated by integrating empirical heat capacity correlations (like the Aly-Lee model) from a reference state. Entropy calculations must additionally account for pressure deviations from the reference state and the entropy of mixing for multi-component systems.",
+    "source_url": "local://matlab_docs_pdfs/FILENAME",
+    "license": "public/no-login"
   }
 ]
