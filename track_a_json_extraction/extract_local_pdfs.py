@@ -52,7 +52,7 @@ if not api_keys:
 
 current_key_idx = 0
 genai.configure(api_key=api_keys[current_key_idx])
-MODEL = genai.GenerativeModel("gemini-2.0-flash")
+MODEL = genai.GenerativeModel("gemini-flash-latest")
 
 print(f"Loaded {len(api_keys)} API key(s).")
 
@@ -62,11 +62,11 @@ def rotate_key():
     next_idx = (current_key_idx + 1) % len(api_keys)
     if next_idx == 0 and current_key_idx == len(api_keys) - 1:
         # All keys cycled — wait for rate limit window to reset
-        print(f"\n  [ALL KEYS EXHAUSTED] Waiting 70s for quota reset...", flush=True)
-        time.sleep(70)
+        print(f"\n  [ALL KEYS EXHAUSTED] Waiting 90s for quota reset...", flush=True)
+        time.sleep(90)
     current_key_idx = next_idx
     genai.configure(api_key=api_keys[current_key_idx])
-    MODEL = genai.GenerativeModel("gemini-2.0-flash")
+    MODEL = genai.GenerativeModel("gemini-flash-latest")
     print(f"  [key] Switched to API key {current_key_idx + 1}/{len(api_keys)}")
 
 # ── PROMPT BUILDER ────────────────────────────────────────────────────────────
@@ -138,14 +138,14 @@ def parse_text_chunks(text_chunks: list, source_url: str) -> list:
 
 
 # ── SCANNED PDF: Gemini File API ──────────────────────────────────────────────
-def parse_scanned_pdf(pdf_path: str, fname: str) -> list:
+def parse_scanned_pdf(pdf_path: str, fname: str, stats: dict, total_pdfs: int) -> list:
     """Upload PDF to Gemini File API (handles OCR internally), return chunks."""
     source_url = f"local://matlab_docs_pdfs/{fname}"
 
-    # Upload
-    print(f"    Uploading {fname} to Gemini File API...", end=" ", flush=True)
-    uploaded_file = None
-    for attempt in range(len(api_keys) * 2 + 2):
+    for attempt in range(len(api_keys) + 2):
+        # 1. Upload (must be done with the CURRENT key)
+        print(f"    Uploading {fname} to Gemini File API (key {current_key_idx+1})...", end=" ", flush=True)
+        uploaded_file = None
         try:
             uploaded_file = genai.upload_file(
                 path=pdf_path,
@@ -153,45 +153,44 @@ def parse_scanned_pdf(pdf_path: str, fname: str) -> list:
                 display_name=fname
             )
             print(f"uploaded ({uploaded_file.name})")
-            break
         except Exception as e:
             err = str(e)
             if "429" in err or "quota" in err.lower():
+                print("Rate limited on upload, rotating...")
                 rotate_key()
-                time.sleep(15)
+                continue
             else:
                 print(f"UPLOAD FAILED: {e}")
                 return [_error_chunk(source_url, "UPLOAD_FAILED")]
 
-    if not uploaded_file:
-        return [_error_chunk(source_url, "UPLOAD_EXHAUSTED")]
+        # 2. Wait for file to be ready
+        time.sleep(5)
 
-    # Wait for file to be ready
-    time.sleep(3)
+        # 3. Call Gemini
+        prompt = build_prompt(f"The filename is: {fname}") + \
+                 f"\n\nIMPORTANT: Replace 'FILENAME' in source_url with the actual filename: {fname}"
 
-    # Build prompt with file context
-    prompt = build_prompt(f"The filename is: {fname}") + \
-             f"\n\nIMPORTANT: Replace 'FILENAME' in source_url with the actual filename: {fname}"
+        print(f"    Sending to Gemini for extraction...", end=" ", flush=True)
+        parsed = call_gemini_with_file(prompt, uploaded_file, source_url, fname)
 
-    # Call Gemini with the uploaded file
-    print(f"    Sending to Gemini for extraction...", end=" ", flush=True)
-    parsed = call_gemini_with_file(prompt, uploaded_file, source_url, fname)
+        # Clean up
+        try:
+            genai.delete_file(uploaded_file.name)
+        except:
+            pass
 
-    # Clean up — delete the uploaded file to save storage quota
-    try:
-        genai.delete_file(uploaded_file.name)
-    except Exception:
-        pass  # Non-critical
+        if parsed:
+            if isinstance(parsed, list):
+                print(f"OK ({len(parsed)} chunks)")
+                return parsed
+            return [parsed]
 
-    if isinstance(parsed, list):
-        print(f"OK ({len(parsed)} chunks extracted)")
-        return parsed
-    elif isinstance(parsed, dict):
-        print(f"OK (1 chunk extracted)")
-        return [parsed]
-    else:
-        print("FAILED — no valid JSON returned")
-        return [_error_chunk(source_url, "PARSE_ERROR")]
+        # If we got here, it failed (likely rate limit during generate_content)
+        # The key was already rotated inside call_gemini_with_file
+        print(f"    Attempt {attempt+1} failed, retrying with new key + re-upload...")
+        update_tracker(stats, total_pdfs, f"{fname} [retrying with new key...]")
+
+    return [_error_chunk(source_url, "PARSE_ERROR")]
 
 
 # ── GEMINI CALLERS ────────────────────────────────────────────────────────────
@@ -199,7 +198,7 @@ def call_gemini_text(prompt: str, source_url: str) -> list | dict | None:
     """Call Gemini with a text-only prompt. Returns parsed JSON list/dict or None."""
     for attempt in range(len(api_keys) * 4 + 4):
         try:
-            time.sleep(6)
+            time.sleep(10) # Slower for stability
             response = MODEL.generate_content(prompt)
             return _parse_json_response(response.text, source_url)
         except Exception as e:
@@ -217,7 +216,7 @@ def call_gemini_with_file(prompt: str, uploaded_file, source_url: str, fname: st
     """Call Gemini with an uploaded file. Returns parsed JSON list/dict or None."""
     for attempt in range(len(api_keys) * 4 + 4):
         try:
-            time.sleep(6)
+            time.sleep(10) # Slower for stability
             response = MODEL.generate_content([prompt, uploaded_file])
             return _parse_json_response(response.text, source_url, fname)
         except Exception as e:
@@ -304,7 +303,7 @@ def log_flag(msg: str):
         f.write(msg + "\n")
 
 
-TRACKER_PATH = "data/track_a/progress_tracker.md"
+TRACKER_PATH = os.path.abspath("data/track_a/progress_tracker.md")
 _pdf_log: list = []   # running table of per-PDF results
 
 def update_tracker(stats: dict, total_pdfs: int, current_file: str = ""):
@@ -359,110 +358,104 @@ def update_tracker(stats: dict, total_pdfs: int, current_file: str = ""):
 
 # ── MAIN ─────────────────────────────────────────────────────────────────────
 def main():
-    global _pdf_log
-    _pdf_log = []
-    pdf_files = sorted(
-        [f for f in os.listdir(PDF_DIR) if f.lower().endswith(".pdf")],
-        key=lambda x: int(re.sub(r'\D', '', x) or 0)
-    )
-    total_pdfs = len(pdf_files)
-    print(f"\nFound {total_pdfs} PDFs in '{PDF_DIR}'")
-
-    # Figure out which PDFs are already done
-    existing_chunks = load_existing()
-    already_done = {
-        c["source_url"] for c in existing_chunks
-        if c.get("topic") not in ("API_EXHAUSTED", "PARSE_ERROR", "API_ERROR",
-                                   "UPLOAD_FAILED", "UPLOAD_EXHAUSTED")
-        and c.get("flag") != "INCOMPLETE"
-    }
-    print(f"Already successfully extracted: {len(already_done)} PDF sources\n")
-
-    stats = {"new": 0, "skipped": 0, "failed": 0, "total_chunks": 0, "gemini_calls": 0}
-    update_tracker(stats, total_pdfs, "Starting...")
-
-    for i, fname in enumerate(pdf_files):
-        pdf_path   = os.path.join(PDF_DIR, fname)
-        source_url = f"local://matlab_docs_pdfs/{fname}"
-
-        update_tracker(stats, total_pdfs, fname)
-        if source_url in already_done:
-            print(f"[{i+1:02}/{len(pdf_files)}] SKIP  {fname}")
-            stats["skipped"] += 1
-            _pdf_log.append({"n": i+1, "file": fname, "method": "—", "chunks": "—", "status": "SKIPPED (done)"})
-            update_tracker(stats, total_pdfs)
-            continue
-
-        print(f"\n[{i+1:02}/{len(pdf_files)}] Processing: {fname}  ({os.path.getsize(pdf_path)//1024} KB)")
-
-        # ── Step 1: Try pdfplumber (instant, no quota used) ──────────────────
-        new_chunks = []
-        method = "pdfplumber + Gemini text"
-        try:
-            full_text = extract_text_pdf(pdf_path)
-            word_count = len(full_text.split())
-            if word_count >= MIN_WORDS:
-                print(f"  [text PDF] {word_count:,} words extracted via pdfplumber")
-                text_chunks = chunk_text(full_text)
-                new_chunks = parse_text_chunks(text_chunks, source_url)
-                stats["gemini_calls"] += len(text_chunks)
-            else:
-                raise ValueError(f"Only {word_count} words — treating as scanned")
-        except Exception as e:
-            # ── Step 2: Gemini File API for scanned/image PDFs ───────────────
-            print(f"  [scanned PDF] pdfplumber got: {e}")
-            print(f"  [scanned PDF] Using Gemini File API (built-in OCR)...")
-            update_tracker(stats, total_pdfs, f"{fname} [uploading to Gemini File API...]")
-            new_chunks = parse_scanned_pdf(pdf_path, fname)
-            method = "File API (OCR)"
-            stats["gemini_calls"] += 1
-
-        if not new_chunks:
-            print(f"  FAILED: No chunks extracted from {fname}")
-            log_flag(f"[ZERO_CHUNKS] file={fname}")
-            stats["failed"] += 1
-            _pdf_log.append({"n": i+1, "file": fname, "method": method, "chunks": 0, "status": "FAILED"})
-            update_tracker(stats, total_pdfs)
-            continue
-
-        # Quality-flag empty chunks
-        for chunk in new_chunks:
-            has_content = chunk.get("steps") or chunk.get("ui_paths") or chunk.get("theory")
-            if not has_content:
-                chunk["flag"] = "INCOMPLETE"
-            elif "flag" in chunk and chunk["flag"] == "INCOMPLETE":
-                del chunk["flag"]
-
-        # Incremental save
-        existing_chunks = load_existing()
-        existing_chunks.extend(new_chunks)
-        save(existing_chunks)
-
-        good = sum(1 for c in new_chunks if c.get("flag") != "INCOMPLETE")
-        print(f"  DONE: {fname} => {good} good chunks + {len(new_chunks)-good} incomplete")
-        stats["new"] += 1
-        stats["total_chunks"] += good
-        _pdf_log.append({"n": i+1, "file": fname, "method": method, "chunks": good,
-                         "status": "OK" if good > 0 else "INCOMPLETE"})
-        update_tracker(stats, total_pdfs)
-
-    update_tracker(stats, total_pdfs)  # final idle write
     print("\n" + "=" * 60)
-    print("Extraction complete.")
-    print(f"  PDFs newly extracted : {stats['new']}")
-    print(f"  PDFs skipped (done)  : {stats['skipped']}")
-    print(f"  PDFs failed          : {stats['failed']}")
-    print(f"  Good chunks added    : {stats['total_chunks']}")
-    print(f"  Gemini API calls     : {stats['gemini_calls']}")
-    print(f"  Output               : {OUT_FILE}")
-
-    # Final count
-    final = load_existing()
-    good_total = sum(1 for c in final if c.get("flag") != "INCOMPLETE"
-                     and c.get("topic") not in ("API_EXHAUSTED", "PARSE_ERROR"))
-    print(f"\n  Total good chunks in file: {good_total}")
+    print("PDF EXTRACTION AGENT - WATCH MODE ACTIVE")
+    print("Monitoring data/track_a/matlab_docs_pdfs for new files...")
     print("=" * 60)
+
+    while True:
+        global _pdf_log
+        # Re-scan directory every loop
+        pdf_files = sorted(
+            [f for f in os.listdir(PDF_DIR) if f.lower().endswith(".pdf")],
+            key=lambda x: int(re.sub(r'\D', '', x) or 0)
+        )
+        total_pdfs = len(pdf_files)
+
+        # Re-load existing chunks to see what's truly done
+        existing_chunks = load_existing()
+        already_done = {
+            c["source_url"] for c in existing_chunks
+            if c.get("topic") not in ("API_EXHAUSTED", "PARSE_ERROR", "API_ERROR",
+                                       "UPLOAD_FAILED", "UPLOAD_EXHAUSTED")
+            and c.get("flag") != "INCOMPLETE"
+        }
+
+        # Count total good chunks for the stats
+        good_total = sum(1 for c in existing_chunks if c.get("flag") != "INCOMPLETE"
+                         and c.get("topic") not in ("API_EXHAUSTED", "PARSE_ERROR"))
+
+        stats = {"new": 0, "skipped": 0, "failed": 0, "total_chunks": 0, "gemini_calls": 0}
+        
+        # Reset log and start processing
+        _pdf_log = []
+        new_files_found = False
+
+        for i, fname in enumerate(pdf_files):
+            pdf_path   = os.path.join(PDF_DIR, fname)
+            source_url = f"local://matlab_docs_pdfs/{fname}"
+
+            if source_url in already_done:
+                stats["skipped"] += 1
+                _pdf_log.append({"n": i+1, "file": fname, "method": "—", "chunks": "—", "status": "SKIPPED (done)"})
+                continue
+            
+            # If we reach here, we found a NEW file
+            new_files_found = True
+            print(f"\n[NEW FILE DETECTED] Processing: {fname}")
+            update_tracker(stats, total_pdfs, fname)
+
+            # ── Step 1: Try pdfplumber ──
+            new_chunks = []
+            method = "pdfplumber + Gemini text"
+            try:
+                full_text = extract_text_pdf(pdf_path)
+                word_count = len(full_text.split())
+                if word_count >= MIN_WORDS:
+                    print(f"  [text PDF] {word_count:,} words extracted")
+                    text_chunks = chunk_text(full_text)
+                    new_chunks = parse_text_chunks(text_chunks, source_url)
+                    stats["gemini_calls"] += len(text_chunks)
+                else:
+                    raise ValueError(f"Only {word_count} words")
+            except Exception as e:
+                # ── Step 2: Gemini File API ──
+                print(f"  [scanned PDF] Using Gemini File API OCR...")
+                update_tracker(stats, total_pdfs, f"{fname} [uploading...]")
+                new_chunks = parse_scanned_pdf(pdf_path, fname, stats, total_pdfs)
+                method = "File API (OCR)"
+                stats["gemini_calls"] += 1
+
+            if not new_chunks:
+                stats["failed"] += 1
+                _pdf_log.append({"n": i+1, "file": fname, "method": method, "chunks": 0, "status": "FAILED"})
+                continue
+
+            # Quality-flag empty chunks
+            for chunk in new_chunks:
+                has_content = chunk.get("steps") or chunk.get("ui_paths") or chunk.get("theory")
+                if not has_content:
+                    chunk["flag"] = "INCOMPLETE"
+
+            # Save
+            current_all = load_existing()
+            current_all.extend(new_chunks)
+            save(current_all)
+
+            good = sum(1 for c in new_chunks if c.get("flag") != "INCOMPLETE")
+            stats["new"] += 1
+            stats["total_chunks"] += good
+            _pdf_log.append({"n": i+1, "file": fname, "method": method, "chunks": good,
+                             "status": "OK" if good > 0 else "INCOMPLETE"})
+            update_tracker(stats, total_pdfs)
+
+        if new_files_found:
+            print(f"\nBatch complete. Total good chunks: {good_total + stats['total_chunks']}")
+        
+        update_tracker(stats, total_pdfs) # Ensure tracker is idle
+        time.sleep(120) # Wait 2 minutes before checking for more PDFs
 
 
 if __name__ == "__main__":
     main()
+

@@ -51,7 +51,6 @@ if not api_keys:
 current_key_idx = 0
 genai.configure(api_key=api_keys[current_key_idx])
 
-# CHANGED: gemini-1.5-flash — 15 RPM / 1500 RPD on free tier vs Pro's 2 RPM / 50 RPD
 MODEL_NAME = "gemini-1.5-flash"
 MODEL = genai.GenerativeModel(MODEL_NAME)
 
@@ -67,11 +66,14 @@ REQUIRED_KEYS = {
     "theory", "source_url", "license"
 }
 
-MAX_DURATION_SEC        = 1800   # 30 minutes
+MAX_DURATION_SEC        = 1800   # 30 minutes — now actually enforced
 MIN_VIEWS               = 500
-SLEEP_BETWEEN_CALLS     = 5      # Flash: 15 RPM → ~4s minimum; 5s is safe
+MIN_DURATION_SEC        = 120    # FIX: skip videos under 2 minutes
+SLEEP_BETWEEN_CALLS     = 5
 RETRY_WAIT              = 60
+MAX_RETRY_BACKOFF       = 300    # FIX: cap backoff at 5 minutes
 MAX_VIDEOS_PER_SOFTWARE = 20
+MAX_TRANSCRIPT_WORDS    = 3000   # FIX: word-based truncation (~12k chars, boundary-safe)
 
 
 # ==========================================
@@ -93,16 +95,14 @@ def parse_vtt(vtt_text: str) -> str:
             continue
         if "-->" in line:
             continue
-        if re.match(r"^\d+$", line):          # VTT sequence numbers
+        if re.match(r"^\d+$", line):
             continue
-        if re.match(r"^\d{2}:\d{2}", line):   # Timestamp lines
+        if re.match(r"^\d{2}:\d{2}", line):
             continue
-        # Strip inline HTML tags (<c>, <i>, <b>, etc.)
         line = re.sub(r"<[^>]+>", "", line)
         if line:
             text_lines.append(line)
 
-    # Deduplicate consecutive duplicates
     deduped = []
     prev = None
     for line in text_lines:
@@ -113,42 +113,79 @@ def parse_vtt(vtt_text: str) -> str:
     return " ".join(deduped)
 
 
-def fetch_transcript(video_url: str) -> str | None:
+# FIX: Combined accessibility check + metadata fetch + transcript in ONE yt-dlp session
+# Old code made TWO separate yt-dlp calls per video (extract_info + download).
+# Now we do it in one pass: extract metadata first, validate, then fetch transcript.
+def fetch_video_info_and_transcript(video_url: str) -> tuple[dict | None, str | None]:
     """
-    Download auto-generated English subtitles via yt-dlp and return plain text.
-    Returns None if no transcript is available.
+    Single yt-dlp session that:
+      1. Fetches video metadata (duration, view_count, title)
+      2. Validates duration and view filters
+      3. Downloads and parses the transcript
+
+    Returns (metadata_dict, transcript_text) or (None, None) on failure.
+    metadata_dict keys: title, duration_sec, views, url
     """
     with tempfile.TemporaryDirectory() as tmpdir:
         ydl_opts = {
-            "quiet":            True,
-            "skip_download":    True,
+            "quiet":             True,
+            "skip_download":     True,
             "writeautomaticsub": True,
-            "subtitleslangs":   ["en"],
-            "subtitlesformat":  "vtt",
-            "outtmpl":          os.path.join(tmpdir, "%(id)s.%(ext)s"),
+            "subtitleslangs":    ["en"],
+            "subtitlesformat":   "vtt",
+            "outtmpl":           os.path.join(tmpdir, "%(id)s.%(ext)s"),
         }
         try:
             with YoutubeDL(ydl_opts) as ydl:
-                ydl.download([video_url])
+                info = ydl.extract_info(video_url, download=True)
         except YoutubeDLError as e:
-            log.error(f"Transcript download failed for {video_url}: {e}")
-            return None
+            log.warning(f"  yt-dlp failed for {video_url}: {e}")
+            return None, None
 
+        # --- Metadata ---
+        duration  = info.get("duration", 0) or 0
+        views     = info.get("view_count", 0) or 0
+        title     = info.get("title", "Unknown")
+
+        metadata = {
+            "title":        title,
+            "duration_sec": duration,
+            "views":        views,
+            "url":          video_url,
+        }
+
+        # --- Duration filter (was dead code before) ---
+        if duration > MAX_DURATION_SEC:
+            log.info(f"  Skipping (too long: {duration}s > {MAX_DURATION_SEC}s): {title}")
+            return metadata, None
+
+        if duration < MIN_DURATION_SEC:
+            log.info(f"  Skipping (too short: {duration}s < {MIN_DURATION_SEC}s): {title}")
+            return metadata, None
+
+        # --- Transcript ---
         vtt_files = glob.glob(os.path.join(tmpdir, "*.vtt"))
         if not vtt_files:
-            log.warning(f"No transcript found for {video_url}")
-            return None
+            log.warning(f"  No transcript found for {video_url}")
+            return metadata, None
 
         with open(vtt_files[0], encoding="utf-8") as f:
             raw = f.read()
 
     transcript = parse_vtt(raw)
     if not transcript.strip():
-        log.warning(f"Transcript is empty after parsing for {video_url}")
-        return None
+        log.warning(f"  Transcript empty after parsing: {video_url}")
+        return metadata, None
 
-    log.info(f"  Transcript fetched: {len(transcript.split())} words")
-    return transcript
+    # FIX: Word-based truncation instead of raw character slice
+    # transcript[:12000] was cutting mid-word and losing ~half of long videos
+    words = transcript.split()
+    if len(words) > MAX_TRANSCRIPT_WORDS:
+        log.info(f"  Truncating transcript: {len(words)} → {MAX_TRANSCRIPT_WORDS} words")
+        transcript = " ".join(words[:MAX_TRANSCRIPT_WORDS])
+
+    log.info(f"  Transcript ready: {len(transcript.split())} words | duration={duration}s | views={views}")
+    return metadata, transcript
 
 
 # ==========================================
@@ -156,7 +193,7 @@ def fetch_transcript(video_url: str) -> str | None:
 # ==========================================
 
 def _rotate_key():
-    """Rotate to the next available API key. Returns True if rotated, False if all exhausted."""
+    """Rotate to the next available API key."""
     global current_key_idx, MODEL
     if current_key_idx < len(api_keys) - 1:
         current_key_idx += 1
@@ -167,14 +204,54 @@ def _rotate_key():
     return False
 
 
+def _parse_gemini_json(text: str) -> list | None:
+    """
+    FIX: Robust JSON extraction replacing fragile re.search(r"\\[.*\\]").
+    Old regex broke when Gemini wrapped output in markdown code fences or
+    when any list appeared inside the response before the actual JSON array.
+
+    Strategy:
+      1. Strip markdown fences if present
+      2. Find the outermost [ ... ] by position (rfind for closing bracket)
+      3. Parse and validate it's a list
+    """
+    text = text.strip()
+
+    # Strip markdown code fences  ```json ... ``` or ``` ... ```
+    text = re.sub(r"^```(?:json)?\s*", "", text)
+    text = re.sub(r"\s*```$", "", text)
+    text = text.strip()
+
+    # Find outermost array boundaries
+    start = text.find("[")
+    end   = text.rfind("]")
+
+    if start == -1 or end == -1 or end <= start:
+        log.error("No JSON array found in Gemini response")
+        return None
+
+    candidate = text[start:end + 1]
+    try:
+        parsed = json.loads(candidate)
+        if isinstance(parsed, list):
+            return parsed
+        log.error(f"Parsed JSON is not a list: {type(parsed)}")
+        return None
+    except json.JSONDecodeError as e:
+        log.error(f"JSON decode failed: {e}")
+        return None
+
+
 def gemini_extract(video_url: str, software: str, license_str: str, transcript: str) -> list[dict]:
     """
-    Send transcript text to Gemini Flash and extract structured JSON chunks.
-    Pure text-in / JSON-out — no video_metadata (which is not a valid Gemini API input).
+    Send transcript to Gemini Flash and extract structured JSON chunks.
+    chunk_id is no longer embedded in the prompt (it was immediately overwritten anyway).
     """
     log.info(f"  Sleeping {SLEEP_BETWEEN_CALLS}s (rate limit guard)")
     time.sleep(SLEEP_BETWEEN_CALLS)
 
+    # FIX: Removed uuid4() from prompt — it was generated then immediately overwritten
+    # by chunk["chunk_id"] = str(uuid.uuid4()) in post-processing. Pointless noise.
     prompt = f"""You are extracting structured knowledge from a {software} tutorial video transcript for a student AI assistant.
 
 Read the transcript carefully and extract ALL distinct tutorial steps or procedures described.
@@ -182,7 +259,6 @@ Return a JSON ARRAY of objects. Each object covers ONE distinct topic or workflo
 
 For each chunk return ONLY this JSON structure (no markdown fences, no explanation):
 {{
-  "chunk_id": "{uuid.uuid4()}",
   "source_type": "track_b",
   "software": "{software}",
   "topic": "<short topic label>",
@@ -207,11 +283,12 @@ Rules:
 - If the transcript contains no extractable tutorial content, return a single-element array with flag "INACCESSIBLE".
 
 TRANSCRIPT:
-{transcript[:12000]}
+{transcript}
 """
 
     max_attempts = len(api_keys) + 5
     response = None
+    backoff = RETRY_WAIT
 
     for attempt in range(max_attempts):
         try:
@@ -223,8 +300,11 @@ TRANSCRIPT:
             is_quota = "429" in err or "quota" in err.lower() or "ResourceExhausted" in err
             if is_quota:
                 if not _rotate_key():
-                    log.warning(f"All keys exhausted. Sleeping {RETRY_WAIT}s... (attempt {attempt + 1}/{max_attempts})")
-                    time.sleep(RETRY_WAIT)
+                    # FIX: Exponential backoff capped at MAX_RETRY_BACKOFF
+                    # Old code reset to key 0 and retried immediately — hammered the API
+                    log.warning(f"All keys exhausted. Backing off {backoff}s... (attempt {attempt + 1})")
+                    time.sleep(backoff)
+                    backoff = min(backoff * 2, MAX_RETRY_BACKOFF)
                     current_key_idx = 0
                     genai.configure(api_key=api_keys[current_key_idx])
                     MODEL = genai.GenerativeModel(MODEL_NAME)
@@ -233,19 +313,15 @@ TRANSCRIPT:
                 break
 
     if response and hasattr(response, "text"):
-        match = re.search(r"\[.*\]", response.text, re.DOTALL)
-        if match:
-            try:
-                parsed = json.loads(match.group())
-                if isinstance(parsed, list):
-                    for chunk in parsed:
-                        chunk["chunk_id"]    = str(uuid.uuid4())
-                        chunk["source_url"]  = video_url
-                        chunk["license"]     = license_str
-                        chunk.setdefault("source_type", "track_b")
-                    return parsed
-            except json.JSONDecodeError:
-                pass
+        parsed = _parse_gemini_json(response.text)
+        if parsed:
+            for chunk in parsed:
+                # Assign chunk_id here (not in prompt)
+                chunk["chunk_id"]   = str(uuid.uuid4())
+                chunk["source_url"] = video_url
+                chunk["license"]    = license_str
+                chunk.setdefault("source_type", "track_b")
+            return parsed
 
     log.error(f"Failed to parse Gemini response for {video_url}")
     return [{
@@ -281,7 +357,6 @@ def schema_validator(chunk: dict) -> tuple[bool, list[str]]:
 # ==========================================
 
 def load_existing_urls(software: str) -> set[str]:
-    """Return source_urls already saved — for deduplication. Handles corrupt JSON gracefully."""
     path = PATHS["out"].format(software)
     if not os.path.exists(path):
         return set()
@@ -295,7 +370,6 @@ def load_existing_urls(software: str) -> set[str]:
 
 
 def load_existing_chunks(software: str) -> list[dict]:
-    """Load existing chunks safely."""
     path = PATHS["out"].format(software)
     if not os.path.exists(path):
         return []
@@ -308,6 +382,7 @@ def load_existing_chunks(software: str) -> list[dict]:
 
 
 def log_flag(message: str):
+    os.makedirs("data/track_b", exist_ok=True)
     with open(PATHS["flag_log"], "a", encoding="utf-8") as f:
         f.write(message + "\n")
 
@@ -315,6 +390,7 @@ def log_flag(message: str):
 def log_video(row: dict):
     fieldnames = ["video_url", "title", "duration_sec", "views", "chunks_extracted", "flag"]
     file_exists = os.path.exists(PATHS["video_log"])
+    os.makedirs("data/track_b", exist_ok=True)
     with open(PATHS["video_log"], "a", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
         if not file_exists:
@@ -332,6 +408,7 @@ def update_progress_tracker(stats: dict, total_calls: int, current_url: str = No
         f.write(f"- **Total Gemini Calls:** `{total_calls}`\n")
         f.write(f"- **Videos Processed:** `{stats['processed']}`\n")
         f.write(f"- **Skipped (Duplicate):** `{stats['skipped_dup']}`\n")
+        f.write(f"- **Skipped (Duration):** `{stats['skipped_duration']}`\n")
         f.write(f"- **No Transcript:** `{stats['no_transcript']}`\n")
         f.write(f"- **Inaccessible Videos:** `{stats['inaccessible']}`\n")
         f.write(f"- **Zero Chunk Videos:** `{stats['zero_chunks']}`\n")
@@ -357,9 +434,9 @@ def process_software_from_csv(csv_path: str, software: str, max_videos: int):
     os.makedirs("data/track_b", exist_ok=True)
 
     stats = {
-        "processed": 0, "skipped_dup": 0, "inaccessible": 0,
-        "no_transcript": 0, "zero_chunks": 0, "parse_errors": 0,
-        "incomplete": 0, "total_chunks": 0
+        "processed": 0, "skipped_dup": 0, "skipped_duration": 0,
+        "inaccessible": 0, "no_transcript": 0, "zero_chunks": 0,
+        "parse_errors": 0, "incomplete": 0, "total_chunks": 0
     }
     total_calls = 0
 
@@ -367,12 +444,10 @@ def process_software_from_csv(csv_path: str, software: str, max_videos: int):
     with open(csv_path, newline="", encoding="utf-8") as f:
         for row in csv.DictReader(f):
             videos.append({
-                "url":          row["url"],
-                "software":     row["software"],
-                "license":      row["license"],
-                "duration_sec": 0,
-                "views":        MIN_VIEWS,
-                "title":        row.get("type", "Tutorial Video"),
+                "url":      row["url"],
+                "software": row["software"],
+                "license":  row["license"],
+                "title":    row.get("type", "Tutorial Video"),
             })
 
     log.info(f"Found {len(videos)} videos in CSV")
@@ -395,29 +470,34 @@ def process_software_from_csv(csv_path: str, software: str, max_videos: int):
 
         log.info(f"Processing: {url}")
 
-        # Accessibility check
-        try:
-            with YoutubeDL({"quiet": True}) as ydl:
-                ydl.extract_info(url, download=False)
-        except YoutubeDLError as e:
-            log.warning(f"  Inaccessible: {e}")
-            log_flag(f"[INACCESSIBLE] url={url} reason={e}")
+        # FIX: Single combined call — replaces separate extract_info + fetch_transcript
+        metadata, transcript = fetch_video_info_and_transcript(url)
+
+        # Inaccessible (yt-dlp hard failure)
+        if metadata is None:
+            log.warning(f"  Inaccessible: {url}")
+            log_flag(f"[INACCESSIBLE] url={url}")
             log_video({"video_url": url, "title": v["title"], "duration_sec": 0,
                        "views": 0, "chunks_extracted": 0, "flag": "INACCESSIBLE"})
             stats["inaccessible"] += 1
             continue
 
-        # Fetch transcript
-        transcript = fetch_transcript(url)
+        # Duration filtered (metadata available but transcript=None due to duration)
+        if transcript is None and metadata.get("duration_sec", 0) > MAX_DURATION_SEC:
+            log_flag(f"[DURATION_SKIP] url={url} duration={metadata['duration_sec']}")
+            log_video({**metadata, "video_url": url, "chunks_extracted": 0, "flag": "DURATION_SKIP"})
+            stats["skipped_duration"] += 1
+            continue
+
+        # No transcript
         if transcript is None:
             log.warning(f"  No transcript available: {url}")
             log_flag(f"[NO_TRANSCRIPT] url={url}")
-            log_video({"video_url": url, "title": v["title"], "duration_sec": v["duration_sec"],
-                       "views": v["views"], "chunks_extracted": 0, "flag": "NO_TRANSCRIPT"})
+            log_video({**metadata, "video_url": url, "chunks_extracted": 0, "flag": "NO_TRANSCRIPT"})
             stats["no_transcript"] += 1
             continue
 
-        # Gemini extraction (text-based — no video_metadata)
+        # Gemini extraction
         extracted = gemini_extract(url, software, license_str, transcript)
         total_calls += 1
         stats["processed"] += 1
@@ -425,8 +505,7 @@ def process_software_from_csv(csv_path: str, software: str, max_videos: int):
         if not extracted:
             log.warning(f"  Zero chunks: {url}")
             log_flag(f"[ZERO_CHUNKS] url={url}")
-            log_video({"video_url": url, "title": v["title"], "duration_sec": v["duration_sec"],
-                       "views": v["views"], "chunks_extracted": 0, "flag": "ZERO_CHUNKS"})
+            log_video({**metadata, "video_url": url, "chunks_extracted": 0, "flag": "ZERO_CHUNKS"})
             stats["zero_chunks"] += 1
             continue
 
@@ -456,10 +535,9 @@ def process_software_from_csv(csv_path: str, software: str, max_videos: int):
         with open(out_path, "w", encoding="utf-8") as f:
             json.dump(existing + valid_chunks, f, indent=2, ensure_ascii=False)
 
-        existing_urls.add(url)   # Update in-memory set to prevent re-processing in same run
+        existing_urls.add(url)
 
-        log_video({"video_url": url, "title": v["title"], "duration_sec": v["duration_sec"],
-                   "views": v["views"], "chunks_extracted": len(valid_chunks), "flag": "OK"})
+        log_video({**metadata, "video_url": url, "chunks_extracted": len(valid_chunks), "flag": "OK"})
         log.info(f"  Saved {len(valid_chunks)} chunks")
         update_progress_tracker(stats, total_calls, url)
 

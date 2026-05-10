@@ -10,13 +10,15 @@
 - [1. Project Overview](#1-project-overview)
 - [2. Vision & Value Proposition](#2-vision--value-proposition)
 - [3. Core Features](#3-core-features)
-- [4. System Architecture](#4-system-architecture)
-- [5. Quick Start (Installation & Setup)](#5-quick-start-installation--setup)
-- [6. Usage Guide](#6-usage-guide)
-- [7. Development Roadmap](#7-development-roadmap)
-- [8. Contributing](#8-contributing)
-- [9. License](#9-license)
-- [10. Contact & Acknowledgements](#10-contact--acknowledgements)
+- [4. Unique Features & Innovations](#4-unique-features--innovations)
+- [5. System Architecture](#5-system-architecture)
+- [6. Quick Start (Installation & Setup)](#6-quick-start-installation--setup)
+- [7. Usage Guide](#7-usage-guide)
+- [8. Challenges & Solutions](#8-challenges--solutions)
+- [9. Development Roadmap](#9-development-roadmap)
+- [10. Contributing](#10-contributing)
+- [11. License](#11-license)
+- [12. Contact & Acknowledgements](#12-contact--acknowledgements)
 
 ---
 
@@ -46,10 +48,35 @@
 | **RAG layer** | ChromaDB vector store with `all‑MiniLM‑L6‑v2` embeddings. |
 | **Gradio UI** | Simple web interface for students – query input, answer output, source chunk toggle. |
 | **Comprehensive evaluation** | Accuracy, hallucination rate, retrieval precision, UI‑path correctness metrics. |
+| **Real-time Monitoring** | Markdown-based progress tracking and API health dashboards. |
 
 ---
 
-## 4. System Architecture
+## 4. Unique Features & Innovations
+
+### Real-time Progress Tracking
+
+The system features a **live-updating dashboard** (`progress_tracker.md`) that provides granular visibility into the extraction pipeline. It tracks:
+
+- **Throughput**: Success/failure rates per PDF/Video.
+- **API Health**: Real-time status and usage of the rotated API key pool.
+- **Extraction Logs**: Detailed audit trails for every processed source.
+
+### Blackboard Architectural Pattern
+
+We implement a **Blackboard Mechanism** to coordinate data ingestion. Instead of a linear pipeline, specialized agents (Track A, Track B, and the Recovery Agent) read from and write to a centralized **Knowledge Blackboard**:
+
+- **Decoupled Extraction**: Agents can work independently on different data types (PDFs, URLs, local files).
+- **Shared State**: The `progress_tracker.md` acts as a coordination hub, ensuring no redundant work is performed.
+- **Collaborative Refinement**: Incomplete chunks from one agent can be picked up and refined by a specialized recovery agent.
+
+### Resilient API Orchestration
+
+An automated **API Key Cycler** monitors rate limits in real-time. When a quota is reached, the system seamlessly rotates to the next available key, ensuring the pipeline continues without manual intervention.
+
+---
+
+## 5. System Architecture
 
 ```
 ┌─────────────────────────────────────────────────────┐
@@ -101,7 +128,7 @@
 
 ---
 
-## 5. Quick Start (Installation & Setup)
+## 6. Quick Start (Installation & Setup)
 >
 > **Prerequisites**
 >
@@ -132,7 +159,7 @@ python app.py
 
 ---
 
-## 6. Usage Guide
+## 7. Usage Guide
 
 ### 6.1 Query the Assistant (Gradio UI)
 
@@ -153,7 +180,24 @@ The CLI returns the answer and a path to the source JSON chunk for audit.
 
 ---
 
-## 7. Development Roadmap
+---
+
+## 8. Challenges & Solutions
+
+Throughout the development of ChemE‑LLM, several technical hurdles were encountered and resolved:
+
+| Problem | Solution / Minimization |
+|---|---|
+| **Anti-Bot Security** (e.g., MathWorks) | Implemented robust scraping using **Playwright** to bypass protections and recover documentation. |
+| **API Rate Limits** (Gemini) | Developed an **automated API key rotation** mechanism and graceful error handling to ensure continuous data extraction. |
+| **Scanned/Low-Quality PDFs** | Leveraged **Gemini’s File API for OCR** to extract structured text from scanned engineering documents. |
+| **Non-UI Software** (MATLAB CLI) | Adjusted extraction logic and validation to correctly handle CLI-based tools where UI navigation paths are not applicable. |
+| **Windows File System Issues** | Resolved encoding and path-length issues to ensure the pipeline runs smoothly on Windows environments. |
+| **Data Noise** (GitHub/Licenses) | Built automated cleanup scripts to filter out redundant metadata and license headers from extracted knowledge chunks. |
+
+---
+
+## 9. Development Roadmap
 
 | Phase | Timeline | Goal |
 |---|---|---|
@@ -167,7 +211,7 @@ All phases are tracked in `PROJECT_PLAN.md` with detailed milestones.
 
 ---
 
-## 8. Contributing
+## 10. Contributing
 
 We welcome contributions! Please follow these steps:
 
@@ -181,13 +225,13 @@ For major changes, open an issue first to discuss the design.
 
 ---
 
-## 9. License
+## 11. License
 
 This project is licensed under the **MIT License** – see the `LICENSE` file for details.
 
 ---
 
-## 10. Contact & Acknowledgements
+## 12. Contact & Acknowledgements
 
 **Lead Maintainer:** Harshith Bhardwaz Kenkari – <harshithkenkary@gmail.com>
 
