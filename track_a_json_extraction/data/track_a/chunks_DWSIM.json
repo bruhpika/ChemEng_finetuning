@@ -2207,5 +2207,22 @@
     "source_url": "https://github.com/Spogis/DWSIMChemDesign",
     "license": "GPLv3",
     "flag": "INCOMPLETE"
+  },
+  {
+    "chunk_id": "96a4fd69-5e80-4ff3-bdf2-9f6b192a940b",
+    "source_type": "track_a",
+    "software": "DWSIM",
+    "topic": "API_EXHAUSTED",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Failed to get API response"
+    ],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://dwsim.org/wiki/index.php?title=Advanced_EOS_Library",
+    "license": "GPL-3.0",
+    "flag": "INCOMPLETE"
   }
 ]
