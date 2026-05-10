@@ -1,0 +1,115 @@
+GitHub - kupiqu/fig2svg: fig2svg: a Matlab/GNU Octave Toolbox to Export Matlab/GNU Octave Figures in Scalable Vector Graphics (SVG) Format · GitHub
+Skip to content
+You signed in with another tab or window.
+Reload
+to refresh your session.
+You signed out in another tab or window.
+Reload
+to refresh your session.
+You switched accounts on another tab or window.
+Reload
+to refresh your session.
+Dismiss alert
+This repository was archived by the owner on Mar 23, 2021. It is now read-only.
+kupiqu
+/
+fig2svg
+Public archive
+Notifications
+You must be signed in to change notification settings
+Fork
+5
+Star
+22
+master
+Branches
+Tags
+Go to file
+Code
+Open more actions menu
+Folders and files
+Name
+Name
+Last commit message
+Last commit date
+Latest commit
+History
+96 Commits
+96 Commits
+example
+example
+src
+src
+README.md
+README.md
+license.txt
+license.txt
+View all files
+Repository files navigation
+fig2svg is now unmaintained
+Matlab and GNU Octave support SVG files. Unfortunately, Matlab's SVG files do not scale nicely and are restricted to the figure size at the time of saving. You can use
+svg_fix_viewbox
+to fix this issue.
+Previous Content
+fig2svg toolbox: a Matlab/GNU Octave FIG to SVG converter
+fig2svg is a Matlab/GNU Octave toolbox that converts Matlab/GNU Octave figures to Scalable Vector Graphics (SVG). The most important feature when comparing fig2svg to plot2svg is that fig2svg has enhanced compatibility, especially for Matlab graphics > 2014a. Note that plot2svg function is deprecated in the fig2svg toolbox and will be removed in the next major release (keeping it now to ease transitions from plot2svg to fig2svg). Thus, plot2svg use in this toolbox is discouraged. Please use fig2svg instead.
+Updated Features
+Done:
+bar plot
+scatter plot
+legend
+colorbar
+ticklabelrotation
+annotations
+3D plots (distinct azimuth values)
+Limitations:
+horizontal bar plot
+stairs and stem plots
+patch enhancements (issue #10)
+3D plots (distinct elevation values issue #15)
+your feature request ;-)
+Credit
+fig2svg was originally a fork of
+plot2svg
+About
+fig2svg: a Matlab/GNU Octave Toolbox to Export Matlab/GNU Octave Figures in Scalable Vector Graphics (SVG) Format
+Resources
+Readme
+License
+BSD-2-Clause license
+Uh oh!
+There was an error while loading.
+Please reload this page
+.
+Activity
+Stars
+22
+stars
+Watchers
+1
+watching
+Forks
+5
+forks
+Report repository
+Releases
+11
+2020.01.0
+Latest
+Jan 26, 2020
++ 10 releases
+Packages
+0
+Uh oh!
+There was an error while loading.
+Please reload this page
+.
+Contributors
+Uh oh!
+There was an error while loading.
+Please reload this page
+.
+Languages
+MATLAB
+100.0%
+You can’t perform that action at this time.

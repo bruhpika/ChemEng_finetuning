@@ -32,10 +32,9 @@ genai.configure(api_key=api_keys[current_key_idx])
 MODEL = genai.GenerativeModel("gemini-flash-latest")  # instantiate ONCE
 
 PATHS = {
-    "csv":      "data/sources_matlab.csv",
-    "cache":    "data/track_a/cache/",          # raw text cache
-    "out":      "data/track_a/chunks_{}.json",
-    "flag_log": "data/track_a/flagged_chunks.log",
+    "cache":    "data/blackboard/cache",
+    "out":      "data/blackboard/knowledge/chunks_{}.json",
+    "flag_log": "data/blackboard/tracking/extraction_flags.log",
 }
 REQUIRED_KEYS = {
     "chunk_id", "source_type", "software", "topic",
@@ -224,7 +223,18 @@ Only include a "flag": "INCOMPLETE" field if the chunk is PURELY boilerplate (e.
     match = re.search(r'\{.*\}', response.text, re.DOTALL)
     if match:
         try:
-            return json.loads(match.group())
+            parsed = json.loads(match.group())
+            if not isinstance(parsed, dict):
+                parsed = {}
+            
+            # FORCE metadata to match our inputs (prevents stray files)
+            parsed["software"]   = software
+            parsed["source_url"] = source_url
+            parsed["license"]    = license_str
+            parsed["chunk_id"]   = str(uuid.uuid4())
+            parsed["source_type"] = "track_a"
+            
+            return parsed
         except json.JSONDecodeError:
             pass
 
@@ -293,9 +303,9 @@ def log_flag(message: str):
 
 def update_progress_tracker(stats, total_calls, current_url=None):
     """Writes current stats and status to progress_tracker.md for live monitoring."""
-    # Ensure data/track_a exists
-    os.makedirs("data/track_a", exist_ok=True)
-    tracker_path = os.path.join("data", "track_a", "progress_tracker.md")
+    # Ensure blackboard tracking dir exists
+    os.makedirs("data/blackboard/tracking", exist_ok=True)
+    tracker_path = os.path.join("data", "blackboard", "tracking", "progress_tracker.md")
     
     with open(tracker_path, "w", encoding="utf-8") as f:
         f.write("# Agent Extraction Progress Tracker\n\n")
@@ -324,7 +334,7 @@ def update_progress_tracker(stats, total_calls, current_url=None):
 
 def main():
     # ensure all dirs exist
-    for path in [PATHS["cache"], "data/track_a/"]:
+    for path in [PATHS["cache"], "data/blackboard/knowledge", "data/blackboard/tracking"]:
         os.makedirs(path, exist_ok=True)
 
     all_chunks: dict[str, list] = {}
@@ -333,11 +343,11 @@ def main():
 
     print("Track A Parser starting...\n")
 
-    # Find all source CSVs in data/
-    source_files = [f for f in os.listdir("data") if f.startswith("sources_") and f.endswith(".csv") and f != "sources_test.csv"]
+    # Find all source CSVs in data/sources/
+    source_files = [f for f in os.listdir("data/sources") if f.startswith("sources_") and f.endswith(".csv") and f != "sources_test.csv"]
     
     for source_file in source_files:
-        csv_path = os.path.join("data", source_file)
+        csv_path = os.path.join("data/sources", source_file)
         print(f"\n--- Processing source file: {source_file} ---")
         
         with open(csv_path, newline='', encoding='utf-8') as f:

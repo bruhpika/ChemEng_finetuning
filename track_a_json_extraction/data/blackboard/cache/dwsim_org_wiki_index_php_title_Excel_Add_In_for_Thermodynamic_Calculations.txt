@@ -1,0 +1,748 @@
+Excel Add-In for Thermodynamic Calculations - DWSIM - Open Source Chemical Process Simulator
+Excel Add-In for Thermodynamic Calculations
+From DWSIM - Open Source Chemical Process Simulator
+Jump to navigation
+Jump to search
+Contents
+1
+Introduction
+2
+Installation
+3
+Usage
+4
+Overriding Interaction Parameters
+5
+Property Methods and Correlation Profiles
+6
+Flash Algorithms and Results Validation
+6.1
+Flash Algorithms
+6.2
+Validation of Equilibrium Calculations
+7
+Property Identifiers and Units
+7.1
+Single compound constant properties
+7.2
+Single compound temperature-dependent properties
+7.3
+Single compound pressure-dependent properties
+7.4
+Non-constant single-phase mixture properties
+Introduction
+The DWSIM Excel Add-In exposes some of the internal Thermodynamic Property Calculation Routines to Microsoft Excel, including:
+Single Compound Properties (i.e. Boiling Point, Heat Capacity, Viscosity...)
+Single Phase Mixture Properties (i.e. Enthalpy, Entropy, Molar Weight, Thermal Conductivity, Viscosity...)
+Pressure-Temperature, Pressure-Enthalpy, Pressure-Entropy, Pressure-VaporFraction and Temperature-VaporFraction Flash Calculators, using an algorithm of your choice
+Other auxiliary functions
+Property and Equilibrium calculation functionality is now available to Excel just as any other add-in function.
+Installation
+The Excel Add-In is part of DWSIM Simulator for Windows Desktop -
+you must install it first
+.
+Remember the location where DWSIM was installed, as you'll use this location to find the Add-In XLL file.
+After installing DWSIM, open Excel and go to File > Options > Add-Ins > Manage (Excel Add-Ins) > Go > Browse. More information:
+Add or remove add-ins in Excel
+Look for
+DWSIM.xll
+in DWSIM's installation directory if you're running the 32-bit Excel version, otherwise look for for
+DWSIM_64.xll
+if you're running the 64-bit version.
+Usage
+Functions exposed by this add-in will be grouped in a category named DWSIM:
+Property and Equilibrium calculation functions require parameters that must be one or more values returned by
+GetPropPackList
+,
+GetCompoundList
+,
+GetPropList
+,
+GetCompoundPropList
+and
+GetPhaseList
+. They are self-explanatory, and will return values listed in a single column, so you probably will have to select some cells in a single column and call the functions using
+Ctrl+Shift+Enter
+:
+For example, the
+PTFlash
+function requires the name of the Property Package to use, the compound names and mole fractions, temperature in K, pressure in Pa and you may optionally provide new interaction parameters that will override the ones used internally by DWSIM. The calculation results will be returned as a
+(n+2) x (4)
+matrix, where
+n
+is the number of compounds. First row will contain the phase names (
+Vapor
+,
+Liquid
+,
+Liquid2
+and
+Solid
+, in this order), the second will contain the phase mole fractions and the other lines will contain the compound mole fractions in the corresponding phases:
+For PH, PS, TVF and PVF flash calculation functions, and additional line is returned that will contain the temperature in K or pressure in Pa in the first column.
+Overriding Interaction Parameters
+You can directly override the interaction parameters used by Property Packages when calling calculations from Excel by providing
+n x n
+matrices containing the values, where
+n
+is the number of compounds.
+This feature is optional and should be used only when you know exactly what you are doing
+.
+The following table shows the user-definable interaction parameters for each Property Package:
+Property Package
+IP Set #1
+IP Set #2
+IP Set #3
+IP Set #4
+IP Set #5
+IP Set #6
+IP Set #7
+IP Set #8
+PC-SAFT
+PC-SAFT kij
+Not used
+Not used
+Not used
+Not used
+Not used
+Not used
+Not used
+Peng-Robinson (PR)
+PR kij
+Not used
+Not used
+Not used
+Not used
+Not used
+Not used
+Not used
+Soave-Redlich-Kwong (SRK)
+SRK kij
+Not used
+Not used
+Not used
+Not used
+Not used
+Not used
+Not used
+Peng-Robinson-Stryjek-Vera 2 (PRSV2)
+PRSV2-M kij
+PRSV2-M kji
+Not used
+Not used
+Not used
+Not used
+Not used
+Not used
+Peng-Robinson / Lee-Kesler (PR/LK)
+PR kij
+Not used
+Not used
+Not used
+Not used
+Not used
+Not used
+Not used
+UNIFAC
+PR kij
+Not used
+Not used
+Not used
+Not used
+Not used
+Not used
+Not used
+UNIFAC-LL
+PR kij
+Not used
+Not used
+Not used
+Not used
+Not used
+Not used
+Not used
+Modified UNIFAC (Dortmund)
+PR kij
+Not used
+Not used
+Not used
+Not used
+Not used
+Not used
+Not used
+NRTL
+PR kij
+NRTL A12 (cal/mol)
+NRTL A21 (cal/mol)
+NRTL Alpha
+NRTL B12 (cal/mol.K)
+NRTL B21 (cal/mol.K)
+NRTL C12 (cal/mol.K²)
+NRTL C21 (cal/mol.K²)
+UNIQUAC
+PR kij
+UNIQUAC A12 (cal/mol)
+UNIQUAC A21 (cal/mol)
+UNIQUAC B12 (cal/mol.K)
+UNIQUAC B21 (cal/mol.K)
+UNIQUAC C12 (cal/mol.K²)
+UNIQUAC C21 (cal/mol.K²)
+Not used
+Chao-Seader
+Not used
+Not used
+Not used
+Not used
+Not used
+Not used
+Not used
+Not used
+Grayson-Streed
+Not used
+Not used
+Not used
+Not used
+Not used
+Not used
+Not used
+Not used
+Lee-Kesler-Plöcker
+LKP kij
+Not used
+Not used
+Not used
+Not used
+Not used
+Not used
+Not used
+Raoult's Law
+Not used
+Not used
+Not used
+Not used
+Not used
+Not used
+Not used
+Not used
+COSMO-SAC (JCOSMO)
+PR kij
+Not used
+Not used
+Not used
+Not used
+Not used
+Not used
+Not used
+IAPWS-IF97 Steam Tables
+Not used
+Not used
+Not used
+Not used
+Not used
+Not used
+Not used
+Not used
+Property Methods and Correlation Profiles
+View the
+Property_Methods_and_Correlation_Profiles
+page for a list of Property Packages and their models/correlations used to calculate properties.
+Flash Algorithms and Results Validation
+Flash Algorithms
+The Flash Algorithms in DWSIM are the components responsible for determining a particular set of phases at thermodynamic equilibrium, their amounts (and the amounts of the compounds on each phase) at the specified conditions like Temperature, Pressure, Total Enthalpy and Total Entropy. Some Flash Algorithms are capable of predicting equilibrium between one vapor and one liquid phase, while others support another co-existing liquid and/or solid phase. As the amount of phases considered in equilibrium increases, the calculation time/complexity also increases while the results' reliability decreases.
+Some flash algorithms are more capable/reliable than others, depending on the mixture for which the flash calculation request is being requested. DWSIM features a selection of flash algorithms that are capable of calculating VLE, VLLE and SLE. They are:
+Nested Loops (default): recommended for the vast majority of VLE systems;
+Nested Loops (VLLE): recommended for mixtures which exhibit liquid phase splitting;
+Inside-Out (2 or 3-Phase): recommended for petroleum simulations. The 3-phase option must be used when a second liquid phase is expected (i.e. free water);
+Gibbs Minimization (2 or 3-phase): recommended for difficult, highly non-ideal chemical systems;
+Nested Loops for Eutectic Solid Systems: Calculates Solid-Liquid Equilibria for eutectic systems considering the solid phase as being ideal.
+Nested Loops for Solid Solution Systems: Calculates Solid-Liquid Equilibria for solid solution systems considering the solid phase as being ideal.
+Nested Loops (3-phase immiscible VLLE): Fast algorithm for systems with an immiscible second liquid phase (VLLE). The first compound in the list will be the immiscible one.
+Validation of Equilibrium Calculations
+Not all thermodynamic models are adequate for all types of mixtures/systems. It is easy to be mistaken by an apparently suitable model for your system because it  will always return a result, which may be correct or not depending on a number of factors:
+Inadequate/limited background theory for thermodynamic calculations
+Missing binary interaction parameters (BIPs)
+Unsuitable flash algorithm
+You must know
+a priori
+what to expect from a flash calculation. For example, for a mixture of hydrocarbons with water, a liquid phase split is expected because water and hydrocarbons are almost completely immiscible. In this case a VLE Flash Algorithm is not suitable for equilibrium calculations. You must use one of the three-phase flash algorithms available.
+Validation of flash results is carried out automatically by DWSIM if you're doing a simulation through its own interface, but if you're using the Excel Add-In you must take some extra precautions to understand what's being given as a result.
+To validate the equilibrium calculation results, you can take advantage of the fact that the
+Gibbs Free Energy will always decrease on a phase split
+. If there's no phase split, the Gibbs energy will remain the same, otherwise it
+must
+decrease. Using the definition
+G = H - TS
+(Gibbs Energy = Enthalpy - Temperature x Entropy), you can use the available functions in the DWSIM Excel Add-In to validate the results.
+For more details,
+download this Excel sheet
+which contains an example of a flash calculation validation.
+Property Identifiers and Units
+The following tables show the property identifiers and their units of measure as returned by the Add-In. The tables were copied directly from the CAPE-OPEN Thermo 1.1 standard document.
+Please note that not all properties are implemented in DWSIM – if you ask for a property that is not available, a
+NotImplemented
+exception will be returned by the Add-In.
+Single compound constant properties
+Identifier
+meaning
+units
+acentricFactor
+Pitzer acentric factor
+associationParameter
+association-parameter (Hayden-O’Connell)
+bornRadius
+m
+charge
+criticalCompressibilityFactor
+critical compressibility factor Z
+criticalDensity
+critical density
+mol/m3
+criticalPressure
+critical pressure
+Pa
+criticalTemperature
+critical temperature
+K
+criticalVolume
+critical volume
+m3/mol
+diffusionVolume
+diffusion volume
+m3
+dipoleMoment
+dipole moment
+Cm
+energyLennardJones
+Lennard-Jones energy parameter (divided by Boltzmann constant)
+K
+gyrationRadius
+radius of gyration
+m
+heatOfFusionAtNormalFreezingPoint
+enthalpy change on melting at normal freezing point (101325 Pa)
+J/mol
+heatOfVaporizationAtNormalBoilingPoint
+enthalpy change on vaporization at normal boiling point (101325 Pa)
+J/mol
+idealGasEnthalpyOfFormationAt25C
+J/mol
+idealGasGibbsFreeEnergyOfFormationAt25C
+J/mol
+liquidDensityAt25C
+liquid density at 25 ºC
+mol/m3
+liquidVolumeAt25C
+liquid volume at 25 ºC
+m3/mol
+lengthLennardJones
+Lennard-Jones length parameter
+m
+molecularWeight
+relative molar mass
+normalBoilingPoint
+boiling point temperature at 101325 Pa
+K
+normalFreezingPoint
+melting point temperature at 101325 Pa
+K
+Identifier
+meaning
+units
+parachor
+Parachor
+m3 kg0.25/(s0.5 mol)
+standardEntropyGas
+Standard entropy of gas
+J/mol
+standardEntropyLiquid
+standard entropy of liquid
+J/mol
+standardEntropySolid
+standard entropy of solid
+J/mol
+standardEnthalpyAqueousDilution
+Standard aqueous infinite dilution enthalpy
+J/mol
+standardFormationEnthalpyGas
+standard enthalpy change on formation of gas
+J/mol
+standardFormationEnthalpyLiquid
+standard enthalpy change on formation of liquid
+J/mol
+standardFormationEnthalpySolid
+standard enthalpy change on formation of solid
+J/mol
+standardFormationGibbsEnergyGas
+standard Gibbs energy change on formation of gas
+J/mol
+standardFormationGibbsEnergyLiquid
+standard Gibbs energy change on formation of liquid
+J/mol
+standardFormationGibbsEnergySolid
+standard Gibbs energy change on formation of solid
+J/mol
+standardGibbsAqueousDilution
+Standard aqueous infinite dilution Gibbs energy
+J/mol
+triplePointPressure
+triple point pressure
+Pa
+triplePointTemperature
+triple point temperature
+K
+vanderwaalsArea
+van der Waals area
+m2
+vanderwaalsVolume
+van der Waals volume
+m3
+Single compound temperature-dependent properties
+Identifier
+Meaning
+units
+cpAqueousInfiniteDilution
+Heat capacity of a solute in an infinitely dilute aqueous solution.
+J/(mol K)
+dielectricConstant
+The ratio of the capacity of a condenser with a particular substance as dielectric to the capacity of the same condenser with a vacuum for dielectric.
+expansivity
+Coefficient of linear expansion for a solid:
+1/K
+(where L is the length) at 1 atm
+fugacityCoefficientOfVapor
+Fugacity coefficient of vapour on the saturation line
+glassTransitionPressure
+Glass transition pressure
+Pa
+heatCapacityOfLiquid
+Heat capacity (Cp) of liquid on the saturation line
+J/(mol K)
+heatCapacityOfSolid
+Solid heat capacity (Cp) at 1 atm
+J/(mol K)
+heatOfFusion
+Enthalpy change on fusion for the solid on the melting line
+J/mol
+heatOfSublimation
+Enthalpy change on evaporation of the solid on the sublimation line
+J/mol
+heatOfSolidSolidPhaseTransition
+Enthalpy change on phase transition
+J/mol
+heatOfVaporization
+Enthalpy change on evaporation of the liquid on the saturation line
+J/mol
+idealGasEnthalpy
+Enthalpy of ideal gas
+J/mol
+idealGasEntropy
+Temperature-dependent part of entropy of ideal gas
+J/(mol K)
+idealGasHeatCapacity
+Heat capacity (Cp) of ideal gas
+J/(mol K)
+meltingPressure
+Pressure on melting line
+Pa
+selfDiffusionCoefficientGas
+Self-diffusion coefficient in gas phase at 1 atm
+M2/s
+Identifier
+Meaning
+units
+selfDiffusionCoefficientLiquid
+self-diffusion coefficient in liquid phase on saturation line
+M2/s
+solidSolidPhaseTransitionPressure
+Pressure at phase transition
+Pa
+sublimationPressure
+Vapour pressure of solid on the sublimation line
+Pa
+surfaceTensionSatLiquid
+Surface tension of liquid on the saturation line
+N/m
+thermalConductivityOfLiquid
+Thermal conductivity of liquid on saturation line
+W/(m K)
+thermalConductivityOfSolid
+Thermal conductivity of solid at 1 atm
+W/(m K)
+thermalConductivityOfVapor
+Thermal conductivity of dilute gas
+W/(m K)
+vaporPressure
+Vapour pressure of saturated liquid
+Pa
+virialCoefficient
+Second virial coefficient of gas
+M3/mol
+viscosityOfLiquid
+Viscosity of liquid on saturation line
+Pas
+viscosityOfVapor
+Viscosity in dilute gas state
+Pas
+volumeChangeUponMelting
+Volume change for the solid on the melting line
+m3/mol
+volumeChangeUponSolidSolidPhaseTransition
+Volume change upon solid-solid phase transition
+m3/mol
+volumeChangeUponSublimation
+Volume change for the solid on the sublimation line
+m3/mol
+volumeChangeUponVaporization
+Volume change for the liquid on the saturation line
+m3/mol
+volumeOfLiquid
+Volume of liquid on saturation line
+m3/mol
+volumeOfSolid
+Volume of solid at 1 atm
+m3/mol
+Single compound pressure-dependent properties
+Identifier
+Meaning
+units
+boilingPointTemperature
+Temperature at liquid-vapour transition
+K
+glassTransitionTemperature
+Glass transition temperature
+K
+meltingTemperature
+Temperature on melting line
+K
+solidSolidPhaseTransitionTemperature
+Temperature at phase transition
+K
+Non-constant single-phase mixture properties
+Identifier
+Meaning
+units
+basis
+overall
+activity
+Activity
+U
+activityCoefficient
+Activity coefficient
+U
+compressibility
+Isothermal compressibility
+1/Pa
+U
+compressibilityFactor
+Compressibility factor
+U
+Y
+density
+Density
+mol/m3
+mole/mass
+Y
+diffusionCoefficient
+Binary diffusion coefficients for all species in mixture relative to all other species
+m2/s
+U
+dissociationConstant
+Chemical equilibrium constant corresponding to a dissociation reaction.
+U
+enthalpy
+Enthalpy
+J
+mole/mass
+Y
+entropy
+Entropy
+J/K
+mole/mass
+Y
+excessEnthalpy
+Excess enthalpy
+J
+mole/mass
+excessEntropy
+Excess entropy
+J/K
+mole/mass
+excessGibbsEnergy
+Excess Gibbs energy
+J
+mole/mass
+excessHelmholtzEnergy
+Excess Helmholtz energy
+J
+mole/mass
+excessInternalEnergy
+Excess internal energy
+J
+mole/mass
+excessVolume
+Excess volume
+m3
+mole/mass
+flow
+Flows of each Compound in a given Phase (or the overall mixture)
+mol/s
+mole/mass
+Y
+fraction
+Molar (or mass) fractions of each Compound in a given Phase (or the overall mixture)
+mole/mass
+Y
+fugacity
+Fugacity
+Pa
+U
+fugacityCoefficient
+Fugacity coefficient
+U
+gibbsEnergy
+Gibbs energy
+J
+mole/mass
+Y
+heatCapacityCp
+Heat capacity at constant pressure (Cp)
+J/K
+mole/mass
+Y
+heatCapacityCv
+Heat capacity at constant volume (Cv)
+J/ K
+mole/mass
+Y
+helmholtzEnergy
+Helmholtz energy
+J
+mole/mass
+Y
+internalEnergy
+Internal energy
+J
+mole/mass
+Y
+jouleThomsonCoefficient
+K/Pa
+U
+logFugacity
+Natural logarithm of fugacity (expressed in Pa)
+U
+logFugacityCoefficient
+Natural logarithm of fugacity coefficient
+U
+meanActivityCoefficient
+The geometrical mean of the activity coefficients of the ions in an electrolyte solution.
+U
+molecularWeight
+Mixture average molecular weight (relative molar mass)
+U
+pH
+pH
+U
+pOH
+pOH
+U
+phaseFraction
+The molar (or mass) fraction of the fluid that is in the specified phase
+mole/mass
+pressure
+Pressure
+Pa
+U
+Y
+speedOfSound
+Thermodynamic speed of sound
+m/s
+U
+temperature
+Temperature
+K
+U
+Y
+thermalConductivity
+Thermal conductivity
+W/(m K)
+U
+totalFlow
+Matter flow of a Phase or the overall mixture
+mol/s
+mole/mass
+Y
+viscosity
+Viscosity
+Pa s
+U
+volume
+Volume
+m3
+mole/mass
+Y
+Retrieved from "
+https://dwsim.org/wiki/index.php?title=Excel_Add-In_for_Thermodynamic_Calculations&oldid=268
+"
+Comments
+Please enable JavaScript to view the
+comments powered by Disqus.
+Navigation menu
+Personal tools
+Log in
+Namespaces
+Page
+Discussion
+Variants
+Views
+Read
+View source
+View history
+More
+Search
+Main Page
+Patrons
+Literature
+Award
+Tutorials
+Features
+Features
+CAPE-OPEN
+Excel Add-In
+Automation
+Aqueous Electrolytes
+Property Package
+Extensions (Plugins)
+OPC UA Client
+Capital Cost Estimator
+Neural Network Unit Operation
+Pipe Network Unit Operation
+ThermoC Bridge Library
+Standalone Thermo
+Standalone Thermo Library
+Support
+Support
+Licensing
+API Help
+Forums
+Report a bug
+Mobile Apps
+DWSIM for iPhone/iPad
+DWSIM for Android
+Categories
+Source Code
+Project Summary
+Source Code
+Mailing Lists
+DWSIM Users
+DWSIM Developers
+Tools
+What links here
+Related changes
+Special pages
+Printable version
+Permanent link
+Page information
+This page was last edited on 30 July 2019, at 15:08.
+Privacy policy
+About DWSIM - Open Source Chemical Process Simulator
+Disclaimers

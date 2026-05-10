@@ -22,9 +22,9 @@ import google.generativeai as genai
 import uuid, json, time, os, re
 
 # ── CONFIG ─────────────────────────────────────────────────────────────────
-PDF_DIR   = "data/track_a/matlab_docs_pdfs"
-OUT_FILE  = "data/track_a/chunks_MATLAB.json"
-FLAG_LOG  = "data/track_a/flagged_chunks.log"
+PDF_DIR   = "data/local_pdfs"
+OUT_FILE  = "data/blackboard/knowledge/chunks_MATLAB.json"
+FLAG_LOG  = "data/blackboard/tracking/extraction_flags.log"
 SOFTWARE  = "MATLAB"
 LICENSE   = "public/no-login"
 
@@ -303,7 +303,7 @@ def log_flag(msg: str):
         f.write(msg + "\n")
 
 
-TRACKER_PATH = os.path.abspath("data/track_a/progress_tracker.md")
+TRACKER_PATH = os.path.abspath("data/blackboard/tracking/progress_tracker.md")
 _pdf_log: list = []   # running table of per-PDF results
 
 def update_tracker(stats: dict, total_pdfs: int, current_file: str = ""):

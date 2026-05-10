@@ -1,0 +1,127 @@
+CAPE-OPEN - DWSIM - Open Source Chemical Process Simulator
+CAPE-OPEN
+From DWSIM - Open Source Chemical Process Simulator
+Jump to navigation
+Jump to search
+Contents
+1
+Introduction
+2
+Using external components
+2.1
+2.2
+Unit Operations
+2.3
+Flowsheet Monitoring Objects
+3
+Other features
+3.1
+Using DWSIM as a CAPE-OPEN Property Package Manager (Thermo 1.1)
+3.2
+Using the Script Unit Operation in CAPE-OPEN compliant simulators
+4
+External links
+Introduction
+CAPE-OPEN standards
+are the uniform standards for interfacing process modelling software components developed specifically for the design and operation of chemical processes. They are based on universally recognized software technologies such as COM and CORBA. CAPE-OPEN standards are open, multiplatform, uniform and available free of charge. They are described in a formal documentation set.
+DWSIM supports a number of CAPE-OPEN features, including:
+Property Packages (Thermo Specs 1.0 and 1.1):
+You can use external CAPE-OPEN thermodynamic equilibrium and property calculators as Property Packages in DWSIM. Integration is done transparently. You'll only have to map the external property package components and phases to the ones in the internal DWSIM databases.
+Unit Operations:
+CAPE-OPEN Unit Operations can be added to DWSIM flowsheets and connected to/from energy and material streams just as normal DWSIM Unit Operations. DWSIM also implements the CAPE-OPEN Reaction interfaces so you can use your CAPE-OPEN Reactor Model together with DWSIM and manage your reactions using the Reactions Manager as usual.
+Flowsheet Monitoring Objects:
+DWSIM support CAPE-OPEN plugins,  ‘aka’ Flowsheet Monitoring Objects, such as the WAR Add-in created by William Barrett, USEPA:
+CAPE-OPEN Property Packages, CAPE-OPEN Unit Operations, DWSIM Property Packages and DWSIM Unit Operations can work together on any possible combination. For instance, you can use a DWSIM Property Package as the thermodynamics provider for a CAPE-OPEN Unit Operation in the same way you can use a CAPE-OPEN Property Package as the thermodynamics provider for a DWSIM Unit Operation.
+Using external components
+To use external CAPE-OPEN Property Packages in DWSIM, add a Property Package of the “CAPE-OPEN” type to the flowsheet:
+After that, click on “Configure” to setup your property package. On the window that appears, select a Thermo Server or Property Package Manager, depending on the CAPE version you chose. After selecting the server, a list of available Property Packages for that server/provider should be available for selection on the PP combo box:
+After selecting your Property Package, you can edit it by clicking on the “Edit” button. If the package was just selected or you’ve done changes to its compounds or phases, you MUST map compounds and phases to DWSIM equivalents on the “Compound/Component Mapping” and “Phase Mapping” tabs:
+IMPORTANT:
+If your PP lists “Overall” or “Mixture” as a phase, you should not associate it with any of DWSIM phases.
+If a DWSIM phase doesn’t exist in the PP, select “Disable” as its label - DO NOT leave it blank!
+DWSIM and the CAPE-OPEN PP should have exactly the same number of compounds, even if some of them aren’t used by DWSIM or by the Property Package.
+After the compound and phase mapping steps, click “OK” and you’re ready to go.
+Unit Operations
+To add CAPE-OPEN Unit Operations to DWSIM flowsheets, drag and drop the “CAPEOPEN Unit Operation icon to the flowsheet. A selection window will appear where you should choose which Operation will be added:
+After the Unit is added, it works the same way as a DWSIM Unit Operation. You can edit its connections to Material and Energy Streams, parameters and access its ‘Edit’ window through the Property Grid:
+IMPORTANT: The “Property Package” setting for the CAPE-OPEN Unit Operation has no effect. It accesses the property packages linked to Material Streams to do calculations. It is recommended that all streams connected to a CAPE-OPEN UO have the same associated Property Package to ensure consistency of the results obtained after flowsheet calculation.
+Flowsheet Monitoring Objects
+CAPE-OPEN Add-ins can be accessed through the “Plugins” menu item:
+Other features
+Using DWSIM as a CAPE-OPEN Property Package Manager (Thermo 1.1)
+If you registered DWSIM types during the installation process, DWSIM will expose its Property Packages to CAPE-OPEN compliant simulators through Thermo 1.1 Interfaces (if your simulator is only Thermo 1.0 compliant, DWSIM Thermo Server will not be selectable). The configuration window allows you to add/remove compounds, configure flash settings, set the GUI language and edit model parameters and binary interaction parameters (BIPs). You can download an example of DWSIM Property Packages used as property and equilibrium calculators in COCO/COFE on
+SourceForge
+.
+Using the Script Unit Operation in CAPE-OPEN compliant simulators
+If you registered DWSIM types during the installation process, the Custom Unit Operation will be exposed to CAPE-OPEN compliant simulators as “IronPython/IronRuby Script Unit Operation”. You can download an example of the Script UO being used to model a simple membrane separation process in COCO/COFE on
+SourceForge
+.
+External links
+CO-LaN
+- the CAPE-OPEN Laboratories Network is a neutral industry and academic association promoting open interface standards in process simulation software. CO-LaN members are committed to making Computer Aided Process Engineering easier, faster and less expensive by achieving complete interoperability of compliant commercial CAPE software tools. CO-LaN supports and maintains the CAPE-OPEN interface standards.
+Retrieved from "
+https://dwsim.org/wiki/index.php?title=CAPE-OPEN&oldid=146
+"
+Comments
+Please enable JavaScript to view the
+comments powered by Disqus.
+Navigation menu
+Personal tools
+Log in
+Namespaces
+Page
+Discussion
+Variants
+Views
+Read
+View source
+View history
+More
+Search
+Main Page
+Patrons
+Literature
+Award
+Tutorials
+Features
+Features
+CAPE-OPEN
+Excel Add-In
+Automation
+Aqueous Electrolytes
+Property Package
+Extensions (Plugins)
+OPC UA Client
+Capital Cost Estimator
+Neural Network Unit Operation
+Pipe Network Unit Operation
+ThermoC Bridge Library
+Standalone Thermo
+Standalone Thermo Library
+Support
+Support
+Licensing
+API Help
+Forums
+Report a bug
+Mobile Apps
+DWSIM for iPhone/iPad
+DWSIM for Android
+Categories
+Source Code
+Project Summary
+Source Code
+Mailing Lists
+DWSIM Users
+DWSIM Developers
+Tools
+What links here
+Related changes
+Special pages
+Printable version
+Permanent link
+Page information
+This page was last edited on 26 June 2019, at 21:36.
+Privacy policy
+About DWSIM - Open Source Chemical Process Simulator
+Disclaimers

@@ -1,0 +1,126 @@
+Advanced EOS Library - DWSIM - Open Source Chemical Process Simulator
+Advanced EOS Library
+From DWSIM - Open Source Chemical Process Simulator
+Jump to navigation
+Jump to search
+The Advanced EOS Library is a bridge which connects DWSIM on Windows and Linux to a collection of open-source MATLAB/Octave routines which implement various Equations of State, including PC-SAFT with support for associating compounds and Perturbed-Hard-Sphere-Chain (PHSC).
+The original project (
+http://hpp.uva.es/open-source-software-eos/
+) consists in a set of MATLAB programs for the calculation of phase equilibrium and other thermodynamic properties using different equations of state (classical cubic equations, cubic equations with excess Gibbs energy mixing rules, group contribution equations and SAFT equations). All programs are open-source and have been designed to be easily reusable using an object-oriented programming methodology.
+This library exposes these programs to DWSIM as fully-implemented Property Packages by running them in Octave (
+https://www.gnu.org/software/octave/
+) and reading the results through a C# interface (
+https://www.codeproject.com/Articles/342007/OctaveSharp-Running-GNU-Octave-with-Csharp
+).
+Contents
+1
+Available Equations of State
+2
+Calculated Properties
+3
+Download
+4
+Installation and Usage
+5
+References
+Available Equations of State
+Perturbed-Chain Statistical Associating Fluid Theory (PC-SAFT) with associating compounds [1]
+Statistical Associating Fluid Theory (Original) [2]
+Perturbed Hard-Sphere-Chain (PHSC) [3]
+Peng-Robinson with Wong-Sandler mixing rules (PRWS) [4]
+Valderrama-Patel-Teja (VPT) [5]
+Calculated Properties
+Fugacity Coefficient
+Density
+Compressibility Factor
+Enthalpy, Entropy and Heat Capacity (optional, with Lee-Kesler model as the default selection)
+Download
+ZIP Package for Windows and Linux:
+version 1.5
+Installation and Usage
+1. This library requires DWSIM 5.2 or newer and
+GNU Octave
+in order to work correctly. Download Octave from
+here
+. Debian-based Linux distros can install Octave with
+sudo apt-get install octave
+2. Install:
+Unpack the contents of the ZIP file into DWSIM's current installation directory, overwriting existing files.
+3. Open DWSIM and setup the bridge with Octave on Edit > General Settings > Other > DWSIM/Octave Bridge:
+Octave Binaries Path: select the path to the "bin" folder where Octave is installed. This is for Windows systems only.
+4. Create a new simulation or open the Simulation Settings window. You should see the new Property Packages at the end of the list:
+5. Important: always check if the model has the required parameters for the added compounds. Failing to do this can result in undesirable behavior...
+6. If everything is correctly configured, you should see some messages in the Information Window about the Octave processes running the .m files to calculate the required properties.
+If you get the "An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework" error message, unblock the downloaded ZIP file (right-mouse button click > 'Properties') and extract it again to DWSIM's folder.
+References
+Gross, J., Sadowski, G., 2001. Perturbed-Chain SAFT: An equation of state based on a perturbation theory for chain molecules. Ind. Eng. Chem. Res. 40, 1244-1260.
+Chapman, W. G., Gubbins, K. E., Jackson, G., Radosz, M., 1990. New reference equation of state for associating liquids. Ind. Eng. Chem. Res. 29, 1709-1721).
+Song, Y., Lambert, S. M., Prausnitz, J. M., 1994. A Perturbed Hard-Sphere-Chain equation of state for normal fluids and polymers. Ind. Eng. Chem. Res. 33, 1047-1057
+Wong, S. S. H., Sandler, S. I., 1992. A Theoretically correct mixing rule for cubic equations of state. AIChE J. 38, 671-680
+Valderrama, J.O., 1990. A Generalized Patel-Teja Equation of State for Polar and Nonpolar Fluids and Their Mixtures. JOURNAL OF CHEMICAL ENGINEERING OF JAPAN 23, No. 1, 87-91
+Retrieved from "
+https://dwsim.org/wiki/index.php?title=Advanced_EOS_Library&oldid=506
+"
+Comments
+Please enable JavaScript to view the
+comments powered by Disqus.
+Navigation menu
+Personal tools
+Log in
+Namespaces
+Page
+Discussion
+Variants
+Views
+Read
+View source
+View history
+More
+Search
+Main Page
+Patrons
+Literature
+Award
+Tutorials
+Features
+Features
+CAPE-OPEN
+Excel Add-In
+Automation
+Aqueous Electrolytes
+Property Package
+Extensions (Plugins)
+OPC UA Client
+Capital Cost Estimator
+Neural Network Unit Operation
+Pipe Network Unit Operation
+ThermoC Bridge Library
+Standalone Thermo
+Standalone Thermo Library
+Support
+Support
+Licensing
+API Help
+Forums
+Report a bug
+Mobile Apps
+DWSIM for iPhone/iPad
+DWSIM for Android
+Categories
+Source Code
+Project Summary
+Source Code
+Mailing Lists
+DWSIM Users
+DWSIM Developers
+Tools
+What links here
+Related changes
+Special pages
+Printable version
+Permanent link
+Page information
+This page was last edited on 12 August 2020, at 14:04.
+Privacy policy
+About DWSIM - Open Source Chemical Process Simulator
+Disclaimers
