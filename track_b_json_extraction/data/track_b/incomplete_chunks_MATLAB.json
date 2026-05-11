@@ -92,5 +92,156 @@
     "license": "YouTube",
     "chunk_id": "52c5d754-c735-4190-936e-aa4929f6285b",
     "flag": "INCOMPLETE"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Model Predictive Control (MPC) Overview",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Model Predictive Control (MPC) calculates the input to a plant to make its output follow a desired reference. It achieves this by predicting future plant output using a plant model and an optimizer. MPC can handle MIMO systems but is simplified to adjusting steering wheel angle for lateral car position in this example.",
+    "source_url": "https://www.youtube.com/watch?v=cEWnixjNdzs",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "84e1f52e-922a-4194-9de1-ab0247ae335b"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Model Predictive Control (MPC) Terminology and State Estimation",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Manipulated variables are signals computed by the controller and sent to the plant (e.g., steering wheel angle). Output variables are the plant outputs (e.g., lateral position). If system states cannot be directly measured, state estimators (e.g., Kalman filters) can be used to estimate them and feed them back to the MPC controller.",
+    "source_url": "https://www.youtube.com/watch?v=cEWnixjNdzs",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "a69cb625-d59a-4852-bf36-9513ce5813a2"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Function Handle Limitations with Multiple Outputs",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "insufficient number of outputs from right-hand side of equal sign to satisfy argument or satisfy assignment"
+    ],
+    "fixes": [],
+    "theory": "MATLAB function handles are generally designed to return a single output. Because the events function specifically requires three distinct outputs (`check`, `isterminal`, `direction`), it cannot be directly implemented using the function handle method without significant workarounds or limitations, making the 'function method' (separate .m file) the preferred approach.",
+    "source_url": "https://www.youtube.com/watch?v=hr0xBJBh2t0",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "18cc8cf9-0dda-4ccb-92ac-7f8c561f366a"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Best practices for variable naming and re-initialization",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Reusing common variable names like 'i' (which MATLAB uses for the imaginary unit and is frequently used as a loop counter) without proper re-initialization or awareness of its previous definition can lead to unexpected behavior and logical errors. It is best practice to use meaningful and unique names for variables to prevent conflicts and ensure code clarity.",
+    "source_url": "https://www.youtube.com/watch?v=qSIf9iHvKZU",
+    "license": "YouTube",
+    "chunk_id": "dfcf3a1d-3fe2-44c3-bcf3-5479e161be67",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Manual Closed-Loop Control System (Car Speed Example)",
+    "steps": [],
+    "params": {
+      "speed_limit": "50 mph",
+      "desired_speed": "50 mph"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "A manual closed-loop control system, like a human driving a car, involves a desired output (target speed), monitoring the current output (speedometer), comparing it to find the error, and taking a control action (adjusting the gas pedal) to reduce the error and maintain the desired speed.",
+    "source_url": "https://www.youtube.com/watch?v=u1pgaJHiiew",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "23a8ee42-689a-436e-aa8e-13566d975550"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Feedback Control System Terminology",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "In control theory, the desired output (also called reference or set point) is the target value. The plant is the object being controlled. A sensor measures the plant's output. The error is the difference between the desired and measured output. A controller decides on a control action based on the error, which is then sent to an actuator that influences the plant. Sometimes, actuator, sensor, and plant dynamics are merged into one 'plant' model.",
+    "source_url": "https://www.youtube.com/watch?v=u1pgaJHiiew",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "705a3c7c-e065-40e3-b553-e9d833a18d5f"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Disturbances and Noise in Control Systems",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Disturbances are unexpected environmental changes that cause a system's output to behave undesirably (e.g., road grade, sticky gas pedal, wind). Noise is an unwanted signal that affects the measured output value, making it inaccurate or fluctuating (e.g., blurry vision affecting speedometer reading).",
+    "source_url": "https://www.youtube.com/watch?v=u1pgaJHiiew",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "91352358-5096-40e2-8d94-ccee0f5d991e"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Converting to an Automatic Control System (Cruise Control)",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "An automatic control system converts manual control to automation. For cruise control, a device provides electronic speed measurement (sensor), an engine control unit acts as the controller to compute control actions based on error, and a mechanical device (motor) acts as the actuator to move the gas pedal, replacing manual input.",
+    "source_url": "https://www.youtube.com/watch?v=u1pgaJHiiew",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "e8d8c5e6-d087-4844-853d-3c76fbe66b8e"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Understanding PID Control Theory",
+    "steps": [],
+    "params": {
+      "Proportional gain": "adjusts response to present error (e.g., 0.1, 2, 5, 10, 100 in examples)",
+      "Integral path": "sums past error over time to eliminate steady-state error",
+      "Derivative path": "measures rate of change of error to predict future error and prevent overshoot",
+      "Gain term": "adjustable weighting factor for each P, I, or D branch, used for tuning the controller"
+    },
+    "ui_paths": [],
+    "errors": [
+      "constant error (also called steady-state error)",
+      "overshooting the goal"
+    ],
+    "fixes": [
+      "add an integrator path to the controller (to get rid of steady-state error)",
+      "add a derivative path to the controller (to prevent overshooting)"
+    ],
+    "theory": "PID (Proportional-Integral-Derivative) control is a versatile feedback control law that calculates an actuated signal based on the error between a desired command and the system's output. It combines present error (P), accumulated past error (I), and the rate of change of future error (D) to achieve desired system behavior, address steady-state error, and prevent overshoot.",
+    "source_url": "https://www.youtube.com/watch?v=wkfEZmsQqiA",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "9b677c07-f60d-4e65-be43-5d7b1fcc01bb"
   }
 ]

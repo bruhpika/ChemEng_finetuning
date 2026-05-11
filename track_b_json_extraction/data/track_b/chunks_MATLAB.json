@@ -1542,5 +1542,1792 @@
     "source_url": "https://www.youtube.com/watch?v=VEqevFAZIQo",
     "license": "YouTube",
     "flag": "PARSE_ERROR"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Opening Simulink and running a basic simulation",
+    "steps": [
+      "Open MATLAB",
+      "Click the Simulink button",
+      "Select 'blank model' from the templates",
+      "Double click on the Simulink canvas",
+      "Type 'step' and press Enter to add a Step block",
+      "Double click on the Simulink canvas",
+      "Type 'scope' and press Enter to add a Scope block",
+      "Connect the output of the Step block to the input of the Scope block",
+      "Click the 'Run' button (triangle icon)",
+      "Double click the Scope block to view the output signal",
+      "Press spacebar to zoom in on the canvas (optional)"
+    ],
+    "params": {},
+    "ui_paths": [
+      "MATLAB > Home tab > Simulink button",
+      "Simulink > Templates > Blank Model"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "Simulink is a graphical programming or modeling environment. A 'source' block (e.g., Step) generates a signal, and a 'sink' block (e.g., Scope) terminates, consumes, or displays a signal. Running a simulation computes the signal flow over time.",
+    "source_url": "https://www.youtube.com/watch?v=Xp7_w-1F230",
+    "license": "YouTube",
+    "chunk_id": "25757af0-f77e-4908-8ee2-a42d9ec59384"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Exploring the Library Browser and using the Display block",
+    "steps": [
+      "Click the 'Library Browser' button",
+      "Navigate through the listed libraries (e.g., 'Simulink' fundamental blocks, 'Sources', 'Sinks')",
+      "Find 'Sine Wave' block under 'Simulink > Sources'",
+      "Find 'Pulse Generator' block under 'Simulink > Sources'",
+      "Find 'Terminator' block under 'Simulink > Sinks'",
+      "Find 'Display' block under 'Simulink > Sinks'",
+      "Click and drag the 'Display' block from the Library Browser to the Simulink canvas",
+      "Connect a signal wire (e.g., from a Step block) to the 'Display' block (right click on a wire to tap off a new one)",
+      "Run the simulation"
+    ],
+    "params": {},
+    "ui_paths": [
+      "Simulink Canvas toolbar > Library Browser button",
+      "Library Browser > Simulink > Sources",
+      "Library Browser > Simulink > Sinks"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "The Library Browser provides access to all available Simulink blocks and toolboxes. 'Sources' generate signals, and 'Sinks' are used to either display or log data. A 'Display' block shows the final value of a signal, while a 'Scope' block shows the entire history (time-series) of a signal.",
+    "source_url": "https://www.youtube.com/watch?v=Xp7_w-1F230",
+    "license": "YouTube",
+    "chunk_id": "0f68c236-b79a-4188-b0aa-0a867880d840"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Modifying signals with a Gain block and advanced Scope visualization",
+    "steps": [
+      "Open the 'Library Browser'",
+      "Navigate to 'Simulink > Math Operations'",
+      "Find the 'Gain' block (also available in 'Commonly Used Blocks')",
+      "Drag the 'Gain' block to the canvas (or double click and type 'gain')",
+      "Connect a signal (e.g., from a Step block) to the input of the Gain block",
+      "Edit the gain value directly on the canvas by clicking the block (e.g., change to '2')",
+      "Drag a wire from the Gain block's output to an existing Scope block to automatically create a new input port",
+      "Add another 'Display' block and connect the output of the Gain block to it",
+      "Run the simulation",
+      "Double click the Scope block to open its window",
+      "Click the 'Layout' button in the Scope toolbar",
+      "Select a layout to expand the number of axes (e.g., to display two signals separately)",
+      "Resize the Y-axes within the Scope window for better visualization"
+    ],
+    "params": {
+      "Gain value": "2"
+    },
+    "ui_paths": [
+      "Simulink Canvas toolbar > Library Browser button",
+      "Library Browser > Simulink > Math Operations > Gain",
+      "Library Browser > Simulink > Commonly Used Blocks > Gain",
+      "Scope window > Layout button"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "Signals can be modified using various blocks. The 'Gain' block multiplies a signal by a constant value. The 'Scope' block can display multiple signals, either overlaid or on separate axes, allowing for comparison of their time-domain behavior.",
+    "source_url": "https://www.youtube.com/watch?v=Xp7_w-1F230",
+    "license": "YouTube",
+    "chunk_id": "2faed9da-9062-480c-8fab-dd4409a63a30"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Modeling with Integrator blocks and understanding time-based systems",
+    "steps": [
+      "Open the 'Library Browser'",
+      "Navigate to 'Simulink > Continuous'",
+      "Find and drag two 'Integrator' blocks to the canvas",
+      "Add a 'Constant' block (from 'Simulink > Sources' or type 'constant')",
+      "Connect the output of the 'Constant' block to the input of the first 'Integrator' block",
+      "Connect the output of the first 'Integrator' block to the input of the second 'Integrator' block",
+      "Connect the output of the 'Constant' block, the first 'Integrator' output, and the second 'Integrator' output to a Scope block",
+      "Rename the wires connecting to the Scope block to 'acceleration', 'velocity', and 'position' respectively (by clicking on the wire text)",
+      "Run the simulation",
+      "Double click the Scope block to open its window",
+      "Right click on the Scope plot area > 'Configuration Properties'",
+      "Check the 'Legend' box to display signal names on the plot",
+      "Change the Scope layout to three separate axes (using the 'Layout' button) to better visualize the individual signals"
+    ],
+    "params": {},
+    "ui_paths": [
+      "Simulink Canvas toolbar > Library Browser button",
+      "Library Browser > Simulink > Continuous",
+      "Library Browser > Simulink > Sources > Constant",
+      "Scope window > Right click on plot > Configuration Properties"
+    ],
+    "errors": [],
+    "fixes": [
+      "Avoid using the 'Derivative' block whenever possible. Instead, rewrite equations to use 'Integrator' blocks (e.g., x = integral(f(x)) instead of x_dot = f(x)). This approach provides more accurate, stable, and faster simulation results due to how Simulink's solver engine is set up."
+    ],
+    "theory": "Simulink is fundamentally a time-based simulation environment, meaning blocks like 'Integrator' rely on the concept of time to function. Integrating a constant value over time produces a ramp function (e.g., integrating constant acceleration yields velocity), and integrating a ramp yields a parabolic function (e.g., integrating velocity yields position).",
+    "source_url": "https://www.youtube.com/watch?v=Xp7_w-1F230",
+    "license": "YouTube",
+    "chunk_id": "2f60aec5-d1d1-4aad-baab-67fd914fb954"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Signal routing with Mux/Demux and visualizing three-phase power properties",
+    "steps": [
+      "Add three 'Sine Wave' blocks to the canvas (from 'Simulink > Sources' or type 'sine wave')",
+      "Set the 'Phase' parameter for each Sine Wave block:",
+      "Sine Wave 1: '0'",
+      "Sine Wave 2: '120 * pi / 180'",
+      "Sine Wave 3: '-120 * pi / 180' (for a balanced 3-phase system)",
+      "Add a 'Mux' block (from 'Simulink > Signal Routing' or type 'mux')",
+      "Double click the 'Mux' block and set 'Number of inputs' to '3'",
+      "Connect the outputs of the three 'Sine Wave' blocks to the inputs of the 'Mux' block",
+      "Add a 'Scope' block and connect the 'Mux' output to it",
+      "Run the simulation and observe the three-phase system on the scope",
+      "Add a 'Sum of Elements' block (from 'Simulink > Math Operations' or type 'sum of elements')",
+      "Connect the output of the 'Mux' block to the 'Sum of Elements' block",
+      "Add a 'Display' block and connect the output of the 'Sum of Elements' block to it",
+      "Rename the signal connecting to the 'Sum of Elements' block output to 'sum of phases'",
+      "Run the simulation and observe the 'Display' block shows approximately zero",
+      "Add a 'Math Function' block (from 'Simulink > Math Operations' or type 'math function')",
+      "Double click the 'Math Function' block and select 'square' from the 'Function' dropdown menu",
+      "Connect the output of the 'Mux' block to the 'Math Function' block",
+      "Add another 'Sum of Elements' block",
+      "Connect the output of the 'Math Function' block to this new 'Sum of Elements' block",
+      "Add another 'Display' block and connect the output of this 'Sum of Elements' block to it",
+      "Rename the signal connecting to this 'Sum of Elements' block output to 'sum of squares'",
+      "Run the simulation and observe the 'Display' block shows a constant non-zero value",
+      "Add a 'Demux' block (from 'Simulink > Signal Routing' or type 'demux')",
+      "Connect a vector signal (e.g., the output of the 'Mux' block) to the 'Demux' block",
+      "Tap off individual signals from the outputs of the 'Demux' block"
+    ],
+    "params": {
+      "Sine Wave 1 Phase": "0",
+      "Sine Wave 2 Phase": "120 * pi / 180",
+      "Sine Wave 3 Phase": "-120 * pi / 180",
+      "Mux Number of inputs": "3",
+      "Math Function": "square"
+    },
+    "ui_paths": [
+      "Simulink Canvas toolbar > Library Browser button",
+      "Library Browser > Simulink > Sources > Sine Wave",
+      "Library Browser > Simulink > Signal Routing > Mux",
+      "Mux block > Double click > Number of inputs",
+      "Library Browser > Simulink > Math Operations > Sum of Elements",
+      "Library Browser > Simulink > Math Operations > Math Function",
+      "Math Function block > Double click > Function dropdown",
+      "Library Browser > Simulink > Signal Routing > Demux"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "A 'Mux' block combines several scalar signals into a single vector signal, enabling operations on all signals simultaneously. A 'Demux' block performs the inverse, splitting a vector signal back into individual scalar signals. For a balanced three-phase system, the instantaneous sum of the phases is zero (beneficial for current cancellation). The instantaneous sum of the *squares* of the phases is a constant, non-zero value, which implies constant power delivery, greatly minimizing dynamic effects like torque ripple in electrical machinery.",
+    "source_url": "https://www.youtube.com/watch?v=Xp7_w-1F230",
+    "license": "YouTube",
+    "chunk_id": "8b258ba0-f392-4361-a4cb-4576cd3dd9ae"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Opening Simulink Environment and Library Browser",
+    "steps": [
+      "Open MATLAB software.",
+      "Click on the \"Simulink\" button in the Home tab.",
+      "Alternatively, type `simulink` in the Command Window and press Enter.",
+      "Click on the \"Library Browser\" button/link to explore available blocks."
+    ],
+    "params": {},
+    "ui_paths": [
+      "Home > Simulink"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "Simulink provides a graphical environment within MATLAB for modeling and simulating dynamic systems, offering a visual alternative to text-based programming for mathematical operations.",
+    "source_url": "https://www.youtube.com/watch?v=YHDFG8MVvLk",
+    "license": "YouTube",
+    "chunk_id": "84db4f85-ef5a-44bd-b315-b514701b5492"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Creating and simulating a Simulink model with Sine Wave, Gain, and Scope",
+    "steps": [
+      "Open a new Simulink model (e.g., Blank Model).",
+      "Search for and add a \"Sine Wave\" block to the model canvas.",
+      "Set the \"Amplitude\" property of the \"Sine Wave\" block to 4.",
+      "Search for and add a \"Gain\" block to the model canvas.",
+      "Set the \"Gain\" property of the \"Gain\" block to 2.",
+      "Search for and add a \"Scope\" block to the model canvas.",
+      "Set the \"Number of input ports\" property of the \"Scope\" block to 2.",
+      "Connect the output of the \"Sine Wave\" block to the first input port of the \"Scope\" block.",
+      "Connect the output of the \"Sine Wave\" block to the input of the \"Gain\" block.",
+      "Connect the output of the \"Gain\" block to the second input port of the \"Scope\" block.",
+      "Double-click the \"Scope\" block to open its display window.",
+      "Click the \"Run\" button on the Simulink model toolbar to start the simulation."
+    ],
+    "params": {
+      "Sine Wave Amplitude": 4,
+      "Gain": 2,
+      "Scope Number of input ports": 2
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "This model demonstrates a basic signal processing flow in Simulink, where a sinusoidal signal is generated, then amplified by a gain block, and both the original and amplified signals are visualized simultaneously on a scope block.",
+    "source_url": "https://www.youtube.com/watch?v=YHDFG8MVvLk",
+    "license": "YouTube",
+    "chunk_id": "1317249e-7c3a-44a1-a361-d30930f8b892"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Model Predictive Control (MPC) Overview",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Model Predictive Control (MPC) calculates the input to a plant to make its output follow a desired reference. It achieves this by predicting future plant output using a plant model and an optimizer. MPC can handle MIMO systems but is simplified to adjusting steering wheel angle for lateral car position in this example.",
+    "source_url": "https://www.youtube.com/watch?v=cEWnixjNdzs",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "84e1f52e-922a-4194-9de1-ab0247ae335b"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "MPC: Prediction and Optimization Mechanism",
+    "steps": [
+      "Use the car model to simulate the car's path in the next P time steps if the steering wheel is turned.",
+      "Solve an online optimization problem.",
+      "Minimize the cost function J, which includes the error between the reference and predicted path and the change in steering wheel angle from one time step to the next.",
+      "Ensure that the steering wheel angle and car's position stay within prescribed limits (constraints).",
+      "Identify the predicted path with the smallest J to determine the optimal steering wheel angle sequence.",
+      "Apply only the first step of this optimal sequence to the car."
+    ],
+    "params": {
+      "P": "prediction horizon (how far ahead MPC looks into the future, measured in time or future time steps)",
+      "J": "cost function (weighted squared sum of predicted errors and steering wheel angle increments)",
+      "Constraints": "limits on steering wheel angle and car's position (e.g., within lane)"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "At each time step, MPC uses a plant model to predict future outcomes for various control actions over a prediction horizon. An optimizer then finds the control sequence that minimizes a cost function (balancing tracking error and control effort) while satisfying constraints, applying only the first control action.",
+    "source_url": "https://www.youtube.com/watch?v=cEWnixjNdzs",
+    "license": "YouTube",
+    "chunk_id": "d46cc523-4866-4530-9420-169e41e3a338"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Model Predictive Control (MPC) Receding Horizon Operation",
+    "steps": [
+      "Apply the first step of the optimal steering wheel angle sequence to the car.",
+      "Allow the car to travel some distance based on the applied steering wheel angle.",
+      "At the next time step, obtain a new measurement of the car's lateral position.",
+      "Shift the prediction horizon forward by one time step.",
+      "Repeat the cycle of calculations to compute the optimal steering wheel angle for the new current time step."
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "New measurement might be slightly different than predicted due to disturbances (e.g., wind, slippery road surface)"
+    ],
+    "fixes": [],
+    "theory": "MPC operates on a receding horizon principle where after applying the first optimal control action, the prediction horizon shifts forward. The controller then re-evaluates the system based on new measurements, re-optimizes, and repeats the cycle, allowing it to adapt to disturbances and model inaccuracies.",
+    "source_url": "https://www.youtube.com/watch?v=cEWnixjNdzs",
+    "license": "YouTube",
+    "chunk_id": "3ee731e5-b12f-467a-8bd6-149ab756dfb9"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Model Predictive Control (MPC) Terminology and State Estimation",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Manipulated variables are signals computed by the controller and sent to the plant (e.g., steering wheel angle). Output variables are the plant outputs (e.g., lateral position). If system states cannot be directly measured, state estimators (e.g., Kalman filters) can be used to estimate them and feed them back to the MPC controller.",
+    "source_url": "https://www.youtube.com/watch?v=cEWnixjNdzs",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "a69cb625-d59a-4852-bf36-9513ce5813a2"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Clear Command Window",
+    "steps": [
+      "Write `clc`",
+      "Press enter"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Clears the command window of all text, without affecting the workspace variables.",
+    "source_url": "https://www.youtube.com/watch?v=f_I85AGfQas",
+    "license": "YouTube",
+    "chunk_id": "237dbdcc-abf5-429f-8b2c-40996755f9e6"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Clear Workspace",
+    "steps": [
+      "Write `clear`",
+      "Press enter"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Removes all variables from the MATLAB workspace.",
+    "source_url": "https://www.youtube.com/watch?v=f_I85AGfQas",
+    "license": "YouTube",
+    "chunk_id": "b312fa74-81e0-4f85-8a83-32bd4680cdf8"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Change Command Window Spacing",
+    "steps": [
+      "Write `format compact`",
+      "Press enter"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Changes the display format in the command window to reduce vertical spacing between lines, making the output more compact.",
+    "source_url": "https://www.youtube.com/watch?v=f_I85AGfQas",
+    "license": "YouTube",
+    "chunk_id": "3dcc40ce-fae9-441f-9df6-736f07f0117f"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Accessing Help Documentation",
+    "steps": [
+      "Write `doc <function_name>` (e.g., `doc format`)"
+    ],
+    "params": {
+      "function_name": "format"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Opens the built-in help documentation viewer for a specified MATLAB function, providing detailed information and examples.",
+    "source_url": "https://www.youtube.com/watch?v=f_I85AGfQas",
+    "license": "YouTube",
+    "chunk_id": "f6c443c4-5aba-43bc-bcfa-7404e8a4cf57"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Create Linearly Spaced Vector",
+    "steps": [
+      "Write `linspace(start_value, end_value, num_divisions)` (e.g., `linspace(1, 10, 20)`)",
+      "Press enter"
+    ],
+    "params": {
+      "start_value": 1,
+      "end_value": 10,
+      "num_divisions": 20
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Generates a row vector of `num_divisions` points linearly spaced between `start_value` and `end_value`, inclusive.",
+    "source_url": "https://www.youtube.com/watch?v=f_I85AGfQas",
+    "license": "YouTube",
+    "chunk_id": "3dddf7e2-1ad2-4735-b3e2-bad69da8c91c"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Create Matrix of Zeros",
+    "steps": [
+      "Write `zeros(n)` to create an n x n square matrix (e.g., `zeros(3)`)",
+      "Write `zeros(rows, columns)` to create a custom-sized matrix (e.g., `zeros(3, 2)`)",
+      "Press enter"
+    ],
+    "params": {
+      "n": 3,
+      "rows": 3,
+      "columns": 2
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Creates a matrix or array filled with zeros, with dimensions specified by `n` for a square matrix or `rows` and `columns` for a custom size.",
+    "source_url": "https://www.youtube.com/watch?v=f_I85AGfQas",
+    "license": "YouTube",
+    "chunk_id": "670e4857-a274-4b12-a989-90282236ff71"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Create Matrix of Ones",
+    "steps": [
+      "Write `ones(n)` to create an n x n square matrix (e.g., `ones(4)`)",
+      "Write `ones(rows, columns)` to create a custom-sized matrix (e.g., `ones(2, 4)`)",
+      "Press enter"
+    ],
+    "params": {
+      "n": 4,
+      "rows": 2,
+      "columns": 4
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Creates a matrix or array filled with ones, with dimensions specified by `n` for a square matrix or `rows` and `columns` for a custom size.",
+    "source_url": "https://www.youtube.com/watch?v=f_I85AGfQas",
+    "license": "YouTube",
+    "chunk_id": "d2d69ee8-07ac-424a-951f-fa0249e81dfe"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Create Identity Matrix",
+    "steps": [
+      "Write `eye(n)` to create an n x n identity matrix (e.g., `eye(4)`)",
+      "Press enter"
+    ],
+    "params": {
+      "n": 4
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Creates an identity matrix, which is a square matrix with ones on the main diagonal and zeros elsewhere, of specified size `n`.",
+    "source_url": "https://www.youtube.com/watch?v=f_I85AGfQas",
+    "license": "YouTube",
+    "chunk_id": "39567254-d1f8-4657-b2a8-95f24b186869"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Extract Real Part of Complex Number",
+    "steps": [
+      "Define a complex variable (e.g., `x = 2 + 5i`)",
+      "Write `real(variable_name)` (e.g., `real(x)`)",
+      "Press enter"
+    ],
+    "params": {
+      "variable_name": "x"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Returns the real component of a complex number or each element in a complex array.",
+    "source_url": "https://www.youtube.com/watch?v=f_I85AGfQas",
+    "license": "YouTube",
+    "chunk_id": "0c4c0dea-415a-420d-b0b0-de90a0f1dd4c"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Extract Imaginary Part of Complex Number",
+    "steps": [
+      "Define a complex variable (e.g., `x = 2 + 5i`)",
+      "Write `imag(variable_name)` (e.g., `imag(x)`)",
+      "Press enter"
+    ],
+    "params": {
+      "variable_name": "x"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Returns the imaginary component of a complex number or each element in a complex array.",
+    "source_url": "https://www.youtube.com/watch?v=f_I85AGfQas",
+    "license": "YouTube",
+    "chunk_id": "7c84d43e-0b5c-4941-a055-815a6aba6dfa"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Calculate Absolute Value",
+    "steps": [
+      "Define a variable (e.g., `x = -5`)",
+      "Write `abs(variable_name)` (e.g., `abs(x)`)",
+      "Press enter"
+    ],
+    "params": {
+      "variable_name": "x"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Calculates the absolute value (magnitude) of a number or each element in an array, ignoring its sign.",
+    "source_url": "https://www.youtube.com/watch?v=f_I85AGfQas",
+    "license": "YouTube",
+    "chunk_id": "e779b5f9-c543-4ba0-a947-b88b5afaa346"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Basic 2D Plotting",
+    "steps": [
+      "Define an X-axis vector (e.g., `x = 1:10`)",
+      "Define a Y-axis vector of the same length (e.g., `y = 11:20`)",
+      "Write `plot(x_vector, y_vector)` (e.g., `plot(x, y)`)",
+      "Press enter"
+    ],
+    "params": {
+      "x_vector": "x",
+      "y_vector": "y"
+    },
+    "ui_paths": [],
+    "errors": [
+      "Y-axis vector must be of the same length as X-axis vector."
+    ],
+    "fixes": [
+      "Ensure X and Y vectors have the same number of elements."
+    ],
+    "theory": "Creates a 2D line plot, where `x_vector` provides the horizontal coordinates and `y_vector` provides the vertical coordinates.",
+    "source_url": "https://www.youtube.com/watch?v=f_I85AGfQas",
+    "license": "YouTube",
+    "chunk_id": "40c6d482-c2a2-40ae-877f-23e4c284e46d"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Set Plot Axis Limits",
+    "steps": [
+      "With an active plot, write `axis([xmin xmax ymin ymax])` (e.g., `axis([-5 15 0 30])`)",
+      "Press enter"
+    ],
+    "params": {
+      "xmin": -5,
+      "xmax": 15,
+      "ymin": 0,
+      "ymax": 30
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Manually sets the minimum and maximum limits for the X and Y axes of the current plot to the specified values.",
+    "source_url": "https://www.youtube.com/watch?v=f_I85AGfQas",
+    "license": "YouTube",
+    "chunk_id": "ce37db49-a170-4dbb-8901-1663bd23a5cb"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Add Plot Title",
+    "steps": [
+      "With an active plot, write `title('Your Plot Title')` (e.g., `title('this is a graph')`)",
+      "Press enter"
+    ],
+    "params": {
+      "title_string": "'this is a graph'"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Adds a descriptive title to the top of the current 2D plot.",
+    "source_url": "https://www.youtube.com/watch?v=f_I85AGfQas",
+    "license": "YouTube",
+    "chunk_id": "a03e389f-0410-4c8d-9f86-1cfc39798e5d"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Add X-axis Label",
+    "steps": [
+      "With an active plot, write `xlabel('Your X-axis Label')`",
+      "Press enter"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Adds a label to the X-axis of the current 2D plot for better readability.",
+    "source_url": "https://www.youtube.com/watch?v=f_I85AGfQas",
+    "license": "YouTube",
+    "chunk_id": "7803590d-af47-4389-9208-308a33cb4fda"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Add Y-axis Label",
+    "steps": [
+      "With an active plot, write `ylabel('Your Y-axis Label')`",
+      "Press enter"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Adds a label to the Y-axis of the current 2D plot for better readability.",
+    "source_url": "https://www.youtube.com/watch?v=f_I85AGfQas",
+    "license": "YouTube",
+    "chunk_id": "d1c08b2a-b024-46e7-8207-c05289ceb32f"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Overlay Plots (Hold On)",
+    "steps": [
+      "After an initial `plot` command, write `hold on`",
+      "Press enter",
+      "Plot additional data using `plot` (e.g., `plot(x, y2)`)",
+      "Press enter"
+    ],
+    "params": {
+      "x_vector": "x",
+      "y_vector_2": "y2"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Keeps the current plot in the figure window and allows new plots to be added on top of it without clearing the existing one.",
+    "source_url": "https://www.youtube.com/watch?v=f_I85AGfQas",
+    "license": "YouTube",
+    "chunk_id": "a2443ebc-c4bb-4edc-a541-5ff6d2908055"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Reset Plot Hold (Hold Off)",
+    "steps": [
+      "After using `hold on`, write `hold off`",
+      "Press enter"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Resets the hold state, causing subsequent `plot` commands to clear the figure window before drawing new graphics.",
+    "source_url": "https://www.youtube.com/watch?v=f_I85AGfQas",
+    "license": "YouTube",
+    "chunk_id": "3172596a-84a3-41a1-b225-c362cb052e5a"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Get Matrix Dimensions",
+    "steps": [
+      "Define a matrix (e.g., `A = [1 2 3; 4 5 6]`)",
+      "Write `size(matrix_name)` (e.g., `size(A)`)",
+      "Press enter"
+    ],
+    "params": {
+      "matrix_name": "A"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Returns the dimensions (number of rows and columns) of a matrix or array as a 1x2 row vector.",
+    "source_url": "https://www.youtube.com/watch?v=f_I85AGfQas",
+    "license": "YouTube",
+    "chunk_id": "13c8e22b-cf2d-46b2-be43-5ae019a42811"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Get Array Length / Longest Dimension",
+    "steps": [
+      "Define a vector (e.g., `b = [1 2 3 4 5 6 7]`)",
+      "Write `length(vector_name)` (e.g., `length(b)`)",
+      "Press enter",
+      "For matrices, `length(matrix_name)` returns the length of the longest dimension (e.g., `length(A)` for `A = [1 2 3; 4 5 6]` returns 3 for columns).",
+      "Press enter"
+    ],
+    "params": {
+      "vector_name": "b",
+      "matrix_name": "A"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "For a vector, `length` returns the number of elements. For a matrix, it returns the length of the longest dimension (number of rows or columns).",
+    "source_url": "https://www.youtube.com/watch?v=f_I85AGfQas",
+    "license": "YouTube",
+    "chunk_id": "f82e50cb-11ad-4021-bead-e8cfc010d779"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Matrix Transpose",
+    "steps": [
+      "Define a matrix (e.g., `A = [1 2 3; 4 5 6]`)",
+      "Write `matrix_name.'` (e.g., `A.'`)",
+      "Press enter"
+    ],
+    "params": {
+      "matrix_name": "A"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Interchanges the rows and columns of a matrix, effectively flipping it over its main diagonal.",
+    "source_url": "https://www.youtube.com/watch?v=f_I85AGfQas",
+    "license": "YouTube",
+    "chunk_id": "92231907-0ec8-4bf3-b9fd-e280903df729"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Calculate Matrix Determinant",
+    "steps": [
+      "Define a square matrix (e.g., `R = [1 2 3; 4 5 6; 7 8 9]`)",
+      "Write `det(matrix_name)` (e.g., `det(R)`)",
+      "Press enter"
+    ],
+    "params": {
+      "matrix_name": "R"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Calculates the determinant of a square matrix, which is a scalar value useful in various linear algebra operations, such as checking for matrix invertibility.",
+    "source_url": "https://www.youtube.com/watch?v=f_I85AGfQas",
+    "license": "YouTube",
+    "chunk_id": "b131886d-1d5d-4f87-b453-47add8ea47e7"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Calculate Matrix Inverse",
+    "steps": [
+      "Define a square matrix (e.g., `R = [1 2 3; 4 5 6; 7 8 9]`)",
+      "Write `inv(matrix_name)` (e.g., `inv(R)`)",
+      "Press enter"
+    ],
+    "params": {
+      "matrix_name": "R"
+    },
+    "ui_paths": [],
+    "errors": [
+      "Singular or ill-conditioned matrices (determinant close to zero) may lead to warnings or errors, indicating the matrix is non-invertible or nearly so."
+    ],
+    "fixes": [],
+    "theory": "Calculates the inverse of a square matrix. The inverse of a matrix A is another matrix B such that A * B = I (identity matrix).",
+    "source_url": "https://www.youtube.com/watch?v=f_I85AGfQas",
+    "license": "YouTube",
+    "chunk_id": "07d3e9dd-b3f5-48bd-8b60-47dde6db1ad3"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Calculate Dot Product",
+    "steps": [
+      "Define two vectors of the same length (e.g., `a = [1 2 3]`, `b = [4 5 6]`)",
+      "Write `dot(vector1, vector2)` (e.g., `dot(a, b)`)",
+      "Press enter"
+    ],
+    "params": {
+      "vector1": "a",
+      "vector2": "b"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Calculates the dot product (scalar product) of two vectors, which results in a scalar value.",
+    "source_url": "https://www.youtube.com/watch?v=f_I85AGfQas",
+    "license": "YouTube",
+    "chunk_id": "edca455f-e81e-4362-be21-aad7d5ceb642"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Calculate Cross Product",
+    "steps": [
+      "Define two 3D vectors (e.g., `a = [1 2 3]`, `b = [4 5 6]`)",
+      "Write `cross(vector1, vector2)` (e.g., `cross(a, b)`)",
+      "Press enter"
+    ],
+    "params": {
+      "vector1": "a",
+      "vector2": "b"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Calculates the cross product (vector product) of two 3D vectors, resulting in a vector orthogonal to both input vectors.",
+    "source_url": "https://www.youtube.com/watch?v=f_I85AGfQas",
+    "license": "YouTube",
+    "chunk_id": "f955c4de-9de0-4a84-93a4-670053399433"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Find Maximum Value",
+    "steps": [
+      "Define a vector or matrix (e.g., `a = [10 20 5 72 3]`)",
+      "Write `max(array_or_matrix_name)` (e.g., `max(a)`)",
+      "Press enter",
+      "For a matrix, `max(matrix_name)` returns a row vector containing the maximum value from each column.",
+      "Press enter"
+    ],
+    "params": {
+      "array_or_matrix_name": "a"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Returns the largest element in a vector. For a matrix, it returns a row vector containing the maximum value of each column.",
+    "source_url": "https://www.youtube.com/watch?v=f_I85AGfQas",
+    "license": "YouTube",
+    "chunk_id": "4466121e-e441-41ec-bcce-6e2629d4de1e"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Find Minimum Value",
+    "steps": [
+      "Define a vector or matrix (e.g., `a = [10 20 5 72 3]`)",
+      "Write `min(array_or_matrix_name)` (e.g., `min(a)`)",
+      "Press enter",
+      "For a matrix, `min(matrix_name)` returns a row vector containing the minimum value from each column.",
+      "Press enter"
+    ],
+    "params": {
+      "array_or_matrix_name": "a"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Returns the smallest element in a vector. For a matrix, it returns a row vector containing the minimum value of each column.",
+    "source_url": "https://www.youtube.com/watch?v=f_I85AGfQas",
+    "license": "YouTube",
+    "chunk_id": "e2c34350-e28a-4e56-9c95-9793ad6ecfcf"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Sum Elements",
+    "steps": [
+      "Define a vector or matrix (e.g., `a = [10 20 5; 1 2 3]`)",
+      "Write `sum(array_or_matrix_name)` (e.g., `sum(a)`)",
+      "Press enter",
+      "For a matrix, `sum(matrix_name)` returns a row vector containing the sum of each column.",
+      "Press enter"
+    ],
+    "params": {
+      "array_or_matrix_name": "a"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Calculates the sum of all elements in a vector. For a matrix, it returns a row vector containing the sum of elements in each column.",
+    "source_url": "https://www.youtube.com/watch?v=f_I85AGfQas",
+    "license": "YouTube",
+    "chunk_id": "cb1047a0-3b23-4980-9cbb-196f051d0ad5"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Specifying ODE Solver Options with odeset",
+    "steps": [
+      "Call the `odeset` function to create an options structure.",
+      "Specify desired options as property-value pairs within `odeset` (e.g., 'Events', @myEventFunction).",
+      "Pass the generated `options` structure as an additional input to the ODE solver function (e.g., `ode45`)."
+    ],
+    "params": {
+      "options": "structure for ODE solver settings",
+      "PropertyName": "string",
+      "PropertyValue": "value or function handle",
+      "Events": "@event_function_handle"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The `options` input provides a mechanism to customize the behavior of MATLAB's ODE solvers, allowing users to define specific parameters like tolerances or event functions. `odeset` is the primary function for constructing this options structure.",
+    "source_url": "https://www.youtube.com/watch?v=hr0xBJBh2t0",
+    "license": "YouTube",
+    "chunk_id": "e01aea81-f55b-477b-8f5b-8472a2f658a1"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Designing a MATLAB Events Function",
+    "steps": [
+      "Define a new MATLAB function with `t` (time) and `s` (state vector) as inputs.",
+      "Ensure the function returns three outputs: `check`, `isterminal`, and `direction`.",
+      "Set `check` to `0` when the desired event condition is met.",
+      "Set `isterminal` to `1` to stop the ODE solver when the event occurs, or `0` to continue integration.",
+      "Set `direction` to an empty matrix (`[]`) to use default event crossing detection settings."
+    ],
+    "params": {
+      "t": "time variable",
+      "s": "state vector",
+      "check": "event indicator (0 for event, non-zero otherwise)",
+      "isterminal": "solver stop flag (1 to stop, 0 to continue)",
+      "direction": "event crossing direction (empty matrix for default)"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "An events function allows MATLAB's ODE solvers to detect specific conditions (events) during numerical integration. By manipulating its three output values, users can precisely control when an event is registered, whether the solver terminates, and the nature of the event crossing.",
+    "source_url": "https://www.youtube.com/watch?v=hr0xBJBh2t0",
+    "license": "YouTube",
+    "chunk_id": "2fadd65e-108d-4770-b652-a89aa3964118"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Modeling Cannonball Trajectory for ODE Solver (ODEfun Derivation)",
+    "steps": [
+      "Assume no drag force in the system.",
+      "Determine the sum of forces in the x-direction (`Fx = 0`).",
+      "Derive the x-direction acceleration (`ax = 0`, or `x_double_dot = 0`).",
+      "Determine the sum of forces in the y-direction (`Fy = -mg`), assuming positive y is upwards.",
+      "Derive the y-direction acceleration (`ay = -g`, or `y_double_dot = -g`).",
+      "Define state variables: `s1 = x`, `s2 = x_dot`, `s3 = y`, `s4 = y_dot`.",
+      "Express the derivative of the state vector `ds/dt` in terms of the state variables: `ds/dt = [s2; 0; s4; -G]`."
+    ],
+    "params": {
+      "G": "gravitational acceleration",
+      "x": "x-position",
+      "x_dot": "x-velocity",
+      "y": "y-position",
+      "y_dot": "y-velocity"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "To numerically solve a system with an ODE solver, the physical governing equations (e.g., Newton's second law) must be converted into a set of first-order differential equations, represented by a state vector and its derivative. Each element of the derivative vector is a function of time and the current state variables.",
+    "source_url": "https://www.youtube.com/watch?v=hr0xBJBh2t0",
+    "license": "YouTube",
+    "chunk_id": "4f574a5b-654d-4241-a809-3ad5ac42a831"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Function Handle Limitations with Multiple Outputs",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "insufficient number of outputs from right-hand side of equal sign to satisfy argument or satisfy assignment"
+    ],
+    "fixes": [],
+    "theory": "MATLAB function handles are generally designed to return a single output. Because the events function specifically requires three distinct outputs (`check`, `isterminal`, `direction`), it cannot be directly implemented using the function handle method without significant workarounds or limitations, making the 'function method' (separate .m file) the preferred approach.",
+    "source_url": "https://www.youtube.com/watch?v=hr0xBJBh2t0",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "18cc8cf9-0dda-4ccb-92ac-7f8c561f366a"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Implementing the Events Function for Cannonball Trajectory",
+    "steps": [
+      "Create a new MATLAB function file (e.g., `cannonballEvents.m`).",
+      "Define the function signature: `function [check, isterminal, direction] = cannonballEvents(t, s)`.",
+      "Set the `direction` output to an empty matrix: `direction = []`.",
+      "Set the `isterminal` output to `1` to stop integration when the event occurs: `isterminal = 1`.",
+      "Define the `check` output using a logical comparison: `check = s(1) < 500` (event occurs when `x >= 500`).",
+      "Convert the logical `check` value to a double-precision number: `check = double(s(1) < 500)`."
+    ],
+    "params": {
+      "t": "current time",
+      "s": "current state vector (s(1) is x-position)",
+      "500": "target x-position in meters"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The `events` function is coded to set `check` to zero precisely when the desired condition (`x >= 500m`) is met, signaling to the ODE solver that an event has occurred. Converting the logical comparison to a double ensures compatibility with MATLAB's numerical operations.",
+    "source_url": "https://www.youtube.com/watch?v=hr0xBJBh2t0",
+    "license": "YouTube",
+    "chunk_id": "41a0a211-82bf-4e11-85ea-29bc3080ddd3"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Implementing the Derivative Function (odefun) for Cannonball Trajectory",
+    "steps": [
+      "Create a new MATLAB function file (e.g., `cannonballOdefun.m`).",
+      "Define the function signature: `function dsdt = cannonballOdefun(t, s)`.",
+      "Define gravitational acceleration: `G = 9.81`.",
+      "Assign the derivative of x-position: `dsdt(1) = s(2)` (x_dot).",
+      "Assign the derivative of x-velocity: `dsdt(2) = 0` (x_double_dot).",
+      "Assign the derivative of y-position: `dsdt(3) = s(4)` (y_dot).",
+      "Assign the derivative of y-velocity: `dsdt(4) = -G` (y_double_dot)."
+    ],
+    "params": {
+      "t": "current time",
+      "s": "current state vector [x; x_dot; y; y_dot]",
+      "G": "gravitational acceleration (9.81 m/s^2)"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The derivative function (`odefun`) is crucial for ODE solvers, providing the instantaneous rates of change for all state variables. It computes `ds/dt` as a function of time and the current state, enabling the solver to step through time and determine the system's evolution.",
+    "source_url": "https://www.youtube.com/watch?v=hr0xBJBh2t0",
+    "license": "YouTube",
+    "chunk_id": "bb6e2e8f-0441-4e64-a055-0e920d92ea33"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Integrating ODE with Events and Plotting Results",
+    "steps": [
+      "Define the initial conditions vector `y0` for the system (e.g., `[initial_x; initial_vx; initial_y; initial_vy]`).",
+      "Define the time span `tspan` for the numerical integration (e.g., `[0 30]`).",
+      "Create an `options` structure using `odeset` to specify the events function: `options = odeset('Events', @cannonballEvents)`.",
+      "Call the ODE solver (`ode45`) with the derivative function, time span, initial conditions, and the `options` structure: `[T, Y, TE, YE, IE] = ode45(@cannonballOdefun, tspan, y0, options)`.",
+      "Plot the trajectory by taking the x-position (`Y(:,1)`) and y-position (`Y(:,3)`) columns from the results: `plot(Y(:,1), Y(:,3))`.",
+      "Plot the x-position over time: `plot(T, Y(:,1))`."
+    ],
+    "params": {
+      "y0": "initial state vector",
+      "tspan": "time interval for integration",
+      "@cannonballOdefun": "function handle to the derivative function",
+      "@cannonballEvents": "function handle to the events function",
+      "T": "time points output from solver",
+      "Y": "solution array output from solver (state values at T)",
+      "TE": "time at which events occurred",
+      "YE": "solution at the event times",
+      "IE": "indices of the events that occurred"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The final step involves configuring the main script to call the ODE solver, incorporating the custom derivative function and event detection logic. The solver then integrates the system, stopping or acting upon events as defined, and outputs the time history of the state variables for analysis and plotting.",
+    "source_url": "https://www.youtube.com/watch?v=hr0xBJBh2t0",
+    "license": "YouTube",
+    "chunk_id": "42aa611b-6507-48bc-b41d-9eb5e40bd60d"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Building and Simulating a Basic RLC Circuit in Simulink",
+    "steps": [
+      "Open Simulink.",
+      "Navigate to the Library Browser and locate the Simscape Foundation Library.",
+      "Go to the Electrical section.",
+      "Add a Resistor block to the model.",
+      "Add an Inductor block to the model.",
+      "Add a Capacitor block to the model.",
+      "Specify the resistance value for the Resistor.",
+      "Specify the inductance value for the Inductor.",
+      "Specify the capacitance value for the Capacitor.",
+      "Set initial targets for the inductor and capacitor (optional).",
+      "Navigate to the Library Browser Foundation Library Resources.",
+      "Add a DC Voltage Source (battery) block to the model.",
+      "Connect the DC Voltage Source to the RLC components.",
+      "Add a Ground reference block to the circuit.",
+      "Add a Solver Configuration block.",
+      "Connect the Solver Configuration block to the assembled circuit.",
+      "Run the simulation.",
+      "Add a Voltage Sensor block across the R, L, and C components.",
+      "Add a Current Sensor block to the circuit.",
+      "Add a Scope block.",
+      "Add a ps2s (Physical Signal to Signal) block.",
+      "Connect the physical signal outputs from the current/voltage sensors to the ps2s block input.",
+      "Connect the output of the ps2s block to the Scope block.",
+      "Run the simulation (optionally with different R, L, C values).",
+      "Visualize the data and inspect signal details across and through each component."
+    ],
+    "params": {
+      "Resistance value": "10 ohms",
+      "Inductance value": "User-defined",
+      "Capacitance value": "User-defined",
+      "Initial targets": "User-defined (for inductor and capacitor)"
+    },
+    "ui_paths": [
+      "Library browser > Simscape > Foundation Library > Electrical",
+      "Library browser > Foundation Library > Resources"
+    ],
+    "errors": [
+      "Scope block is not getting connected to the output of the current/voltage sensor because their outputs are physical signals."
+    ],
+    "fixes": [
+      "Add a ps2s (Physical Signal to Signal) block to convert the physical signal from the sensors to a Simulink signal before connecting to the Scope."
+    ],
+    "theory": "Simulations using MATLAB's Simulink and Simscape tools provide a way to design, build, and understand the overall response of electrical circuits, especially for complex systems where manual calculations are cumbersome. Physical signals from sensors need conversion to standard Simulink signals for visualization blocks like Scope.",
+    "source_url": "https://www.youtube.com/watch?v=lSbEVgCpJCc",
+    "license": "YouTube",
+    "chunk_id": "d401dcfc-60bb-4e0b-ab96-3dc2b831dbea"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Resolve MATLAB License Error (DLL File Related)",
+    "steps": [
+      "Download required DLL files from the provided description link.",
+      "Locate the MATLAB installation directory by right-clicking the MATLAB shortcut.",
+      "Select 'Open file location' from the context menu.",
+      "Navigate into the `win64` folder within the MATLAB installation directory.",
+      "Locate and open the folder named `lmgri` (described as part of MATLAB startup plugins).",
+      "Verify the presence and status of DLL files within the `lmgri` folder.",
+      "Add or replace any necessary DLL files in this location.",
+      "Close MATLAB.",
+      "Re-open MATLAB to check if the license error is resolved."
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "MATLAB license error (open at a time)",
+      "DLL file related issues"
+    ],
+    "fixes": [
+      "Verify and replace/add DLL files in the MATLAB installation directory within the `win64/lmgri` path."
+    ],
+    "theory": "MATLAB license errors can sometimes stem from missing or corrupted DLL (Dynamic Link Library) files, even when the license key is correctly merged. Resolving this involves inspecting and managing these critical system files within the MATLAB installation directory.",
+    "source_url": "https://www.youtube.com/watch?v=n_FOZFj_Clw",
+    "license": "YouTube",
+    "chunk_id": "9759375b-6746-4564-84d8-d99622b0fe39"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Modeling Open-Loop System with Custom Library",
+    "steps": [
+      "Model the system using blocks from the Simulink Library browser.",
+      "Import a custom library to the Simulink Library browser.",
+      "Create the open-loop system using blocks from the custom library."
+    ],
+    "params": {},
+    "ui_paths": [
+      "Simulink Library browser"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "Simulink is a block diagram environment that allows visual modeling and simulation of physical systems. Custom libraries can contain preconfigured blocks to streamline model creation.",
+    "source_url": "https://www.youtube.com/watch?v=pVAY2zOy0vU",
+    "license": "YouTube",
+    "chunk_id": "1b4070ed-6a4d-49b1-affc-7be28e9ea5a6"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Simulating Open-Loop System with Initial Input",
+    "steps": [
+      "Set an input of pi/18 radians (10°) to the system.",
+      "Hit the play button to simulate the system."
+    ],
+    "params": {
+      "Input": "pi/18 radians (10 degrees)"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Simulating the open-loop system with a fixed input reveals its uncompensated response, showing how the output behaves without any control feedback.",
+    "source_url": "https://www.youtube.com/watch?v=pVAY2zOy0vU",
+    "license": "YouTube",
+    "chunk_id": "3ea3981e-143d-4c76-8583-8d1eeacc87ec"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Tuning Open-Loop System Input",
+    "steps": [
+      "Increase the input angle from 10° to 30° (or pi/6 radians).",
+      "Re-simulate the model."
+    ],
+    "params": {
+      "Input": "30 degrees (pi/6 radians)"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "For linear systems, the output is directly proportional to the input. By scaling the input, one can proportionally adjust the output to achieve a desired setpoint.",
+    "source_url": "https://www.youtube.com/watch?v=pVAY2zOy0vU",
+    "license": "YouTube",
+    "chunk_id": "4770f168-289f-40cf-b45d-f84a8ad2dd5f"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Simulating Open-Loop System with Disturbance",
+    "steps": [
+      "Add a preconfigured disturbance block to the model.",
+      "Extend the simulation time to 400 seconds.",
+      "Simulate the system."
+    ],
+    "params": {
+      "Disturbance start time": "200 seconds",
+      "Simulation time": "400 seconds"
+    },
+    "ui_paths": [],
+    "errors": [
+      "Open-loop system fails if there's a disturbance acting on the system (speed drops significantly while going uphill)."
+    ],
+    "fixes": [],
+    "theory": "Open-loop control provides a static input, making it incapable of compensating for unexpected external disturbances. This results in performance degradation when environmental conditions change.",
+    "source_url": "https://www.youtube.com/watch?v=pVAY2zOy0vU",
+    "license": "YouTube",
+    "chunk_id": "f7a38c78-4d44-4eb0-b53b-a62cd03e324b"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Implementing and Simulating Closed-Loop (Feedback) Control",
+    "steps": [
+      "Close the loop using preconfigured blocks from the custom library.",
+      "Add noise to the model for realistic simulation results.",
+      "Set the desired output (setpoint) to 20 m/s.",
+      "Hit the play button to simulate the system."
+    ],
+    "params": {
+      "Desired output (setpoint)": "20 m/s"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Feedback control dynamically adjusts the system's input based on the measured output and desired setpoint. This mechanism allows it to compensate for disturbances and maintain desired performance, even in changing conditions.",
+    "source_url": "https://www.youtube.com/watch?v=pVAY2zOy0vU",
+    "license": "YouTube",
+    "chunk_id": "f3f3526f-0d90-4cf0-a037-117486bff7cb"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Analyzing Feedback Control Mechanism",
+    "steps": [
+      "Look at the error signal.",
+      "Look at the pedal position signal."
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Feedback controllers actively monitor the difference between the desired and actual output (error). When a disturbance causes an error, the controller dynamically adjusts the actuator's input to counteract the disturbance, driving the error back to zero and restoring the desired output.",
+    "source_url": "https://www.youtube.com/watch?v=pVAY2zOy0vU",
+    "license": "YouTube",
+    "chunk_id": "2b53979c-066f-40cf-a098-30b473a1340e"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Fixing uncommenting issues",
+    "steps": [
+      "Define variable `a` with value 10: `a = 10;`",
+      "Define variable `b` with value 5: `b = 5;`",
+      "Attempt to execute line `a + b;` when `b = 5;` is commented out.",
+      "Mark the line `a + b;` and right-click or press F9 to execute it.",
+      "Observe the error message.",
+      "Remove the percentage symbol (`%`) from the line `b = 5;` to uncomment it.",
+      "Execute `a + b;` again."
+    ],
+    "params": {
+      "a": 10,
+      "b": 5
+    },
+    "ui_paths": [],
+    "errors": [
+      "undefined function or variable var B"
+    ],
+    "fixes": [
+      "Remove the percentage symbol (`%`) that comments out the variable definition line."
+    ],
+    "theory": "In MATLAB, the percentage symbol (`%`) is used to comment out lines of code. If a variable definition is commented out, MATLAB will not recognize the variable when it is called later in the script.",
+    "source_url": "https://www.youtube.com/watch?v=qSIf9iHvKZU",
+    "license": "YouTube",
+    "chunk_id": "073b87b5-81f5-44d8-bc90-2b70c161bddd"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Correcting misspelled variable names",
+    "steps": [
+      "Define a variable `number_of_students = 30000;`",
+      "Attempt to use the variable with a misspelling: `numberofstudents;`",
+      "Observe the error message and MATLAB's suggestion.",
+      "Change the misspelled variable name (`numberofstudents`) to the correctly defined name (`number_of_students`)."
+    ],
+    "params": {
+      "number_of_students": 30000
+    },
+    "ui_paths": [],
+    "errors": [
+      "undefined function or variable number of students"
+    ],
+    "fixes": [
+      "Correct the spelling of the variable name to match its definition."
+    ],
+    "theory": "MATLAB is case-sensitive and requires exact matches for variable names. Misspellings, even minor ones, will result in an 'undefined variable' error.",
+    "source_url": "https://www.youtube.com/watch?v=qSIf9iHvKZU",
+    "license": "YouTube",
+    "chunk_id": "306c41e4-747b-4b8e-91b8-037305427fc4"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Understanding case sensitivity",
+    "steps": [
+      "Define a string variable with lowercase 'n': `myName = 'yourself';`",
+      "Mark the definition line and click F9 to add it to the workspace.",
+      "Attempt to call the variable using a capital 'N': `MyName;`",
+      "Observe the error message.",
+      "Change the variable call `MyName` back to `myName` (lowercase 'n').",
+      "Call the corrected variable `myName;`."
+    ],
+    "params": {
+      "myName": "yourself"
+    },
+    "ui_paths": [],
+    "errors": [
+      "undefined function or variable MyName"
+    ],
+    "fixes": [
+      "Ensure the case of the variable name used matches its definition (e.g., `myName` instead of `MyName`)."
+    ],
+    "theory": "MATLAB is case-sensitive, treating `myName` and `MyName` as two distinct variables. Variable names must be used with the exact casing they were defined with.",
+    "source_url": "https://www.youtube.com/watch?v=qSIf9iHvKZU",
+    "license": "YouTube",
+    "chunk_id": "35b87edb-2156-457a-ae7d-86e5926c89ce"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Correcting array indexing errors (out of bounds)",
+    "steps": [
+      "Define an array `b = [10, 20, 30, 40, 50];`",
+      "Click F9 to execute the array definition.",
+      "Attempt to access an element beyond the array's size: `b(6);`",
+      "Observe the error message.",
+      "Adjust the index to be within the valid range (e.g., `b(5)` or lower)."
+    ],
+    "params": {
+      "b": "[10, 20, 30, 40, 50]"
+    },
+    "ui_paths": [],
+    "errors": [
+      "Index exceeds the number of array elements 5"
+    ],
+    "fixes": [
+      "Change the array index to a value that is within the valid range of 1 to the array's length."
+    ],
+    "theory": "MATLAB uses 1-based indexing for arrays, meaning the first element is at index 1. Attempting to access an index greater than the number of elements in the array will result in an 'index exceeds' error.",
+    "source_url": "https://www.youtube.com/watch?v=qSIf9iHvKZU",
+    "license": "YouTube",
+    "chunk_id": "7b5b6145-d294-4f81-acc3-928dc91195ea"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Avoiding negative array indices",
+    "steps": [
+      "Given an array `b = [10, 20, 30, 40, 50];`",
+      "Attempt to access an element using a negative index: `b(-1);`",
+      "Observe the error message."
+    ],
+    "params": {
+      "b": "[10, 20, 30, 40, 50]"
+    },
+    "ui_paths": [],
+    "errors": [
+      "Array indices must be positive integers or logical values."
+    ],
+    "fixes": [
+      "Use positive integer indices (e.g., `b(end)` to access the last element) instead of negative indices."
+    ],
+    "theory": "MATLAB array indices must be positive integers (1 or greater) or logical values. Negative indexing, common in some other programming languages, is not supported.",
+    "source_url": "https://www.youtube.com/watch?v=qSIf9iHvKZU",
+    "license": "YouTube",
+    "chunk_id": "bc1ece38-1d07-4e1e-a1ff-8b279ec20ed9"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Correcting missing parentheses",
+    "steps": [
+      "Attempt to execute an expression with a missing closing parenthesis: `(2 + 3 * 4;`",
+      "Observe the error message.",
+      "Add the missing closing parenthesis to complete the expression: `(2 + 3 * 4);`",
+      "Execute the corrected expression."
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Error: The expression to the left of the equals sign is not a valid target for an assignment."
+    ],
+    "fixes": [
+      "Add the missing closing parenthesis `)` to balance the expression."
+    ],
+    "theory": "Parentheses in MATLAB expressions must be balanced to correctly group operations and define the scope of calculations. An unmatched parenthesis will lead to a syntax error.",
+    "source_url": "https://www.youtube.com/watch?v=qSIf9iHvKZU",
+    "license": "YouTube",
+    "chunk_id": "1136146f-d9e4-4148-9538-c6dc3ee4f251"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Fixing unterminated string literals",
+    "steps": [
+      "Attempt to define a string with a missing closing single quote: `myName = 'yourself;`",
+      "Execute the line.",
+      "Observe the error message.",
+      "Add the missing closing single quote (`'`) to terminate the string: `myName = 'yourself';`",
+      "Execute the corrected line."
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "string is not terminated properly"
+    ],
+    "fixes": [
+      "Add the missing closing single quote (`'`) to properly terminate the string literal."
+    ],
+    "theory": "String literals in MATLAB must be enclosed within a matching pair of single quotes. An unclosed quote will result in an unterminated string error.",
+    "source_url": "https://www.youtube.com/watch?v=qSIf9iHvKZU",
+    "license": "YouTube",
+    "chunk_id": "fb5205da-1214-46f5-8324-62b1c876d8f4"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Identifying and fixing extra characters in arithmetic expressions",
+    "steps": [
+      "Attempt to execute an arithmetic expression with an extra operator at the end: `10 + 20 + 30 +;`",
+      "Observe the error message.",
+      "Remove the extra `+` sign from the end of the expression: `10 + 20 + 30;`",
+      "Execute the corrected expression."
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "invalid expression check for missing or extra characters"
+    ],
+    "fixes": [
+      "Remove the redundant character (e.g., an extra operator) from the expression."
+    ],
+    "theory": "Arithmetic expressions must be syntactically correct. An operator without a corresponding operand (e.g., a `+` sign at the end of an expression) creates an invalid expression.",
+    "source_url": "https://www.youtube.com/watch?v=qSIf9iHvKZU",
+    "license": "YouTube",
+    "chunk_id": "e131a55f-6988-4ae9-aad9-6031e54b211a"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Creating and calling user-defined functions",
+    "steps": [
+      "Click on 'New'.",
+      "Select 'Function' from the menu.",
+      "Change the output variable name in the function definition to `Y`.",
+      "Change the function name to `average`.",
+      "Save the file (MATLAB automatically suggests `average.m` matching the function name).",
+      "Set the input argument to `X`.",
+      "Define the function body: `y = sum(X) / length(X);`",
+      "Attempt to call the function: `average(10, 20, 30, 40, 50);`",
+      "Observe the 'not found' error.",
+      "Change the current folder in MATLAB to the directory where `average.m` is saved (e.g., by clicking F5 and selecting 'change folder').",
+      "Type `clear` and `clc` in the command window.",
+      "Attempt to call the function again: `average(10, 20, 30, 40, 50);`",
+      "Observe the 'too many input arguments' error.",
+      "Enclose the input numbers in square brackets to form a single vector: `average([10, 20, 30, 40, 50]);`",
+      "Execute the corrected function call.",
+      "Clear the command window: `clc;`"
+    ],
+    "params": {},
+    "ui_paths": [
+      "New > Function"
+    ],
+    "errors": [
+      "average is not found in the current folder or on MATLAB path",
+      "error using average too many input arguments"
+    ],
+    "fixes": [
+      "Ensure the function's `.m` file is in MATLAB's current folder or on the MATLAB path.",
+      "Pass all individual scalar inputs as a single vector (enclosed in `[]`) if the function is designed to accept a single vector input."
+    ],
+    "theory": "User-defined functions in MATLAB must be accessible via the current folder or the MATLAB path. The function's filename must match the primary function name. Functions expect specific input argument types and counts; providing individual scalar arguments when a vector is expected, or too many arguments, will cause an error.",
+    "source_url": "https://www.youtube.com/watch?v=qSIf9iHvKZU",
+    "license": "YouTube",
+    "chunk_id": "c2700808-8a8c-4283-9876-b42fd4e16343"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Handling dimension mismatches in array assignments",
+    "steps": [
+      "Right-click in the Workspace window.",
+      "Activate the 'Size' column to display array dimensions.",
+      "Evaluate a vector `[10, 20, 30, 40, 50];` and observe its size (1x5) in the Workspace.",
+      "Initialize a matrix `vector1 = rand(20, 2);`",
+      "Attempt to assign a 5x1 matrix of zeros to a 5x2 sub-section of `vector1`: `vector1(1:5, 1:2) = zeros(5,1);`",
+      "Observe the dimension mismatch error.",
+      "To verify dimensions, use `size(vector1(1:5, 1:2))` which shows 5x2.",
+      "Use `size(zeros(5,1))` which shows 5x1.",
+      "Change the size of the `zeros` matrix to match the target sub-section: `vector1(1:5, 1:2) = zeros(5,2);`",
+      "Execute the corrected assignment.",
+      "Check `vector1` to confirm the assignment was successful."
+    ],
+    "params": {
+      "vector1": "20x2 random matrix",
+      "target_slice": "first 5 rows, first 2 columns",
+      "value_to_assign": "5x1 zeros matrix (incorrect), 5x2 zeros matrix (correct)"
+    },
+    "ui_paths": [
+      "Workspace > Right-click > Size"
+    ],
+    "errors": [
+      "able to perform a silent because the size of the left side is 5 by 2 and the size of the right-hand side is 5 by 1"
+    ],
+    "fixes": [
+      "Ensure the dimensions of the array or matrix being assigned to a target slice exactly match the dimensions of that target slice (e.g., change `zeros(5,1)` to `zeros(5,2)`)."
+    ],
+    "theory": "When assigning values to a sub-section of a matrix, the dimensions of the right-hand side (the values being assigned) must precisely match the dimensions of the left-hand side (the target sub-section of the matrix).",
+    "source_url": "https://www.youtube.com/watch?v=qSIf9iHvKZU",
+    "license": "YouTube",
+    "chunk_id": "e7331772-d5bb-41f0-96f1-fdb1ce90b8c6"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Debugging logical errors with variable re-use (imaginary unit 'i')",
+    "steps": [
+      "Initialize a variable `a = 4;`",
+      "Initialize a matrix `matrix1 = zeros(4,1);`",
+      "Run a for-loop that defines `i` as a counter: `for i = 1:a, matrix1(i) = i^2; end;`",
+      "Attempt to plot a complex sine function using `i` (which is currently the counter variable): `t = -4:0.01:4; plot(t, sin(i * t));`",
+      "Observe that the resulting plot does not resemble a sine function.",
+      "**Fix 1:** Add `clear i;` before plotting the sine function to remove the variable `i` from the workspace.",
+      "Execute the plotting code again after clearing `i`.",
+      "Observe the correct sine wave plot.",
+      "**Fix 2 (alternative):** Comment out `clear i;`.",
+      "Modify the plot command to explicitly use the imaginary unit: `plot(t, sin(1i * t));`",
+      "Execute the modified plotting code.",
+      "Observe the correct sine wave plot."
+    ],
+    "params": {
+      "a": 4,
+      "matrix1": "4x1 zeros matrix",
+      "t": "vector from -4 to 4 with 0.01 step"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [
+      "Use `clear i` to remove the variable `i` from the workspace, allowing MATLAB to interpret `i` as the imaginary unit again.",
+      "Explicitly use `1i` (or `1j`) to represent the imaginary unit in calculations to avoid ambiguity with user-defined variables named `i`."
+    ],
+    "theory": "MATLAB predefines `i` and `j` as the imaginary unit. If a user defines a variable named `i` (e.g., as a loop counter), this variable takes precedence, masking the built-in imaginary unit. This can lead to logical errors where code runs without crashing but produces incorrect results. Clearing the variable or explicitly using `1i` resolves this ambiguity.",
+    "source_url": "https://www.youtube.com/watch?v=qSIf9iHvKZU",
+    "license": "YouTube",
+    "chunk_id": "645e94ce-dc8d-4b4a-80d4-99a85383c7a3"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Best practices for variable naming and re-initialization",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Reusing common variable names like 'i' (which MATLAB uses for the imaginary unit and is frequently used as a loop counter) without proper re-initialization or awareness of its previous definition can lead to unexpected behavior and logical errors. It is best practice to use meaningful and unique names for variables to prevent conflicts and ensure code clarity.",
+    "source_url": "https://www.youtube.com/watch?v=qSIf9iHvKZU",
+    "license": "YouTube",
+    "chunk_id": "dfcf3a1d-3fe2-44c3-bcf3-5479e161be67",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Correctly accessing elements in N-dimensional matrices",
+    "steps": [
+      "Initialize a 5-dimensional matrix: `matrix2 = rand(5,5,5,5,5);`",
+      "Consider attempting to access an element using linear indexing (e.g., the 100th or 200th element) and recognize the difficulty in interpreting its location across multiple dimensions.",
+      "Access an element using N-dimensional indexing, specifying an index for each dimension: `matrix2(1,1,2,3,1);`",
+      "Execute the N-dimensional access command.",
+      "Observe the returned value."
+    ],
+    "params": {
+      "matrix2": "5x5x5x5x5 random matrix",
+      "element_indices": "(1st dim: 1, 2nd dim: 1, 3rd dim: 2, 4th dim: 3, 5th dim: 1)"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [
+      "Use N-dimensional indexing (specifying an index for each dimension) for clarity and precision when accessing elements in N-dimensional matrices. For an N-dimensional matrix, use N-1 commas in the indexing."
+    ],
+    "theory": "For N-dimensional matrices, using N-dimensional indexing (providing an index for each dimension) is generally clearer and less prone to errors than linear indexing, especially when trying to pinpoint a specific element. The number of commas used in N-dimensional indexing for an N-dimensional matrix is N-1.",
+    "source_url": "https://www.youtube.com/watch?v=qSIf9iHvKZU",
+    "license": "YouTube",
+    "chunk_id": "451c3f9e-69ce-4b18-9da0-de58a9ac97bb"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Define Single-Variable Function Handle",
+    "steps": [
+      "Define a function handle named F that takes input X and returns X squared, using the syntax: `F = @(X) X^2`.",
+      "Call the function handle with a specific value, e.g., `F(2)`, to compute the result."
+    ],
+    "params": {
+      "function_handle_name": "F",
+      "input_variable": "X",
+      "function_definition": "X^2"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Function handles in MATLAB allow you to create anonymous functions (functions without a separate M-file) that can be passed as arguments to other functions or executed directly. They are defined using the `@` symbol followed by input arguments in parentheses and then the function body.",
+    "source_url": "https://www.youtube.com/watch?v=sdXAvm_UF4Y",
+    "license": "YouTube",
+    "chunk_id": "fd104486-b325-47f7-b096-eb336e4fc843"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Define Multi-Variable Function Handle",
+    "steps": [
+      "Define a function handle named F that takes inputs X and Y and returns X squared plus Y squared, using the syntax: `F = @(X,Y) X^2 + Y^2`.",
+      "Call the function handle with multiple values, e.g., `F(2,3)`, to compute the result."
+    ],
+    "params": {
+      "function_handle_name": "F",
+      "input_variables": "X, Y",
+      "function_definition": "X^2 + Y^2"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Similar to single-variable function handles, multi-variable handles allow you to define anonymous functions that accept multiple input arguments, using the same `@` syntax with multiple variables listed in the parentheses.",
+    "source_url": "https://www.youtube.com/watch?v=sdXAvm_UF4Y",
+    "license": "YouTube",
+    "chunk_id": "fdd9a8f9-c59f-4d45-9a33-4308634f8859"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Solve First-Order IVP with ODE45 (Basic Usage)",
+    "steps": [
+      "Define the differential equation's rate function as a function handle. For `y' = t - y`, this is `@(T,Y) T - Y`.",
+      "Specify the time span as a two-element vector, e.g., `[0 5]` for 0 to 5.",
+      "Specify the initial condition `Y0`, e.g., `1` for `y(0)=1`.",
+      "Call the `ode45` solver with these three arguments: `ode45(@(T,Y) T - Y, [0 5], 1)`.",
+      "Observe the graphical estimate of the solution that appears in a figure window."
+    ],
+    "params": {
+      "ODEFUN": "@(T,Y) T - Y",
+      "TSPAN": "[0 5]",
+      "Y0": "1"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The `ode45` function in MATLAB is a numerical solver for ordinary differential equations (ODEs), specifically for initial value problems (IVPs). It approximates the solution by taking the differential equation's rate function (as a function handle), a time span for the solution, and an initial condition.",
+    "source_url": "https://www.youtube.com/watch?v=sdXAvm_UF4Y",
+    "license": "YouTube",
+    "chunk_id": "68eab3de-df70-44ab-a12f-34e323fbda29"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Validate Analytical Solution with ODE45 and Plotting",
+    "steps": [
+      "Define the differential equation's rate function as a function handle, ensuring it includes both `T` and `Y` as inputs even if `T` is not explicitly used. For `y' = y`, this is `@(T,Y) Y`.",
+      "Specify the time span for the solution, e.g., `[0 10]`.",
+      "Specify the initial condition `Y0`, e.g., `2` for `y(0)=2`.",
+      "Call the `ode45` solver and store its outputs (time vector and solution vector) into variables, e.g., `[T,Y] = ode45(@(T,Y) Y, [0 10], 2)`.",
+      "Plot the numerical solution obtained from `ode45` (e.g., `plot(T, Y)`).",
+      "Plot the analytical solution on the same axes for comparison, specifying a distinct line style (e.g., `plot(T, 2 * exp(T), 'k-')` for the analytical solution `y(t) = 2e^t` in a black line).",
+      "Visually compare the numerical and analytical plots to validate the hand-calculated solution."
+    ],
+    "params": {
+      "ODEFUN": "@(T,Y) Y",
+      "TSPAN": "[0 10]",
+      "Y0": "2",
+      "analytical_solution_expression": "2 * exp(T)",
+      "analytical_plot_style": "'k-'"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "ODE45 can be used to validate hand-derived analytical solutions to differential equations. By numerically solving the IVP and plotting the numerical solution alongside the analytical solution, one can visually confirm their agreement, serving as a check for the manual calculation.",
+    "source_url": "https://www.youtube.com/watch?v=sdXAvm_UF4Y",
+    "license": "YouTube",
+    "chunk_id": "d0cdcded-9071-4cb5-91eb-4daaccafe7c5"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Manual Closed-Loop Control System (Car Speed Example)",
+    "steps": [],
+    "params": {
+      "speed_limit": "50 mph",
+      "desired_speed": "50 mph"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "A manual closed-loop control system, like a human driving a car, involves a desired output (target speed), monitoring the current output (speedometer), comparing it to find the error, and taking a control action (adjusting the gas pedal) to reduce the error and maintain the desired speed.",
+    "source_url": "https://www.youtube.com/watch?v=u1pgaJHiiew",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "23a8ee42-689a-436e-aa8e-13566d975550"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Feedback Control System Terminology",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "In control theory, the desired output (also called reference or set point) is the target value. The plant is the object being controlled. A sensor measures the plant's output. The error is the difference between the desired and measured output. A controller decides on a control action based on the error, which is then sent to an actuator that influences the plant. Sometimes, actuator, sensor, and plant dynamics are merged into one 'plant' model.",
+    "source_url": "https://www.youtube.com/watch?v=u1pgaJHiiew",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "705a3c7c-e065-40e3-b553-e9d833a18d5f"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Disturbances and Noise in Control Systems",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Disturbances are unexpected environmental changes that cause a system's output to behave undesirably (e.g., road grade, sticky gas pedal, wind). Noise is an unwanted signal that affects the measured output value, making it inaccurate or fluctuating (e.g., blurry vision affecting speedometer reading).",
+    "source_url": "https://www.youtube.com/watch?v=u1pgaJHiiew",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "91352358-5096-40e2-8d94-ccee0f5d991e"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Converting to an Automatic Control System (Cruise Control)",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "An automatic control system converts manual control to automation. For cruise control, a device provides electronic speed measurement (sensor), an engine control unit acts as the controller to compute control actions based on error, and a mechanical device (motor) acts as the actuator to move the gas pedal, replacing manual input.",
+    "source_url": "https://www.youtube.com/watch?v=u1pgaJHiiew",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "e8d8c5e6-d087-4844-853d-3c76fbe66b8e"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Understanding PID Control Theory",
+    "steps": [],
+    "params": {
+      "Proportional gain": "adjusts response to present error (e.g., 0.1, 2, 5, 10, 100 in examples)",
+      "Integral path": "sums past error over time to eliminate steady-state error",
+      "Derivative path": "measures rate of change of error to predict future error and prevent overshoot",
+      "Gain term": "adjustable weighting factor for each P, I, or D branch, used for tuning the controller"
+    },
+    "ui_paths": [],
+    "errors": [
+      "constant error (also called steady-state error)",
+      "overshooting the goal"
+    ],
+    "fixes": [
+      "add an integrator path to the controller (to get rid of steady-state error)",
+      "add a derivative path to the controller (to prevent overshooting)"
+    ],
+    "theory": "PID (Proportional-Integral-Derivative) control is a versatile feedback control law that calculates an actuated signal based on the error between a desired command and the system's output. It combines present error (P), accumulated past error (I), and the rate of change of future error (D) to achieve desired system behavior, address steady-state error, and prevent overshoot.",
+    "source_url": "https://www.youtube.com/watch?v=wkfEZmsQqiA",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "9b677c07-f60d-4e65-be43-5d7b1fcc01bb"
   }
 ]
