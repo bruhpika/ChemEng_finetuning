@@ -2505,5 +2505,2514 @@
     "source_url": "https://www.youtube.com/watch?v=PJhubXTKrNw",
     "license": "YouTube",
     "chunk_id": "76be747c-2b4c-4275-8988-933614f9a14d"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "New Steady-State Simulation Setup",
+    "steps": [
+      "Open a steady-state simulation window.",
+      "Choose 'Air' as a compound and ensure its box is ticked.",
+      "Choose 'Water' as a compound and ensure its box is ticked.",
+      "Click 'Next'.",
+      "Select 'Hollaslow' thermodynamic package.",
+      "Click 'Add' to ensure Hollaslow is added.",
+      "Click 'Next'.",
+      "Select 'C5' as the system of units to get mass flow rate in kg/hr.",
+      "Click 'Next'.",
+      "Click 'Finish'."
+    ],
+    "params": {
+      "Compounds": "Air, Water",
+      "Thermodynamic Package": "Hollaslow",
+      "System of Units": "C5 (for kg/hr mass flow rate)"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "This initial setup configures the simulation environment by defining the chemical components involved, the thermodynamic model to be used for property calculations, and the desired system of units for input and output.",
+    "source_url": "https://www.youtube.com/watch?v=UZqMrFOMNZ0",
+    "license": "YouTube",
+    "chunk_id": "fb011a46-c589-440f-a5a7-72b192eac002"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Adding and Configuring Material Inlet Streams",
+    "steps": [
+      "Choose a material stream from the palette.",
+      "Drag the material stream onto the software window (for cold inlet).",
+      "Click on the first material stream (cold inlet).",
+      "Go to the 'Stream Conditions' panel.",
+      "Set 'Ending Temperature' to 25.",
+      "Assume 'Pressure' is 1 bar.",
+      "Set 'Mass Flow Rate' to 200 kg/hr.",
+      "Go to the 'Compounds Amount' panel.",
+      "Set 'Mole Fraction' of Water to 1.",
+      "Set 'Mole Fraction' of Air to 0.",
+      "Click 'Enter'.",
+      "Click 'Accept'.",
+      "Change the name of the stream to 'cold inlet'.",
+      "Close the stream window.",
+      "Choose another material stream from the palette.",
+      "Drag the material stream onto the software window (for hot inlet).",
+      "Click on the second material stream (hot inlet).",
+      "Set 'Initial Temperature' to 70.",
+      "Set 'Pressure' to 1 bar.",
+      "Set 'Mass Flow Rate' to 1000 kg/hr.",
+      "Specify 'Mole Fraction' of Air to 1.",
+      "Specify 'Mole Fraction' of Water to 0.",
+      "Click 'Accept'.",
+      "Change the name of the stream to 'hot inlet'.",
+      "Click on the 'hot inlet' stream.",
+      "Go to the 'Rotate' option.",
+      "Set rotation to -80 degrees (for visual orientation).",
+      "Close the stream window."
+    ],
+    "params": {
+      "Cold Inlet": {
+        "Temperature": "25 C",
+        "Pressure": "1 bar",
+        "Mass Flow Rate": "200 kg/hr",
+        "Water mole fraction": "1",
+        "Air mole fraction": "0"
+      },
+      "Hot Inlet": {
+        "Temperature": "70 C",
+        "Pressure": "1 bar",
+        "Mass Flow Rate": "1000 kg/hr",
+        "Air mole fraction": "1",
+        "Water mole fraction": "0"
+      },
+      "Rotation": "-80 degrees"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Material streams define the incoming and outgoing fluid properties such as temperature, pressure, flow rate, and composition. Correct specification of these parameters is crucial for accurate simulation results.",
+    "source_url": "https://www.youtube.com/watch?v=UZqMrFOMNZ0",
+    "license": "YouTube",
+    "chunk_id": "4f93f5a8-aa03-493c-acf5-9a9c5417fc02"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Adding Exit Streams and Heat Exchanger Unit Operation",
+    "steps": [
+      "Choose a material stream from the palette.",
+      "Drag the material stream onto the software window (for cold exit).",
+      "Change the name of this stream to 'cold exit'.",
+      "Choose another material stream from the palette.",
+      "Drag the material stream onto the software window (for hot exit).",
+      "Change the name of this stream to 'hot exit'.",
+      "Click on the 'hot exit' stream.",
+      "Go to the 'Rotate' option.",
+      "Set rotation to -80 degrees (for visual orientation).",
+      "Choose a 'Heat Exchanger' from the unit operations list.",
+      "Drag the 'Heat Exchanger' onto the software window."
+    ],
+    "params": {
+      "Hot Exit Rotation": "-80 degrees"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Exit streams are placeholders for the results of the unit operation. The heat exchanger unit operation simulates the heat transfer between two fluid streams.",
+    "source_url": "https://www.youtube.com/watch?v=UZqMrFOMNZ0",
+    "license": "YouTube",
+    "chunk_id": "84558dc2-1e48-4b69-8ea6-1cb112457b2b"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Connecting Streams to Heat Exchanger",
+    "steps": [
+      "Click on the Heat Exchanger unit operation.",
+      "In the connection panel, set 'Inlet Stream 1' to 'cold inlet'.",
+      "Set 'Outlet Stream 1' to 'cold exit'.",
+      "Set 'Inlet Stream 2' to 'hot inlet'.",
+      "Set 'Outlet Stream 2' to 'hot exit'.",
+      "Close the connection window."
+    ],
+    "params": {
+      "Heat Exchanger Connections": "Cold Inlet, Cold Exit, Hot Inlet, Hot Exit"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Connecting streams to the heat exchanger defines the flow paths, specifying which fluid enters and exits each side of the exchanger.",
+    "source_url": "https://www.youtube.com/watch?v=UZqMrFOMNZ0",
+    "license": "YouTube",
+    "chunk_id": "73319398-25f7-494f-9549-3a4515f97712"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Configuring Heat Exchanger Calculation and Running Simulation",
+    "steps": [
+      "Click on the 'Stop Solver' icon.",
+      "Click on the 'Heat Exchanger' unit operation.",
+      "Select 'Calculate hot outlet temperature' as the calculation mode.",
+      "Assume 'No pressure drop'.",
+      "Input 'Cold fluid outlet temperature' as 45.",
+      "Input 'Surface area' as 1.",
+      "Click on the 'Enable Software' icon (or press F5) to run the simulation."
+    ],
+    "params": {
+      "Calculation Mode": "Calculate hot outlet temperature",
+      "Pressure Drop": "0 (assumed)",
+      "Cold Fluid Outlet Temperature": "45 C",
+      "Surface Area": "1 m²"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "DWSIM calculates the hot fluid outlet temperature, overall heat transfer coefficient (U value), and exchanged heat (Q) based on the specified cold fluid outlet temperature and the heat exchanger's surface area.",
+    "source_url": "https://www.youtube.com/watch?v=UZqMrFOMNZ0",
+    "license": "YouTube",
+    "chunk_id": "bfb3acb5-af37-4674-8e39-2fe4103a7640"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Viewing Simulation Results in Property Table",
+    "steps": [
+      "Go to 'Insert' menu.",
+      "Click on 'Property Tables'.",
+      "Click on the main simulation window to place the table.",
+      "In the Property Table configuration, select 'Cold Inlet' stream.",
+      "Select 'Temperature' property for 'Cold Inlet'.",
+      "Select 'Hot Inlet' stream.",
+      "Select 'Temperature' property for 'Hot Inlet'.",
+      "Select 'Cold Exit' stream.",
+      "Select 'Temperature' property for 'Cold Exit'.",
+      "Select 'Hot Exit' stream.",
+      "Select 'Temperature' property for 'Hot Exit'.",
+      "Close the property table configuration window."
+    ],
+    "params": {
+      "Streams to display": "Cold Inlet, Hot Inlet, Cold Exit, Hot Exit",
+      "Properties to display": "Temperature"
+    },
+    "ui_paths": [
+      "Insert > Property Tables"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "Property tables provide a structured way to view and compare specific properties of multiple streams in the simulation, allowing for easy analysis of results.",
+    "source_url": "https://www.youtube.com/watch?v=UZqMrFOMNZ0",
+    "license": "YouTube",
+    "chunk_id": "7c496cdb-d325-4b47-ae3d-81487363ab74"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Handling DWSIM Update Prompt",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "An updated version is available to download from the official website. Update DWSIM to fix bugs, crashes and take advantage of new features."
+    ],
+    "fixes": [
+      "Do not accept the update prompt (it is not required as of now)."
+    ],
+    "theory": "",
+    "source_url": "https://www.youtube.com/watch?v=ZU20OzJq9i4",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "32884f97-c2e8-438f-93a2-9518270188f1"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Opening Sample Flowsheets from Main Interface",
+    "steps": [
+      "Click on 'Samples' in the main DWSIM interface."
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "DWSIM provides pre-built sample flowsheets that demonstrate various simulation modules and processes, allowing users to understand how simulations are set up and run.",
+    "source_url": "https://www.youtube.com/watch?v=ZU20OzJq9i4",
+    "license": "YouTube",
+    "chunk_id": "73491a22-6c80-4eb0-867f-afe2b84c9767"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Opening Sample Flowsheets from File Menu",
+    "steps": [
+      "Navigate to 'File' menu.",
+      "Select 'Samples'."
+    ],
+    "params": {},
+    "ui_paths": [
+      "File > Samples"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "DWSIM provides pre-built sample flowsheets that demonstrate various simulation modules and processes, allowing users to understand how simulations are set up and run.",
+    "source_url": "https://www.youtube.com/watch?v=ZU20OzJq9i4",
+    "license": "YouTube",
+    "chunk_id": "dd25a0cd-82da-4ec8-bf7e-45cf90e0630e"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Creating a New Flowsheet",
+    "steps": [
+      "Navigate to 'File' menu.",
+      "Select 'New'."
+    ],
+    "params": {},
+    "ui_paths": [
+      "File > New"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "Creating a new flowheet provides a blank canvas for users to build their own process simulations from scratch.",
+    "source_url": "https://www.youtube.com/watch?v=ZU20OzJq9i4",
+    "license": "YouTube",
+    "chunk_id": "390a8de7-9987-43e8-99ec-5a5bbed2bd61"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Viewing Flowsheet - Zoom Operations",
+    "steps": [
+      "Use the 'zoom all' feature.",
+      "Use the 'still zoom' feature."
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Zoom functions allow users to adjust the view of the flowsheet, enabling detailed inspection of specific areas or an overview of the entire simulation.",
+    "source_url": "https://www.youtube.com/watch?v=ZU20OzJq9i4",
+    "license": "YouTube",
+    "chunk_id": "7a0c37fa-4351-438d-bc07-441e8fd012ea"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Understanding Heat Exchanger Sizing and Design Sample",
+    "steps": [
+      "Open the 'heat exchanger sizing and design' sample (implicitly, from the samples list)."
+    ],
+    "params": {
+      "Process type": "Shell and tube heat exchanger rating/design",
+      "Fluid 1": "Gasoline",
+      "Fluid 1 inlet temperature": "219°F",
+      "Fluid 1 outlet temperature": "100°F",
+      "Fluid 2": "Water",
+      "Fluid 2 inlet temperature": "88°F",
+      "Heat exchanger length": "30 ft",
+      "Number of tubes": "500",
+      "Internal shell diameter": "29 in"
+    },
+    "ui_paths": [
+      "Samples > heat exchanger sizing and design"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "This sample demonstrates how to use the shell and tube heat exchanger model for rating or designing a heat exchanger. It simulates cooling gasoline from 219°F to 100°F using 88°F water, considering specific dimensions.",
+    "source_url": "https://www.youtube.com/watch?v=ZU20OzJq9i4",
+    "license": "YouTube",
+    "chunk_id": "39386b9f-db43-47ca-bc8c-0b7a648c975f"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://www.youtube.com/watch?v=aYth6qHnDe0",
+    "license": "YouTube",
+    "flag": "INACCESSIBLE",
+    "chunk_id": "5009bbd8-dd22-4c7c-85f4-1ad9ba8df8aa"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Starting a new steady-state simulation and adding components",
+    "steps": [
+      "Start a new steady-state simulation.",
+      "Press 'Next'.",
+      "Select 'cis-2-butene'.",
+      "Select 'trans-2-butene'.",
+      "Press 'Next'."
+    ],
+    "params": {
+      "Components": "cis-2-butene, trans-2-butene"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://www.youtube.com/watch?v=c6bDAzHE6Cg",
+    "license": "YouTube",
+    "chunk_id": "64cb1fad-9050-41c6-8bac-616765537157"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Configuring thermodynamic package and system of units",
+    "steps": [
+      "Select 'NRTL' as a property package.",
+      "Go to 'Next'.",
+      "Take 'C5' as a system of units.",
+      "Press 'Finish'."
+    ],
+    "params": {
+      "Property Package": "NRTL",
+      "System of Units": "C5"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://www.youtube.com/watch?v=c6bDAzHE6Cg",
+    "license": "YouTube",
+    "chunk_id": "a9645a37-5249-42ce-a812-cbe96a9d4c62"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Defining a kinetic reaction",
+    "steps": [
+      "Press the 'Settings' button.",
+      "Click on 'Reactions'.",
+      "Press the '+' button.",
+      "Select 'Kinetic'.",
+      "Specify 'cis-2-butene' as the base component.",
+      "Set stoichiometry coefficient for 'cis-2-butene' to '-1'.",
+      "Set stoichiometry coefficient for 'trans-2-butene' to '+1'.",
+      "Set 'Forward Order' to '1'.",
+      "Set 'Bases' to 'Concentration molar concentrations'.",
+      "Set 'Phase' to 'Liquid'.",
+      "Extend 'Temperature Range' up to '3000 K'.",
+      "Input 'Velocity Constant' (rate constant) as '0.003833'.",
+      "Press 'Enter'.",
+      "Press 'OK' (after defining the reaction set)."
+    ],
+    "params": {
+      "Base Component": "cis-2-butene",
+      "Stoichiometry (cis-2-butene)": -1,
+      "Stoichiometry (trans-2-butene)": 1,
+      "Forward Order": 1,
+      "Bases": "Concentration molar concentrations",
+      "Phase": "Liquid",
+      "Temperature Range": "up till 3000 K",
+      "Velocity Constant (k)": 0.003833,
+      "Units of k": "kmole per cubic meter per second (implied)"
+    },
+    "ui_paths": [
+      "Settings > Reactions > Add (+) > Kinetic"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "Describes how to define a homogeneous, irreversible, first-order isomerization reaction with a specific rate constant and conditions within DWSIM.",
+    "source_url": "https://www.youtube.com/watch?v=c6bDAzHE6Cg",
+    "license": "YouTube",
+    "chunk_id": "899cd99d-6aba-4d32-a6d1-3cef334a025a"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Configuring the feed material stream",
+    "steps": [
+      "Take a 'Material Stream' from the palette.",
+      "Click on the stream.",
+      "Change its name to 'Feed'.",
+      "Press 'Enter'.",
+      "Set 'Temperature' to '25 degrees'.",
+      "Set 'Pressure' to '12 bar'.",
+      "Set 'Molar Flow' to '100 kmole per hour'.",
+      "Ensure the feed is purely 'cis-2-butene' (mole fraction 1 for cis-2-butene, 0 for trans-2-butene).",
+      "Press 'Accept Changes'."
+    ],
+    "params": {
+      "Stream Name": "Feed",
+      "Temperature": "25 degrees",
+      "Pressure": "12 bar",
+      "Molar Flow": "100 kmole/hour",
+      "Compound Amount (cis-2-butene)": "1 (mole fraction)",
+      "Compound Amount (trans-2-butene)": "0 (mole fraction)"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://www.youtube.com/watch?v=c6bDAzHE6Cg",
+    "license": "YouTube",
+    "chunk_id": "4339f28b-a58c-48bb-8ce1-ec11eb433cd2"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Setting up the Plug Flow Reactor (PFR) and initial volume guess",
+    "steps": [
+      "Go to 'Reactors'.",
+      "Select 'Plug Flow Reactor'.",
+      "Drag it onto the flowsheet.",
+      "Click on the reactor.",
+      "Connect 'Feed' as the feed stream.",
+      "Create an 'Outlet Stream'.",
+      "Create an 'Energy Stream'.",
+      "Confirm the 'Reaction Set' is the default one previously specified.",
+      "Input a guess value for 'Reactor Volume': '0.5 cubic meter'.",
+      "Press 'Enter'.",
+      "Go to the 'Result section' of the reactor.",
+      "Go to 'Conversion' to check the initial conversion."
+    ],
+    "params": {
+      "Initial Reactor Volume Guess": "0.5 cubic meter",
+      "Calculation Mode (Initial)": "Isothermal (default)"
+    },
+    "ui_paths": [
+      "Reactors > Plug Flow Reactor"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "Demonstrates how to add a PFR to the simulation, connect input/output streams, and provide an initial guess for its volume to obtain initial conversion results.",
+    "source_url": "https://www.youtube.com/watch?v=c6bDAzHE6Cg",
+    "license": "YouTube",
+    "chunk_id": "5a515384-af9a-41ec-9770-37aada6d3a18"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Using the Adjust function to achieve target conversion (PFR volume)",
+    "steps": [
+      "Go to 'Logical Operation'.",
+      "Select 'Control Block'.",
+      "Drag it into the flowsheet.",
+      "Click on the 'Adjust' function.",
+      "Select 'Plug Flow Reactor' as the 'Manipulated Object'.",
+      "Select 'Volume' of the plug flow reactor as the 'Manipulated Property'.",
+      "Select 'Plug Flow Reactor' as the 'Control Object'.",
+      "Select 'cis-2-butene Conversion' as the 'Control Property'.",
+      "Input the desired 'Conversion Value': '95%'.",
+      "Press 'Enter'.",
+      "Disable the solver (before running Adjust function).",
+      "Click on 'Converge Solve with the flowsheet solver' (or press F5)."
+    ],
+    "params": {
+      "Target Conversion": "95%"
+    },
+    "ui_paths": [
+      "Logical Operation > Control Block",
+      "Adjust function window > Manipulated Object",
+      "Adjust function window > Manipulated Property",
+      "Adjust function window > Control Object",
+      "Adjust function window > Control Property"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "Explains how to use the Adjust block in DWSIM to perform inverse calculations, specifically finding the required reactor volume to achieve a specified product conversion.",
+    "chunk_id": "49bfb590-d1cc-4a5a-8e27-75a5d63367f3",
+    "source_url": "https://www.youtube.com/watch?v=c6bDAzHE6Cg",
+    "license": "YouTube"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Analyzing concentration profiles along the PFR length",
+    "steps": [
+      "Come back to the 'Reactor' (after simulation convergence).",
+      "Go to 'Results'.",
+      "Go to 'Concentration Profiles'.",
+      "Right click on 'Concentration Profiles'.",
+      "Select 'Show in another window'."
+    ],
+    "params": {},
+    "ui_paths": [
+      "Reactor > Results > Concentration Profiles"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "Shows how to plot the concentration profiles of reactants and products along the length of the PFR, demonstrating the continuous change in composition.",
+    "source_url": "https://www.youtube.com/watch?v=c6bDAzHE6Cg",
+    "license": "YouTube",
+    "chunk_id": "c465a630-7241-43dd-b296-4c6fef7bdf13"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Changing PFR calculation mode from Isothermal to Adiabatic",
+    "steps": [
+      "Click on the 'Plug Flow Reactor'.",
+      "Change 'Mode of Calculation' from 'Isothermal' to 'Adiabatic'.",
+      "(Implied: Re-run the simulation to observe the effect)."
+    ],
+    "params": {
+      "Calculation Mode": "Adiabatic"
+    },
+    "ui_paths": [
+      "Plug Flow Reactor > Mode of Calculation"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "Illustrates how to switch the PFR calculation mode from isothermal (constant temperature) to adiabatic (no heat exchange), impacting temperature profiles, especially for exothermic/endothermic reactions.",
+    "source_url": "https://www.youtube.com/watch?v=c6bDAzHE6Cg",
+    "license": "YouTube",
+    "chunk_id": "7961f3fe-6838-4ecb-8e1b-cebc3088cb6f"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "DWSIM UI Overview & Initial Setup",
+    "steps": [
+      "Double-click the DW Sim shortcut icon.",
+      "Click the icon next to 'create new simulation'.",
+      "Cancel the simulation configuration wizard."
+    ],
+    "params": {},
+    "ui_paths": [
+      "Startup Screen > Task Section > Create New Simulation",
+      "Toolbar > Simulation icon (looks like a tiny Lego piece)",
+      "Top of window > File, Settings, Insert, Help",
+      "Quick Access Toolbars",
+      "Object Palette",
+      "Flow Sheeting Environment > Material Streams tab, Spreadsheet tab, Flowsheet tab"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "This section introduces the DWSIM software and its main user interface components, preparing the user for solving a simple mixing problem.",
+    "source_url": "https://www.youtube.com/watch?v=cuZ5Oq1ZuFw",
+    "license": "YouTube",
+    "chunk_id": "7afb3409-8d61-4e00-90be-83b7919fd7d1"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Configuring Simulation Environment (Components, Property Package, Unit System)",
+    "steps": [
+      "Click the icon next to the word 'simulation' in the toolbar to bring back the configuration form.",
+      "Select the 'compounds' tab.",
+      "Type 'water' into the search bar.",
+      "Double-click 'water' from the list.",
+      "Type 'ethanol' into the search bar.",
+      "Double-click 'ethanol' from the list.",
+      "Click the 'basis' tab.",
+      "Click 'Peng Robinson' from the available property packages.",
+      "Click 'add'.",
+      "Click the 'unit systems' tab.",
+      "Select the 'CGS system'.",
+      "Close the configuration form."
+    ],
+    "params": {
+      "Component 1": "Water",
+      "Component 2": "Ethanol",
+      "Property Package": "Peng Robinson",
+      "Unit System": "CGS"
+    },
+    "ui_paths": [
+      "Toolbar > Simulation icon",
+      "Simulation Configuration Form > Compounds Tab",
+      "Simulation Configuration Form > Basis Tab",
+      "Simulation Configuration Form > Unit Systems Tab"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "This procedure demonstrates how to define the chemical components, the thermodynamic model (property package), and the system of units for a new DWSIM simulation.",
+    "source_url": "https://www.youtube.com/watch?v=cuZ5Oq1ZuFw",
+    "license": "YouTube",
+    "chunk_id": "4e1ec788-42bc-45f1-947b-bf1cc4a2b345"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Adding and Configuring Inlet Material Streams",
+    "steps": [
+      "Click and drag a material stream from the object palette onto the flow sheet.",
+      "Name the stream 'water inlet'.",
+      "Leave default basis as 'mole fraction'.",
+      "Type '1' into the equilibrium composition table (for water).",
+      "Click 'apply'.",
+      "Click 'close'.",
+      "Click into property field number five named 'molar flow rate'.",
+      "Type '50'.",
+      "Press enter.",
+      "Drag another material stream from the object palette onto the flow sheet.",
+      "Name this stream 'ethanol Inlet'.",
+      "Leave default basis as 'mole fraction'.",
+      "Type '1' into the equilibrium composition table (for ethanol).",
+      "Click 'apply'.",
+      "Click 'close'.",
+      "Click into property field number five named 'molar flow rate'.",
+      "Type '50'.",
+      "Press enter.",
+      "Select both streams by clicking them while holding the Control key.",
+      "Use the 'Align centers' option in the quick access toolbar."
+    ],
+    "params": {
+      "Water Inlet composition": "Water=1 (mole fraction)",
+      "Water Inlet molar flow rate": "50 moles/second",
+      "Ethanol Inlet composition": "Ethanol=1 (mole fraction)",
+      "Ethanol Inlet molar flow rate": "50 moles/second",
+      "Default Temperature": "25 C",
+      "Default Pressure": "1 atmosphere"
+    },
+    "ui_paths": [
+      "Object Palette > Material Stream",
+      "Selected Object Window > Equilibrium Composition table",
+      "Selected Object Window > Property field #5 (molar flow rate)",
+      "Quick Access Toolbar > Align centers"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "This section demonstrates how to add, name, and specify the composition and flow rate for individual material streams in DWSIM, setting up the inputs for a process simulation.",
+    "source_url": "https://www.youtube.com/watch?v=cuZ5Oq1ZuFw",
+    "license": "YouTube",
+    "chunk_id": "ac0be031-bde3-4415-b5bf-7606635f4747"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Adding and Configuring a Mixer and Outlet Stream",
+    "steps": [
+      "Drag another material stream from the object palette onto the flow sheet.",
+      "Name it 'mixer out'.",
+      "Click the 'close' button (for the mixer out stream properties).",
+      "Drag a 'mixer' unit operation from the object palette onto the flow sheet.",
+      "In the Selected Object Window, under the 'Properties' tab, use the drop down menu to the right of 'inlet stream 1' and select 'water inlet'.",
+      "Select 'ethanol Inlet' for 'Inlet stream 2'.",
+      "Select 'mixer out' for the 'connected to outlet' option."
+    ],
+    "params": {},
+    "ui_paths": [
+      "Object Palette > Material Stream",
+      "Object Palette > Mixer",
+      "Selected Object Window > Properties Tab > Inlet stream 1 dropdown",
+      "Selected Object Window > Properties Tab > Inlet stream 2 dropdown",
+      "Selected Object Window > Properties Tab > Connected to outlet dropdown"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "This procedure explains how to add unit operations, specifically a mixer, and connect material streams as inlets and outlets, allowing DWSIM to calculate the resulting stream properties.",
+    "source_url": "https://www.youtube.com/watch?v=cuZ5Oq1ZuFw",
+    "license": "YouTube",
+    "chunk_id": "7ed404f4-6aae-4a97-9789-541e74bb4a08"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Solving the Simulation",
+    "steps": [
+      "In the quick access toolbar, click 'play on the calculator' (Solve button).",
+      "Click the 'recalculate all' button."
+    ],
+    "params": {},
+    "ui_paths": [
+      "Quick Access Toolbar > Play on calculator icon (Solve button)",
+      "Quick Access Toolbar > Recalculate all button"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "This section describes the process of running the DWSIM solver to calculate the unknown properties and conditions of the configured flow sheet.",
+    "source_url": "https://www.youtube.com/watch?v=cuZ5Oq1ZuFw",
+    "license": "YouTube",
+    "chunk_id": "f529f802-2f61-46e2-9b88-c917f668a890"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Creating and Configuring a Master Property Table",
+    "steps": [
+      "Move your mouse to the 'flow sheet options' in the quick access toolbar.",
+      "Click 'Master property table'.",
+      "In the Selected Object Window, under 'objects to show', use the dropdown to select 'true' for 'all streams'.",
+      "Click on an empty area of the flow sheet to deselect the property table.",
+      "Click on the property table to reselect it (to refresh).",
+      "Select 'true' for desired stream properties (Temperature, Pressure, Mass Flow, Molar Flow, Volumetric Flow)."
+    ],
+    "params": {
+      "Objects to show": "all streams (true)",
+      "Stream Properties to display": "Temperature, Pressure, Mass Flow, Molar Flow, Volumetric Flow"
+    },
+    "ui_paths": [
+      "Quick Access Toolbar > Flow sheet options > Master property table",
+      "Selected Object Window > Objects to show dropdown"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "This procedure demonstrates how to add a dynamic table to the flow sheet to visually display key properties of selected streams, which refreshes automatically with simulation changes.",
+    "source_url": "https://www.youtube.com/watch?v=cuZ5Oq1ZuFw",
+    "license": "YouTube",
+    "chunk_id": "cdd413e8-e5de-4984-9f80-38f1175c48a2"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Validating Mass and Molar Balance with Embedded Spreadsheet",
+    "steps": [
+      "In the flow sheeting environment window, click on the 'spreadsheet' tab.",
+      "Select a cell.",
+      "Right-click the selected cell.",
+      "Select 'import value from flow sheet'.",
+      "On the 'select object/property' form, ensure 'material stream' is selected under 'type'.",
+      "Select 'water inlet' as the object.",
+      "Select 'mass flow' as the variable.",
+      "Click 'ok'.",
+      "Label the cell (e.g., 'W-mass').",
+      "Assign units to the cell.",
+      "In another cell, import the mass flow from the 'ethanol stream'.",
+      "Label this cell.",
+      "Assign units to this cell.",
+      "Choose a cell to calculate the sum of both entering streams (e.g., '=A1+B1').",
+      "Enter the formula into the value field.",
+      "Select a cell to import the calculated mass from DWSIM for the 'mixer out' stream (mass flow).",
+      "Label the cell.",
+      "Compare the two values (calculated sum vs. DWSIM output).",
+      "Click the 'flow sheet' tab.",
+      "View molar flows from the property table for 'water inlet', 'ethanol inlet', and 'mixer out'."
+    ],
+    "params": {},
+    "ui_paths": [
+      "Flow Sheeting Environment Window > Spreadsheet Tab",
+      "Right-click cell > Import Value from Flowsheet",
+      "Select Object/Property Form > Type dropdown (Material Stream)",
+      "Select Object/Property Form > Object dropdown (Water Inlet, Ethanol Stream, Mixer Out)",
+      "Select Object/Property Form > Variable dropdown (Mass Flow)",
+      "Flow Sheeting Environment Window > Flow Sheet Tab"
+    ],
+    "errors": [
+      "DW Sim generated an unhandled exception"
+    ],
+    "fixes": [
+      "Choose to continue (when 'unhandled exception' error occurs)"
+    ],
+    "theory": "This procedure demonstrates how to use DWSIM's embedded spreadsheet to perform external calculations and cross-validate simulation results, specifically for mass and molar balances, by importing values directly from the flow sheet.",
+    "source_url": "https://www.youtube.com/watch?v=cuZ5Oq1ZuFw",
+    "license": "YouTube",
+    "chunk_id": "7bfc2e44-0cba-4578-b707-f2463a168f1c"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Generating and Printing Reports (PFD and Simulation Report)",
+    "steps": [
+      "With the 'flow sheet' tab selected, right-click on an empty space.",
+      "Select 'print'.",
+      "In the print preview, click the 'print icon' in the upper left hand corner.",
+      "Select the designation folder.",
+      "Name the file 'tutorial 1 PFD'.",
+      "Click 'save'.",
+      "Exit the print preview.",
+      "Open the simulation configuration form (e.g., via Toolbar > Simulation icon or prior Results menu > Build Report interaction).",
+      "Add a title to the simulation.",
+      "Add an author to the simulation.",
+      "Add a description to the simulation.",
+      "Exit the configuration form.",
+      "Click 'Results' menu.",
+      "Select 'Build Report'.",
+      "In the 'Simulation Report Form', expand 'materials streams'.",
+      "Check off all available streams.",
+      "Expand 'mixers'.",
+      "Select the mixer.",
+      "Select desired properties to display (e.g., molar composition, mixture properties).",
+      "Uncheck unwanted options.",
+      "Click the 'view' button.",
+      "Click the small 'print icon' in the upper left hand corner of the report window.",
+      "Select 'print to PDF'.",
+      "Confirm 'all pages' are selected.",
+      "Click 'ok'.",
+      "Select the designation folder.",
+      "Name the document 'tutorial 1 report'.",
+      "Exit the print preview window.",
+      "Exit the simulation report form.",
+      "Save the project (optional)."
+    ],
+    "params": {
+      "PFD filename": "tutorial 1 PFD",
+      "Report filename": "tutorial 1 report",
+      "Report content": "All material streams, Mixer, Molar Composition, Mixture Properties"
+    },
+    "ui_paths": [
+      "Flow Sheeting Environment Window > Flow Sheet Tab > Right-click empty space > Print",
+      "Print Preview > Print icon",
+      "Results Menu > Build Report",
+      "Simulation Configuration Form > Title, Author, Description fields",
+      "Simulation Report Form > Available Items section (Material Streams, Mixers)",
+      "Simulation Report Form > Properties selection",
+      "Simulation Report Form > View button",
+      "Report Viewer > Print icon > Print to PDF"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "This procedure explains how to generate and export a process flow diagram (PFD) and a detailed simulation report in PDF format from DWSIM, including customizing report content and adding simulation metadata.",
+    "source_url": "https://www.youtube.com/watch?v=cuZ5Oq1ZuFw",
+    "license": "YouTube",
+    "chunk_id": "0fea0cdb-9068-4c97-9e01-683f096db9c2"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Inducing 'object reference not set' error",
+    "steps": [
+      "create a new simulation",
+      "close the wizard",
+      "go straight to the flow sheet",
+      "add material stream without any compound added or any profit package added"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "object reference not set",
+      "object reference not set with an instance of an object error"
+    ],
+    "fixes": [],
+    "theory": "This error occurs because when a material stream is created without a defined compound or property package, DWSIM tries to display a selected property package in its editor, but finds none, leading to an 'object reference not set' error.",
+    "source_url": "https://www.youtube.com/watch?v=dpF0biJHfKA",
+    "license": "YouTube",
+    "chunk_id": "d77002ea-02ed-497d-9b6e-e75c8fb04a13"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Getting support through SourceForge Forms",
+    "steps": [
+      "join the SourceForge website",
+      "use the forms to see if somebody else already had the problem",
+      "create a new topic"
+    ],
+    "params": {},
+    "ui_paths": [
+      "SourceForge website > Forms"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "The SourceForge forms serve as a community platform where users can seek assistance, find solutions to common issues, or post new questions to get help from others and the developers.",
+    "source_url": "https://www.youtube.com/watch?v=dpF0biJHfKA",
+    "license": "YouTube",
+    "chunk_id": "a3e5ca84-3c22-4e66-be9d-54a310627994"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Reporting bugs via Ticket System",
+    "steps": [
+      "go to tickets",
+      "create a new ticket",
+      "enter all the details of your problem",
+      "include your simulation file"
+    ],
+    "params": {
+      "simulation_file": "recommended"
+    },
+    "ui_paths": [
+      "SourceForge website > Tickets"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "The ticket system is used for reporting potential bugs to the developers. Including the simulation file is crucial as it helps the developers reproduce and fix the error more effectively.",
+    "source_url": "https://www.youtube.com/watch?v=dpF0biJHfKA",
+    "license": "YouTube",
+    "chunk_id": "363a5b41-36eb-4242-9523-dcd31ab34d18"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Getting support via direct email",
+    "steps": [
+      "send direct email to my email address"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Direct email support is recommended primarily when the user needs to discuss problems involving proprietary or sensitive data that cannot be shared publicly on forums or ticket systems.",
+    "source_url": "https://www.youtube.com/watch?v=dpF0biJHfKA",
+    "license": "YouTube",
+    "chunk_id": "d17cde57-7222-410a-94b1-f97fdcf0426a"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Install DWSIM on Windows 7",
+    "steps": [
+      "Go to the specified download link",
+      "Click the download button",
+      "Right click on the downloaded file and select 'run as an administrator'",
+      "Click 'next'",
+      "Click 'I agree'",
+      "Check both boxes for 'chep' and 'C++' libraries",
+      "Keep pressing 'enter' to proceed with the installation"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "DWSIM is an open-source, free chemical process simulator developed by Daniel, with thermodynamic support by Gregor, used globally.",
+    "source_url": "https://www.youtube.com/watch?v=eGPVOUoDd2g",
+    "license": "YouTube",
+    "chunk_id": "c0df1bb1-d9a6-4a90-93ab-7969919748bb"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Open DWSIM Application",
+    "steps": [
+      "Double click on the DWSIM icon from the desktop"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://www.youtube.com/watch?v=eGPVOUoDd2g",
+    "license": "YouTube",
+    "chunk_id": "eabd9f49-d26c-4a55-9665-49dd5659a1de"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Access and Navigate DWSIM's Built-in Help",
+    "steps": [
+      "Press F1 to invoke the help page",
+      "Click 'simulation objects' in the help page",
+      "Click 'unit operations' in the help page",
+      "Double click on 'separator' to view detailed information"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "DWSIM provides an extensive help facility with detailed information on simulation objects and unit operations.",
+    "source_url": "https://www.youtube.com/watch?v=eGPVOUoDd2g",
+    "license": "YouTube",
+    "chunk_id": "9ad207f7-51ca-4945-b5c1-06f45366a489"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Post a Timed Question on the Spoken Tutorial Forum",
+    "steps": [
+      "Go to the Spoken Tutorial Forum link",
+      "Use the horizontal scroll to navigate content",
+      "Click the 'view all previous questions' button",
+      "Click the 'lens' icon next to a software name (e.g., Python) to filter questions",
+      "Click 'ask question' (located next to 'login')",
+      "Log in to post a question (register if not already registered)",
+      "Select a category (e.g., 'dw6')",
+      "Choose the specific tutorial for the question (e.g., 'introduction to flow sheeting')",
+      "Choose the minute range where the doubt occurs (e.g., '3 to 4')",
+      "Choose the second range where the doubt occurs (e.g., '30 to 40')",
+      "Write your question in the designated area",
+      "Submit the question using the green button"
+    ],
+    "params": {
+      "category": "dw6",
+      "tutorial": "introduction to flow sheeting",
+      "minute": "3 to 4",
+      "second": "30 to 40"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The Spoken Tutorial Forum allows users to ask questions related to specific tutorials, providing time stamps for precise context.",
+    "source_url": "https://www.youtube.com/watch?v=eGPVOUoDd2g",
+    "license": "YouTube",
+    "chunk_id": "37d55d37-8d62-4b66-9cc4-d5c9052de66c"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Post a General Question on the FOSSEE Group Forum",
+    "steps": [
+      "Go to the FOSSEE Group Forum link",
+      "Choose a category from the horizontally scrolling menu",
+      "View previous questions (by clicking on them or browsing)",
+      "Click the 'ask question' link",
+      "Log in to post a question (register first if not already registered)"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The FOSSEE Group Forum is available for general DWSIM questions not tied to specific spoken tutorial time stamps.",
+    "source_url": "https://www.youtube.com/watch?v=eGPVOUoDd2g",
+    "license": "YouTube",
+    "chunk_id": "ccd2b838-ec98-447f-ad31-2e9d35f32dc3"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Access DWSIM Textbook Companions",
+    "steps": [
+      "Go to the FOSSEE DWSIM page link",
+      "Click the link for the 'textbook companion project'"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The Textbook Companion project provides DWSIM solutions to problems found in standard chemical engineering textbooks.",
+    "source_url": "https://www.youtube.com/watch?v=eGPVOUoDd2g",
+    "license": "YouTube",
+    "chunk_id": "e0ae4b86-9943-45f4-b7c2-cabc819b848f"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Access the DWSIM Unit Operations Manual",
+    "steps": [
+      "Ensure DWSIM is installed, as the manual comes with the installation",
+      "Locate the manual in the 'docs' folder of the DWSIM installation directory (current version is called 'unit OBS and utilities guide')",
+      "Scroll down within the manual",
+      "Click on 'heat exchanger' to view its calculations"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "This manual explains the underlying calculations and theory for various unit operations within DWSIM.",
+    "source_url": "https://www.youtube.com/watch?v=eGPVOUoDd2g",
+    "license": "YouTube",
+    "chunk_id": "9b1f3e0a-9e03-4edc-9f0d-4aa9d510fd54"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Access the DWSIM Properties (Thermodynamic) Manual",
+    "steps": [
+      "Locate the 'properties man manual' in the 'docs' folder of the DWSIM installation directory (current version is called 'the tech manual')",
+      "Review the description on how fugacity calculation is implemented (implied navigation within the manual)"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "This manual details the implementation of thermodynamic property calculations, such as fugacity, within DWSIM.",
+    "source_url": "https://www.youtube.com/watch?v=eGPVOUoDd2g",
+    "license": "YouTube",
+    "chunk_id": "25292adf-2c71-45c2-8fe2-0aa0505033f8"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Interact with the DWSIM Worldwide Discussion Forum",
+    "steps": [
+      "Go to the DWSIM discussion forum link",
+      "See previous discussions",
+      "Register to post questions",
+      "Post your questions"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The DWSIM Worldwide Discussion Forum provides a platform for users globally to ask questions and share knowledge.",
+    "source_url": "https://www.youtube.com/watch?v=eGPVOUoDd2g",
+    "license": "YouTube",
+    "chunk_id": "a1b287aa-3597-4192-b716-02c060cb9aca"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Explore DWSIM Interface",
+    "steps": [
+      "Check that DWSIM opens up",
+      "Explore the DWSIM interface comprehensively",
+      "Go through every menu and button in the application",
+      "Identify all functionalities and capabilities of DWSIM"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Familiarization with the DWSIM graphical user interface helps users understand its structure and discover available features.",
+    "source_url": "https://www.youtube.com/watch?v=eGPVOUoDd2g",
+    "license": "YouTube",
+    "chunk_id": "a9c8a9a5-dd0d-416e-ad37-98a83e9728fc"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Practice Spoken Tutorials using Side-by-Side Method",
+    "steps": [
+      "Practice the DWSIM spoken tutorials that were shown earlier",
+      "Utilize the 'side by side method' as explained in the specific tutorial on this method",
+      "Play the 'side by side method' tutorial for guidance"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The side-by-side method is a learning technique where one follows tutorial instructions and performs actions concurrently in the DWSIM software.",
+    "source_url": "https://www.youtube.com/watch?v=eGPVOUoDd2g",
+    "license": "YouTube",
+    "chunk_id": "416e66a4-323f-4e3b-a86f-3a8989d17623"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Simulation Problem Definition",
+    "steps": [],
+    "params": {
+      "Hot Stream": "Water",
+      "Hot Stream Temperature": "100°C",
+      "Hot Stream Pressure": "1 bar",
+      "Hot Stream Flow Rate": "50 kg/hr",
+      "Cold Stream": "Water",
+      "Cold Stream Temperature": "25°C",
+      "Cold Stream Pressure": "1 bar",
+      "Cold Stream Flow Rate": "100 kg/hr"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "This simulation aims to demonstrate the mixing of two distinct water streams (one hot, one cold) to determine the properties of the resulting mixture.",
+    "source_url": "https://www.youtube.com/watch?v=jL53qZ2vS5I",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "814a7a41-ef22-4190-a0c9-e84381038424"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Starting a New Steady State Simulation",
+    "steps": [
+      "double click the DWSIM application icon",
+      "cancel the initial message/popup",
+      "click 'New Steady State Simulation'"
+    ],
+    "params": {
+      "DWSIM Version": "8.8.1"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The process begins by launching the DWSIM software and initiating a new steady-state simulation project, which opens the simulation configuration wizard.",
+    "source_url": "https://www.youtube.com/watch?v=jL53qZ2vS5I",
+    "license": "YouTube",
+    "chunk_id": "ae1309f7-9fc7-48c9-8c69-84668bafb5ed"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Selecting Compounds in Simulation Wizard",
+    "steps": [
+      "type 'water' into the compound search box",
+      "select 'Water' from the search results"
+    ],
+    "params": {
+      "Compound": "Water"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "In the simulation configuration wizard, the first step is to identify and select all chemical compounds that will be present in the simulation.",
+    "source_url": "https://www.youtube.com/watch?v=jL53qZ2vS5I",
+    "license": "YouTube",
+    "chunk_id": "e9f9f306-6077-484c-bc92-10074bf7e922"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Selecting a Property Package in Simulation Wizard",
+    "steps": [
+      "select 'Raoult' property package from the table of available packages",
+      "click 'Add' to include it in the selected property packages"
+    ],
+    "params": {
+      "Property Package": "Raoult"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "A property package defines the thermodynamic models and equations of state used to calculate physical and chemical properties of compounds in the simulation, based on desired assumptions (e.g., ideal mixture).",
+    "source_url": "https://www.youtube.com/watch?v=jL53qZ2vS5I",
+    "license": "YouTube",
+    "chunk_id": "5c638294-42c5-4279-8867-5c99acf54d92"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Selecting a Unit System in Simulation Wizard",
+    "steps": [
+      "choose the system of unit",
+      "select the 'C5' unit system",
+      "click 'Next'"
+    ],
+    "params": {
+      "Unit System": "C5",
+      "Temperature Unit": "Celsius",
+      "Pressure Unit": "bar",
+      "Mass Flow Rate Unit": "kg/hr"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The unit system must be chosen to match the units of the input data for consistency and correct calculations throughout the simulation.",
+    "source_url": "https://www.youtube.com/watch?v=jL53qZ2vS5I",
+    "license": "YouTube",
+    "chunk_id": "1a28a7f8-bf16-47f3-a52d-957222f20c71"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Defining a Hot Water/Steam Inlet Stream",
+    "steps": [
+      "select a 'Material Stream' from the palette",
+      "place it on the flowsheet",
+      "double click the material stream to open its configuration window",
+      "rename the stream to '100°'",
+      "set the 'Temperature' to 100°C",
+      "set the 'Pressure' to 1 bar",
+      "set the 'Mass Flow Rate' to 50 kg/hr"
+    ],
+    "params": {
+      "Stream Name": "100°",
+      "Temperature": "100°C",
+      "Pressure": "1 bar",
+      "Mass Flow Rate": "50 kg/hr",
+      "Flash Specs": "Temperature and Pressure"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Material streams represent the physical flow of substances and are defined by specifying their thermodynamic state, such as temperature, pressure, and flow rate, using 'Flash Specs' to determine unknown properties.",
+    "source_url": "https://www.youtube.com/watch?v=jL53qZ2vS5I",
+    "license": "YouTube",
+    "chunk_id": "de3452aa-44a9-47a9-8368-79df8d8058b8"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Defining a Cold Water Inlet Stream",
+    "steps": [
+      "select another 'Material Stream' from the palette",
+      "place it on the flowsheet",
+      "double click the material stream to open its configuration window",
+      "rename the stream to 'Cold Water'",
+      "set the 'Temperature' to 25°C",
+      "set the 'Pressure' to 1 bar",
+      "set the 'Mass Flow Rate' to 100 kg/hr"
+    ],
+    "params": {
+      "Stream Name": "Cold Water",
+      "Temperature": "25°C",
+      "Pressure": "1 bar",
+      "Mass Flow Rate": "100 kg/hr",
+      "Flash Specs": "Temperature and Pressure"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Similar to the hot stream, the cold stream is defined with its specific operating conditions, providing the necessary input for the mixing operation.",
+    "source_url": "https://www.youtube.com/watch?v=jL53qZ2vS5I",
+    "license": "YouTube",
+    "chunk_id": "aac67845-0083-4140-8134-3987a8c14f4a"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Adding and Connecting a Mixer Unit Operation",
+    "steps": [
+      "select the 'Mixer' unit operation from the palette",
+      "place the mixer on the flowsheet",
+      "connect the '100°' material stream to an inlet port of the mixer",
+      "connect the 'Cold Water' material stream to another inlet port of the mixer"
+    ],
+    "params": {
+      "Mixer Output Pressure Calculation": "Minimum pressure of the input streams"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "A mixer is a unit operation that combines multiple input streams into a single output stream, applying principles of mass and energy conservation. The outlet pressure is typically determined by the lowest input pressure.",
+    "source_url": "https://www.youtube.com/watch?v=jL53qZ2vS5I",
+    "license": "YouTube",
+    "chunk_id": "dd28d247-ad96-4e4c-a6ac-d0e3d87c3b3d"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Viewing Simulation Results and Properties",
+    "steps": [],
+    "params": {
+      "Example Output Total Moles": "0.2 mol",
+      "Example Output Temperature": "15°C",
+      "Properties to view": "Density of vapor"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "After the simulation runs, the properties of the output stream (and all other streams) can be inspected, including temperature, composition, and other physical properties, to verify the process outcome.",
+    "source_url": "https://www.youtube.com/watch?v=jL53qZ2vS5I",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "08195e8b-9c42-4e46-acb5-3f18e28cac68"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Unit Operations Overview",
+    "steps": [
+      "Create a new simulation"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The right side of the screen lists unit operations and other components that can be added to the flow sheet.",
+    "source_url": "https://www.youtube.com/watch?v=khvNRsai2tc",
+    "license": "YouTube",
+    "chunk_id": "f8e3bc6a-e903-41ff-8287-5cec4f04a1ad"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Absorption Column",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The absorption column is a model for rigorous simulation of absorption columns.",
+    "source_url": "https://www.youtube.com/watch?v=khvNRsai2tc",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "290a5354-f9ff-4ff5-b378-b39d4208a607"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Adiabatic Compressor",
+    "steps": [
+      "Create some sample conditions",
+      "Increase the pressure of this gas to 2,500",
+      "Calculate the power required given the efficiency for the compression process"
+    ],
+    "params": {
+      "outlet_pressure": "2,500",
+      "efficiency": "specified efficiency"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The adiabatic compressor simulates an adiabatic compression process.",
+    "source_url": "https://www.youtube.com/watch?v=khvNRsai2tc",
+    "license": "YouTube",
+    "chunk_id": "a046a34f-e84a-443b-8948-c18614178b9b"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Expander",
+    "steps": [
+      "Define the outlet pressure",
+      "Define the pressure decrease",
+      "Define the power that this expander will generate",
+      "Specify the outlet to see how much power it generates considering the efficiency"
+    ],
+    "params": {
+      "outlet_pressure": null,
+      "pressure_decrease": null,
+      "power_to_generate": null,
+      "efficiency": null
+    },
+    "ui_paths": [],
+    "errors": [
+      "The expander doesn't work with the power specification as a calculation mode"
+    ],
+    "fixes": [
+      "Specify the outlet pressure"
+    ],
+    "theory": "The expander generates energy from a high-pressure stream through an expansion process.",
+    "source_url": "https://www.youtube.com/watch?v=khvNRsai2tc",
+    "license": "YouTube",
+    "chunk_id": "6d825613-c403-440a-be43-f071be195f62"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Pump",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://www.youtube.com/watch?v=khvNRsai2tc",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "a9b6dc2a-44a2-440c-9d51-f2cec35343dd"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Compound Separator",
+    "steps": [
+      "Specify how much of each compound goes to outlet stream one or two",
+      "Specify that all the propane goes to outlet stream one",
+      "Specify percent mass flow for each compound",
+      "Specify percent molar flow for each compound",
+      "Specify absolute mass flow for each compound",
+      "Specify absolute molar flow for each compound"
+    ],
+    "params": {
+      "compound_split_to_outlet_stream_1": null,
+      "compound_split_to_outlet_stream_2": null,
+      "propane_to_outlet_stream_1": "all",
+      "separation_specification_type": "percent mass flow, percent molar flow, absolute mass flow, absolute molar flow"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The compound separator is used for physical separation when other models don't fit or the separation mechanism is unknown. It calculates mass and energy balance.",
+    "source_url": "https://www.youtube.com/watch?v=khvNRsai2tc",
+    "license": "YouTube",
+    "chunk_id": "ee1e4814-ff4e-4ee8-b705-17ead83f8b69"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Continuous Stirred Tank Reactor (CSTR)",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://www.youtube.com/watch?v=khvNRsai2tc",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "6bf11515-a24e-4eea-82a1-45e582c0fba5"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Controller Block",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "This is a logical block.",
+    "source_url": "https://www.youtube.com/watch?v=khvNRsai2tc",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "d2219864-8b3a-49c8-a9f8-f25e53f50b68"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Conversion Reactor",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://www.youtube.com/watch?v=khvNRsai2tc",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "45898d02-bd9b-4828-82b6-cefb0b716c9d"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Cooler",
+    "steps": [
+      "Specify a desired temperature at the outlet stream",
+      "Specify the heat removed from the stream"
+    ],
+    "params": {
+      "outlet_temperature": null,
+      "heat_removed": null
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The cooler is used to remove energy from a stream, calculating either the energy removed to achieve a specified temperature or the outlet temperature given the heat removed.",
+    "source_url": "https://www.youtube.com/watch?v=khvNRsai2tc",
+    "license": "YouTube",
+    "chunk_id": "a32c962b-c94b-4836-8b61-ff02a37dc6ea"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Heater",
+    "steps": [
+      "Increase the temperature by 50 units (e.g., Kelvin/Celsius)",
+      "Calculate the energy required to increase the temperature",
+      "Calculate the outlet temperature based on heat added",
+      "Calculate the heat added to the inlet stream based on desired outlet temperature"
+    ],
+    "params": {
+      "temperature_increase": "50",
+      "outlet_temperature": null,
+      "heat_added": null
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The heater increases the temperature of a stream, calculating the energy required or the resulting outlet temperature.",
+    "source_url": "https://www.youtube.com/watch?v=khvNRsai2tc",
+    "license": "YouTube",
+    "chunk_id": "04bcd9a9-fa78-411b-9e2c-e15f256ccc41"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Distillation Column",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://www.youtube.com/watch?v=khvNRsai2tc",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "698c0ff2-e712-4701-b42c-0514cf4eb5d7"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Energy Recycle Block",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "This is a logical block.",
+    "source_url": "https://www.youtube.com/watch?v=khvNRsai2tc",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "426445e6-f63e-4f84-a0c9-0dee5fd8203a"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Energy Stream",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://www.youtube.com/watch?v=khvNRsai2tc",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "8f0b31cb-3a0d-44ab-869e-f8cd3306b7e0"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Equilibrium Reactor",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://www.youtube.com/watch?v=khvNRsai2tc",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "ba0dc39f-5da9-47b7-81f3-a16c736e44a5"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Filter",
+    "steps": [],
+    "params": {
+      "parameters": "some unspecified parameters"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The filter unit operation works only with solids and is used to calculate the pressure drop across a filter given some parameters.",
+    "source_url": "https://www.youtube.com/watch?v=khvNRsai2tc",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "7cb31661-b825-434a-b01b-f99393aa471b"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Flowsheet Unit Operation",
+    "steps": [
+      "Load an existing flow sheet",
+      "Click to solve the flow sheet"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "This unit operation loads and calculates an existing sub-flowsheet inside the main flow sheet, typically used to organize complex flow sheets.",
+    "source_url": "https://www.youtube.com/watch?v=khvNRsai2tc",
+    "license": "YouTube",
+    "chunk_id": "32c102ee-c8b3-4995-8a54-78189d8423c8"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Gas-Liquid Separator",
+    "steps": [
+      "Override the separation temperature",
+      "Override the separation pressure"
+    ],
+    "params": {
+      "separation_temperature": null,
+      "separation_pressure": null
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [
+      "Connect an energy stream to allow DWSIM to calculate the energy balance when overriding temperature and pressure"
+    ],
+    "theory": "The gas-liquid separator separates vapor and liquid phases from a material stream that is at vapor-liquid equilibrium.",
+    "source_url": "https://www.youtube.com/watch?v=khvNRsai2tc",
+    "license": "YouTube",
+    "chunk_id": "8524afe6-9677-45d7-b8f4-2e545f7312ad"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Heat Exchanger",
+    "steps": [
+      "Input the overall heat transfer coefficient",
+      "Input the heat exchange area",
+      "Input the geometry (of shell/tube)"
+    ],
+    "params": {
+      "overall_heat_transfer_coefficient": null,
+      "heat_exchange_area": null,
+      "geometry": null
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The heat exchanger calculates heat exchange between two streams. It can calculate outlet temperatures, pressure drop, and overall heat transfer coefficient based on specified parameters or geometry.",
+    "source_url": "https://www.youtube.com/watch?v=khvNRsai2tc",
+    "license": "YouTube",
+    "chunk_id": "ffdbcde4-6b9a-40a8-8393-836c0566f046"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Piping Segment",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://www.youtube.com/watch?v=khvNRsai2tc",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "8c952cb6-b3ff-4661-99ce-b9fd1adbe129"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "PFR (Plug Flow Reactor)",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://www.youtube.com/watch?v=khvNRsai2tc",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "5a330d91-9f76-45ca-860c-724e8af2a7ef"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Python Script",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://www.youtube.com/watch?v=khvNRsai2tc",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "441844cd-363a-4c28-b93d-098c8dcfd589"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Shortcut Column",
+    "steps": [
+      "Define the light key (lightest component)",
+      "Define the heavy key (heaviest component)",
+      "Define the amount of the light key in the bottom stream",
+      "Define the amount of the heavy key in the distillate stream",
+      "Define the reflux ratio",
+      "Change parameters to recalculate and view number of stages"
+    ],
+    "params": {
+      "feed_stream_condition": "equilibrium",
+      "light_key": null,
+      "heavy_key": null,
+      "light_key_amount_bottom": null,
+      "heavy_key_amount_distillate": null,
+      "reflux_ratio": null
+    },
+    "ui_paths": [],
+    "errors": [
+      "Unrealistic parameters may prevent calculation of actual number of stages"
+    ],
+    "fixes": [],
+    "theory": "The shortcut column performs a quick calculation to specify a separation column, determining properties like the number of stages and reboiler/condenser duties.",
+    "source_url": "https://www.youtube.com/watch?v=khvNRsai2tc",
+    "license": "YouTube",
+    "chunk_id": "0f1223bd-be83-4e10-b9d5-11d6ba7f24f2"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Solid Separator",
+    "steps": [
+      "Specify the separation efficiency for both streams (solid and liquid)"
+    ],
+    "params": {
+      "separation_efficiency_solid_stream": null,
+      "separation_efficiency_liquid_stream": null
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The solid separator works like a flash vessel but separates the solid phase from a liquid-solid stream based on specified separation efficiency.",
+    "source_url": "https://www.youtube.com/watch?v=khvNRsai2tc",
+    "license": "YouTube",
+    "chunk_id": "fd2100ad-cebb-4ac1-b858-d1923ac352e1"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Mixer",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The mixer can be used to mix up to six streams.",
+    "source_url": "https://www.youtube.com/watch?v=khvNRsai2tc",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "750d4c3e-e886-4eef-9ce1-6b8ded5b7136"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Tank",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The tank calculates the residence time of the liquid fluid according to the inlet flow rate.",
+    "source_url": "https://www.youtube.com/watch?v=khvNRsai2tc",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "8724ed59-4b73-4195-b483-cfad6eebf1d0"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Splitter",
+    "steps": [
+      "Specify the split ratios",
+      "Specify the flow rate of up to two outlet streams",
+      "Specify mass flow (if specifying flow rate)",
+      "Specify molar flow (if specifying flow rate)"
+    ],
+    "params": {
+      "split_ratios": null,
+      "outlet_stream_1_flow_rate": null,
+      "outlet_stream_2_flow_rate": null,
+      "flow_rate_type": "mass or molar"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The splitter can divide a material stream into up to three streams based on specified split ratios or outlet flow rates, calculating the mass balance.",
+    "source_url": "https://www.youtube.com/watch?v=khvNRsai2tc",
+    "license": "YouTube",
+    "chunk_id": "ebe4b43b-b6d3-4187-a5bc-a6806b73491e"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Valve",
+    "steps": [
+      "Specify the pressure drop",
+      "Specify the outlet pressure (e.g., close to atmosphere)"
+    ],
+    "params": {
+      "pressure_drop": null,
+      "outlet_pressure": null
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The valve calculates an adiabatic (isentropic) expansion for a gas stream, showing the temperature drop according to pressure and entropy flash calculation. No energy stream connection is needed.",
+    "source_url": "https://www.youtube.com/watch?v=khvNRsai2tc",
+    "license": "YouTube",
+    "chunk_id": "ee4e7a7b-4763-4ecd-8bcf-9cd69dea284f"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Initializing a New Simulation",
+    "steps": [
+      "Open DWSIM and see the startup window",
+      "Click on 'Create New Simulation'",
+      "Cancel the simulation wizard if it appears"
+    ],
+    "params": {},
+    "ui_paths": [
+      "Startup window > Create New Simulation"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://www.youtube.com/watch?v=lDYu3vXgYrg",
+    "license": "YouTube",
+    "chunk_id": "fbcaf6db-bb67-425d-98f4-13744cfdec6a"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Adding Chemical Components",
+    "steps": [
+      "Locate and click the 'Configure Simulation' button (puzzle-like icon)",
+      "Navigate to the 'Component Search' tab within the 'Configure Simulation' popup",
+      "Type 'Benzene' into the search field",
+      "Double-click the 'Benzene' entry that has 'DW Sim' as the database",
+      "Type 'Toluene' into the search field",
+      "Select the 'Toluene' entry and click the 'Add' button"
+    ],
+    "params": {
+      "component1": "Benzene (from DWSIM database)",
+      "component2": "Toluene (from DWSIM database)"
+    },
+    "ui_paths": [
+      "Configure Simulation popup > Component Search tab"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://www.youtube.com/watch?v=lDYu3vXgYrg",
+    "license": "YouTube",
+    "chunk_id": "846c1c8c-2861-43cb-9e7a-6968747b9b06"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Selecting a Thermodynamic Package",
+    "steps": [
+      "Navigate to the 'Thermodynamics' tab within the 'Configure Simulation' popup",
+      "Click on 'Property Packages' in the submenu",
+      "Scroll down the list and double-click on 'Raoult Law'",
+      "Click the 'Back to simulation' button located in the lower right-hand corner of the popup"
+    ],
+    "params": {
+      "property_package": "Raoult Law"
+    },
+    "ui_paths": [
+      "Configure Simulation popup > Thermodynamics tab > Property Packages > Raoult Law"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "Raoult's Law is chosen because Benzene and Toluene form an ideal solution, making it a suitable thermodynamic model for their mixture.",
+    "source_url": "https://www.youtube.com/watch?v=lDYu3vXgYrg",
+    "license": "YouTube",
+    "chunk_id": "b969bb36-2679-4351-a84d-9ee8fca1cbc2"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Creating a Material Stream",
+    "steps": [
+      "Locate the 'Material Stream' object at the top of the object pallet on the right-hand side",
+      "Click the 'Material Stream' object",
+      "Drag it to the canvas (flow sheet) at the desired location",
+      "Release the mouse button to drop the stream"
+    ],
+    "params": {},
+    "ui_paths": [
+      "Object Pallet > Material Stream"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "The canvas at the center of the page is used to create flow sheets by dragging and dropping chemical engineering objects.",
+    "source_url": "https://www.youtube.com/watch?v=lDYu3vXgYrg",
+    "license": "YouTube",
+    "chunk_id": "9c678ae8-ed82-45ce-9daf-8b7c3a86fa1b"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Specifying Stream Component Compositions",
+    "steps": [
+      "In the 'Equilibrium Composition' popup (which appears automatically after dropping the stream), ensure 'Mole Fractions' is selected",
+      "Type '0.5' in the composition field for 'Toluene'",
+      "Press the down arrow key",
+      "Type '0.5' in the composition field for 'Benzene'",
+      "Click 'Apply'",
+      "Click the 'Close' button"
+    ],
+    "params": {
+      "Toluene_mole_fraction": 0.5,
+      "Benzene_mole_fraction": 0.5
+    },
+    "ui_paths": [
+      "Material Stream popup > Equilibrium Composition"
+    ],
+    "errors": [],
+    "fixes": [
+      "To re-open the composition popup for an existing stream, double-click on the stream icon."
+    ],
+    "theory": "The sum of mole fractions should ideally be one. If the total is not one, DWSIM normalizes the entries, but this can sometimes lead to unpredictable values, so it's best to ensure the sum is 1. The selected chemicals appear automatically.",
+    "source_url": "https://www.youtube.com/watch?v=lDYu3vXgYrg",
+    "license": "YouTube",
+    "chunk_id": "bbdb1aea-a803-40f8-92be-37203c346324"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Changing Global Unit System",
+    "steps": [
+      "Locate the menu for changing the system of units (below the 'Configure Simulation' button)",
+      "Click this menu",
+      "Choose 'CGS system' from the options"
+    ],
+    "params": {
+      "unit_system": "CGS"
+    },
+    "ui_paths": [
+      "Unit system menu"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://www.youtube.com/watch?v=lDYu3vXgYrg",
+    "license": "YouTube",
+    "chunk_id": "84faf71c-33c8-423b-9a7e-89f52f13fda2"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Defining Material Stream Operating Conditions",
+    "steps": [
+      "Click the stream icon once on the flow sheet (do not double click)",
+      "In the 'Selected Object' window on the left, click on the 'Properties' tab",
+      "Click on 'Specification' to expand the drop-down menu",
+      "Click on the editable field next to 'Temperature' (initially '25')",
+      "Delete the existing value and enter '30'",
+      "Leave 'Pressure' at '1 atmosphere'",
+      "Locate the 'Molar Flow Rate' field",
+      "Delete the existing value and enter '100'",
+      "Press 'Enter' to save the change for the molar flow rate"
+    ],
+    "params": {
+      "temperature": "30 deg C",
+      "pressure": "1 atm",
+      "molar_flow_rate": "100 mol/s"
+    },
+    "ui_paths": [
+      "Flow sheet > Material Stream icon (single click) > Selected Object window > Properties tab > Specification"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "DWSIM assigns default values to all stream properties. The default specification method is to define pressure and temperature. The units for the molar flow rate are moles per second.",
+    "source_url": "https://www.youtube.com/watch?v=lDYu3vXgYrg",
+    "license": "YouTube",
+    "chunk_id": "48be617d-f958-48b1-aca2-6803e50c62c0"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Customizing Stream Name",
+    "steps": [
+      "In the 'Selected Object' window, click on the 'Appearance' tab",
+      "Click on the blank space beside 'Name'",
+      "Delete the automatically generated name (e.g., 'MST-004')",
+      "Type 'Inlet one'",
+      "Click on the 'Name' field again (or press Enter) to apply the change"
+    ],
+    "params": {
+      "stream_name": "Inlet one"
+    },
+    "ui_paths": [
+      "Selected Object window > Appearance tab > Name field"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "The 'Appearance' tab is used to modify the visual properties of the stream, including its displayed name.",
+    "source_url": "https://www.youtube.com/watch?v=lDYu3vXgYrg",
+    "license": "YouTube",
+    "chunk_id": "ae53e363-1b59-46f6-8e74-38e9892537bb"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Flash Drum VLE and Material Balance Demonstration",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "This simulation demonstrates vapor-liquid equilibrium and material balances for a flash drum. It shows how changing parameters like liquid-to-vapor ratio and feed composition affects outlet conditions (mole fractions and temperature) and visualizes this on YX/XY and TXY diagrams.",
+    "source_url": "https://www.youtube.com/watch?v=lnnDh84pOE8",
+    "license": "YouTube",
+    "flag": "INACCESSIBLE",
+    "chunk_id": "aefa2a43-4efe-4ba0-807f-2c2a81ca153a"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "New Simulation Creation and Initial Wizard Steps",
+    "steps": [
+      "Click 'create new'",
+      "Click 'next' in the simulation configuration wizard"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Initiating a new simulation project in DWSIM to set up the problem for calculation.",
+    "source_url": "https://www.youtube.com/watch?v=oWSD7zlMzrE",
+    "license": "YouTube",
+    "chunk_id": "86bf321c-287c-4f38-8bfe-73a484aaa1e3"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Adding Components to Simulation",
+    "steps": [
+      "Select 'Nbutin' from the database",
+      "Search for 'isopentin'",
+      "Click 'isopentin'",
+      "Select 'n hexen'",
+      "Select 'n heptin'",
+      "Select 'n octin'",
+      "Click 'next'"
+    ],
+    "params": {
+      "components": [
+        "Nbutane",
+        "Isopentane",
+        "N-hexane",
+        "N-heptane",
+        "N-octane"
+      ]
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Defining the chemical species involved in the simulation by adding them from DWSIM's component database.",
+    "source_url": "https://www.youtube.com/watch?v=oWSD7zlMzrE",
+    "license": "YouTube",
+    "chunk_id": "8277c1a9-95c6-4896-8570-28f526d0b230"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Selecting Thermodynamic Property Package",
+    "steps": [
+      "Select 'Peng-Robinson' property package",
+      "Click 'Add'",
+      "Click 'next'"
+    ],
+    "params": {
+      "property_package": "Peng-Robinson"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Choosing a thermodynamic model (Peng-Robinson) to accurately calculate physical properties and phase behavior for the hydrocarbon mixture.",
+    "source_url": "https://www.youtube.com/watch?v=oWSD7zlMzrE",
+    "license": "YouTube",
+    "chunk_id": "5eb9d71e-bbe8-4769-a75c-8664e45e3750"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Configuring Simulation Units",
+    "steps": [
+      "Select 'C5' (Customize unit)",
+      "Click 'next'",
+      "Click 'next'",
+      "Click 'finished'"
+    ],
+    "params": {
+      "unit_system": "C5 (Customize unit)"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Setting the desired system of units for all inputs and outputs within the simulation environment.",
+    "source_url": "https://www.youtube.com/watch?v=oWSD7zlMzrE",
+    "license": "YouTube",
+    "chunk_id": "cccce9a7-e513-4670-92f1-bf15f85fb1df"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Adding and Renaming Distillation Column and Streams",
+    "steps": [
+      "Drag 'shortcut column' onto the flowsheet",
+      "Increase the size of the column (GUI manipulation)",
+      "Arrange elements properly (GUI manipulation)",
+      "Rename Stream 1 to 'Feed'",
+      "Rename Stream 2 to 'Distillate'",
+      "Rename Stream 3 to 'Bottom Product'",
+      "Rename Shortcut Column to 'Distillation Column'",
+      "Rename E1 (Condenser duty) to 'C duty'",
+      "Rename E2 (Reboiler duty) to 'R duty'"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Setting up the visual representation of the process by adding a shortcut distillation column and connecting/labeling the associated material and energy streams.",
+    "source_url": "https://www.youtube.com/watch?v=oWSD7zlMzrE",
+    "license": "YouTube",
+    "chunk_id": "f36abf54-5a85-4d37-8d78-a393bad24c34"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Defining Feed Stream Conditions",
+    "steps": [
+      "Click on the 'Feed' stream",
+      "Select 'Temperature and Vapor Fraction' for flash specification",
+      "Set 'Vapor Fraction' to '0'",
+      "Set 'Temperature' to '25'",
+      "Set 'Molar Flow Rate' to '180'",
+      "Go to 'Compound Amounts' tab",
+      "Set 'Nbutin' mole fraction to '0.08'",
+      "Set 'Isopentane' mole fraction to '0.35'",
+      "Set 'N-hexane' mole fraction to '0.38'",
+      "Set 'N-heptane' mole fraction to '0.12'",
+      "Set 'N-octane' mole fraction to '0.07'",
+      "Click 'Accept'"
+    ],
+    "params": {
+      "flash_specification": "Temperature and Vapor Fraction",
+      "vapor_fraction": 0,
+      "temperature": "25 °C",
+      "molar_flow_rate": "180 kg mol/hr",
+      "mole_fractions": {
+        "Nbutane": 0.08,
+        "Isopentane": 0.35,
+        "N-hexane": 0.38,
+        "N-heptane": 0.12,
+        "N-octane": 0.07
+      }
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Specifying the physical state (saturated liquid, 25°C) and the exact molar composition of the feed stream entering the distillation column.",
+    "source_url": "https://www.youtube.com/watch?v=oWSD7zlMzrE",
+    "license": "YouTube",
+    "chunk_id": "4df26872-4baa-458a-a7c0-0da47214e451"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Setting Shortcut Distillation Column Parameters",
+    "steps": [
+      "Go to the 'Distillation Column' properties",
+      "Set 'Light Key Compound' to 'Isopentane'",
+      "Set 'Heavy Key Component' to 'N-hexane'",
+      "Set 'Light key mole fraction in bottom product (KL)' to '0.02'",
+      "Set 'Heavy key mole fraction in distillate (HK)' to '0.02'",
+      "Set 'Reflux Ratio' to '0.15'",
+      "Set 'Condenser Pressure' to '0.69 bar'",
+      "Set 'Reboiler Pressure' to '0.69 bar'"
+    ],
+    "params": {
+      "light_key_compound": "Isopentane",
+      "heavy_key_component": "N-hexane",
+      "lk_mole_fraction_bottom": 0.02,
+      "hk_mole_fraction_distillate": 0.02,
+      "reflux_ratio": 0.15,
+      "condenser_pressure": "0.69 bar",
+      "reboiler_pressure": "0.69 bar"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Inputting the design specifications for the shortcut distillation model, including key components, desired purities in products, and operating pressures, to calculate column performance.",
+    "source_url": "https://www.youtube.com/watch?v=oWSD7zlMzrE",
+    "license": "YouTube",
+    "chunk_id": "77f04765-1e53-4f7c-a1c3-0dd327001d63"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Viewing Shortcut Distillation Results",
+    "steps": [
+      "(The simulation runs automatically once parameters are set)",
+      "Click on the Distillate stream to verify composition"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Interpreting the calculated output from the shortcut distillation model, which includes minimum reflux ratio, minimum number of stages, actual number of stages, optimal feed stage, and utility duties.",
+    "source_url": "https://www.youtube.com/watch?v=oWSD7zlMzrE",
+    "license": "YouTube",
+    "chunk_id": "167267ec-95c5-44f1-80be-a741d128bd9c"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Initial Simulation Setup and Component Addition",
+    "steps": [
+      "Open DWSIM software.",
+      "Click 'create new' for steady state simulation.",
+      "Click 'next' in the introduction of the Simulation Configuration Wizard.",
+      "Add 'propane' (C3) to the component list.",
+      "Add 'isobutane' (IC4) to the component list.",
+      "Add 'normal butane' (C4) to the component list.",
+      "Add 'normal pentane' (C5) to the component list.",
+      "Add 'water' to the component list.",
+      "Click 'next' after adding components.",
+      "Select 'Peng-Robinson' equation of state for the property package.",
+      "Click 'next' after selecting property package.",
+      "Click 'next' to accept customized units (no changes).",
+      "Click 'next' (another configuration screen with no changes).",
+      "Click 'finished' to complete the wizard."
+    ],
+    "params": {},
+    "ui_paths": [
+      "Simulation Configuration Wizard > Introduction > Next",
+      "Simulation Configuration Wizard > Compounds > Next",
+      "Simulation Configuration Wizard > Property Package > Next",
+      "Simulation Configuration Wizard > Units > Next",
+      "Simulation Configuration Wizard > (another config screen) > Next",
+      "Simulation Configuration Wizard > Finish"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "The DWSIM Simulation Configuration Wizard guides the user through the initial setup of a new simulation, including defining components, selecting a thermodynamic property package, and configuring units.",
+    "source_url": "https://www.youtube.com/watch?v=wOP9mce5sWo",
+    "license": "YouTube",
+    "chunk_id": "d8e0e8b5-bd19-4adc-aabc-cb6222c64c8a"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Adding and Configuring Heat Exchanger Unit",
+    "steps": [
+      "Take 'Cell and Tube Heat Exchanger' from the pallet.",
+      "Make the heat exchanger icon bigger.",
+      "Change the heat exchanger icon color.",
+      "Rename the inlet stream to the cell side as 'hydrocarbon vapor in'.",
+      "Rename the outlet stream from the cell side as 'hydrocarbon vapor out'.",
+      "Rename the inlet stream to the tube side as 'water in'.",
+      "Rename the outlet stream from the tube side as 'water out'.",
+      "Rename the heat exchanger unit as 'Heat exchanger'."
+    ],
+    "params": {},
+    "ui_paths": [
+      "Pallet > Cell and Tube Heat Exchanger"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "Process units are added from the simulation pallet and can be customized with visual properties and descriptive names for better organization and clarity within the flowsheet.",
+    "source_url": "https://www.youtube.com/watch?v=wOP9mce5sWo",
+    "license": "YouTube",
+    "chunk_id": "afc2e370-8f8d-4b51-a8ae-b55498dce233"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Defining Hydrocarbon Vapor Inlet Conditions",
+    "steps": [
+      "Click on the 'hydrocarbon vapor in' stream.",
+      "Set temperature to 75 °C.",
+      "Set pressure to 8 bar.",
+      "Set mass flow rate to 15000 kg/h.",
+      "Go to the 'Compound Amount' tab.",
+      "Set Propane mole fraction to 0.1.",
+      "Set Isobutane mole fraction to 0.3.",
+      "Set n-Butane mole fraction to 0.55.",
+      "Set n-Pentane mole fraction to 0.05.",
+      "Set Water mole fraction to 0.",
+      "Click 'Accept' to apply compound amounts."
+    ],
+    "params": {
+      "Temperature": "75 °C",
+      "Pressure": "8 bar",
+      "Mass Flow Rate": "15000 kg/h",
+      "Propane mole fraction": "0.1",
+      "Isobutane mole fraction": "0.3",
+      "n-Butane mole fraction": "0.55",
+      "n-Pentane mole fraction": "0.05",
+      "Water mole fraction": "0"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Inlet stream conditions, including temperature, pressure, flow rate, and composition, are critical inputs for simulating any process unit and determining its behavior.",
+    "source_url": "https://www.youtube.com/watch?v=wOP9mce5sWo",
+    "license": "YouTube",
+    "chunk_id": "59379a6d-2ca4-4cd5-9440-b3d571fe4ebf"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Defining Cooling Water Inlet Conditions",
+    "steps": [
+      "Click on the 'water in' stream.",
+      "Set temperature to 30 °C.",
+      "Set pressure to 4 bar.",
+      "Set mass flow rate to 85000 kg/h.",
+      "Go to the 'Compound Amount' tab.",
+      "Set mole fractions for other compounds to 0 (implicitly for non-water components).",
+      "Ensure Water mole fraction is 1 (after normalizing or direct input).",
+      "Click 'Accept' to apply compound amounts."
+    ],
+    "params": {
+      "Temperature": "30 °C",
+      "Pressure": "4 bar",
+      "Mass Flow Rate": "85000 kg/h",
+      "Water mole fraction": "1"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Similar to the hot fluid, defining the cold fluid's inlet conditions is essential for the heat exchanger simulation, including its temperature, pressure, flow rate, and pure component composition.",
+    "source_url": "https://www.youtube.com/watch?v=wOP9mce5sWo",
+    "license": "YouTube",
+    "chunk_id": "a5c91700-50ad-4397-8e00-f57094ea6c25"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Configuring Heat Exchanger Geometry and Design Parameters",
+    "steps": [
+      "Access the 'Heat exchanger' unit properties (e.g., by double-clicking the unit).",
+      "Navigate to the 'Cell and Tube Exchanger Rating' section/tab.",
+      "Set Cell in Series to 1.",
+      "Set Cell Passes to 1.",
+      "Set Internal Diameter (Cell Side) to 600 mm.",
+      "Set Fouling Factor (Cell Side) to 0.0002 m²K/W.",
+      "Set Baffle Spacing to 450 mm.",
+      "Set Baffle Cut to 25%.",
+      "Set Internal Diameter (Tube Side) to 15.75 mm.",
+      "Set External Diameter (Tube Side) to 19.05 mm.",
+      "Set Length to 6 m.",
+      "Set Fouling Factor (Tube Side) to 0.0002 m²K/W (same as cell side).",
+      "Set Roughness to 0.05.",
+      "Set Thermal Conductivity to 50.",
+      "Set Passes per Cell to 2.",
+      "Set Number of Tubes to 450.",
+      "Set Tube Spacing to 25 mm.",
+      "Select 'Cold water' as the fluid in tubes.",
+      "Close the properties window."
+    ],
+    "params": {
+      "Cell in Series": "1",
+      "Cell Passes": "1",
+      "Internal Diameter (Cell Side)": "600 mm",
+      "Fouling Factor (Cell Side)": "0.0002 m²K/W",
+      "Baffle Spacing": "450 mm",
+      "Baffle Cut": "25%",
+      "Internal Diameter (Tube Side)": "15.75 mm",
+      "External Diameter (Tube Side)": "19.05 mm",
+      "Length": "6 m",
+      "Fouling Factor (Tube Side)": "0.0002 m²K/W",
+      "Roughness": "0.05",
+      "Thermal Conductivity": "50",
+      "Passes per Cell": "2",
+      "Number of Tubes": "450",
+      "Tube Spacing": "25 mm",
+      "Fluid in tubes": "Cold water"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Heat exchanger rating involves inputting the detailed physical geometry and design parameters of the exchanger (e.g., diameters, lengths, baffling, tube count, fouling factors) to enable DWSIM to calculate its performance.",
+    "source_url": "https://www.youtube.com/watch?v=wOP9mce5sWo",
+    "license": "YouTube",
+    "chunk_id": "771172e1-6188-4003-8b23-f86dff356373"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Solving Simulation and Displaying Results",
+    "steps": [
+      "Solve the simulation (implied by color change to blue).",
+      "Go to 'Settings and Object' (Menu or sidebar).",
+      "Select 'Display Temperature' to show on flowsheet.",
+      "Select 'Display Pressure' to show on flowsheet.",
+      "Select 'Display Mass flow rate' to show on flowsheet.",
+      "Correct the 'hydrocarbon vapor in' temperature to 75 °C (if it was previously set incorrectly to 25 °C).",
+      "Double-click the 'Master Properties Table' (from pallet or existing object).",
+      "Navigate to the 'Heat Exchanger' properties within the table.",
+      "Display 'Global Heat Transfer Coefficient' in the table.",
+      "Display 'Heat Exchanger Area' in the table.",
+      "Display 'Heat Load' in the table."
+    ],
+    "params": {
+      "Observed Global Heat Transfer Coefficient": "256.412",
+      "Observed Heat Exchanger Area": "160.562",
+      "Observed Heat Load": "1245.79"
+    },
+    "ui_paths": [
+      "Settings > Object > Display Temperature",
+      "Settings > Object > Display Pressure",
+      "Settings > Object > Display Mass flow rate"
+    ],
+    "errors": [
+      "Hydrocarbon inlet temperature initially observed as 25°C instead of 75°C."
+    ],
+    "fixes": [
+      "Corrected hydrocarbon inlet temperature to 75°C."
+    ],
+    "theory": "After configuring all units and streams, the simulation is solved to calculate process conditions and equipment performance. Key results like heat transfer coefficient, area, and heat load can be retrieved from property tables and displayed on the flowsheet.",
+    "source_url": "https://www.youtube.com/watch?v=wOP9mce5sWo",
+    "license": "YouTube",
+    "chunk_id": "4ac8c08f-78d2-4b52-ba5f-c52cdf3fd8d3"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Performing Sensitivity Analysis on Flow Rate",
+    "steps": [
+      "Change the 'hydrocarbon vapor in' mass flow rate from 15000 kg/h to 17000 kg/h.",
+      "Observe the change in 'heat load' (from 1245.79 to 1321).",
+      "Change the 'hydrocarbon vapor in' mass flow rate back to 15000 kg/h.",
+      "Observe the 'heat load' and 'global heat transfer coefficient' return to previous values.",
+      "Change the 'hydrocarbon vapor in' mass flow rate to 17250 kg/h.",
+      "Observe changes in 'global heat transfer coefficient', 'heat exchanger area', and 'heat load'."
+    ],
+    "params": {
+      "Hydrocarbon vapor inlet mass flow rate": "15000 kg/h -> 17000 kg/h -> 15000 kg/h -> 17250 kg/h",
+      "Observed Heat Load (for 17000 kg/h)": "1321",
+      "Observed Heat Load (for 15000 kg/h)": "1245.79",
+      "Observed Global Heat Transfer Coefficient (for 15000 kg/h)": "256",
+      "Observed Heat Exchanger Area (for 17250 kg/h)": "160"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Sensitivity analysis involves varying an input parameter (e.g., flow rate) and observing its effect on key output variables (e.g., heat load, outlet temperature, heat transfer coefficient) to understand process behavior and design robustness.",
+    "source_url": "https://www.youtube.com/watch?v=wOP9mce5sWo",
+    "license": "YouTube",
+    "chunk_id": "c968b484-0456-4c0c-8029-6f076af26692"
   }
 ]

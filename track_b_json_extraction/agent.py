@@ -74,6 +74,8 @@ RETRY_WAIT              = 60
 MAX_RETRY_BACKOFF       = 300    # FIX: cap backoff at 5 minutes
 MAX_VIDEOS_PER_SOFTWARE = 20
 MAX_TRANSCRIPT_WORDS    = 3000   # FIX: word-based truncation (~12k chars, boundary-safe)
+COOL_DOWN_VIDEOS        = 5      # Every 5 videos, take a longer break
+COOL_DOWN_SLEEP         = 60     # 60 second cool-down to avoid 429
 
 
 # ==========================================
@@ -456,6 +458,7 @@ def process_software_from_csv(csv_path: str, software: str, max_videos: int):
     log.info(f"Processing {len(videos)} (capped at {max_videos})")
 
     existing_urls = load_existing_urls(software)
+    fetch_count = 0
 
     for v in videos:
         url         = v["url"]
@@ -468,6 +471,12 @@ def process_software_from_csv(csv_path: str, software: str, max_videos: int):
             log.info(f"  Skipping (already parsed): {url}")
             stats["skipped_dup"] += 1
             continue
+
+        # COOL DOWN LOGIC
+        fetch_count += 1
+        if fetch_count > 1 and (fetch_count - 1) % COOL_DOWN_VIDEOS == 0:
+            log.info(f"Cooling down for {COOL_DOWN_SLEEP}s to avoid YouTube 429...")
+            time.sleep(COOL_DOWN_SLEEP)
 
         log.info(f"Processing: {url}")
 
