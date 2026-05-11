@@ -1525,5 +1525,22 @@
     "license": "YouTube",
     "flag": "INACCESSIBLE",
     "chunk_id": "fdfb2605-5005-41e9-9e03-1417df65f8d8"
+  },
+  {
+    "chunk_id": "cf72431a-827b-4536-9fbd-9c56058f0e39",
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "PARSE_ERROR",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "gemini returned non-json"
+    ],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://www.youtube.com/watch?v=VEqevFAZIQo",
+    "license": "YouTube",
+    "flag": "PARSE_ERROR"
   }
 ]
