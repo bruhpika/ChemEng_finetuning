@@ -1,21 +1,21 @@
 # Agent Extraction Progress Tracker
 
-**Last Updated:** Thu May  7 08:08:28 2026
+**Last Updated:** Mon May 11 08:39:28 2026
 
 ## 📊 Run Statistics
 
-- **Total Gemini Calls:** `0`
+- **Total Gemini Calls:** `3`
 - **Total Documents Fetched:** `0`
-- **Skipped (Already Parsed):** `0`
-- **Fetch Errors:** `0`
+- **Skipped (Already Parsed):** `27`
+- **Fetch Errors:** `6`
 - **Parse Errors:** `0`
-- **Incomplete Chunks:** `0`
+- **Incomplete Chunks:** `3`
 
 ## 🔑 API Key Status
 
-- **Current API Key Index:** `1` / `4` 
+- **Current API Key Index:** `2` / `4` 
 - **Cycling Status:** Active
 
-## ✅ Current Status
+## 🔄 Currently Processing
 
-Ready or Idle.
+**URL:** `https://dwsim.org/wiki/index.php?title=Dynamic_Simulation_Tutorial_with_DWSIM_and_Python`

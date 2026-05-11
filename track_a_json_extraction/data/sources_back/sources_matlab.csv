@@ -1,0 +1,52 @@
+url,software,track,type,license,status
+https://api.mathworks.com/community/docs,MATLAB,Track A,Public API,Open - No authentication required,READY
+https://atmos.uw.edu/~wmtsa/,MATLAB,Track A,University Toolbox,NSF Grant No. 0222115 - explicit license undefined,READY
+https://codes.arizona.edu/toolbox/help/html/general.html,MATLAB,Track A,University Documentation,Copyright asserted - U of Arizona,READY
+https://doi.org/10.25405/data.ncl.27055339,MATLAB,Track A,Reactor Model Data,CC BY 4.0,READY
+https://engineering.purdue.edu/~ragu/matlab/matlab_che.pdf,MATLAB,Track A,PDF,public/no-login,READY
+https://github.com/CombustionToolbox/combustion_toolbox,MATLAB,Track A,Open Source Toolbox,GPL-3.0,READY
+https://github.com/DanielMartensson/MataveControl,MATLAB,Track A,Open Source Toolbox,MIT License,READY
+https://github.com/NeuroJSON/jsonlab,MATLAB,Track A,Open Source Toolbox,BSD 3-Clause / GPLv3 dual license,READY
+https://github.com/OpenOCL/OpenOCL,MATLAB,Track A,Open Source Toolbox,BSD 3-Clause,READY
+https://github.com/PSORLab/Chemical_Engineering_Analysis_Notebooks,MATLAB,Track A,Analysis Notebooks,MIT License,READY
+https://github.com/acuoci/Matlab4CRE,MATLAB,Track A,Chemical Reaction Engineering Scripts,GPL-3.0,READY
+https://github.com/asanet/chemeng-solved,MATLAB,Track A,Open Source Toolbox,MIT License,READY
+https://github.com/cvxr/CVX,MATLAB,Track A,Open Source Toolbox,GPLv3,READY
+https://github.com/equinor/neqsim-matlab,MATLAB,Track A,Open Source Toolbox,Apache-2.0,READY
+https://github.com/ivanbrugere/matlab-networks-toolbox,MATLAB,Track A,Open Source Toolbox,BSD 3-Clause,READY
+https://github.com/kevingreenman/awesome-chemical-engineering-education,MATLAB,Track A,Curated Educational Resources,CC0 1.0 Universal,READY
+https://github.com/kpatvt/sim21,MATLAB,Track A,Open Source Toolbox,MIT License,READY
+https://github.com/kupiqu/fig2svg,MATLAB,Track A,Open Source Utility,BSD 2-Clause,READY
+https://github.com/oxfordcontrol/SOSTOOLS,MATLAB,Track A,Open Source Toolbox,GPLv3,READY
+https://github.com/sandialabs/tensor_toolbox,MATLAB,Track A,Open Source Toolbox,BSD 2-Clause,READY
+https://gitlab.com/tensors/tensor_toolbox,MATLAB,Track A,Open Source Toolbox,BSD 2-Clause,READY
+https://ist.mit.edu/matlab/all/student/terms,MATLAB,Track A,Academic License Terms,Educational use only - MIT specific,READY
+https://it.cornell.edu/software-licensing/matlab-licensing,MATLAB,Track A,Academic License Terms,Educational use only - Cornell specific,READY
+https://it.purdue.edu/shopping/software/info/matlab_toolboxes.php,MATLAB,Track A,University Resource,Informational only,READY
+https://it.umn.edu/services-technologies/resources/matlab,MATLAB,Track A,Academic License Terms,Educational use only - UMN specific,READY
+https://k-state.edu/it/resources/access-software/applications/matlab,MATLAB,Track A,Academic License Terms,Educational use only - Kansas State specific,READY
+https://oit.duke.edu/help/articles/kb0030777,MATLAB,Track A,Academic License Terms,Educational use only - Duke specific (Valid through July 2026),READY
+https://user.eng.umd.edu/~adomaiti/ench426/matlab_intro/matlab_intro.html,MATLAB,Track A,University Educational Resource,Educational use - University of Maryland,READY
+https://user.eng.umd.edu/~adomaiti/ench426/matlab_intro/matlab_intro.pdf,MATLAB,Track A,PDF,public/no-login,READY
+https://www.che.psu.edu/faculty/mri/matlab_guide.pdf,MATLAB,Track A,PDF,public/no-login,READY
+https://www.che.utah.edu/~sutherland/Classes/ChE1010/matlab.pdf,MATLAB,Track A,PDF,public/no-login,READY
+https://www.colorado.edu/chemicalengineering/matlab_tutorial.pdf,MATLAB,Track A,PDF,public/no-login,READY
+https://www.mathworks.com/help/index.html,MATLAB,Track A,Official Documentation,Proprietary - MathWorks Terms of Use,READY
+https://www.mathworks.com/help/matlab/2-d-and-3-d-plots.html,MATLAB,Track A,HTML,public/no-login,READY
+https://www.mathworks.com/help/matlab/error-handling.html,MATLAB,Track A,HTML,public/no-login,READY
+https://www.mathworks.com/help/matlab/getting-started-with-matlab.html,MATLAB,Track A,HTML,public/no-login,READY
+https://www.mathworks.com/help/matlab/index.html,MATLAB,Track A,Official Documentation,Proprietary - MathWorks Terms of Use,READY
+https://www.mathworks.com/help/matlab/language-fundamentals.html,MATLAB,Track A,HTML,public/no-login,READY
+https://www.mathworks.com/help/matlab/learn_matlab/desktop.html,MATLAB,Track A,HTML,public/no-login,READY
+https://www.mathworks.com/help/matlab/math/choose-an-ode-solver.html,MATLAB,Track A,HTML,public/no-login,READY
+https://www.mathworks.com/help/matlab/math/troubleshoot-common-ode-problems.html,MATLAB,Track A,HTML,public/no-login,READY
+https://www.mathworks.com/help/matlab/programming-and-data-types.html,MATLAB,Track A,HTML,public/no-login,READY
+https://www.mathworks.com/help/matlab/ref/ode15s.html,MATLAB,Track A,HTML,public/no-login,READY
+https://www.mathworks.com/help/matlab/ref/ode45.html,MATLAB,Track A,HTML,public/no-login,READY
+https://www.mathworks.com/help/simulink/gs/getting-started-with-simulink.html,MATLAB,Track A,HTML,public/no-login,READY
+https://www.mathworks.com/help/simulink/slref/solvers.html,MATLAB,Track A,HTML,public/no-login,READY
+https://www.mathworks.com/matlabcentral/content/fx/fx-transition-faq.html,MATLAB,Track A,License Documentation,BSD 3-Clause (OSI approved),READY
+https://www.mathworks.com/matlabcentral/content/terms-of-use.html,MATLAB,Track A,Terms of Use,Proprietary - MathWorks Terms of Use,READY
+https://www.mathworks.com/matlabcentral/fileexchange/27850-mixture-property-calculations-using-pr-rk-and-srk-eos,MATLAB,Track A,File Exchange Submission,BSD 3-Clause (File Exchange standard),READY
+https://www.mathworks.com/matlabcentral/fileexchange/88331-web-apps-for-chemical-reaction-engineering,MATLAB,Track A,Web Apps CRE,BSD 3-Clause,READY
+https://www.umkc.edu/is/resources/lab-information/matlab-toolboxes.html,MATLAB,Track A,University Resource,Informational only,READY

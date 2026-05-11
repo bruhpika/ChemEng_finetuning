@@ -305,7 +305,7 @@ def update_progress_tracker(stats, total_calls, current_url=None):
     """Writes current stats and status to progress_tracker.md for live monitoring."""
     # Ensure blackboard tracking dir exists
     os.makedirs("data/blackboard/tracking", exist_ok=True)
-    tracker_path = os.path.join("data", "blackboard", "tracking", "progress_tracker.md")
+    tracker_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "data", "track_a", "progress_tracker.md"))
     
     with open(tracker_path, "w", encoding="utf-8") as f:
         f.write("# Agent Extraction Progress Tracker\n\n")

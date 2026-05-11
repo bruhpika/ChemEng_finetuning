@@ -1,6 +1,0 @@
-Spoken Tutorial | DWSIM
-Spoken Tutorial
-The Spoken Tutorial Project is about teaching and learning a particular FLOSS (Free/Libre and Open Source Software) like Linux, Scilab, OpenModelica, DWSIM, LaTeX, PHP & MySQL, Java, C/C++, LibreOffice, etc. via an easy video tool - Spoken Tutorial. A Spoken Tutorial is a screencast with running commentary, a recording of computer sessions created for self-learning. Each Spoken Tutorial typically runs for a duration of approximately ten minutes. Using these Spoken Tutorials, one can conduct SELF (Spoken Tutorial based Education and Learning through Free FLOSS study) workshops.
-The Spoken Tutorial project is an initiative of the "Talk to a Teacher" project under the National Mission on Education through Information and Communication Technology, launched by MHRD, Govt of India.
-To access the tutorials, please use the links given below:
-Spoken Tutorial for DWSIM
