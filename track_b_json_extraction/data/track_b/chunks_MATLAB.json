@@ -1,0 +1,1529 @@
+[
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Solving a Single ODE Numerically with ode45",
+    "steps": [
+      "Load our data set.",
+      "Plot the population over the dates.",
+      "Assign a starting value for the ODE solver to use as a reference.",
+      "Create a time span to input into OD 45.",
+      "Use a function handle that accepts both population and time for the differential equation itself.",
+      "Pass the differential equation (function handle), the time span, and the initial value into OD 45.",
+      "Output the result into a time array and a population array.",
+      "Plot the results."
+    ],
+    "params": {
+      "starting_value": "reference for ODE solver",
+      "time_span": "e.g., from 1950 up to 2050",
+      "function_handle": "accepts population and time"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "ode45 is a built-in numerical solver that takes a differential equation (as a function handle), a time span, and an initial value, returning arrays of the solution at specified time steps.",
+    "source_url": "https://www.youtube.com/watch?v=-DmTK868J4A",
+    "license": "YouTube",
+    "chunk_id": "e38d9d77-ffba-43c7-b7cb-09f4d6fa8083"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Solving a Single ODE Symbolically with dsolve",
+    "steps": [
+      "Assign P to be a symbolic function of T using the symbolic toolbox.",
+      "Assign the differential equation to a variable using the diff function, set equal to the ODE (using '==' for equality within the derivative and '=' for assignment).",
+      "Establish the initial value by setting the value of the function at time zero equal to the first entry in the population array.",
+      "Call the dsolve function with the symbolic ODE and starting value.",
+      "Output a symbolic function.",
+      "Plot the symbolic function to compare with real-world data or other models."
+    ],
+    "params": {
+      "P": "symbolic function of T",
+      "diff_function": "used to define symbolic differential equation",
+      "initial_value": "e.g., P(0) = population_array(1)"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "dsolve is a symbolic ODE solver that returns an analytical solution as a symbolic function. It requires defining symbolic variables and equations, using specific syntax for symbolic equality versus assignment.",
+    "source_url": "https://www.youtube.com/watch?v=-DmTK868J4A",
+    "license": "YouTube",
+    "chunk_id": "34f1b1e7-3a3f-4a8a-b257-363028657792"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Solving a System of ODEs Numerically with ode45",
+    "steps": [
+      "Initialize the script similar to solving a single ODE.",
+      "Pass in a column array of initial values for the system of differential equations.",
+      "Define the ODE declaration function to return an N-by-1 array containing each ODE's rate of change.",
+      "Ensure the input variable for the ODE function (e.g., population/temperature) is an array representing each state's current value.",
+      "Call the ode45 function using function handles to pass in the ODE function (which accepts time T and the state array H).",
+      "Use a time span.",
+      "Use an initial set of conditions (as an array).",
+      "The output will be an array of temperatures for each floor at every corresponding time in t.",
+      "Plot the results to visualize."
+    ],
+    "params": {
+      "column_array": "for initial values",
+      "N_by_1_array": "return type for ODE function handle",
+      "H": "input array for current temperatures",
+      "time_span": "e.g., over 12 hours",
+      "initial_conditions_array": "array of initial values for each state"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "To solve a system of ODEs numerically with ode45, the initial conditions must be provided as an array, and the ODE function handle must return an array of derivatives, handling an array of state variables as input.",
+    "source_url": "https://www.youtube.com/watch?v=-DmTK868J4A",
+    "license": "YouTube",
+    "chunk_id": "4eb10439-8d17-4b6d-895c-3783d943039f"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Solving a System of ODEs Symbolically with dsolve",
+    "steps": [
+      "Pass an N-by-1 array containing the entire ODE system into the dsolve function.",
+      "Input initial values as an array.",
+      "Obtain the individual solutions from the symbolic structure output by using dot notation (e.g., `output.solution1`)."
+    ],
+    "params": {
+      "N_by_1_array": "for the ODE system",
+      "initial_values_array": "array of initial values"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "When solving systems of ODEs symbolically, dsolve returns a symbolic structure containing the individual solution functions, which can then be accessed using dot notation.",
+    "source_url": "https://www.youtube.com/watch?v=-DmTK868J4A",
+    "license": "YouTube",
+    "chunk_id": "eac3c801-2709-446b-b1b0-c5cb3351317a"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Import Excel Data using the Import Tool (GUI)",
+    "steps": [
+      "Open the import tool by clicking the import data icon under the Home tab or by double-clicking the Excel file from the current folder directory.",
+      "Select the desired data by left-clicking and dragging.",
+      "Press the green checkmark to import the selected data.",
+      "Go to the drop-down menu under the 'output type' column.",
+      "Select 'column vectors' from the drop-down menu to change the import type (if desired)."
+    ],
+    "params": {},
+    "ui_paths": [
+      "Home tab > import data icon",
+      "Current Folder directory > double-click on the file",
+      "Import Tool > green checkmark",
+      "Import Tool > output type column > drop-down menu",
+      "Import Tool > output type column > drop-down menu > column vectors"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "By default, data is imported as a table. If imported as column vectors, each column's data is stored into an individual variable. Cells highlighted in tan are classified as 'unimportant cells' (e.g., empty cells) and are imported as NaN (Not a Number), which is MATLAB's representation for values that are not real or complex numbers.",
+    "source_url": "https://www.youtube.com/watch?v=0hArv-UBKQQ",
+    "license": "YouTube",
+    "chunk_id": "104820a4-15d9-480a-abea-eb34a42976bd"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Generate a MATLAB Function for Automated Data Import",
+    "steps": [
+      "After importing data in the import tool, click the drop-down menu located right under the green checkmark.",
+      "Select the 'generate function' option.",
+      "Save the newly generated MATLAB function.",
+      "Call the saved function, passing the desired file path as an argument, to import new data."
+    ],
+    "params": {},
+    "ui_paths": [
+      "Import Tool > drop-down (under green checkmark)",
+      "Import Tool > drop-down > generate function"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "This feature generates a MATLAB function with pre-written, commented code for data import, allowing users to automate the import process for multiple files or integrate it into larger scripts without manually writing the code. The generated function can be called with different file paths to import various datasets.",
+    "source_url": "https://www.youtube.com/watch?v=0hArv-UBKQQ",
+    "license": "YouTube",
+    "chunk_id": "f5361b5f-b615-4700-a3f9-c1dde8304cb4"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Create Data Visualizations using the Plots Tab (GUI)",
+    "steps": [
+      "Select the two variables you want to plot (e.g., horsepower and mpg).",
+      "Go to the 'Plot' tab.",
+      "Select 'scatter plot' to create a scatterplot.",
+      "Try other plot types, such as creating a box plot to show the variance of mpg by country.",
+      "Try creating a word cloud to visually show manufacturers in the dataset (bigger name indicates more cars)."
+    ],
+    "params": {},
+    "ui_paths": [
+      "Plot tab > scatter plot",
+      "Plot tab"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "MATLAB's Plots tab enables quick creation of various data visualizations without writing code. The code generated for each plot is displayed in the command window, allowing users to easily incorporate it into their own scripts for reproducibility or customization.",
+    "source_url": "https://www.youtube.com/watch?v=0hArv-UBKQQ",
+    "license": "YouTube",
+    "chunk_id": "27aaee1c-8b85-4749-8a79-d953d80c1ada"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Model Order Reduction for MPC",
+    "steps": [
+      "Apply model order reduction techniques"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Model order reduction techniques are used to discard states that do not significantly contribute to the system dynamics. This reduces the complexity and computation time of MPC and helps lower the controller's memory footprint.",
+    "source_url": "https://www.youtube.com/watch?v=1MpbPd6Ri-8",
+    "license": "YouTube",
+    "chunk_id": "087196f3-243a-48fd-bc59-c7a5c9f95ea6"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Adjusting MPC Parameters for Performance",
+    "steps": [
+      "Use a shorter prediction horizon",
+      "Use a shorter control horizon",
+      "Reduce the number of constraints",
+      "Use lower precision operations",
+      "Use lower precision data representation"
+    ],
+    "params": {
+      "prediction horizon": "shorter",
+      "control horizon": "shorter",
+      "number of constraints": "reduced",
+      "precision operations": "lower",
+      "data representation": "lower precision"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "These adjustments simplify the MPC optimization problem, reducing its computational complexity and memory usage, which is beneficial for applications with small sampling intervals or limited embedded hardware.",
+    "source_url": "https://www.youtube.com/watch?v=1MpbPd6Ri-8",
+    "license": "YouTube",
+    "chunk_id": "28c19040-f073-4b88-b055-65e8341898c4"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Implementing Explicit MPC",
+    "steps": [
+      "Pre-compute the optimal solution offline for all states within a given range",
+      "Online: find the region where the current state lies",
+      "Online: Evaluate the linear function corresponding to that region to create the current control action"
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Time-consuming to search for the region if many exist",
+      "Large memory footprint required for storing all regions"
+    ],
+    "fixes": [
+      "Reduce the number of regions by merging them (note: this makes the solution no longer optimal)"
+    ],
+    "theory": "Explicit MPC pre-computes the optimal solution offline for all possible states within a given range. Online, it reduces the iterative optimization process to a fast lookup and linear function evaluation, making it suitable for applications with very small sample times.",
+    "source_url": "https://www.youtube.com/watch?v=1MpbPd6Ri-8",
+    "license": "YouTube",
+    "chunk_id": "17beab9c-542c-4748-92d0-b5b69f86cdbe"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Using Suboptimal Solutions in MPC",
+    "steps": [
+      "Determine a maximum value for the number of optimization iterations",
+      "Set the maximum number of iterations for the MPC controller",
+      "When the maximum iteration count is reached, stop the optimization process",
+      "Use the suboptimal solution obtained from that iteration"
+    ],
+    "params": {
+      "maximum_iterations": "a predetermined value"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [
+      "To determine the maximum number of iterations: test the algorithm on your hardware to identify the execution time used by each iteration, then choose the maximum number of iterations such that the total execution time does not exceed the controller sample time."
+    ],
+    "theory": "To guarantee a solution within a specific sample time, especially when the number of iterations to find an optimal solution is unpredictable, a maximum number of optimization iterations can be set. The controller then uses the best solution found within this limit, which is suboptimal but still satisfies all constraints.",
+    "source_url": "https://www.youtube.com/watch?v=1MpbPd6Ri-8",
+    "license": "YouTube",
+    "chunk_id": "ba8dc4a2-4aee-4ebc-be1f-61cf28a42c22"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Renewing an expiring MATLAB license",
+    "steps": [
+      "Open MATLAB.",
+      "Navigate to 'Help'.",
+      "Select 'Licensing'.",
+      "Choose 'Update Current Licenses'.",
+      "Select the appropriate shared license (e.g., for the campus).",
+      "Click 'Update'.",
+      "Grant administrative privileges when prompted.",
+      "Click 'OK' to confirm the updated license file.",
+      "Close MATLAB.",
+      "Restart MATLAB."
+    ],
+    "params": {},
+    "ui_paths": [
+      "Help > Licensing > Update Current Licenses"
+    ],
+    "errors": [
+      "your mat lab license will expire in a certain number of days"
+    ],
+    "fixes": [],
+    "theory": "This procedure updates your existing MATLAB license before it expires by contacting MathWorks online and retrieving a new license file. It requires an internet connection and administrator permissions.",
+    "source_url": "https://www.youtube.com/watch?v=3tdq1iKs5UA",
+    "license": "YouTube",
+    "chunk_id": "951579ec-83e6-4258-8929-964c8053e891"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Activating or re-activating MATLAB software license",
+    "steps": [
+      "Open MATLAB (if installed for the first time, an activation phase will automatically initiate).",
+      "Alternatively, navigate to 'Help'.",
+      "Select 'Licensing'.",
+      "Choose 'Activate Software'."
+    ],
+    "params": {},
+    "ui_paths": [
+      "Help > Licensing > Activate Software"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "This process is used for the initial activation of MATLAB after installation or for re-activating the software if the license has fully expired and a new activation sequence is required.",
+    "source_url": "https://www.youtube.com/watch?v=3tdq1iKs5UA",
+    "license": "YouTube",
+    "chunk_id": "527f8294-1252-4a0c-9977-939e906a7db8"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Error Analysis Concepts (Accuracy, Precision, Absolute, Relative Error)",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Accuracy refers to how closely measured or calculated values agree with the true value. Precision refers to how closely individually calculated or measured values agree with each other. Absolute error is the magnitude of the difference between the true value and the approximation, while relative error is the percent of error that occurs at the true value.",
+    "source_url": "https://www.youtube.com/watch?v=4jvYyB6VMHQ",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "8e13e96c-cda7-42aa-95df-c70413ff8638"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Calculate Absolute and Relative Error",
+    "steps": [
+      "Define `TrueValue` (e.g., Pi).",
+      "Define `ApproximateValue` (e.g., 3.14).",
+      "Calculate absolute error using: `error_absolute = TrueValue - ApproximateValue`.",
+      "Calculate relative error using: `relative_error = absolute_error / TrueValue`."
+    ],
+    "params": {
+      "TrueValue": "Pi",
+      "ApproximateValue": "3.14"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Absolute error quantifies the raw difference between a true and approximate value. Relative error expresses this difference as a fraction or percentage of the true value, providing context for the error's magnitude.",
+    "source_url": "https://www.youtube.com/watch?v=4jvYyB6VMHQ",
+    "license": "YouTube",
+    "chunk_id": "21785541-46e0-4d09-b441-9e8dce12558d"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Demonstrate Round-off Error",
+    "steps": [
+      "Initialize a variable `s` to 0.",
+      "Implement a `for` loop that runs from 1 to 10,000.",
+      "Inside the loop, add 0.1 to `s` (e.g., `s = s + 0.1`).",
+      "Observe the final value of `s` which will not be exactly 1000 due to round-off error."
+    ],
+    "params": {
+      "s": "0",
+      "increment": "0.1",
+      "loop_iterations": "10000"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Round-off errors occur in digital computers because they cannot display or represent all values exactly, especially with floating-point numbers. Accumulating small inexact representations can lead to noticeable discrepancies.",
+    "source_url": "https://www.youtube.com/watch?v=4jvYyB6VMHQ",
+    "license": "YouTube",
+    "chunk_id": "6e7d5735-aba0-41bf-a854-a89aa9297ee9"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Demonstrate Truncation Error with McLaurin Series",
+    "steps": [
+      "Initialize a variable `s` to 0.",
+      "Implement a `for` loop that runs from 0 to 5 (representing the number of terms for the series).",
+      "Inside the loop, update `s` by adding the current term of the McLaurin series for sin(x) at x = pi/2.",
+      "Compare the calculated `s` value with the actual value of sin(pi/2), which is 1."
+    ],
+    "params": {
+      "s": "0",
+      "loop_start": "0",
+      "loop_end": "5",
+      "series_target": "sin(pi/2)"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Truncation error arises from using an approximate (truncated) method, like a finite series expansion, in place of an exact analytical solution. It represents the error introduced by stopping an infinite process after a finite number of steps.",
+    "source_url": "https://www.youtube.com/watch?v=4jvYyB6VMHQ",
+    "license": "YouTube",
+    "chunk_id": "a6e0022b-a83b-40d3-9237-c3260258a46a"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Total Numerical Error Concept",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Total numerical error is the sum of truncation error and round-off error. Reducing one type of error often leads to an increase in the other; for example, increasing significant figures to reduce round-off error can increase truncation error if more terms are not simultaneously used in series approximations.",
+    "source_url": "https://www.youtube.com/watch?v=4jvYyB6VMHQ",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "e140bc49-c1a0-42e7-b545-54856d60995a"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Visualize Sensor Noise in Images",
+    "steps": [
+      "Capture a dark image with a cell phone by laying it down on a flat surface so that no light gets in.",
+      "Load and view the captured image in MATLAB.",
+      "Multiply each pixel value of the image by 50 to make the image brighter and reveal low-amplitude random noise."
+    ],
+    "params": {
+      "pixel_multiplier": 50
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Even low-amplitude sensor noise, which may not be immediately visible, can be revealed and amplified through processing like increasing brightness. This demonstrates how tiny, high-frequency fluctuations can exist in measured data.",
+    "source_url": "https://www.youtube.com/watch?v=7dUVdrs1e18",
+    "license": "YouTube",
+    "chunk_id": "70e5b0a7-13a7-44da-b8c8-c4d1d3ca5d76"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Understand and Configure Filtered Derivative in Simulink PID Controller",
+    "steps": [
+      "Launch Simulink from MATLAB.",
+      "Create a new blank Simulink model.",
+      "Add a PID Controller block to the model.",
+      "Double-click the PID Controller block to open its parameter dialog."
+    ],
+    "params": {
+      "available_parameters": [
+        "derivative gain",
+        "filter coefficient n"
+      ]
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The derivative path in Simulink's PID controller block is an implicit filtered derivative (mathematically represented as s * n / (s + n)), not a pure derivative. This design protects the system from amplifying high-frequency noise. The 'filter coefficient n' parameter controls the cutoff frequency of this built-in low-pass filter.",
+    "source_url": "https://www.youtube.com/watch?v=7dUVdrs1e18",
+    "license": "YouTube",
+    "chunk_id": "e6c98671-75ab-44cc-a47e-70b0d50bb296"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Simulating Nonlinear Systems in MATLAB (Overview)",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Unlike linear systems which can be simulated with built-in commands like 'SS', nonlinear systems (like the Lorenz system) require a two-part approach: defining differential equations in a separate function file and then numerically simulating them in a main script.",
+    "source_url": "https://www.youtube.com/watch?v=8kKkq2mk7gA",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "e807d1ee-f7c1-4d4a-b81c-0143862b4cb9"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Defining Lorenz System Differential Equations Function",
+    "steps": [
+      "Create a separate function file.",
+      "Define the function structure using `function [outputs] = functionName(inputs)` format.",
+      "Save the file with the same name as the function (e.g., `Lorenzmodel.m`).",
+      "Declare parameters `Sigma`, `Rho`, and `Beta` as `global` inside the function.",
+      "Define the first differential equation `dx1` (or `X1_dot`) as `Sigma * X(2) - X(1)`.",
+      "Define the second differential equation `dx2` (or `X2_dot`) as `X(1) * Rho - X(3) - X(2)`.",
+      "Define the third differential equation `dx3` (or `X3_dot`) as `-Beta * X(3) + X(1) * X(2)`.",
+      "Alternatively, define the differential equations as a single output vector `DX = [dx1; dx2; dx3]`.",
+      "Save the file in your working folder."
+    ],
+    "params": {
+      "global_parameters": [
+        "Sigma",
+        "Rho",
+        "Beta"
+      ],
+      "states": [
+        "X(1)",
+        "X(2)",
+        "X(3)"
+      ]
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "To simulate a nonlinear system, its differential equations must be defined in a MATLAB function file. Declaring parameters as 'global' allows their values to be set in a separate main script. MATLAB identifies the number of differential equations by how they are defined in the output vector `DX`.",
+    "source_url": "https://www.youtube.com/watch?v=8kKkq2mk7gA",
+    "license": "YouTube",
+    "chunk_id": "2e7e0bc5-dbf7-49bb-8cf0-0c3c07563e48"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Simulating Lorenz System with `ode45`",
+    "steps": [
+      "Create a separate script file.",
+      "Clear previous simulation data using the `clear` command.",
+      "Clear global variables using the `clear global` command.",
+      "Declare `S`, `R`, and `B` as `global` parameters (matching the function file's global variables).",
+      "Define numerical values for the global parameters `S`, `R`, and `B`.",
+      "Define the initial conditions for the system states as a vector, e.g., `[0; 1; 1]`.",
+      "Call the `ode45` command to simulate the system, passing the function handle `@Lorenzmodel`, the time span `[0:0.01:100]`, and the initial conditions.",
+      "Store the returned results into variables for time (`T`) and state solutions (`X`)."
+    ],
+    "params": {
+      "global_parameters": [
+        "S",
+        "R",
+        "B"
+      ],
+      "initial_conditions": "[0; 1; 1]",
+      "ode45_arguments": {
+        "function_handle": "@Lorenzmodel",
+        "time_span": "[0:0.01:100]",
+        "initial_conditions_variable": "X0"
+      },
+      "output_variables": [
+        "T",
+        "X"
+      ]
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The `ode45` function is a standard MATLAB solver for ordinary differential equations, used to numerically integrate the system's equations over a specified time interval from given initial conditions. Although it uses an adaptive variable step size internally, the specified time span dictates the points at which the solution is evaluated and returned.",
+    "source_url": "https://www.youtube.com/watch?v=8kKkq2mk7gA",
+    "license": "YouTube",
+    "chunk_id": "d39464ce-45d5-44c8-9742-092e6b180a36"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Visualizing Lorenz System Simulation Results",
+    "steps": [
+      "Use basic MATLAB plotting commands.",
+      "Plot the solution of each individual state (`X1`, `X2`, `X3`) against time (`T`).",
+      "Plot the three states (`X(:,1)`, `X(:,2)`, `X(:,3)`) against each other in a 3D graph to visualize the Lorenz attractor.",
+      "Plot 2D phase portraits by plotting pairs of states (e.g., `X(:,1)` vs. `X(:,2)`, `X(:,2)` vs. `X(:,3)`, and `X(:,1)` vs. `X(:,3)`)."
+    ],
+    "params": {
+      "input_variables": [
+        "T",
+        "X"
+      ],
+      "states_in_X_matrix": {
+        "X1": "X(:,1)",
+        "X2": "X(:,2)",
+        "X3": "X(:,3)"
+      }
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Visualizing simulation results helps in understanding the system's behavior. Plotting states against time shows their individual evolution. Plotting states against each other in 2D or 3D (phase portraits) reveals the system's dynamic trajectory and attractors, such as the chaotic Lorenz attractor, demonstrating how states change with respect to one another.",
+    "source_url": "https://www.youtube.com/watch?v=8kKkq2mk7gA",
+    "license": "YouTube",
+    "chunk_id": "0edde68d-967e-4ae6-8152-5517996f8aab"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "MATLAB and Simulink Environment Overview",
+    "steps": [
+      "Type commands in the Command Window",
+      "Use 'New Script' option to create a new MATLAB script"
+    ],
+    "params": {},
+    "ui_paths": [
+      "Command Window",
+      "MATLAB Toolbar > New Script"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "This covers the basic components of the MATLAB environment, including where to execute commands, view variables, see command history, manage current files, and create new MATLAB scripts.",
+    "source_url": "https://www.youtube.com/watch?v=ANBBiL_t0qU",
+    "license": "YouTube",
+    "chunk_id": "1c96b7ee-c7d1-494c-94f9-128de3877cd1"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Opening the Simulink Library Browser",
+    "steps": [
+      "Click the 'Simulink Library' tab in the MATLAB toolbar",
+      "Type 'simulink' in the Command Window",
+      "Press Enter"
+    ],
+    "params": {},
+    "ui_paths": [
+      "MATLAB Toolbar > Simulink Library tab",
+      "Command Window"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "This describes two methods to open the Simulink Library Browser, which provides access to various block sets and tools required for building Simulink models.",
+    "source_url": "https://www.youtube.com/watch?v=ANBBiL_t0qU",
+    "license": "YouTube",
+    "chunk_id": "37f1020e-d020-43eb-8def-8bc543372bee"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Creating a New Simulink Model",
+    "steps": [
+      "Click the 'New Model' icon in the Simulink Library Browser toolbar",
+      "Click 'File' menu",
+      "Select 'New'",
+      "Select 'Model'"
+    ],
+    "params": {},
+    "ui_paths": [
+      "Simulink Library Browser > Toolbar > New Model icon",
+      "File > New > Model"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "This outlines two distinct ways to create a new, blank Simulink model file where users can begin designing their systems.",
+    "source_url": "https://www.youtube.com/watch?v=ANBBiL_t0qU",
+    "license": "YouTube",
+    "chunk_id": "a33bd4cb-0413-41d6-a3d1-8d384b6fa7f1"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Adding Blocks to a Simulink Model",
+    "steps": [
+      "Drag a desired block from the Simulink Library Browser",
+      "Drop it into the new model window",
+      "Right-click on a desired block in the Simulink Library Browser (e.g., 'gain block')",
+      "Select 'Add to Untitled'"
+    ],
+    "params": {},
+    "ui_paths": [
+      "Simulink Library Browser",
+      "Simulink Library Browser > Block Context Menu > Add to Untitled"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "This explains two methods for incorporating blocks from the Simulink Library into an active model window, allowing users to build their system diagrams.",
+    "source_url": "https://www.youtube.com/watch?v=ANBBiL_t0qU",
+    "license": "YouTube",
+    "chunk_id": "db409b6b-c8e4-4afb-83d8-093902b8d823"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Navigating Simulink Model Window Menus",
+    "steps": [
+      "Click 'View' menu",
+      "Select 'Library Browser'",
+      "Click 'View' menu",
+      "Select 'Model Explorer'",
+      "Click 'Simulation' menu",
+      "Select 'Run'"
+    ],
+    "params": {},
+    "ui_paths": [
+      "View > Library Browser",
+      "View > Model Explorer",
+      "Simulation > Run"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "This provides an overview of common menu options within an open Simulink model window, including re-opening the library, exploring model workspaces, and executing simulations.",
+    "source_url": "https://www.youtube.com/watch?v=ANBBiL_t0qU",
+    "license": "YouTube",
+    "chunk_id": "69f89205-bf7e-454a-9f95-d5ee9f7d6d07"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Automatically tuning PID controllers using simulation with a mathematical model",
+    "steps": [
+      "Start from a mathematical model (e.g., transfer functions, state space models, or Simscape physical models) representing the dynamics of the plant.",
+      "Set up the controller architecture using the PID Controller Block in Simulink.",
+      "Select the desired type of controller using the options provided in the dialogue window of the PID Controller Block.",
+      "Click the 'Tune' button in the automated tuning section of the block parameters.",
+      "Adjust the tuned response in the PID Tuner app by selecting options to prioritize between reference tracking or disturbance rejection.",
+      "Fine-tune parameters by interacting with the response time and transient behavior controls within the PID Tuner app.",
+      "Once satisfied, click the 'Update Block' button in the PID Tuner app to send the calculated parameters back to your PID block.",
+      "Verify the system behavior using the simulation model.",
+      "For a programmatic approach, set up the control architecture and tuning process using MATLAB functions (optional)."
+    ],
+    "params": {},
+    "ui_paths": [
+      "Simulink > PID Controller Block",
+      "PID Controller Block Parameters > Automated tuning section > Tune button",
+      "PID Tuner app > Options (for prioritization)",
+      "PID Tuner app > Response time and transient behavior controls",
+      "PID Tuner app > Update Block button"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "This method utilizes a mathematical model of the plant in a simulation environment. It linearizes nonlinear plants and then uses an interactive tuner to optimize PID gains based on desired performance criteria like reference tracking, disturbance rejection, response time, and transient behavior.",
+    "source_url": "https://www.youtube.com/watch?v=ENhFepqjFOY",
+    "license": "YouTube",
+    "chunk_id": "dd4a201b-832a-45f1-bd5f-325ebf213fdb"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Automatically tuning PID controllers using hardware-in-the-loop (HIL) testing without a plant model",
+    "steps": [
+      "Set up a stable control architecture in Simulink using the PID Control block.",
+      "Include the Closed-Loop PID Autotuner Block in your model.",
+      "Place the Closed-Loop PID Autotuner Block in the signal path connecting your PID controller to your plant.",
+      "Provide the plant measurements as an input to the Closed-Loop PID Autotuner Block.",
+      "Ensure the controller options within the Autotuner block match those of your PID block.",
+      "Set a set of tuning goals for the response of your controller (e.g., respond within half a second, 2 Hz bandwidth).",
+      "Set a coefficient for the magnitude of the test signals injected into the system (e.g., disturbance magnitude to 10).",
+      "Optionally, use the third input signal of the Autotuner block to control when the test starts and stops.",
+      "Generate and deploy C code to your microcontroller or interact directly with the hardware using the hardware monitor and tune functionality (requires hardware support packages).",
+      "Monitor the test convergence using the second output of the Autotuner block.",
+      "Once the convergence value gets close to 100%, stop the test.",
+      "Record the final PID gains from the third block output of the Autotuner block.",
+      "Optionally, update the gains on your PID block directly from the Block tab on the Autotuner Block parameters.",
+      "Alternatively, generate Standalone C code and integrate it with your preferred testing method."
+    ],
+    "params": {
+      "Tuning goals example": "respond within half a second or at 2 Hz bandwidth",
+      "Test signal magnitude coefficient (disturbance magnitude) example": "10 (for motor velocity range of -100 to 100)"
+    },
+    "ui_paths": [
+      "Simulink > PID Control block",
+      "Simulink > Closed-Loop PID Autotuner Block",
+      "Closed-Loop PID Autotuner Block Parameters > Controller options",
+      "Closed-Loop PID Autotuner Block Parameters > Tuning goals settings",
+      "Closed-Loop PID Autotuner Block Parameters > Coefficient for test signal magnitude",
+      "Closed-Loop PID Autotuner Block Parameters > Block tab (for updating gains)"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "This method creates an automated test to be uploaded to hardware, which injects test signals into the system to estimate its frequency response. It then calculates optimized PID gains based on the real-time hardware behavior, suitable for systems without a mathematical model or with complex nonlinear behavior.",
+    "source_url": "https://www.youtube.com/watch?v=ENhFepqjFOY",
+    "license": "YouTube",
+    "chunk_id": "98933a04-2126-4990-9e4d-c3c9b3ea8f7b"
+  },
+  {
+    "flag": "INACCESSIBLE",
+    "chunk_id": "9b9eed99-c4fa-4632-ace6-3fa5c8b032ab",
+    "source_url": "https://www.youtube.com/watch?v=EdqZ4FCIVqM",
+    "license": "YouTube",
+    "source_type": "track_b",
+    "schema_errors": [
+      "Missing keys: {'theory', 'errors', 'ui_paths', 'software', 'topic', 'params', 'steps', 'fixes'}",
+      "steps must be list",
+      "ui_paths must be list",
+      "params must be dict"
+    ]
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Open Loop Control System Introduction (Toaster Example)",
+    "steps": [
+      "Place a slice of bread in the toaster.",
+      "Set the toaster's timer.",
+      "Observe the bread's color change based on the timer setting."
+    ],
+    "params": {
+      "input": "time",
+      "output": "bread color"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "An open-loop control system takes an input and gives an output, where the output is determined solely by the input and the system's inherent properties, without any feedback mechanism.",
+    "source_url": "https://www.youtube.com/watch?v=FurC2unHeXI",
+    "license": "YouTube",
+    "chunk_id": "71e9e2a0-b704-4e7f-8039-2a6f6c2ce3bb"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Modeling Open Loop Systems through Experimentation",
+    "steps": [
+      "Input different timer settings (e.g., 2, 4, 6) into the toaster.",
+      "Wait until the output (bread color) settles to a value.",
+      "Mark your findings (input-output pairs) on a plot.",
+      "Fit a curve through these experimental points."
+    ],
+    "params": {
+      "timer_settings": [
+        "level of two",
+        "level four",
+        "level six"
+      ],
+      "bread_colors": [
+        "light brown",
+        "medium brown",
+        "dark brown"
+      ]
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "A model of an open-loop system can be developed through experimentation by applying various inputs and observing the resulting steady-state outputs, then fitting a curve to these data points.",
+    "source_url": "https://www.youtube.com/watch?v=FurC2unHeXI",
+    "license": "YouTube",
+    "chunk_id": "70d06ee5-3e3a-4d6f-bf0a-d5ee6a625dc9"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Mathematical Representation of Open Loop Control",
+    "steps": [
+      "Equate the input to U and the output to Y.",
+      "For different values of U, find the corresponding values of Y.",
+      "Write Y as a function of U (Y = f(U)).",
+      "To calculate the input U for a desired output Y, take the inverse of the function (U = f_inverse(Y))."
+    ],
+    "params": {
+      "input_variable": "U",
+      "output_variable": "Y"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Mathematically, an open-loop system's behavior can be represented by a function mapping input to output. To achieve a desired output, one calculates the necessary input by using the inverse of this function.",
+    "source_url": "https://www.youtube.com/watch?v=FurC2unHeXI",
+    "license": "YouTube",
+    "chunk_id": "fbc0318e-a5d3-4053-a5dd-dca38782647f"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Open Loop Control System (Shower Temperature Example)",
+    "steps": [
+      "Turn the shower handle to different positions.",
+      "Observe how the water temperature changes based on the handle position.",
+      "Position the handle to achieve a desired warm water temperature."
+    ],
+    "params": {
+      "input": "handle position",
+      "output": "water temperature"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Similar to the toaster, a shower's water temperature can be controlled in an open-loop manner by setting the handle position (input) to achieve a desired temperature (output) without direct measurement of the water temperature itself.",
+    "source_url": "https://www.youtube.com/watch?v=FurC2unHeXI",
+    "license": "YouTube",
+    "chunk_id": "2b57b380-0be0-4b9a-93f5-480d75494197"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Limitations of Open Loop Control: System Variations",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Burnt Bagel (when using a different type of bread like a bagel with time settings calibrated for bread slices)"
+    ],
+    "fixes": [],
+    "theory": "Open-loop control systems fail when there are variations in the system itself (e.g., changing the type of bread in a toaster). The original input-output relationship (function F) becomes invalid, requiring a new model (function G) and a different inverse calculation.",
+    "source_url": "https://www.youtube.com/watch?v=FurC2unHeXI",
+    "license": "YouTube",
+    "chunk_id": "17868c6f-4b76-4ca7-a7da-d1dad4e9e09e",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Limitations of Open Loop Control: Unexpected Environmental Changes",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Dishwasher water gets freezing cold (when the dishwasher runs, using up the hot water supply for the shower, causing shower temperature to drop)"
+    ],
+    "fixes": [],
+    "theory": "Open-loop control is unreliable when unexpected environmental changes or disturbances act on the system. External factors can affect the output even if the input remains consistent, as the system does not adapt to these changes.",
+    "source_url": "https://www.youtube.com/watch?v=FurC2unHeXI",
+    "license": "YouTube",
+    "chunk_id": "0f2955d8-611e-4da6-949b-df81d98b2764",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Summary of Open Loop Control Characteristics",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Open-loop control is simple and conceptually easy, allowing users to find a system model through experiments to achieve desired outputs if no variations or unexpected events occur. However, it is unreliable when system variations or external disturbances are present, prompting the need for feedback control.",
+    "source_url": "https://www.youtube.com/watch?v=FurC2unHeXI",
+    "license": "YouTube",
+    "chunk_id": "52c5d754-c735-4190-936e-aa4929f6285b",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Importing Discrete Data from Excel",
+    "steps": [
+      "Create an Excel spreadsheet with time values in one column and corresponding force values in another column (e.g., column A for time, column B for force).",
+      "In your MATLAB script, use `xlsread` to import the time data: `T_excel = xlsread('dat.xlsx', 'A2:A22');`",
+      "Use `xlsread` again to import the force data: `ft_excel = xlsread('dat.xlsx', 'B2:B22');`"
+    ],
+    "params": {
+      "spreadsheet_name": "dat.xlsx",
+      "time_column_range": "A2:A22",
+      "force_column_range": "B2:B22"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Discrete values (e.g., engine force defined at specific time points in Excel) must be imported into MATLAB as arrays. These discrete values will later need to be made continuous via interpolation for use with ODE solvers.",
+    "source_url": "https://www.youtube.com/watch?v=Hp6FNrtlk3U",
+    "license": "YouTube",
+    "chunk_id": "84644d8d-a2fc-47b4-889b-73ce865e844b"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Setting Up Main MATLAB Script for ODE Solution",
+    "steps": [
+      "Open a new MATLAB script file (e.g., `main_rocket.m`).",
+      "Clear the command window: `clc;`",
+      "Close all open figure windows: `close all;`",
+      "Clear all variables from the workspace: `clear all;`",
+      "Define the simulation time range: `time_range = [0 20];` (for a 20-second simulation).",
+      "Define the initial conditions for velocity, X-displacement, and Y-displacement: `IC = [0 0 0];`",
+      "Import engine force and time data from Excel using `xlsread` (as described in 'Importing Discrete Data from Excel', storing in `T_excel` and `ft_excel`).",
+      "Call the `ode45` solver, passing the ODE function handle, time range, initial conditions, and additional parameters (T_excel, ft_excel): `[T, Y] = ode45(@(t, y, T_param, ft_param) Odes(t, y, T_param, ft_param), time_range, IC, [], T_excel, ft_excel);`",
+      "Create a figure window: `figure;`",
+      "Create the first subplot (1 row, 2 columns, first panel): `subplot(1, 2, 1);`",
+      "Plot velocity (first column of `Y`) against time (`T`): `plot(T, Y(:, 1));`",
+      "Label the x-axis for time: `xlabel('Time (seconds)');`",
+      "Label the y-axis for velocity: `ylabel('Velocity (m/s)');`",
+      "Create the second subplot (1 row, 2 columns, second panel): `subplot(1, 2, 2);`",
+      "Plot the 3D trajectory with time, X-displacement (second column of `Y`), and Y-displacement (third column of `Y`): `plot3(T, Y(:, 2), Y(:, 3));`"
+    ],
+    "params": {
+      "time_range": "[0 20]",
+      "initial_conditions": "[0 0 0]",
+      "ode_function_handle_syntax": "@(t, y, T_param, ft_param) Odes(t, y, T_param, ft_param)",
+      "ode_function_name": "Odes",
+      "subplot_layout": "1, 2"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "`ode45` is a built-in MATLAB function for solving systems of ordinary differential equations. It requires the ODEs defined in a separate function, the time span over which to solve, and the initial conditions of the system. Additional parameters can be passed to the ODE function via the `ode45` call.",
+    "source_url": "https://www.youtube.com/watch?v=Hp6FNrtlk3U",
+    "license": "YouTube",
+    "chunk_id": "d5020885-e878-4cb2-a2aa-96b701ca2448"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Defining the ODE System in a Function File",
+    "steps": [
+      "Create a new MATLAB function file and save it with the name specified in the `ode45` call (e.g., `Odes.m`).",
+      "Define the function signature: `function rk = Odes(t, y, T_param, ft_param)` (where `t` is current time, `y` is current state vector, `T_param` and `ft_param` are passed-through discrete time and force data).",
+      "Set display format to long decimals (optional): `format long;`",
+      "Interpolate the discrete force data (`ft_param`) to get a continuous force value at the current time `t`: `current_ft = interp1(T_param, ft_param, t);`",
+      "Define physical constants: `CD = 0.025;` (drag coefficient), `rho = 0.025;` (density of air), `A = 0.025;` (area), `m = 25;` (mass), `alpha = pi/6;` (pitch angle in radians), `g = 9.81;` (gravity).",
+      "Define an intermediate constant for drag calculation: `C = 0.5 * rho * A;`",
+      "Define the first ODE (derivative of velocity): `rk1 = (current_ft - C * y(1)^2) / m - g * sin(alpha);` (where `y(1)` is velocity).",
+      "Define the second ODE (derivative of X-displacement): `rk2 = y(1) * cos(alpha);` (where `y(2)` is X-displacement).",
+      "Define the third ODE (derivative of Y-displacement): `rk3 = y(1) * sin(alpha);` (where `y(3)` is Y-displacement).",
+      "Combine the derivatives into a column vector: `rk = [rk1; rk2; rk3];`",
+      "Ensure the output `rk` is explicitly a column vector: `rk = rk(:);`"
+    ],
+    "params": {
+      "function_name": "Odes",
+      "input_arguments": "t, y, T_param, ft_param",
+      "output_argument": "rk",
+      "constants_defined_within_function": {
+        "CD": "0.025",
+        "rho": "0.025",
+        "A": "0.025",
+        "m": "25",
+        "alpha": "pi/6",
+        "g": "9.81"
+      }
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The ODE function (`f(t, y)`) defines the instantaneous rates of change for each state variable. `interp1` is used to convert discrete data points into a continuous function by interpolating between them, which is necessary for `ode45`. It is good practice to define constant parameters within this function to simplify the main script and `ode45` call.",
+    "source_url": "https://www.youtube.com/watch?v=Hp6FNrtlk3U",
+    "license": "YouTube",
+    "chunk_id": "c05406c3-635f-434d-aa11-16d518693d46"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Running the Simulation and Visualizing Results",
+    "steps": [
+      "Save both the main script file (e.g., `main_rocket.m`) and the ODE function file (e.g., `Odes.m`) in the same directory or ensure they are on the MATLAB path.",
+      "Run the main script file (the one containing the `ode45` call) by clicking the 'Run' button in the MATLAB editor or typing its name in the Command Window.",
+      "Observe the automatically generated plots: one showing the rocket's velocity over time, and another illustrating its X-Y trajectory (or 3D path over time).",
+      "Analyze the plots to understand the projectile's behavior, such as changes in velocity and its flight path."
+    ],
+    "params": {},
+    "ui_paths": [
+      "Editor > Run"
+    ],
+    "errors": [],
+    "fixes": [
+      "Define constants within the differential equation file (`Odes.m`) rather than passing them through `ode45` to keep the parameter list concise and improve workflow."
+    ],
+    "theory": "Executing the main script triggers the numerical integration of the differential equations by `ode45`. The resulting time-series data for velocity and displacement are then plotted to provide a visual interpretation of the system's dynamic behavior over the simulation period.",
+    "source_url": "https://www.youtube.com/watch?v=Hp6FNrtlk3U",
+    "license": "YouTube",
+    "chunk_id": "0bcf44b6-bd1b-4bed-b252-362a64424b7d"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Bookmark Mat Lab and Simulink Student Resources",
+    "steps": [
+      "Search 'Mat Lab and Simulink resources for students' in your browser.",
+      "Bookmark the Mat Lab and Simulink resources for students page."
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The Mat Lab and Simulink resources for students page is a central hub for tutorials, examples, and helpful links.",
+    "source_url": "https://www.youtube.com/watch?v=KGn5m-LD9Ng",
+    "license": "YouTube",
+    "chunk_id": "81a5953c-7f00-45b9-bb54-7a724238082a"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Take Mat Lab Onramp Course",
+    "steps": [
+      "Start with Mat Lab Onramp (or other Onramps like Simulink, signal processing, image processing, machine learning)."
+    ],
+    "params": {},
+    "ui_paths": [
+      "Mat Lab Tool Strip > Resources > Learn Mat Lab"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "Mat Lab Onramp is a free, interactive course offering hands-on practice with Mat Lab basics. It's self-paced, provides feedback, and issues a certificate upon completion.",
+    "source_url": "https://www.youtube.com/watch?v=KGn5m-LD9Ng",
+    "license": "YouTube",
+    "chunk_id": "b5c8380a-f3d9-42bf-9e1f-11109355dc2d"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Use Mat Lab Online/Mobile and Mat Lab Home",
+    "steps": [
+      "Open Mat Lab Online in your browser with your MathWorks account.",
+      "Try Mat Lab Mobile for iOS and Android to run code on the go.",
+      "Visit Mat Lab Home.",
+      "Launch Mat Lab Online from Mat Lab Home.",
+      "Install desktop Mat Lab from Mat Lab Home.",
+      "Start an On-ramp course from Mat Lab Home."
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Mat Lab Online requires no installation, is fast, convenient, and supports live scripts (combining code, output, images, and formatted text). Mat Lab Mobile enables code execution on mobile devices. Mat Lab Home serves as a central hub for accessing various Mat Lab resources and installations.",
+    "source_url": "https://www.youtube.com/watch?v=KGn5m-LD9Ng",
+    "license": "YouTube",
+    "chunk_id": "a70257e4-63ed-4bef-b8c2-4fff40bf3bad"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Explore Mat Lab Documentation and Examples",
+    "steps": [
+      "Use 'help plot' command for quick syntax summaries.",
+      "Use 'doc lindspace' command for detailed explanations and examples.",
+      "Use the search bar to find functions, demos, apps, and helpful examples.",
+      "Learn shortcuts like 'Ctrl+R' to comment code.",
+      "Find additional documentation, tutorials, and examples on mathworks.com."
+    ],
+    "params": {
+      "command_examples": [
+        "help plot",
+        "doc lindspace"
+      ]
+    },
+    "ui_paths": [
+      "Mat Lab > Top right hand corner > Search bar"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "Mat Lab's built-in help and comprehensive documentation, along with keyboard shortcuts, are essential resources for learning functions, syntax, and improving workflow efficiency.",
+    "source_url": "https://www.youtube.com/watch?v=KGn5m-LD9Ng",
+    "license": "YouTube",
+    "chunk_id": "911c7d2a-1e43-4cba-bd1f-4463a5a66403"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Explore MathWorks Student Programs",
+    "steps": [
+      "Explore MathWorks student programs (competitions, hackathons, challenges).",
+      "Check out the challenge projects list for capstone or thesis ideas."
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "MathWorks student programs offer hands-on opportunities to apply Mat Lab skills through various competitions and challenges, some with cash prizes.",
+    "source_url": "https://www.youtube.com/watch?v=KGn5m-LD9Ng",
+    "license": "YouTube",
+    "chunk_id": "36e4845c-f623-47c5-97c2-19f2c37d03c6"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Subscribe to the Student Lounge Blog",
+    "steps": [
+      "Find the Student Lounge blog on the student programs overview page.",
+      "Check the blog regularly (posts at least once per month)."
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The Student Lounge blog shares tips, stories, and opportunities from students, providing valuable insights and information.",
+    "source_url": "https://www.youtube.com/watch?v=KGn5m-LD9Ng",
+    "license": "YouTube",
+    "chunk_id": "48ce5b68-b866-4d56-8351-32bc53ec32df"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Download a Mat Lab Cheat Sheet",
+    "steps": [
+      "Head back to the Mat Lab student resources page (from Tip 1).",
+      "Scroll down to the cheat sheet section.",
+      "Grab a free Mat Lab cheat sheet (e.g., basic functions cheat sheet)."
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Mat Lab cheat sheets provide quick reference for functions and commands, making them ideal for beginners to keep open while working.",
+    "source_url": "https://www.youtube.com/watch?v=KGn5m-LD9Ng",
+    "license": "YouTube",
+    "chunk_id": "e756c9c0-e872-4810-88bd-4d413be617aa"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Follow Mat Lab Students on Instagram",
+    "steps": [
+      "Follow @matlabstudents on Instagram."
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Following Mat Lab Students on Instagram provides quick tips, updates, and highlights from student programs and competitions, fostering continued learning and inspiration.",
+    "source_url": "https://www.youtube.com/watch?v=KGn5m-LD9Ng",
+    "license": "YouTube",
+    "chunk_id": "aab6231c-2ffd-4937-a82f-bc7478a4e456"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Connect with the Mat Lab Community (Mat Lab Central)",
+    "steps": [
+      "Join Mat Lab Central.",
+      "Explore File Exchange for open-source Mat Lab and Simulink code.",
+      "Explore Cody for fun coding challenges and earning points.",
+      "Explore Mat Lab Answers for Q&A with experts.",
+      "Explore the discussion section.",
+      "Experiment with Mat Lab code using generative AI in the AI chat playground."
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Mat Lab Central is a vibrant community platform for sharing code, solving problems, learning from others, and growing Mat Lab skills through various interactive features.",
+    "source_url": "https://www.youtube.com/watch?v=KGn5m-LD9Ng",
+    "license": "YouTube",
+    "chunk_id": "7b2d91e7-935a-43ec-b720-b0f00b2973ae"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Watch Mat Lab How-To Playlist on YouTube",
+    "steps": [
+      "Subscribe to the Mat Lab how-to playlist on YouTube."
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The Mat Lab how-to playlist on YouTube offers short, practical tutorials released monthly, providing continuous learning opportunities.",
+    "source_url": "https://www.youtube.com/watch?v=KGn5m-LD9Ng",
+    "license": "YouTube",
+    "chunk_id": "6cb8189a-5c80-44b8-8ed7-8e6d040213db"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Leverage AI (Mat Lab Copilot)",
+    "steps": [
+      "Use Mat Lab Copilot to learn functions.",
+      "Use Mat Lab Copilot to explain code.",
+      "Use Mat Lab Copilot to get help.",
+      "Use Mat Lab Copilot to generate examples.",
+      "Learn how to use Mat Lab Copilot in the documentation on mathworks.com."
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Mat Lab Copilot, available in Mat Lab Desktop or Online for university users, is a powerful AI tool that speeds up learning by helping with function understanding, code explanation, problem-solving, and example generation.",
+    "source_url": "https://www.youtube.com/watch?v=KGn5m-LD9Ng",
+    "license": "YouTube",
+    "chunk_id": "7e75895a-0b8b-4ba9-a9ae-ebc7275414e8"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Basic Numeric Input Validation with While Loop",
+    "steps": [
+      "Initialize a variable (e.g., 'cups') by asking for user input.",
+      "Start a 'while' loop with a condition to check for invalid input (e.g., 'while cups < 0').",
+      "Inside the 'while' loop, display an error message to the user (e.g., 'try again').",
+      "Inside the 'while' loop, re-ask the user for input to update the control variable 'cups'.",
+      "End the 'while' loop."
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [
+      "Ensure the control variable (the input value) is updated inside the 'while' loop by re-prompting the user for input to prevent an infinite loop."
+    ],
+    "theory": "While loops are used when the number of repetitions is unknown, particularly for validating user input until a valid value is provided. The loop continues as long as the input remains invalid, prompting the user to try again.",
+    "source_url": "https://www.youtube.com/watch?v=LyKb1MvCiG8",
+    "license": "YouTube",
+    "chunk_id": "716f4ea4-601d-461a-a5cc-646ddca2d5cb"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Comprehensive Numeric Input Validation",
+    "steps": [
+      "Define an initial input prompt for a numeric variable (e.g., 'cups').",
+      "Construct a 'while' loop condition using logical OR ('||') to combine multiple validation checks:",
+      "Add 'isempty(cups)' to the condition to catch empty user input (user just hitting enter).",
+      "Add 'cups < 0' to the condition to catch negative numbers.",
+      "Add 'round(cups) ~= cups' to the condition to catch decimal numbers by comparing the rounded value to the original.",
+      "Add 'cups > 157' to the condition to catch numbers outside an upper bound.",
+      "Inside the 'while' loop, display a general 'try again' message to the user.",
+      "Inside the 'while' loop, re-prompt the user for input to update 'cups'.",
+      "End the 'while' loop."
+    ],
+    "params": {
+      "upper_bound_example": "157"
+    },
+    "ui_paths": [],
+    "errors": [
+      "Implicit: 'red error' if user hits enter and 'isempty' check is not implemented."
+    ],
+    "fixes": [],
+    "theory": "This process demonstrates how to combine multiple validation criteria using logical OR ('||') within a 'while' loop. The loop continues as long as *any* of the conditions indicate invalid input, forcing the user to correct their entry to a positive, whole number within a specified range, and not empty.",
+    "source_url": "https://www.youtube.com/watch?v=LyKb1MvCiG8",
+    "license": "YouTube",
+    "chunk_id": "199b97cb-f8b9-4214-960c-143c3a09bed9"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Basic String Input Validation with While Loop",
+    "steps": [
+      "Define an initial input prompt for a string variable (e.g., 'likes_coffee').",
+      "Start a 'while' loop with a condition to check if the input is not the desired string (e.g., 'while likes_coffee ~= 'yes'').",
+      "Inside the 'while' loop, provide user guidance (e.g., 'yes or no?').",
+      "Inside the 'while' loop, re-prompt the user for string input.",
+      "End the 'while' loop.",
+      "Type '%%' (two percent signs) before a section of code to create a section break.",
+      "Click 'Run Section' in the MATLAB editor to execute only the active code section."
+    ],
+    "params": {},
+    "ui_paths": [
+      "Run Section"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "This demonstrates using a 'while' loop to validate string input, ensuring the user provides one of the expected string values (e.g., 'yes') before the program can proceed. Section breaks allow for running specific parts of a script for testing or debugging.",
+    "source_url": "https://www.youtube.com/watch?v=LyKb1MvCiG8",
+    "license": "YouTube",
+    "chunk_id": "29ff4dd1-0a63-45b1-b80c-61ada613a152"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Advanced String Input Validation with Logical AND",
+    "steps": [
+      "Define an initial input prompt for a string variable (e.g., 'likes_coffee').",
+      "Construct a 'while' loop condition using logical AND ('&&') to check if the input is *not* any of the valid options (e.g., 'while (likes_coffee ~= 'yes') && (likes_coffee ~= 'no')').",
+      "Inside the 'while' loop, display an error message and provide guidance (e.g., 'yes or no?').",
+      "Inside the 'while' loop, re-prompt the user for string input.",
+      "End the 'while' loop.",
+      "Run the section of code.",
+      "Test with invalid input (e.g., 'hello') to verify the loop is entered.",
+      "Test with valid input (e.g., 'no' or 'yes') to verify the loop is exited."
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "When validating string input against multiple acceptable values, the 'while' loop condition uses logical AND ('&&'). The loop continues only if the input does *not* match 'yes' AND does *not* match 'no', ensuring the user provides one of the specified valid options.",
+    "source_url": "https://www.youtube.com/watch?v=LyKb1MvCiG8",
+    "license": "YouTube",
+    "chunk_id": "602efb9f-5315-42ad-a761-51f565daa8ad"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Define Transfer Function and Plot Open-Loop Response",
+    "steps": [
+      "Input the transfer function into MATLAB using the `TF` function.",
+      "Plot the open-loop response of the system using the `step` function.",
+      "Right-click on the plot.",
+      "Go to `characteristics`.",
+      "Click on desired characteristics (e.g., peak response)."
+    ],
+    "params": {
+      "mass": "1",
+      "spring coefficient": "1",
+      "damping ratio": "1"
+    },
+    "ui_paths": [
+      "Plot > Characteristics > [Specific Characteristic]"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "A transfer function mathematically describes the dynamics of a system, showing its output for a given input. It is derived from the equation of motion using the Laplace transform.",
+    "source_url": "https://www.youtube.com/watch?v=MylJIqVVNr0",
+    "license": "YouTube",
+    "chunk_id": "6507c8ea-b080-4330-baf3-a76955a9fc99"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Open Control System Designer App and Set Up Design Requirements",
+    "steps": [
+      "Open the app in MATLAB using the `controlSystemDesigner` function.",
+      "Click the `edit architecture` button to view or modify the system's architecture.",
+      "Add peak response and steady state value characteristics to the plot.",
+      "Right-click on the plot.",
+      "Go to `design requirements`.",
+      "Click `new` in the popup menu.",
+      "Fill in design requirements in their respective fields.",
+      "Click `OK` to enter these requirements.",
+      "Save the current design (to compare later)."
+    ],
+    "params": {
+      "G": "transfer function (representing the spring-mass-damper system)",
+      "C": "compensator (initial value 1)",
+      "F": "feed-forward term (initial value 1)",
+      "H": "feedback term (initial value 1)"
+    },
+    "ui_paths": [
+      "Plot > Design Requirements > New"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "The Control System Designer app facilitates closed-loop control system design. Its architecture defines roles for system components like the compensator (C), feed-forward (F), and feedback (H) terms. Design requirements visually define performance targets on the plots.",
+    "source_url": "https://www.youtube.com/watch?v=MylJIqVVNr0",
+    "license": "YouTube",
+    "chunk_id": "15224082-a3db-416a-a273-b191125679d9"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Tune Compensator by Increasing Gain",
+    "steps": [
+      "Increase the gain of the compensator by dragging the Bode plot upwards."
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Increasing the compensator's gain can adjust the system's response to get closer to the desired setpoint, but it may also introduce or amplify oscillatory behavior.",
+    "source_url": "https://www.youtube.com/watch?v=MylJIqVVNr0",
+    "license": "YouTube",
+    "chunk_id": "155b5022-76d5-4c7c-baec-73e4c737066c"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Tune Compensator by Adding a Zero",
+    "steps": [
+      "Right-click on the Bode plot.",
+      "Go to `add pole or 0`.",
+      "Select `real 0`.",
+      "Place the zero by left-clicking wherever desired on the plot.",
+      "Perform loop shaping by further editing the response (e.g., adjusting the zero's position or adding more poles/zeros)."
+    ],
+    "params": {},
+    "ui_paths": [
+      "Bode Plot > Add Pole or 0 > Real 0"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "Adding a zero to the compensator modifies the root locus shape and can alter the system's transient response, helping to meet design requirements and reduce oscillations. Loop shaping involves iteratively adjusting compensator poles and zeros to achieve desired system performance.",
+    "source_url": "https://www.youtube.com/watch?v=MylJIqVVNr0",
+    "license": "YouTube",
+    "chunk_id": "b7dcdce1-c90b-4f6a-9589-d8c9c146c053"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Compare Control System Designs",
+    "steps": [
+      "Visualize the impact of the current compensator by comparing this design back to the original design (where the compensator was set to one)."
+    ],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Comparing different control system designs allows for evaluating the effectiveness of tuning adjustments and understanding how specific changes to the compensator impact overall system performance against a baseline.",
+    "source_url": "https://www.youtube.com/watch?v=MylJIqVVNr0",
+    "license": "YouTube",
+    "chunk_id": "ed0d7320-5c0b-472d-9ad3-8da237a3c28a"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Detecting and Diagnosing a Z-spike Fault using PCA",
+    "steps": [
+      "View process variables for the 'test one is z-spike' dataset.",
+      "Run the dataset against the previously created PCA model by clicking on 'pca results'.",
+      "Click on the point detected as wrong in the SPE chart (at time 10) to generate a contribution plot."
+    ],
+    "params": {
+      "Fault variable": "z",
+      "Fault time": "10",
+      "Fault type": "spike",
+      "Fault size": "20",
+      "Fault duration": "specific duration"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "This demonstrates how a PCA model can accurately detect a specific fault (Z-spike) in a process. Contribution plots are then used as a diagnostic tool to pinpoint the original variable (z) responsible for the out-of-control signal, allowing for root cause investigation.",
+    "source_url": "https://www.youtube.com/watch?v=PT5v9bpp4-A",
+    "license": "YouTube",
+    "chunk_id": "9586dc5c-b339-49d2-9ce5-87e6f3019ebc"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Diagnosing Control Loop Failure with PCA and Process Knowledge",
+    "steps": [
+      "View process variables for the dataset with a control loop failure (activated at time 50).",
+      "Look at the PCA results (specifically the SPE chart) for the control loop failure dataset.",
+      "Click on the first point in the SPE chart to get the contribution plot."
+    ],
+    "params": {
+      "Failure type": "control valve malfunction (limiting flow in bottoms)",
+      "Failure time": "50"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "This illustrates how a PCA model can detect complex failures like a control loop malfunction. By combining insights from contribution plots (e.g., positive contributions from mb and b, negative from md and d) with process knowledge and understanding of process flow diagrams, engineers can diagnose the specific root cause within the control loop.",
+    "source_url": "https://www.youtube.com/watch?v=PT5v9bpp4-A",
+    "license": "YouTube",
+    "chunk_id": "95053ed3-23cc-4d0a-a0e1-c364560409b0"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Analyzing Operating Point Transitions using PCA Scores Plots",
+    "steps": [
+      "View process variables for the dataset simulating an operating point transition (from point 1 to point 2 at time 100).",
+      "Look at the PCA charts (specifically the SP chart) for the transition dataset.",
+      "Look at the scores plot to gain additional insights."
+    ],
+    "params": {
+      "Transition from operating point": "1",
+      "Transition to operating point": "2",
+      "Transition time": "100"
+    },
+    "ui_paths": [],
+    "errors": [
+      "SP contribution charts were relatively meaningless, showing different process variables affecting the fault at different times."
+    ],
+    "fixes": [],
+    "theory": "A PCA model trained on a single operating point will identify a transition to a new stable operating point as a 'fault' because it hasn't been trained to recognize the new regime. In such scenarios, contribution plots may be unhelpful, while scores plots reveal distinct clusters corresponding to different operating points, providing clearer insight into the process state when combined with domain expertise.",
+    "source_url": "https://www.youtube.com/watch?v=PT5v9bpp4-A",
+    "license": "YouTube",
+    "chunk_id": "4b2aaac8-5bba-4862-94ba-457092d84487"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "No tutorial content",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "",
+    "source_url": "https://www.youtube.com/watch?v=RBfqGFldjhA",
+    "license": "YouTube",
+    "flag": "INACCESSIBLE",
+    "chunk_id": "fdfb2605-5005-41e9-9e03-1417df65f8d8"
+  }
+]

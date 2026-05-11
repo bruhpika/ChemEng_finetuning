@@ -1,0 +1,100 @@
+[
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Heat Exchanger Calculation Mode: Heat Transfer Efficiency / Molar Vapor Fraction",
+    "steps": [],
+    "params": {
+      "Heat Transfer Efficiency": "",
+      "Global Heat Transfer Coefficient": "(for efficiency method)",
+      "Outlet Molar Vapor Fraction": "(for molar vapor fraction method)"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The efficiency method allows specifying heat transfer efficiency. The molar vapor fraction method is used for phase change calculations, by specifying outlet molar vapor fraction for hot and cold streams.",
+    "source_url": "https://www.youtube.com/watch?v=FQQJtY0gqYE",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "bd5f2403-5503-4ffd-9c1b-13eea925751e"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "CSTR Reactor Theory and Characteristics",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Continuous Stirred Tank Reactors (CSTRs) are well-mixed reactors, typically used for homogeneous liquid-phase or gas-liquid reactions. Properties like temperature and density are constant throughout the reactor, and the outlet concentration equals the internal reactor concentration. CSTRs offer good temperature control but usually result in lower conversion and can have dead zones if mixing is imperfect. Levenspiel plots illustrate that CSTR volume for higher conversions can be significantly larger than PFRs due to exponential rate changes.",
+    "source_url": "https://www.youtube.com/watch?v=O2n7XChXj_g",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "60820918-1e1a-4734-9b1e-3e87557c3c3f"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "CSTR Mole Balance Equation Derivation",
+    "steps": [],
+    "params": {
+      "F_A0": "Molar flow rate entering reactor",
+      "F_A": "Molar flow rate exiting reactor",
+      "r_A": "Rate of reaction",
+      "V": "Volume of reactor"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The general mole balance equation is Input - Output + Generation = Accumulation. For a CSTR at steady state, accumulation is zero. Due to perfect mixing, the rate of reaction (r_A) is constant throughout the reactor, simplifying the generation term to r_A * V. This leads to an algebraic equation for the reactor volume: V = (F_A0 - F_A) / (-r_A).",
+    "source_url": "https://www.youtube.com/watch?v=O2n7XChXj_g",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "1f94802a-3368-48ce-a203-58476e459a02"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Problem Statement for CSTR Simulation",
+    "steps": [],
+    "params": {
+      "Reaction": "Cis-2-Butene -> Trans-2-Butene (Isomerization)",
+      "Reaction Type": "Homogeneous, irreversible, first-order",
+      "Rate Constant (k)": "0.003833 (units not specified here, but will be in reaction definition)",
+      "Target Conversion": "90%",
+      "Reactor Type": "Isothermal CSTR",
+      "Feed Stream": "Pure Cis-2-Butene",
+      "Flow Rate": "100 kmol/hr",
+      "Pressure": "12 bar",
+      "Temperature": "25 degrees Celsius"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "The goal is to calculate the CSTR volume required to achieve 90% conversion of Cis-2-Butene at specified feed conditions and compare it with a previously solved Plug Flow Reactor (PFR) volume for the same problem.",
+    "source_url": "https://www.youtube.com/watch?v=O2n7XChXj_g",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "fdc888f6-2541-46eb-8881-2b7f73288a7f"
+  },
+  {
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "DWSIM Simulation Final Results and Comparison",
+    "steps": [],
+    "params": {
+      "Achieved Cis-2-Butene Conversion": "90%",
+      "CSTR Reactor Volume": "6.074 cubic meters",
+      "PFR Reactor Volume (for comparison)": "1.54 cubic meters"
+    },
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "After the simulation converges, the final CSTR volume for 90% conversion is obtained. This volume is then compared with the previously calculated Plug Flow Reactor (PFR) volume for the same problem, highlighting that CSTRs often require significantly larger volumes for high conversions due to their mixing characteristics and resulting reaction rate profile.",
+    "source_url": "https://www.youtube.com/watch?v=O2n7XChXj_g",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "78ef95df-0212-4fc3-91ed-4805c188b07c"
+  }
+]

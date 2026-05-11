@@ -1,0 +1,96 @@
+[
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Error Analysis Concepts (Accuracy, Precision, Absolute, Relative Error)",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Accuracy refers to how closely measured or calculated values agree with the true value. Precision refers to how closely individually calculated or measured values agree with each other. Absolute error is the magnitude of the difference between the true value and the approximation, while relative error is the percent of error that occurs at the true value.",
+    "source_url": "https://www.youtube.com/watch?v=4jvYyB6VMHQ",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "8e13e96c-cda7-42aa-95df-c70413ff8638"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Total Numerical Error Concept",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Total numerical error is the sum of truncation error and round-off error. Reducing one type of error often leads to an increase in the other; for example, increasing significant figures to reduce round-off error can increase truncation error if more terms are not simultaneously used in series approximations.",
+    "source_url": "https://www.youtube.com/watch?v=4jvYyB6VMHQ",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "e140bc49-c1a0-42e7-b545-54856d60995a"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Simulating Nonlinear Systems in MATLAB (Overview)",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Unlike linear systems which can be simulated with built-in commands like 'SS', nonlinear systems (like the Lorenz system) require a two-part approach: defining differential equations in a separate function file and then numerically simulating them in a main script.",
+    "source_url": "https://www.youtube.com/watch?v=8kKkq2mk7gA",
+    "license": "YouTube",
+    "flag": "INCOMPLETE",
+    "chunk_id": "e807d1ee-f7c1-4d4a-b81c-0143862b4cb9"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Limitations of Open Loop Control: System Variations",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Burnt Bagel (when using a different type of bread like a bagel with time settings calibrated for bread slices)"
+    ],
+    "fixes": [],
+    "theory": "Open-loop control systems fail when there are variations in the system itself (e.g., changing the type of bread in a toaster). The original input-output relationship (function F) becomes invalid, requiring a new model (function G) and a different inverse calculation.",
+    "source_url": "https://www.youtube.com/watch?v=FurC2unHeXI",
+    "license": "YouTube",
+    "chunk_id": "17868c6f-4b76-4ca7-a7da-d1dad4e9e09e",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Limitations of Open Loop Control: Unexpected Environmental Changes",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [
+      "Dishwasher water gets freezing cold (when the dishwasher runs, using up the hot water supply for the shower, causing shower temperature to drop)"
+    ],
+    "fixes": [],
+    "theory": "Open-loop control is unreliable when unexpected environmental changes or disturbances act on the system. External factors can affect the output even if the input remains consistent, as the system does not adapt to these changes.",
+    "source_url": "https://www.youtube.com/watch?v=FurC2unHeXI",
+    "license": "YouTube",
+    "chunk_id": "0f2955d8-611e-4da6-949b-df81d98b2764",
+    "flag": "INCOMPLETE"
+  },
+  {
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Summary of Open Loop Control Characteristics",
+    "steps": [],
+    "params": {},
+    "ui_paths": [],
+    "errors": [],
+    "fixes": [],
+    "theory": "Open-loop control is simple and conceptually easy, allowing users to find a system model through experiments to achieve desired outputs if no variations or unexpected events occur. However, it is unreliable when system variations or external disturbances are present, prompting the need for feedback control.",
+    "source_url": "https://www.youtube.com/watch?v=FurC2unHeXI",
+    "license": "YouTube",
+    "chunk_id": "52c5d754-c735-4190-936e-aa4929f6285b",
+    "flag": "INCOMPLETE"
+  }
+]

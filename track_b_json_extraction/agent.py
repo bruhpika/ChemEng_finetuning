@@ -51,7 +51,7 @@ if not api_keys:
 current_key_idx = 0
 genai.configure(api_key=api_keys[current_key_idx])
 
-MODEL_NAME = "gemini-1.5-flash"
+MODEL_NAME = "gemini-2.5-flash"
 MODEL = genai.GenerativeModel(MODEL_NAME)
 
 PATHS = {
@@ -247,6 +247,7 @@ def gemini_extract(video_url: str, software: str, license_str: str, transcript: 
     Send transcript to Gemini Flash and extract structured JSON chunks.
     chunk_id is no longer embedded in the prompt (it was immediately overwritten anyway).
     """
+    global MODEL, current_key_idx
     log.info(f"  Sleeping {SLEEP_BETWEEN_CALLS}s (rate limit guard)")
     time.sleep(SLEEP_BETWEEN_CALLS)
 
