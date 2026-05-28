@@ -1,13 +1,48 @@
+# Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python Cache & Builds
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# ChemE-LLM Pipeline State & Key Files
 gemini_api_key.txt
-blackbord.md
-
-# Extractor Cache
-track_a_json_extraction/data/track_a/cache/
-
-# Local PDF dumps (user-downloaded, not for repo)
-track_a_json_extraction/data/track_a/matlab_docs_pdfs/
-
-# Backup and logs
+api.txt
+api_key.txt
 *.bak
 *.log
-__pycache__/
+
+# Cached Data & Ingestion State (large assets)
+data/processed/blackboard/cache/
+data/processed/blackboard/browser_session/
+data/processed/track_b/browser_session/
+
+# Downstream Training Outputs (if generated locally)
+model_checkpoints/
+synthetic_qa/checkpoint.json
+synthetic_qa/progress.md
+synthetic_qa/generation_stats.json
+finetune_dataset.jsonl
+.venv

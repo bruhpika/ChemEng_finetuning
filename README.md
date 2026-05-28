@@ -12,6 +12,7 @@
 - [3. Core Features](#3-core-features)
 - [4. Unique Features & Innovations](#4-unique-features--innovations)
 - [5. System Architecture](#5-system-architecture)
+  - [5.1 Project Directory Structure](#51-project-directory-structure)
 - [6. Quick Start (Installation & Setup)](#6-quick-start-installation--setup)
 - [7. Usage Guide](#7-usage-guide)
 - [8. Challenges & Solutions](#8-challenges--solutions)
@@ -124,6 +125,46 @@ An automated **API Key Cycler** monitors rate limits in real-time. When a quota 
 │ Text input → RAG → fine‑tuned model → answer       │
 │ Optional source‑chunk display for learning           │
 └─────────────────────────────────────────────────────┘
+```
+
+### 5.1 Project Directory Structure
+
+```text
+.
+├── config/                 # Configuration files & reference schemas
+│   ├── schema_v1.json      # Structured KB JSON validation schema
+│   └── dummy_chunk.json    # Standard fallback mock chunk
+├── data/                   # Unified decoupled storage for raw/processed data
+│   ├── raw/
+│   │   ├── local_pdfs/     # Real engineering documentation PDFs
+│   │   └── sources.csv     # Master ingestion catalog
+│   └── processed/
+│       ├── blackboard/     # Track A (PDF/HTML) outputs and ingestion tracker
+│       │   ├── cache/      # Playwright/Requests cached raw text outputs
+│       │   ├── knowledge/  # Final structured JSON output chunks
+│       │   └── tracking/   # Progress metrics & extraction logs
+│       └── track_b/        # Track B (YouTube video transcripts & logs)
+├── docs/                   # Unified product specifications & documentation
+│   ├── prd.md
+│   ├── system_spec.md
+│   ├── daily_build_plan.md
+│   ├── extraction_report.md
+│   └── agent_squad_spec.md
+├── scripts/                # Operations & maintenance utilities
+│   ├── check_incompletes.py
+│   ├── cleanup_chunks.py
+│   ├── etl_track_a.py
+│   ├── generate_report.py
+│   └── purge_affected_urls.py
+├── src/                    # Standard modular Python source code
+│   ├── track_a/
+│   │   └── agent.py        # PDF & HTML Ingestion Agent
+│   └── track_b/
+│       └── agent.py        # YouTube Transcription Agent
+├── .gitignore
+├── README.md
+├── requirements.txt
+└── SECURITY.md             # Security policy
 ```
 
 ---
