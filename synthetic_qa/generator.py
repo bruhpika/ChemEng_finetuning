@@ -33,6 +33,9 @@ from synthetic_qa.prompt_templates import build_generation_prompt, build_targete
 # ── API STATE ────────────────────────────────────────────────────────────────
 _current_key_idx = 0
 _model: genai.GenerativeModel | None = None
+# Tracks which keys have hit their quota in the current rotation cycle.
+# Cleared after a successful call so recovery is detected automatically.
+_exhausted_keys: set[int] = set()
 
 
 def _init_model() -> genai.GenerativeModel:
@@ -43,20 +46,65 @@ def _init_model() -> genai.GenerativeModel:
             raise RuntimeError("No API keys available. Cannot initialize Gemini model.")
         genai.configure(api_key=API_KEYS[_current_key_idx])
         _model = genai.GenerativeModel(MODEL_NAME)
-        log.info(f"Initialized Gemini model: {MODEL_NAME} (key {_current_key_idx + 1}/{len(API_KEYS)})")
+        log.info(
+            f"Initialized Gemini model: {MODEL_NAME} "
+            f"(key {_current_key_idx + 1}/{len(API_KEYS)})"
+        )
     return _model
 
 
 def _rotate_key() -> bool:
-    """Rotate to the next API key. Returns True if successful."""
-    global _current_key_idx, _model
-    if _current_key_idx < len(API_KEYS) - 1:
-        _current_key_idx += 1
-        log.warning(f"Rotating to API key {_current_key_idx + 1}/{len(API_KEYS)}")
-        genai.configure(api_key=API_KEYS[_current_key_idx])
-        _model = genai.GenerativeModel(MODEL_NAME)
-        return True
+    """
+    Cycle to the next available (non-exhausted) API key.
+
+    Wraps around from the last key back to key 0 (full cycle).
+    Returns True if a non-exhausted key was found, False if ALL keys
+    are currently exhausted (caller should back off and wait).
+    """
+    global _current_key_idx, _model, _exhausted_keys
+
+    # Mark current key as exhausted
+    _exhausted_keys.add(_current_key_idx)
+
+    if len(_exhausted_keys) >= len(API_KEYS):
+        # Every key has hit its quota — signal the caller to back off
+        log.warning(
+            f"All {len(API_KEYS)} API key(s) are rate-limited. "
+            "Will wait before retrying."
+        )
+        return False
+
+    # Advance cyclically, skipping exhausted keys
+    for _ in range(len(API_KEYS)):
+        _current_key_idx = (_current_key_idx + 1) % len(API_KEYS)
+        if _current_key_idx not in _exhausted_keys:
+            log.warning(
+                f"Rotating to API key {_current_key_idx + 1}/{len(API_KEYS)} "
+                f"({len(_exhausted_keys)} exhausted so far)"
+            )
+            genai.configure(api_key=API_KEYS[_current_key_idx])
+            _model = genai.GenerativeModel(MODEL_NAME)
+            return True
+
+    # Should never reach here, but guard anyway
     return False
+
+
+def _reset_exhausted_keys() -> None:
+    """Clear the exhausted-key set after a successful call or a timed backoff."""
+    global _exhausted_keys
+    if _exhausted_keys:
+        log.info("Resetting exhausted-key tracker — all keys are available again.")
+    _exhausted_keys = set()
+
+
+def _restart_from_first_key() -> None:
+    """Reset the active key to index 0 after a full-cycle backoff."""
+    global _current_key_idx, _model
+    _current_key_idx = 0
+    genai.configure(api_key=API_KEYS[_current_key_idx])
+    _model = genai.GenerativeModel(MODEL_NAME)
+    log.info(f"Restarted from key 1/{len(API_KEYS)} after backoff.")
 
 
 # ── JSON PARSING ─────────────────────────────────────────────────────────────
@@ -157,7 +205,11 @@ def update_progress(
         f.write(f"| **Total** | **{sum(category_counts.values())}** | **2000+** |\n\n")
 
         f.write("## API Key Status\n\n")
-        f.write(f"- **Current Key:** `{_current_key_idx + 1}` / `{len(API_KEYS)}`\n")
+        f.write(f"- **Total Keys Loaded:** `{len(API_KEYS)}`\n")
+        f.write(f"- **Current Key Index:** `{_current_key_idx + 1}` / `{len(API_KEYS)}`\n")
+        exhausted = len(_exhausted_keys)
+        available = len(API_KEYS) - exhausted
+        f.write(f"- **Keys Available:** `{available}` / **Exhausted this cycle:** `{exhausted}`\n")
         f.write(f"- **Model:** `{MODEL_NAME}`\n")
 
 
@@ -192,19 +244,33 @@ def call_gemini(prompt: str) -> list[dict] | None:
                     continue
                 return None
 
+            # Successful call — clear exhausted tracker so all keys are
+            # eligible again (they may have refilled quota since last hit).
+            _reset_exhausted_keys()
             return pairs
 
         except Exception as e:
             error_str = str(e).lower()
 
-            # Rate limit — try key rotation first, then backoff
+            # Rate limit — cycle through keys before falling back to a timed wait
             if "429" in error_str or "resource exhausted" in error_str:
-                log.warning(f"Rate limited (attempt {attempt}): {e}")
+                log.warning(f"Rate limited on key {_current_key_idx + 1} (attempt {attempt}): {e}")
                 if _rotate_key():
+                    # Successfully switched to a fresh key — retry immediately
+                    # (don't burn a retry count on a key-rotation switch)
+                    model = _init_model()
                     continue
-                log.info(f"All keys exhausted. Waiting {wait}s...")
+                # All keys exhausted — wait then reset the tracker for next cycle
+                log.info(
+                    f"Full key cycle exhausted. Backing off {wait}s before "
+                    "retrying from key 1..."
+                )
                 time.sleep(wait)
                 wait = min(wait * 2, MAX_RETRY_BACKOFF)
+                _reset_exhausted_keys()
+                # Restart from key index 0 after backoff
+                _restart_from_first_key()
+                model = _model
                 continue
 
             # Server error — retry with backoff

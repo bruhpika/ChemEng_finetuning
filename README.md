@@ -2,6 +2,8 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.9%2B-blue)](https://www.python.org/)
+[![Status](https://img.shields.io/badge/status-Phase%203%20%E2%80%94%20In%20Progress-orange)](PROJECT_STATUS.md)
+[![KB Chunks](https://img.shields.io/badge/KB%20Chunks-763-brightgreen)](data/processed/)
 
 ---
 
@@ -9,23 +11,24 @@
 
 - [1. Project Overview](#1-project-overview)
 - [2. Vision & Value Proposition](#2-vision--value-proposition)
-- [3. Core Features](#3-core-features)
-- [4. Unique Features & Innovations](#4-unique-features--innovations)
-- [5. System Architecture](#5-system-architecture)
-  - [5.1 Project Directory Structure](#51-project-directory-structure)
-- [6. Quick Start (Installation & Setup)](#6-quick-start-installation--setup)
-- [7. Usage Guide](#7-usage-guide)
-- [8. Challenges & Solutions](#8-challenges--solutions)
-- [9. Development Roadmap](#9-development-roadmap)
-- [10. Contributing](#10-contributing)
-- [11. License](#11-license)
-- [12. Contact & Acknowledgements](#12-contact--acknowledgements)
+- [3. Current Build Status](#3-current-build-status)
+- [4. Core Features](#4-core-features)
+- [5. Unique Features & Innovations](#5-unique-features--innovations)
+- [6. System Architecture](#6-system-architecture)
+  - [6.1 Project Directory Structure](#61-project-directory-structure)
+- [7. Quick Start (Installation & Setup)](#7-quick-start-installation--setup)
+- [8. Usage Guide](#8-usage-guide)
+- [9. Challenges & Solutions](#9-challenges--solutions)
+- [10. Development Roadmap](#10-development-roadmap)
+- [11. Contributing](#11-contributing)
+- [12. License](#12-license)
+- [13. Contact & Acknowledgements](#13-contact--acknowledgements)
 
 ---
 
 ## 1. Project Overview
 
-**ChemE‑LLM** is an open‑source, student‑deployable AI assistant for chemical‑engineering simulation tools – specifically **DWSIM** and **MATLAB**.  It provides natural‑language query handling, grounded answers, and step‑by‑step UI navigation for common simulation workflows.  The system is built to run on **free compute** (Google Colab T4) and requires **zero software licences**.
+**ChemE‑LLM** is an open‑source, student‑deployable AI assistant for chemical‑engineering simulation tools – specifically **DWSIM** and **MATLAB**.  It provides natural‑language query handling, grounded answers, and step‑by‑step UI navigation for common simulation workflows.  The system is built to run on **free compute** (Google Colab T4) and requires **zero software licences**.
 
 ---
 
@@ -38,13 +41,37 @@
 
 ---
 
-## 3. Core Features
+## 3. Current Build Status
+
+> Last updated: **June 2026**
+
+| Phase | Status | Output |
+|-------|--------|--------|
+| **Phase 1** — Data Curation | ✅ **Complete** | `sources.csv`, 30–50 videos/tool curated, license audit done |
+| **Phase 2** — KB Construction | ✅ **Complete** | **763 chunks** (DWSIM: 296, MATLAB: 461+), schema validated |
+| **Phase 3** — Synthetic Q&A | 🔄 **Running** | `finetune_dataset.jsonl` — estimated ~5,300 pairs from 763 chunks |
+| **Phase 4** — QLoRA Fine-tuning | ⏳ **Pending** | Awaiting `finetune_dataset.jsonl` completion |
+| **Phase 5** — RAG + Gradio UI | 🔧 **In Progress** | Vector store builder & retriever written; Gradio UI next |
+
+### Knowledge Base Summary
+
+| Source | Tool | Valid Chunks |
+|--------|------|-------------|
+| Track A (Docs) | DWSIM | 152 |
+| Track A (Docs) | MATLAB | 365 |
+| Track B (YouTube) | DWSIM | 144 |
+| Track B (YouTube) | MATLAB | 100 |
+| **TOTAL** | | **761** |
+
+---
+
+## 4. Core Features
 
 | Feature | Description |
 |---|---|
 | **Dual‑track data curation** | Official docs (PDF/HTML) + YouTube video extraction. |
 | **Knowledge‑base construction** | Unified JSON schema, deduplication, conflict resolution. |
-| **Synthetic Q&A generation** | Automated generation of 3‑8 k high‑quality Q&A pairs for fine‑tuning. |
+| **Synthetic Q&A generation** | Automated generation of 3‑8 k high‑quality Q&A pairs for fine‑tuning. |
 | **QLoRA fine‑tuning** | Efficient 4‑bit LoRA adapter training on Phi‑3‑mini (or alternatives). |
 | **RAG layer** | ChromaDB vector store with `all‑MiniLM‑L6‑v2` embeddings. |
 | **Gradio UI** | Simple web interface for students – query input, answer output, source chunk toggle. |
@@ -53,7 +80,7 @@
 
 ---
 
-## 4. Unique Features & Innovations
+## 5. Unique Features & Innovations
 
 ### Real-time Progress Tracking
 
@@ -73,61 +100,66 @@ We implement a **Blackboard Mechanism** to coordinate data ingestion. Instead of
 
 ### Resilient API Orchestration
 
-An automated **API Key Cycler** monitors rate limits in real-time. When a quota is reached, the system seamlessly rotates to the next available key, ensuring the pipeline continues without manual intervention.
+An automated **API Key Cycler** monitors rate limits in real-time. When a quota is reached, the system seamlessly rotates to the next available key, ensuring the pipeline continues without manual intervention. 9 API keys are currently configured and rotating.
 
 ---
 
-## 5. System Architecture
+## 6. System Architecture
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│                DATA INGESTION LAYER               │
+│                DATA INGESTION LAYER                 │
 │                                                     │
-│  TRACK A          │          TRACK B               │
+│  TRACK A          │          TRACK B                │
 │  ──────────────── │ ──────────────────────          │
-│  PDFs / Docs      │ YouTube URLs                     │
-│  (DWSIM, MATLAB) →│ (30‑50 per tool) → Gemini 1.5 → │
+│  PDFs / Docs      │ YouTube URLs                    │
+│  (DWSIM, MATLAB) →│ (30‑50 per tool) → Gemini   →  │
 │  Gemini / Python  │   JSON chunks                   │
-│  parser          │                                 │
+│  parser           │                                 │
 └──────────────────┬──────────────────────────────────┘
                    │
                    ▼
 ┌─────────────────────────────────────────────────────┐
-│            KNOWLEDGE BASE CONSTRUCTION            │
+│            KNOWLEDGE BASE CONSTRUCTION              │
 │ Merge Track A + Track B outputs, deduplicate,       │
 │ prefer official specs for params & UI paths.        │
+│           ✅ 763 chunks ready                       │
 └──────────────────┬──────────────────────────────────┘
                    │
                    ▼
 ┌─────────────────────────────────────────────────────┐
-│   SYNTHETIC Q&A GENERATION (Gemini)                │
-│ 4 categories: how‑to, troubleshoot, params,      │
+│   SYNTHETIC Q&A GENERATION (Gemini)                 │
+│ 4 categories: how‑to, troubleshoot, params,         │
 │ conceptual → JSONL SFT format                       │
+│           🔄 Running (~5,300 pairs estimated)       │
 └──────────────────┬──────────────────────────────────┘
                    │
                    ▼
 ┌─────────────────────────────────────────────────────┐
-│                FINE‑TUNING LAYER                  │
+│                FINE‑TUNING LAYER                    │
 │ QLoRA on Phi‑3‑mini (or Qwen2.5‑3B)                │
 │ Adapter weights saved to Google Drive               │
+│           ⏳ Pending dataset completion             │
 └──────────────────┬──────────────────────────────────┘
                    │
                    ▼
 ┌─────────────────────────────────────────────────────┐
-│                     RAG LAYER                     │
+│                     RAG LAYER                       │
 │ ChromaDB store, `all‑MiniLM‑L6‑v2` embeddings      │
 │ Query → top‑k retrieval → injection into LLM prompt │
+│           🔧 Vector store being built               │
 └──────────────────┬──────────────────────────────────┘
                    │
                    ▼
 ┌─────────────────────────────────────────────────────┐
-│                 GRADIO INTERFACE                  │
-│ Text input → RAG → fine‑tuned model → answer       │
-│ Optional source‑chunk display for learning           │
+│                 GRADIO INTERFACE                    │
+│ Text input → RAG → fine‑tuned model → answer        │
+│ Optional source‑chunk display for learning          │
+│           ⏳ Coming next                            │
 └─────────────────────────────────────────────────────┘
 ```
 
-### 5.1 Project Directory Structure
+### 6.1 Project Directory Structure
 
 ```text
 .
@@ -138,10 +170,11 @@ An automated **API Key Cycler** monitors rate limits in real-time. When a quota 
 │   ├── raw/
 │   │   ├── local_pdfs/     # Real engineering documentation PDFs
 │   │   └── sources.csv     # Master ingestion catalog
+│   ├── chroma_db/          # ChromaDB persistent vector store (Phase 5)
 │   └── processed/
 │       ├── blackboard/     # Track A (PDF/HTML) outputs and ingestion tracker
 │       │   ├── cache/      # Playwright/Requests cached raw text outputs
-│       │   ├── knowledge/  # Final structured JSON output chunks
+│       │   ├── knowledge/  # Final structured JSON output chunks (763 total)
 │       │   └── tracking/   # Progress metrics & extraction logs
 │       └── track_b/        # Track B (YouTube video transcripts & logs)
 ├── docs/                   # Unified product specifications & documentation
@@ -150,6 +183,9 @@ An automated **API Key Cycler** monitors rate limits in real-time. When a quota 
 │   ├── daily_build_plan.md
 │   ├── extraction_report.md
 │   └── agent_squad_spec.md
+├── eval/                   # Manual evaluation test sets (locked before training)
+│   ├── test_set_dwsim.json # 20 DWSIM questions with ground-truth answers
+│   └── test_set_matlab.json# 20 MATLAB questions with ground-truth answers
 ├── scripts/                # Operations & maintenance utilities
 │   ├── check_incompletes.py
 │   ├── cleanup_chunks.py
@@ -159,8 +195,22 @@ An automated **API Key Cycler** monitors rate limits in real-time. When a quota 
 ├── src/                    # Standard modular Python source code
 │   ├── track_a/
 │   │   └── agent.py        # PDF & HTML Ingestion Agent
-│   └── track_b/
-│       └── agent.py        # YouTube Transcription Agent
+│   ├── track_b/
+│   │   └── agent.py        # YouTube Transcription Agent
+│   └── rag/
+│       ├── build_vectorstore.py  # Embeds KB chunks into ChromaDB
+│       └── retriever.py          # Semantic search module for RAG pipeline
+├── synthetic_qa/           # Synthetic Q&A generation pipeline (Phase 3)
+│   ├── pipeline.py         # Main entry point
+│   ├── generator.py        # Gemini-powered Q&A pair generator
+│   ├── kb_loader.py        # Loads and deduplicates KB chunks
+│   ├── prompt_templates.py # Category-specific prompt templates
+│   ├── quality_filter.py   # Output validation and filtering
+│   ├── category_balancer.py# Ensures ≥500 pairs per category
+│   └── config.py           # Centralised settings
+├── finetune_dataset.jsonl  # Final SFT training dataset (generated by Phase 3)
+├── app.py                  # Gradio UI entry point (Phase 5)
+├── PROJECT_STATUS.md       # Live project status tracker
 ├── .gitignore
 ├── README.md
 ├── requirements.txt
@@ -169,14 +219,14 @@ An automated **API Key Cycler** monitors rate limits in real-time. When a quota 
 
 ---
 
-## 6. Quick Start (Installation & Setup)
->
+## 7. Quick Start (Installation & Setup)
+
 > **Prerequisites**
 >
-> - Python 3.9 or newer
+> - Python 3.9 or newer
 > - Git
-> - Access to a Google Colab account (GPU‑enabled) or a local GPU with ≥16 GB VRAM
->
+> - Access to a Google Colab account (GPU‑enabled) or a local GPU with ≥16 GB VRAM
+
 ```bash
 # 1️⃣ Clone the repository
 git clone https://github.com/your_org/ChemEng_finetuning-main.git
@@ -189,75 +239,88 @@ source .venv/bin/activate  # on Windows: .venv\Scripts\activate
 # 3️⃣ Install core dependencies
 pip install -r requirements.txt
 
-# 4️⃣ Optional: Install the 4‑bit quantisation stack (bitsandbytes) for fine‑tuning
-pip install bitsandbytes==0.43.1
+# 4️⃣ Build the RAG vector store (run once after KB is ready)
+python -m src.rag.build_vectorstore
 
-# 5️⃣ Run the Gradio demo (after the data pipeline is populated)
+# 5️⃣ Run the Gradio demo
 python app.py
 ```
 
-**Note** – The data‑curation pipeline (`fetch_pdfs.py`, `research_agent.py`, etc.) must be executed first to generate `master_kb_*.json`.  Detailed instructions are in the `docs/` folder.
+> **Note** – For fine-tuning, upload `finetune_dataset.jsonl` to Google Drive and run the Colab notebook in the `finetune/` directory. Install the training stack separately:
+> ```bash
+> pip install transformers peft bitsandbytes trl datasets
+> ```
 
 ---
 
-## 7. Usage Guide
+## 8. Usage Guide
 
-### 6.1 Query the Assistant (Gradio UI)
+### 8.1 Query the Assistant (Gradio UI)
 
 1. Open the URL printed by `app.py` (default `http://127.0.0.1:7860`).
 2. Type a natural‑language question, e.g.:
-   - *“How do I configure a Flash Drum in DWSIM?”*
-   - *“Explain the difference between `ode45` and `ode15s` in MATLAB.”*
-3. Press **Submit** – the system retrieves the top‑3 KB chunks, injects them into the fine‑tuned Phi‑3‑mini model, and displays the answer.
-4. Click **Show source** to view the exact chunk(s) used for grounding.
+   - *"How do I configure a Flash Drum in DWSIM?"*
+   - *"Explain the difference between `ode45` and `ode15s` in MATLAB."*
+3. Select the **Software** (DWSIM / MATLAB / Both) from the dropdown.
+4. Press **Submit** – the system retrieves the top‑3 KB chunks, injects them into the fine‑tuned Phi‑3‑mini model, and displays the answer.
+5. Click **Show source** to view the exact chunk(s) used for grounding.
 
-### 6.2 Command‑Line Interface (optional)
+### 8.2 Run Synthetic Q&A Generation
 
 ```bash
-python cli.py "<your question>"
+# Full run (with resume support if interrupted)
+python -m synthetic_qa.pipeline
+
+# Dry run — validate KB without making API calls
+python -m synthetic_qa.pipeline --dry-run
+
+# Test with a small sample
+python -m synthetic_qa.pipeline --max-chunks 10
 ```
 
-The CLI returns the answer and a path to the source JSON chunk for audit.
+### 8.3 Build the RAG Vector Store
+
+```bash
+python -m src.rag.build_vectorstore
+```
 
 ---
 
----
-
-## 8. Challenges & Solutions
+## 9. Challenges & Solutions
 
 Throughout the development of ChemE‑LLM, several technical hurdles were encountered and resolved:
 
 | Problem | Solution / Minimization |
 |---|---|
 | **Anti-Bot Security** (e.g., MathWorks) | Implemented robust scraping using **Playwright** to bypass protections and recover documentation. |
-| **API Rate Limits** (Gemini) | Developed an **automated API key rotation** mechanism and graceful error handling to ensure continuous data extraction. |
-| **Scanned/Low-Quality PDFs** | Leveraged **Gemini’s File API for OCR** to extract structured text from scanned engineering documents. |
+| **API Rate Limits** (Gemini) | Developed an **automated API key rotation** mechanism across 9 keys with graceful error handling. |
+| **Scanned/Low-Quality PDFs** | Leveraged **Gemini's File API for OCR** to extract structured text from scanned engineering documents. |
 | **Non-UI Software** (MATLAB CLI) | Adjusted extraction logic and validation to correctly handle CLI-based tools where UI navigation paths are not applicable. |
-| **Windows File System Issues** | Resolved encoding and path-length issues to ensure the pipeline runs smoothly on Windows environments. |
 | **Data Noise** (GitHub/Licenses) | Built automated cleanup scripts to filter out redundant metadata and license headers from extracted knowledge chunks. |
+| **Category Imbalance** | Built a `category_balancer.py` module that detects under-represented categories and triggers targeted generation passes. |
 
 ---
 
-## 9. Development Roadmap
+## 10. Development Roadmap
 
-| Phase | Timeline | Goal |
-|---|---|---|
-| **Phase 1** – Data Curation | Weeks 1‑2 | Gather PDFs, HTML docs, and curate ≥40 YouTube videos per tool. |
-| **Phase 2** – Extraction & KB Construction | Weeks 2‑3 | Convert sources to unified JSON, deduplicate, and validate schema. |
-| **Phase 3** – Synthetic Q&A Generation | Week 3 | Produce 3‑8 k high‑quality Q&A pairs (≥500 per category). |
-| **Phase 4** – QLoRA Fine‑tuning & Evaluation | Week 4 | Train adapter, achieve ≥15 % accuracy improvement, keep hallucination ≤10 %. |
-| **Phase 5** – RAG + Gradio Release | Week 5 | End‑to‑end runnable app, documentation, and one‑page README for students. |
+| Phase | Timeline | Status | Goal |
+|---|---|---|---|
+| **Phase 1** – Data Curation | Weeks 1‑2 | ✅ Done | Gather PDFs, HTML docs, and curate ≥40 YouTube videos per tool. |
+| **Phase 2** – Extraction & KB Construction | Weeks 2‑3 | ✅ Done | Convert sources to unified JSON, deduplicate, and validate schema (763 chunks). |
+| **Phase 3** – Synthetic Q&A Generation | Week 3 | 🔄 Running | Produce 3‑8 k high‑quality Q&A pairs (≥500 per category). |
+| **Phase 4** – QLoRA Fine-tuning & Evaluation | Week 4 | ⏳ Pending | Train adapter, achieve ≥15% accuracy improvement, keep hallucination ≤10%. |
+| **Phase 5** – RAG + Gradio Release | Week 5 | 🔧 In Progress | End‑to‑end runnable app, documentation, and one‑page README for students. |
 
-All phases are tracked in `PROJECT_PLAN.md` with detailed milestones.
+All phases are tracked in [`PROJECT_STATUS.md`](PROJECT_STATUS.md) with detailed milestones and known issues.
 
 ---
 
-## 10. Contributing
+## 11. Contributing
 
 We welcome contributions! Please follow these steps:
 
 1. Fork the repository and create a feature branch.
-2. Ensure code complies with the existing style (PEP 8, type hints, docstrings).
+2. Ensure code complies with the existing style (PEP 8, type hints, docstrings).
 3. Run the full test suite: `pytest -q`.
 4. Update documentation where applicable.
 5. Submit a Pull Request with a clear description of the change.
@@ -266,15 +329,15 @@ For major changes, open an issue first to discuss the design.
 
 ---
 
-## 11. License
+## 12. License
 
 This project is licensed under the **MIT License** – see the `LICENSE` file for details.
 
 ---
 
-## 12. Contact & Acknowledgements
+## 13. Contact & Acknowledgements
 
-**Lead Maintainer:** Harshith Bhardwaz Kenkari – <harshithkenkary@gmail.com>
+**Lead Maintainer:** Harshith Bhardwaz Kenkari – <harshithkenkary@gmail.com>
 
 Special thanks to the **Google Gemini** team for the extraction models, the **HuggingFace** community for PEFT/QLoRA, and the **open‑source DWSIM** project for providing a free simulation engine.
 

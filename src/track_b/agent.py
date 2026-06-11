@@ -38,20 +38,28 @@ env_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
 if env_key:
     api_keys.append(env_key)
 
+# Single source of truth: api.txt in the project root
 try:
-    key_path = str(ROOT_DIR / "gemini_api_key.txt")
+    key_path = str(ROOT_DIR / "api.txt")
     if os.path.exists(key_path):
         with open(key_path, "r") as f:
             for line in f:
+                line = line.strip()
                 if "API KEY:" in line:
-                    key = line.split(":")[-1].strip()
+                    key = line.split(":", 1)[-1].strip()
                     if key and key not in api_keys:
                         api_keys.append(key)
+                elif line and not line.startswith("#") and len(line) > 20:
+                    if line not in api_keys:
+                        api_keys.append(line)
 except Exception:
     pass
 
 if not api_keys:
-    api_keys = ["YOUR_KEY_HERE"]
+    raise RuntimeError(
+        "No Gemini API keys found. Add them to api.txt in the project root "
+        "using the format:  API KEY: <your_key>"
+    )
 
 current_key_idx = 0
 genai.configure(api_key=api_keys[current_key_idx])
@@ -180,15 +188,39 @@ def fetch_video_info_and_transcript(video_url: str) -> tuple[dict | None, str | 
 # GEMINI EXTRACTION
 # ==========================================
 
+# Track which keys are exhausted in the current rotation cycle
+_exhausted_keys_b: set[int] = set()
+
+
 def _rotate_key():
-    global current_key_idx, MODEL
-    if current_key_idx < len(api_keys) - 1:
-        current_key_idx += 1
-        log.warning(f"Rotating to API key {current_key_idx + 1}/{len(api_keys)}")
-        genai.configure(api_key=api_keys[current_key_idx])
-        MODEL = genai.GenerativeModel(MODEL_NAME)
-        return True
+    """Cycle to the next available API key (wraps around). Returns True if successful."""
+    global current_key_idx, MODEL, _exhausted_keys_b
+    _exhausted_keys_b.add(current_key_idx)
+
+    if len(_exhausted_keys_b) >= len(api_keys):
+        log.warning(f"All {len(api_keys)} API key(s) exhausted — caller should back off.")
+        return False
+
+    for _ in range(len(api_keys)):
+        current_key_idx = (current_key_idx + 1) % len(api_keys)
+        if current_key_idx not in _exhausted_keys_b:
+            log.warning(
+                f"Rotating to API key {current_key_idx + 1}/{len(api_keys)} "
+                f"({len(_exhausted_keys_b)} exhausted so far)"
+            )
+            genai.configure(api_key=api_keys[current_key_idx])
+            MODEL = genai.GenerativeModel(MODEL_NAME)
+            return True
+
     return False
+
+
+def _reset_exhausted_b() -> None:
+    """Clear the exhausted-key set after a successful call or backoff."""
+    global _exhausted_keys_b
+    if _exhausted_keys_b:
+        log.info("Track B: resetting exhausted-key tracker.")
+    _exhausted_keys_b = set()
 
 
 def _parse_gemini_json(text: str) -> list | None:

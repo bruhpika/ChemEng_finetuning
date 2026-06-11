@@ -10,24 +10,32 @@ from pathlib import Path
 ROOT_DIR = Path(__file__).resolve().parents[2]
 
 api_keys = []
-env_key = os.environ.get("GEMINI_API_KEY")
+env_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
 if env_key:
     api_keys.append(env_key)
 
+# Single source of truth: api.txt in the project root
 try:
-    key_path = str(ROOT_DIR / "gemini_api_key.txt")
+    key_path = str(ROOT_DIR / "api.txt")
     if os.path.exists(key_path):
         with open(key_path, "r") as f:
             for line in f:
+                line = line.strip()
                 if "API KEY:" in line:
-                    key = line.split(":")[-1].strip()
+                    key = line.split(":", 1)[-1].strip()
                     if key and key not in api_keys:
                         api_keys.append(key)
+                elif line and not line.startswith("#") and len(line) > 20:
+                    if line not in api_keys:
+                        api_keys.append(line)
 except Exception:
     pass
 
 if not api_keys:
-    api_keys = ["YOUR_KEY_HERE"]
+    raise RuntimeError(
+        "No Gemini API keys found. Add them to api.txt in the project root "
+        "using the format:  API KEY: <your_key>"
+    )
 
 current_key_idx = 0
 genai.configure(api_key=api_keys[current_key_idx])

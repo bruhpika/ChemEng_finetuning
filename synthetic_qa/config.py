@@ -21,14 +21,14 @@ PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 MODULE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # ── API KEY LOADING ──────────────────────────────────────────────────────────
-# Follows the same pattern as Track A/B agents:
-#   1. Check GEMINI_API_KEY / GOOGLE_API_KEY env vars
-#   2. Read from gemini_api_key.txt (primary) or api.txt (fallback)
-#   Format in file: "API KEY: <key>" (one per line for multiple keys)
+# Priority:
+#   1. GEMINI_API_KEY / GOOGLE_API_KEY environment variables
+#   2. api.txt in the project root (single source of truth)
+#      Format: "API KEY: <key>"  — one key per line, bare keys also accepted.
 
 
 def load_api_keys() -> list[str]:
-    """Load Gemini API keys from environment and key files."""
+    """Load Gemini API keys from environment and api.txt."""
     keys: list[str] = []
 
     # Env vars
@@ -37,35 +37,32 @@ def load_api_keys() -> list[str]:
         if val and val not in keys:
             keys.append(val)
 
-    # Key files (primary → fallback)
-    key_files = [
-        os.path.join(PROJECT_ROOT, "gemini_api_key.txt"),
-        os.path.join(PROJECT_ROOT, "api.txt"),
-    ]
-    for key_path in key_files:
-        if os.path.exists(key_path):
-            try:
-                with open(key_path, "r") as f:
-                    for line in f:
-                        line = line.strip()
-                        if "API KEY:" in line:
-                            key = line.split(":")[-1].strip()
-                            if key and key not in keys:
-                                keys.append(key)
-                        elif line and not line.startswith("#") and len(line) > 20:
-                            # Also accept bare key lines (no "API KEY:" prefix)
-                            if line not in keys:
-                                keys.append(line)
-            except Exception as e:
-                log.warning(f"Failed to read key file {key_path}: {e}")
+    # Single key file: api.txt
+    key_path = os.path.join(PROJECT_ROOT, "api.txt")
+    if os.path.exists(key_path):
+        try:
+            with open(key_path, "r") as f:
+                for line in f:
+                    line = line.strip()
+                    if "API KEY:" in line:
+                        key = line.split(":", 1)[-1].strip()
+                        if key and key not in keys:
+                            keys.append(key)
+                    elif line and not line.startswith("#") and len(line) > 20:
+                        # Also accept bare key lines (no "API KEY:" prefix)
+                        if line not in keys:
+                            keys.append(line)
+        except Exception as e:
+            log.warning(f"Failed to read api.txt: {e}")
 
     if not keys:
         log.error(
-            "No API keys found. Set GEMINI_API_KEY env var or create "
-            "gemini_api_key.txt with format 'API KEY: <key>'"
+            "No API keys found. Set GEMINI_API_KEY env var or add keys to "
+            "api.txt using the format:  API KEY: <your_key>"
         )
 
     return keys
+
 
 
 API_KEYS = load_api_keys()

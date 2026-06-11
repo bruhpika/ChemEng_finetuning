@@ -1,0 +1,102 @@
+[
+  {
+    "category": "how_to",
+    "question": "How do you configure a PID controller block in Simulink?",
+    "ground_truth_answer": "Double-click the PID block in Simulink and set the Proportional (P), Integral (I), and Derivative (D) gains in the block parameters dialog."
+  },
+  {
+    "category": "how_to",
+    "question": "How to install CVX in MATLAB?",
+    "ground_truth_answer": "Download and unpack cvx.zip, then execute cvx_setup.m in the MATLAB command window."
+  },
+  {
+    "category": "how_to",
+    "question": "How do you start a NeqSim thermodynamic calculation in MATLAB?",
+    "ground_truth_answer": "Import the neqsim.thermo.system package and instantiate a system like SystemSrkEos(T, P)."
+  },
+  {
+    "category": "how_to",
+    "question": "How to run the OpenOCL cartpole example?",
+    "ground_truth_answer": "Run 'ocl.examples.cartpole' in the MATLAB command window."
+  },
+  {
+    "category": "how_to",
+    "question": "How do you add a chemical component in NeqSim?",
+    "ground_truth_answer": "Use the addComponent(name, fraction) method on the system instance."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "I am using CVX in MATLAB and getting an error about my model. How do I know if it is a Disciplined Convex Programming (DCP) violation?",
+    "ground_truth_answer": "If your model violates DCP, it is usually because the formulation is non-convex. Consult the CVX User Guide and FAQ."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "What does 'Derivative of state is not finite' mean in an ODE solver?",
+    "ground_truth_answer": "It means the ODE function returned a NaN, Inf, or complex value, often due to a division by zero or a singularity at the current time step."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "Why is NeqSim failing with a JVM Mismatch error?",
+    "ground_truth_answer": "MATLAB's bundled JVM version differs from the NeqSim build version; you may need to rebuild NeqSim."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "Why is my CVX model reporting 'Numerical scaling' issues?",
+    "ground_truth_answer": "The problem data is poorly scaled; adjust the model units or solver parameters to avoid extremely large or small numbers."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "Why can't MATLAB find CVX commands after installation?",
+    "ground_truth_answer": "You may need to run cvx_startup.m to initialize CVX paths and environment variables for the new session."
+  },
+  {
+    "category": "parameter_config",
+    "question": "How do you initialize a Soave-Redlich-Kwong EOS system in MATLAB using the NeqSim interface?",
+    "ground_truth_answer": "Use the constructor SystemSrkEos(T, P), where T is the temperature in Kelvin and P is the pressure in bar."
+  },
+  {
+    "category": "parameter_config",
+    "question": "What is the default relative tolerance for ode45?",
+    "ground_truth_answer": "The default relative tolerance (RelTol) for ode45 in MATLAB is 1e-3."
+  },
+  {
+    "category": "parameter_config",
+    "question": "What parameters are required to set classic mixing rules in NeqSim?",
+    "ground_truth_answer": "Call setMixingRule('classic') on the thermodynamic system instance."
+  },
+  {
+    "category": "parameter_config",
+    "question": "How do you specify the SDPT3 solver in CVX?",
+    "ground_truth_answer": "Use the cvx_solver command within your CVX block or run cvx_setup.m to set the default."
+  },
+  {
+    "category": "parameter_config",
+    "question": "What are the typical parameters tuned in an MPC controller?",
+    "ground_truth_answer": "Prediction horizon, control horizon, weights on output errors, and weights on control effort changes."
+  },
+  {
+    "category": "conceptual",
+    "question": "What is the difference between ode45 and ode15s?",
+    "ground_truth_answer": "ode45 is a medium-order solver for non-stiff systems, while ode15s is a variable-order solver designed for stiff differential equations."
+  },
+  {
+    "category": "conceptual",
+    "question": "What is Disciplined Convex Programming (DCP) in CVX?",
+    "ground_truth_answer": "DCP is a methodology that imposes a ruleset to guarantee problem convexity, transforming high-level models into standard forms for solvers."
+  },
+  {
+    "category": "conceptual",
+    "question": "What is OpenOCL used for?",
+    "ground_truth_answer": "It is a toolbox for Trajectory Optimization and non-linear Model Predictive Control (MPC)."
+  },
+  {
+    "category": "conceptual",
+    "question": "What is the advantage of using NeqSim over native MATLAB code for phase equilibrium?",
+    "ground_truth_answer": "NeqSim provides a production-grade, validated Java library for complex thermodynamic calculations that runs faster and has built-in EOS models."
+  },
+  {
+    "category": "conceptual",
+    "question": "What is orthogonal collocation in the context of chemical engineering?",
+    "ground_truth_answer": "A numerical method used to solve differential-algebraic equations (DAEs) by discretizing the spatial domain at specific collocation points."
+  }
+]

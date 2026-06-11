@@ -1,0 +1,102 @@
+[
+  {
+    "category": "how_to",
+    "question": "How do you add a Flash Drum unit operation to the flowsheet?",
+    "ground_truth_answer": "Use the 'Process Modeling > Flowsheet Utilities' or drag from the object palette."
+  },
+  {
+    "category": "how_to",
+    "question": "How to import compound data from online sources?",
+    "ground_truth_answer": "Click 'Import compound data from Online Sources' on the Simulation Configuration Wizard."
+  },
+  {
+    "category": "how_to",
+    "question": "How to configure a Property Package?",
+    "ground_truth_answer": "Go to the Basis tab in the Simulation Configuration window."
+  },
+  {
+    "category": "how_to",
+    "question": "How to run a simulation after configuring it?",
+    "ground_truth_answer": "Click the Solve Flowsheet button (or press F5) once all inputs are configured."
+  },
+  {
+    "category": "how_to",
+    "question": "How do you remove a compound from a simulation?",
+    "ground_truth_answer": "Select it from the right-hand list in the Compounds tab and click '< Remove'."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "What causes a 'Convergence failed at iteration X' error and how can it be fixed?",
+    "ground_truth_answer": "Often caused by poor initial estimates or mismatched property packages. Adjust the solver parameters or provide better estimates."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "Why does my distillation column show a mass balance error?",
+    "ground_truth_answer": "The feed stream conditions might not be fully specified, or the column specifications (like reflux ratio) are physically impossible."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "How to fix a 'Missing Property Package' error?",
+    "ground_truth_answer": "Ensure at least one Property Package is added and assigned to the flowsheet objects in the Basis tab."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "Why is the compound I need not in the default database?",
+    "ground_truth_answer": "It might not be included; use the Compound Creator to define it or import it from a JSON file."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "What to do if DWSIM crashes on startup?",
+    "ground_truth_answer": "Check the General Settings and try starting in Debug mode to see error messages."
+  },
+  {
+    "category": "parameter_config",
+    "question": "What are the required feed stream parameters for a distillation column?",
+    "ground_truth_answer": "Temperature, Pressure, Mass/Molar Flow, and Composition."
+  },
+  {
+    "category": "parameter_config",
+    "question": "What inputs are needed to define a generic Heat Exchanger?",
+    "ground_truth_answer": "Hot and cold fluid inlet streams, and either a heat duty or an outlet temperature specification."
+  },
+  {
+    "category": "parameter_config",
+    "question": "Which parameter defines the pressure drop in a PipeSegment?",
+    "ground_truth_answer": "The friction factor and the pipe length/diameter, or a user-specified constant pressure drop."
+  },
+  {
+    "category": "parameter_config",
+    "question": "What must be specified for a rigorous distillation column?",
+    "ground_truth_answer": "Number of stages, feed stage, reflux ratio, and a bottoms or distillate specification."
+  },
+  {
+    "category": "parameter_config",
+    "question": "What parameters do you set for a Pump unit operation?",
+    "ground_truth_answer": "Inlet/outlet streams and either an outlet pressure or pump efficiency/power."
+  },
+  {
+    "category": "conceptual",
+    "question": "What thermodynamic models are available for calculating Fugacity Coefficients in DWSIM?",
+    "ground_truth_answer": "DWSIM supports Phase Equilibria models for the Fugacity Coefficient that include the Chao-Seader and Grayson-Streed models."
+  },
+  {
+    "category": "conceptual",
+    "question": "What is the difference between a rigorous and a shortcut distillation model?",
+    "ground_truth_answer": "Shortcut uses Fenske-Underwood-Gilliland equations for quick estimates, while rigorous solves the full MESH equations per stage."
+  },
+  {
+    "category": "conceptual",
+    "question": "What does DWSIM's CAPE-OPEN compliance mean?",
+    "ground_truth_answer": "It allows DWSIM to integrate with external property packages and unit operations that follow the CAPE-OPEN standard."
+  },
+  {
+    "category": "conceptual",
+    "question": "What is a Phase Envelope?",
+    "ground_truth_answer": "A diagram showing the boundary between phase regions (like bubble point and dew point curves) for a mixture."
+  },
+  {
+    "category": "conceptual",
+    "question": "What is the role of a Property Package in DWSIM?",
+    "ground_truth_answer": "It determines the thermodynamic and physical property calculation methods used for the compounds in the simulation."
+  }
+]

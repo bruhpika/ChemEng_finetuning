@@ -4,10 +4,12 @@ Generates `{instruction, input, output}` finetuning pairs from the ChemE-LLM Kno
 
 ## Setup
 
-1. **API Key**: Ensure your Gemini API key is in `gemini_api_key.txt` at the project root:
+1. **API Key**: Add your Gemini API key(s) to `api.txt` at the project root (one per line):
    ```
-   API KEY: your_gemini_api_key_here
+   API KEY: your_first_key_here
+   API KEY: your_second_key_here
    ```
+   Keys are rotated automatically when a quota limit (429) is hit.
 
 2. **Dependencies**: The pipeline uses `google-generativeai` (already in your venv).
 
