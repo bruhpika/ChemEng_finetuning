@@ -209,28 +209,60 @@ def chat(question: str, software: str):
     return answer, sources, mode
 
 
+# Custom Gemini Minimal Dark Theme
+_THEME = gr.themes.Base(
+    primary_hue="indigo",
+    secondary_hue="slate",
+    font=[gr.themes.GoogleFont("Inter"), "sans-serif"],
+).set(
+    body_background_fill="*neutral_950",
+    body_background_fill_dark="#131314",
+    block_background_fill="*neutral_900",
+    block_background_fill_dark="#131314",
+    block_border_width="0px",
+    input_background_fill="*neutral_800",
+    input_background_fill_dark="#1e1e20",
+    input_border_color="*neutral_700",
+    input_border_color_dark="#333333",
+    button_primary_background_fill="*primary_500",
+    button_primary_background_fill_dark="linear-gradient(90deg, #4b90ff, #ff5546)",
+    button_primary_text_color="white",
+)
+
+_CSS = """
+body.dark, .dark { background-color: #131314 !important; color: #e3e3e3 !important; }
+.gradio-container { background-color: transparent !important; border: none !important; }
+#header { text-align: center; padding: 40px 0 20px 0; }
+#header h1 { 
+    font-size: 2.5rem; 
+    font-weight: 500; 
+    background: -webkit-linear-gradient(45deg, #4b90ff, #ff5546); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+}
+#header p { color: #a8c7fa; font-size: 1.1rem; margin-top: 8px; font-weight: 300; }
+#question-box textarea { background-color: #1e1e20 !important; border: 1px solid #333 !important; border-radius: 16px !important; color: #e3e3e3 !important; font-size: 1rem; padding: 16px; box-shadow: none !important; }
+#answer-box textarea { background-color: transparent !important; border: none !important; color: #e3e3e3 !important; font-size: 1.05rem; line-height: 1.6; padding: 0 !important; box-shadow: none !important; }
+.form { border: none !important; background: transparent !important; box-shadow: none !important; }
+button.primary { border: none !important; border-radius: 24px !important; font-weight: 500 !important; transition: opacity 0.2s !important; }
+button.primary:hover { opacity: 0.8 !important; }
+button.secondary { background-color: #1e1e20 !important; border: 1px solid #333 !important; color: #e3e3e3 !important; border-radius: 24px !important; }
+button.secondary:hover { background-color: #28282a !important; }
+.mode-badge { font-size: 0.85rem; color: #a8c7fa; margin-top: 4px; }
+.accordion { background-color: #1e1e20 !important; border: 1px solid #333 !important; border-radius: 16px !important; color: #e3e3e3 !important; }
+.accordion > button { color: #e3e3e3 !important; font-weight: 500 !important; }
+"""
+
+
 def build_ui() -> gr.Blocks:
-    with gr.Blocks(
-        title="ChemE-LLM — Chemical Engineering AI Assistant",
-        theme=gr.themes.Soft(
-            primary_hue="blue",
-            secondary_hue="slate",
-            font=[gr.themes.GoogleFont("Inter"), "sans-serif"],
-        ),
-        css="""
-        #header { text-align: center; padding: 20px 0 10px 0; }
-        #header h1 { font-size: 2rem; font-weight: 700; }
-        #header p { color: #64748b; font-size: 1rem; margin-top: 4px; }
-        #answer-box textarea { font-size: 0.95rem; line-height: 1.6; }
-        .mode-badge { font-size: 0.85rem; color: #475569; margin-top: 4px; }
-        """,
-    ) as demo:
+    with gr.Blocks(title="ChemE-LLM — Chemical Engineering AI Assistant") as demo:
 
         # ── Header ──────────────────────────────────────────────────────────
         with gr.Column(elem_id="header"):
             gr.HTML("""
                 <h1>⚗️ ChemE-LLM</h1>
                 <p>AI assistant for DWSIM & MATLAB — powered by RAG + QLoRA fine-tuning</p>
+                <p style="color: #4b90ff; font-weight: 500; font-size: 0.95rem; margin-top: 6px;">Created by Harshith Bhardwazz</p>
             """)
 
         gr.Markdown("---")
@@ -279,7 +311,7 @@ def build_ui() -> gr.Blocks:
                     lines=12,
                     interactive=False,
                     elem_id="answer-box",
-                    placeholder="Answer will appear here...",
+                    value="Welcome to ChemE-LLM! ⚗️\n\nI am an AI assistant specifically designed to help you with DWSIM and MATLAB chemical engineering simulations.\n\nType your question on the left to get started, or click one of the examples below to see how I work!\n\n— Created by Harshith Bhardwazz",
                 )
                 mode_output = gr.Markdown(
                     value="",
@@ -310,11 +342,23 @@ def build_ui() -> gr.Blocks:
 
         # ── Footer ───────────────────────────────────────────────────────────
         gr.Markdown("---")
-        gr.Markdown(
-            "_ChemE-LLM — open-source, zero-budget AI for chemical engineering students. "
-            "Answers are grounded in verified documentation; always verify critical simulation parameters._",
-            elem_classes=["mode-badge"],
-        )
+        with gr.Row():
+            gr.Markdown(
+                "_ChemE-LLM — open-source, zero-budget AI for chemical engineering students. "
+                "Answers are grounded in verified documentation; always verify critical simulation parameters._\n\n"
+                "**Created by Harshith Bhardwazz**",
+                elem_classes=["mode-badge"],
+            )
+            gr.HTML("""
+                <div style="text-align: right; margin-top: 10px;">
+                    <a href="https://github.com/bruhpika/ChemEng_finetuning-main" target="_blank" style="text-decoration: none;">
+                        <button style="background-color: #2ea44f; color: white; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 600; font-size: 0.95rem; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: opacity 0.2s;">
+                            <svg height="18" viewBox="0 0 16 16" width="18" fill="white"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path></svg>
+                            Contribute on GitHub
+                        </button>
+                    </a>
+                </div>
+            """)
 
     return demo
 
@@ -335,4 +379,6 @@ if __name__ == "__main__":
         server_port=7860,
         share=False,
         show_error=True,
+        theme=_THEME,
+        css=_CSS,
     )
