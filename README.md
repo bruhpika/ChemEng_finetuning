@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.9%2B-blue)](https://www.python.org/)
-[![Status](https://img.shields.io/badge/status-Phase%203%20%E2%80%94%20In%20Progress-orange)](PROJECT_STATUS.md)
+[![Status](https://img.shields.io/badge/status-Phase%205%20%E2%80%94%20Complete-brightgreen)](PROJECT_STATUS.md)
 [![KB Chunks](https://img.shields.io/badge/KB%20Chunks-763-brightgreen)](data/processed/)
 
 ---
@@ -51,7 +51,7 @@
 | **Phase 2** — KB Construction | ✅ **Complete** | **763 chunks** (DWSIM: 296, MATLAB: 461+), schema validated |
 | **Phase 3** — Synthetic Q&A | 🔄 **Running** | `finetune_dataset.jsonl` — estimated ~5,300 pairs from 763 chunks |
 | **Phase 4** — QLoRA Fine-tuning | ⏳ **Pending** | Awaiting `finetune_dataset.jsonl` completion |
-| **Phase 5** — RAG + Gradio UI | 🔧 **In Progress** | Vector store builder & retriever written; Gradio UI next |
+| **Phase 5** — RAG + Gradio UI | ✅ **Complete** | Vector store built; Gradio UI running perfectly |
 
 ### Knowledge Base Summary
 
@@ -147,7 +147,7 @@ An automated **API Key Cycler** monitors rate limits in real-time. When a quota 
 │                     RAG LAYER                       │
 │ ChromaDB store, `all‑MiniLM‑L6‑v2` embeddings      │
 │ Query → top‑k retrieval → injection into LLM prompt │
-│           🔧 Vector store being built               │
+│           ✅ Vector store successfully built                │
 └──────────────────┬──────────────────────────────────┘
                    │
                    ▼
@@ -155,7 +155,7 @@ An automated **API Key Cycler** monitors rate limits in real-time. When a quota 
 │                 GRADIO INTERFACE                    │
 │ Text input → RAG → fine‑tuned model → answer        │
 │ Optional source‑chunk display for learning          │
-│           ⏳ Coming next                            │
+│           ✅ Running locally                        │
 └─────────────────────────────────────────────────────┘
 ```
 
@@ -309,7 +309,7 @@ Throughout the development of ChemE‑LLM, several technical hurdles were encoun
 | **Phase 2** – Extraction & KB Construction | Weeks 2‑3 | ✅ Done | Convert sources to unified JSON, deduplicate, and validate schema (763 chunks). |
 | **Phase 3** – Synthetic Q&A Generation | Week 3 | 🔄 Running | Produce 3‑8 k high‑quality Q&A pairs (≥500 per category). |
 | **Phase 4** – QLoRA Fine-tuning & Evaluation | Week 4 | ⏳ Pending | Train adapter, achieve ≥15% accuracy improvement, keep hallucination ≤10%. |
-| **Phase 5** – RAG + Gradio Release | Week 5 | 🔧 In Progress | End‑to‑end runnable app, documentation, and one‑page README for students. |
+| **Phase 5** – RAG + Gradio Release | Week 5 | ✅ Done | End‑to‑end runnable app, documentation, and one‑page README for students. |
 
 All phases are tracked in [`PROJECT_STATUS.md`](PROJECT_STATUS.md) with detailed milestones and known issues.
 
