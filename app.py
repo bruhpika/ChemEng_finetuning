@@ -174,7 +174,7 @@ def generate_answer(question: str, software: str) -> tuple[str, str, str]:
                 answer += f"**Steps:**\n" + "\n".join(f"- {s}" for s in chunk["steps"])
         else:
             answer = "I could not find any relevant information in the knowledge base for your question."
-        return answer, sources_md, f"🟡 Mode: RAG-only (no LLM — build vector store & load model)"
+        return answer, sources_md, f"Mode: RAG-only (no LLM — build vector store & load model)"
 
     # Full LLM generation
     try:
@@ -195,7 +195,7 @@ def generate_answer(question: str, software: str) -> tuple[str, str, str]:
     except Exception as e:
         answer = f"Error during generation: {e}"
 
-    mode_label = "✅ Fine-tuned + RAG" if mode == "finetuned" else "🟠 Base model + RAG (no fine-tuning yet)"
+    mode_label = "Fine-tuned + RAG" if mode == "finetuned" else "Base model + RAG (no fine-tuning yet)"
     return answer, sources_md, mode_label
 
 
@@ -260,7 +260,7 @@ def build_ui() -> gr.Blocks:
         # ── Header ──────────────────────────────────────────────────────────
         with gr.Column(elem_id="header"):
             gr.HTML("""
-                <h1>⚗️ ChemE-LLM</h1>
+                <h1>ChemE-LLM</h1>
                 <p>AI assistant for DWSIM & MATLAB — powered by RAG + QLoRA fine-tuning</p>
                 <p style="color: #4b90ff; font-weight: 500; font-size: 0.95rem; margin-top: 6px;">Created by Harshith Bhardwazz</p>
             """)
@@ -271,7 +271,7 @@ def build_ui() -> gr.Blocks:
         with gr.Row():
             # LEFT: input panel
             with gr.Column(scale=2):
-                gr.Markdown("### 💬 Ask a Question")
+                gr.Markdown("### Ask a Question")
                 question_input = gr.Textbox(
                     placeholder='e.g. "How do I configure a Flash Drum in DWSIM?"',
                     label="Your Question",
@@ -285,11 +285,11 @@ def build_ui() -> gr.Blocks:
                     info="Restrict retrieval to a specific tool or search both.",
                 )
                 with gr.Row():
-                    submit_btn = gr.Button("🔍 Ask ChemE-LLM", variant="primary")
-                    clear_btn = gr.Button("🗑️ Clear", variant="secondary")
+                    submit_btn = gr.Button("Ask ChemE-LLM", variant="primary")
+                    clear_btn = gr.Button("Clear", variant="secondary")
 
                 # Quick-access example questions
-                gr.Markdown("#### 💡 Example Questions")
+                gr.Markdown("#### Example Questions")
                 gr.Examples(
                     examples=[
                         ["How do I configure a Flash Drum in DWSIM?", "DWSIM"],
@@ -305,13 +305,13 @@ def build_ui() -> gr.Blocks:
 
             # RIGHT: output panel
             with gr.Column(scale=3):
-                gr.Markdown("### 🤖 Answer")
+                gr.Markdown("### Answer")
                 answer_output = gr.Textbox(
                     label="",
                     lines=12,
                     interactive=False,
                     elem_id="answer-box",
-                    value="Welcome to ChemE-LLM! ⚗️\n\nI am an AI assistant specifically designed to help you with DWSIM and MATLAB chemical engineering simulations.\n\nType your question on the left to get started, or click one of the examples below to see how I work!\n\n— Created by Harshith Bhardwazz",
+                    value="Welcome to ChemE-LLM!\n\nI am an AI assistant specifically designed to help you with DWSIM and MATLAB chemical engineering simulations.\n\nType your question on the left to get started, or click one of the examples below to see how I work!\n\n— Created by Harshith Bhardwazz",
                 )
                 mode_output = gr.Markdown(
                     value="",
@@ -319,7 +319,7 @@ def build_ui() -> gr.Blocks:
                 )
 
                 # Collapsible source panel (PRD requirement)
-                with gr.Accordion("📚 Show Source Chunks Used", open=False):
+                with gr.Accordion("Show Source Chunks Used", open=False):
                     sources_output = gr.Markdown(
                         value="_Submit a question to see which KB chunks were retrieved._"
                     )
