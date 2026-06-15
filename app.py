@@ -1,20 +1,23 @@
 """
-ChemE-LLM — Gradio User Interface (app.py)
+ChemE-LLM — FastAPI Backend (app.py)
 
-Entry point: python app.py
+Entry point: uvicorn app:app --reload
 
 Pipeline:
-  1. Student types a natural-language question
+  1. Frontend sends a natural-language question
   2. RAG retriever fetches top-3 KB chunks from ChromaDB
   3. Chunks are injected into the prompt as context
   4. Fine-tuned Phi-3-mini (or base model as fallback) generates the answer
-  5. Answer + source chunks are displayed in the Gradio UI
+  5. Answer + source chunks are returned to the Next.js UI via REST
 """
 
 import os
 import json
 import time
-import gradio as gr
+from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+from typing import List, Optional, Tuple
 
 # ── Path setup ────────────────────────────────────────────────────────────────
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
@@ -95,7 +98,7 @@ def get_model():
 
 # ── Core Answer Generation ────────────────────────────────────────────────────
 
-def build_rag_prompt(question: str, context_chunks: list[dict]) -> str:
+def build_rag_prompt(question: str, context_chunks: list) -> str:
     """
     Constructs the full prompt string by injecting retrieved KB chunks
     as context before the student's question.
@@ -128,10 +131,10 @@ Answer:"""
     return prompt
 
 
-def generate_answer(question: str, software: str) -> tuple[str, str, str]:
+def generate_answer(question: str, software: str) -> Tuple[str, str, str, list]:
     """
     Full RAG + LLM pipeline.
-    Returns: (answer, sources_markdown, model_mode_label)
+    Returns: (answer, sources_markdown, model_mode_label, raw_sources)
     """
     # Step 1: Retrieve relevant chunks
     retriever = get_retriever()
@@ -145,6 +148,7 @@ def generate_answer(question: str, software: str) -> tuple[str, str, str]:
 
     # Step 2: Build source display markdown
     sources_md = ""
+    raw_sources = []
     if retrieved:
         lines = []
         for i, r in enumerate(retrieved, 1):
@@ -156,6 +160,14 @@ def generate_answer(question: str, software: str) -> tuple[str, str, str]:
             lines.append(f"**[{i}] {topic}** `({sw})`\n"
                          f"- Source: [{url}]({url})\n"
                          f"- Relevance score: `{score:.4f}` (lower = better match)\n")
+            raw_sources.append({
+                "id": i,
+                "topic": topic,
+                "software": sw,
+                "url": url,
+                "score": score,
+                "content": chunk.get("theory") or "\n".join(chunk.get("steps", []))
+            })
         sources_md = "\n".join(lines)
     else:
         sources_md = "_No sources retrieved. Make sure the vector store is built first._"
@@ -174,7 +186,7 @@ def generate_answer(question: str, software: str) -> tuple[str, str, str]:
                 answer += f"**Steps:**\n" + "\n".join(f"- {s}" for s in chunk["steps"])
         else:
             answer = "I could not find any relevant information in the knowledge base for your question."
-        return answer, sources_md, f"Mode: RAG-only (no LLM — build vector store & load model)"
+        return answer, sources_md, f"Mode: RAG-only (no LLM — build vector store & load model)", raw_sources
 
     # Full LLM generation
     try:
@@ -196,175 +208,41 @@ def generate_answer(question: str, software: str) -> tuple[str, str, str]:
         answer = f"Error during generation: {e}"
 
     mode_label = "Fine-tuned + RAG" if mode == "finetuned" else "Base model + RAG (no fine-tuning yet)"
-    return answer, sources_md, mode_label
+    return answer, sources_md, mode_label, raw_sources
 
 
-# ── Gradio UI ─────────────────────────────────────────────────────────────────
+# ── FastAPI App ───────────────────────────────────────────────────────────────
 
-def chat(question: str, software: str):
-    """Gradio callback — called every time the user clicks Submit."""
-    if not question.strip():
-        return "Please type a question first.", "", ""
-    answer, sources, mode = generate_answer(question, software)
-    return answer, sources, mode
+app = FastAPI(title="ChemE-LLM API")
 
-
-# Custom Gemini Minimal Dark Theme
-_THEME = gr.themes.Base(
-    primary_hue="indigo",
-    secondary_hue="slate",
-    font=[gr.themes.GoogleFont("Inter"), "sans-serif"],
-).set(
-    body_background_fill="*neutral_950",
-    body_background_fill_dark="#131314",
-    block_background_fill="*neutral_900",
-    block_background_fill_dark="#131314",
-    block_border_width="0px",
-    input_background_fill="*neutral_800",
-    input_background_fill_dark="#1e1e20",
-    input_border_color="*neutral_700",
-    input_border_color_dark="#333333",
-    button_primary_background_fill="*primary_500",
-    button_primary_background_fill_dark="linear-gradient(90deg, #4b90ff, #ff5546)",
-    button_primary_text_color="white",
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"], # In production, restrict this to the frontend URL
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
-_CSS = """
-body.dark, .dark { background-color: #131314 !important; color: #e3e3e3 !important; }
-.gradio-container { background-color: transparent !important; border: none !important; }
-#header { text-align: center; padding: 40px 0 20px 0; }
-#header h1 { 
-    font-size: 2.5rem; 
-    font-weight: 500; 
-    background: -webkit-linear-gradient(45deg, #4b90ff, #ff5546); 
-    -webkit-background-clip: text; 
-    -webkit-text-fill-color: transparent; 
-}
-#header p { color: #a8c7fa; font-size: 1.1rem; margin-top: 8px; font-weight: 300; }
-#question-box textarea { background-color: #1e1e20 !important; border: 1px solid #333 !important; border-radius: 16px !important; color: #e3e3e3 !important; font-size: 1rem; padding: 16px; box-shadow: none !important; }
-#answer-box textarea { background-color: transparent !important; border: none !important; color: #e3e3e3 !important; font-size: 1.05rem; line-height: 1.6; padding: 0 !important; box-shadow: none !important; }
-.form { border: none !important; background: transparent !important; box-shadow: none !important; }
-button.primary { border: none !important; border-radius: 24px !important; font-weight: 500 !important; transition: opacity 0.2s !important; }
-button.primary:hover { opacity: 0.8 !important; }
-button.secondary { background-color: #1e1e20 !important; border: 1px solid #333 !important; color: #e3e3e3 !important; border-radius: 24px !important; }
-button.secondary:hover { background-color: #28282a !important; }
-.mode-badge { font-size: 0.85rem; color: #a8c7fa; margin-top: 4px; }
-.accordion { background-color: #1e1e20 !important; border: 1px solid #333 !important; border-radius: 16px !important; color: #e3e3e3 !important; }
-.accordion > button { color: #e3e3e3 !important; font-weight: 500 !important; }
-"""
+class ChatRequest(BaseModel):
+    question: str
+    software: str = "Both"
 
+class SourceChunk(BaseModel):
+    id: int
+    topic: str
+    software: str
+    url: str
+    score: float
+    content: str
 
-def build_ui() -> gr.Blocks:
-    with gr.Blocks(title="ChemE-LLM — Chemical Engineering AI Assistant") as demo:
+class ChatResponse(BaseModel):
+    answer: str
+    sources_md: str
+    mode: str
+    sources: List[SourceChunk]
 
-        # ── Header ──────────────────────────────────────────────────────────
-        with gr.Column(elem_id="header"):
-            gr.HTML("""
-                <h1>ChemE-LLM</h1>
-                <p>AI assistant for DWSIM & MATLAB — powered by RAG + QLoRA fine-tuning</p>
-                <p style="color: #4b90ff; font-weight: 500; font-size: 0.95rem; margin-top: 6px;">Created by Harshith Bhardwazz</p>
-            """)
-
-        gr.Markdown("---")
-
-        # ── Main layout — two columns ────────────────────────────────────────
-        with gr.Row():
-            # LEFT: input panel
-            with gr.Column(scale=2):
-                gr.Markdown("### Ask a Question")
-                question_input = gr.Textbox(
-                    placeholder='e.g. "How do I configure a Flash Drum in DWSIM?"',
-                    label="Your Question",
-                    lines=3,
-                    elem_id="question-box",
-                )
-                software_dropdown = gr.Dropdown(
-                    choices=SOFTWARE_OPTIONS,
-                    value="Both",
-                    label="Filter by Software",
-                    info="Restrict retrieval to a specific tool or search both.",
-                )
-                with gr.Row():
-                    submit_btn = gr.Button("Ask ChemE-LLM", variant="primary")
-                    clear_btn = gr.Button("Clear", variant="secondary")
-
-                # Quick-access example questions
-                gr.Markdown("#### Example Questions")
-                gr.Examples(
-                    examples=[
-                        ["How do I configure a Flash Drum in DWSIM?", "DWSIM"],
-                        ["What is the difference between ode45 and ode15s?", "MATLAB"],
-                        ["How do I fix a convergence error in DWSIM?", "DWSIM"],
-                        ["How to set up a PID controller in Simulink?", "MATLAB"],
-                        ["What property package should I use for natural gas?", "DWSIM"],
-                        ["How do I install CVX in MATLAB?", "MATLAB"],
-                    ],
-                    inputs=[question_input, software_dropdown],
-                    label="",
-                )
-
-            # RIGHT: output panel
-            with gr.Column(scale=3):
-                gr.Markdown("### Answer")
-                answer_output = gr.Textbox(
-                    label="",
-                    lines=12,
-                    interactive=False,
-                    elem_id="answer-box",
-                    value="Welcome to ChemE-LLM!\n\nI am an AI assistant specifically designed to help you with DWSIM and MATLAB chemical engineering simulations.\n\nType your question on the left to get started, or click one of the examples below to see how I work!\n\n— Created by Harshith Bhardwazz",
-                )
-                mode_output = gr.Markdown(
-                    value="",
-                    elem_classes=["mode-badge"],
-                )
-
-                # Collapsible source panel (PRD requirement)
-                with gr.Accordion("Show Source Chunks Used", open=False):
-                    sources_output = gr.Markdown(
-                        value="_Submit a question to see which KB chunks were retrieved._"
-                    )
-
-        # ── Event wiring ─────────────────────────────────────────────────────
-        submit_btn.click(
-            fn=chat,
-            inputs=[question_input, software_dropdown],
-            outputs=[answer_output, sources_output, mode_output],
-        )
-        question_input.submit(
-            fn=chat,
-            inputs=[question_input, software_dropdown],
-            outputs=[answer_output, sources_output, mode_output],
-        )
-        clear_btn.click(
-            fn=lambda: ("", "_Submit a question to see which KB chunks were retrieved._", ""),
-            outputs=[answer_output, sources_output, mode_output],
-        )
-
-        # ── Footer ───────────────────────────────────────────────────────────
-        gr.Markdown("---")
-        with gr.Row():
-            gr.Markdown(
-                "_ChemE-LLM — open-source, zero-budget AI for chemical engineering students. "
-                "Answers are grounded in verified documentation; always verify critical simulation parameters._\n\n"
-                "**Created by Harshith Bhardwazz**",
-                elem_classes=["mode-badge"],
-            )
-            gr.HTML("""
-                <div style="text-align: right; margin-top: 10px;">
-                    <a href="https://github.com/bruhpika/ChemEng_finetuning-main" target="_blank" style="text-decoration: none;">
-                        <button style="background-color: #2ea44f; color: white; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 600; font-size: 0.95rem; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: opacity 0.2s;">
-                            <svg height="18" viewBox="0 0 16 16" width="18" fill="white"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path></svg>
-                            Contribute on GitHub
-                        </button>
-                    </a>
-                </div>
-            """)
-
-    return demo
-
-
-# ── Entry point ───────────────────────────────────────────────────────────────
-if __name__ == "__main__":
+@app.on_event("startup")
+async def startup_event():
     print("=" * 60)
     print("ChemE-LLM — Starting up")
     print("=" * 60)
@@ -372,13 +250,22 @@ if __name__ == "__main__":
     get_retriever()
     print("Pre-loading model...")
     get_model()
-    print("Launching Gradio UI...")
-    ui = build_ui()
-    ui.launch(
-        server_name="0.0.0.0",
-        server_port=7860,
-        share=False,
-        show_error=True,
-        theme=_THEME,
-        css=_CSS,
+    print("FastAPI backend is ready.")
+
+@app.post("/api/chat", response_model=ChatResponse)
+async def chat_endpoint(request: ChatRequest):
+    if not request.question.strip():
+        raise HTTPException(status_code=400, detail="Question cannot be empty.")
+    
+    answer, sources_md, mode, raw_sources = generate_answer(request.question, request.software)
+    
+    return ChatResponse(
+        answer=answer,
+        sources_md=sources_md,
+        mode=mode,
+        sources=raw_sources
     )
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("app:app", host="0.0.0.0", port=8000, reload=True)
