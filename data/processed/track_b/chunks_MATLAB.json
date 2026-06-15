@@ -2346,5 +2346,28 @@
     "theory": "A flash drum separates a liquid mixture into a vapor and a liquid phase by a sudden pressure drop.",
     "source_url": "https://www.youtube.com/watch?v=FurC2unHeXI",
     "license": "YouTube"
+  },
+  {
+    "chunk_id": "8668f64c-9e65-49d0-b3d2-03b6de792010",
+    "source_type": "track_b",
+    "software": "MATLAB",
+    "topic": "Flash Drum Setup",
+    "steps": [
+      "Open flowsheet",
+      "Add Flash Drum from the Object Palette",
+      "Connect feed stream to the inlet port"
+    ],
+    "params": {
+      "temperature": "298 K",
+      "pressure": "101325 Pa"
+    },
+    "ui_paths": [
+      "Flowsheet > Add Unit Op > Flash Drum"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "A flash drum separates a liquid mixture into a vapor and a liquid phase by a sudden pressure drop.",
+    "source_url": "https://www.youtube.com/watch?v=gC69A6SH6nE",
+    "license": "YouTube"
   }
 ]

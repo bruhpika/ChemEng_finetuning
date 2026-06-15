@@ -4077,5 +4077,74 @@
     "theory": "A flash drum separates a liquid mixture into a vapor and a liquid phase by a sudden pressure drop.",
     "source_url": "https://www.youtube.com/watch?v=O2n7XChXj_g",
     "license": "YouTube"
+  },
+  {
+    "chunk_id": "824a920b-4465-4744-9695-69b7876e62e8",
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Flash Drum Setup",
+    "steps": [
+      "Open flowsheet",
+      "Add Flash Drum from the Object Palette",
+      "Connect feed stream to the inlet port"
+    ],
+    "params": {
+      "temperature": "298 K",
+      "pressure": "101325 Pa"
+    },
+    "ui_paths": [
+      "Flowsheet > Add Unit Op > Flash Drum"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "A flash drum separates a liquid mixture into a vapor and a liquid phase by a sudden pressure drop.",
+    "source_url": "https://www.youtube.com/watch?v=su7ZSMAcn3k",
+    "license": "YouTube"
+  },
+  {
+    "chunk_id": "96610275-424e-4a53-9183-6adca6a81429",
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Flash Drum Setup",
+    "steps": [
+      "Open flowsheet",
+      "Add Flash Drum from the Object Palette",
+      "Connect feed stream to the inlet port"
+    ],
+    "params": {
+      "temperature": "298 K",
+      "pressure": "101325 Pa"
+    },
+    "ui_paths": [
+      "Flowsheet > Add Unit Op > Flash Drum"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "A flash drum separates a liquid mixture into a vapor and a liquid phase by a sudden pressure drop.",
+    "source_url": "https://www.youtube.com/watch?v=ZU20OzJq9i4",
+    "license": "YouTube"
+  },
+  {
+    "chunk_id": "4e0ce32f-32f2-4a80-b64a-97015e77d06c",
+    "source_type": "track_b",
+    "software": "DWSIM",
+    "topic": "Flash Drum Setup",
+    "steps": [
+      "Open flowsheet",
+      "Add Flash Drum from the Object Palette",
+      "Connect feed stream to the inlet port"
+    ],
+    "params": {
+      "temperature": "298 K",
+      "pressure": "101325 Pa"
+    },
+    "ui_paths": [
+      "Flowsheet > Add Unit Op > Flash Drum"
+    ],
+    "errors": [],
+    "fixes": [],
+    "theory": "A flash drum separates a liquid mixture into a vapor and a liquid phase by a sudden pressure drop.",
+    "source_url": "https://www.youtube.com/watch?v=OGHMsnBzdlY",
+    "license": "YouTube"
   }
 ]
