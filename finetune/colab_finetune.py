@@ -84,9 +84,15 @@ def format_prompt(example):
     Formats the synthetic QA pairs into the exact prompt template 
     Phi-3 expects: <|user|> ... <|end|> <|assistant|> ... <|end|>
     """
-    question = example["question"]
-    answer = example["answer"]
-    return {"text": f"<|user|>\n{question}<|end|>\n<|assistant|>\n{answer}<|end|>"}
+    instruction = example.get("instruction", "")
+    input_text = example.get("input", "")
+    output = example.get("output", "")
+    
+    question = instruction
+    if input_text:
+        question += "\n" + input_text
+        
+    return {"text": f"<|user|>\n{question}<|end|>\n<|assistant|>\n{output}<|end|>"}
 
 print("Formatting prompts...")
 dataset = dataset.map(format_prompt)

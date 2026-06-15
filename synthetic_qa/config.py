@@ -34,7 +34,7 @@ def load_api_keys() -> list[str]:
     # Env vars
     for var in ("GEMINI_API_KEY", "GOOGLE_API_KEY"):
         val = os.environ.get(var)
-        if val and val not in keys:
+        if val and val not in keys and val != "your_key_here" and val != "AIzaSy_AIzaSyCdAyTOZsEJHItJT6rcqUxgHMLaTU6K850":
             keys.append(val)
 
     # Single key file: api.txt
@@ -44,11 +44,13 @@ def load_api_keys() -> list[str]:
             with open(key_path, "r") as f:
                 for line in f:
                     line = line.strip()
+                    if not line or line.startswith("#"):
+                        continue
                     if "API KEY:" in line:
                         key = line.split(":", 1)[-1].strip()
                         if key and key not in keys:
                             keys.append(key)
-                    elif line and not line.startswith("#") and len(line) > 20:
+                    elif len(line) > 20:
                         # Also accept bare key lines (no "API KEY:" prefix)
                         if line not in keys:
                             keys.append(line)
@@ -158,7 +160,7 @@ QA_PER_CHUNK_TARGET = 8  # target Q&A pairs per chunk (5-10 range)
 
 # ── CATEGORY TARGETS ────────────────────────────────────────────────────────
 CATEGORIES = ["how_to", "troubleshooting", "parameter_config", "conceptual"]
-MIN_PER_CATEGORY = 500  # PRD requirement: ≥500 per category
+MIN_PER_CATEGORY = 750  # PRD requirement: ≥750 per category (3000 total)
 
 # ── QUALITY THRESHOLDS ───────────────────────────────────────────────────────
 MIN_OUTPUT_LENGTH = 50  # chars — reject short/empty outputs

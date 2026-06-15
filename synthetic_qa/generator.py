@@ -157,7 +157,7 @@ def load_checkpoint() -> dict:
                 return json.load(f)
         except (json.JSONDecodeError, Exception) as e:
             log.warning(f"Corrupt checkpoint file, starting fresh: {e}")
-    return {"processed_ids": [], "total_pairs": 0, "api_calls": 0}
+    return {"processed_ids": [], "total_pairs": 0, "api_calls": 0, "pairs": [], "category_counts": {"how_to": 0, "troubleshooting": 0, "parameter_config": 0, "conceptual": 0}}
 
 
 def save_checkpoint(state: dict) -> None:
@@ -314,8 +314,8 @@ def generate_from_chunks(
         List of all generated Q&A pair dicts.
     """
     # Load checkpoint if resuming
-    checkpoint = load_checkpoint() if resume else {"processed_ids": [], "total_pairs": 0, "api_calls": 0}
-    processed_ids = set(checkpoint["processed_ids"])
+    checkpoint = load_checkpoint() if resume else {"processed_ids": [], "total_pairs": 0, "api_calls": 0, "pairs": [], "category_counts": {"how_to": 0, "troubleshooting": 0, "parameter_config": 0, "conceptual": 0}}
+    processed_ids = set(checkpoint.get("processed_ids", []))
 
     # Filter out already-processed chunks
     remaining = [c for c in chunks if c["chunk_id"] not in processed_ids]
@@ -333,8 +333,8 @@ def generate_from_chunks(
         return []
 
     # Track categories
-    all_pairs: list[dict] = []
-    category_counts: dict[str, int] = {"how_to": 0, "troubleshooting": 0, "parameter_config": 0, "conceptual": 0}
+    all_pairs: list[dict] = checkpoint.get("pairs", [])
+    category_counts: dict[str, int] = checkpoint.get("category_counts", {"how_to": 0, "troubleshooting": 0, "parameter_config": 0, "conceptual": 0})
     api_calls = checkpoint["api_calls"]
     chunks_done = len(processed_ids)
 
@@ -369,6 +369,9 @@ def generate_from_chunks(
 
         if pairs is None:
             log.warning(f"Batch {batch_num} failed — no pairs generated")
+            # CRITICAL: do not mark as processed if we failed!
+            log.warning("Halting generation to prevent data loss due to API exhaustion.")
+            break
         else:
             # Validate and count
             valid_pairs = []
@@ -392,15 +395,17 @@ def generate_from_chunks(
             all_pairs.extend(valid_pairs)
             log.info(f"  → Generated {len(valid_pairs)} valid pairs (batch total: {len(all_pairs)})")
 
-        # Update checkpoint
-        for chunk in batch:
-            processed_ids.add(chunk["chunk_id"])
-        chunks_done += len(batch)
+            # Update checkpoint only on success
+            for chunk in batch:
+                processed_ids.add(chunk["chunk_id"])
+            chunks_done += len(batch)
 
         save_checkpoint({
             "processed_ids": list(processed_ids),
             "total_pairs": len(all_pairs),
             "api_calls": api_calls,
+            "pairs": all_pairs,
+            "category_counts": category_counts,
         })
 
         # Update progress
