@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, Settings, BookOpen, Trash2, ChevronDown, ChevronUp, ExternalLink, Bot, User } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
-import { ChatMessage, ChatResponse } from '@/types';
+import { ChatMessage, ChatResponse, SourceChunk } from '@/types';
 
 export default function Home() {
   const [messages, setMessages] = useState<ChatMessage[]>([{
