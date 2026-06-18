@@ -59,11 +59,14 @@ def pdf_extractor(url: str) -> str:
     headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"}
     resp = requests.get(url, timeout=30, headers=headers)
     resp.raise_for_status()
-    with pdfplumber.open(io.BytesIO(resp.content)) as pdf:
-        text = "\n".join(p.extract_text() or "" for p in pdf.pages).strip()
-        if not text:
-            raise ValueError("PDF extraction returned empty text")
-        return text
+    try:
+        with pdfplumber.open(io.BytesIO(resp.content)) as pdf:
+            text = "\n".join(p.extract_text() or "" for p in pdf.pages).strip()
+            if not text:
+                raise ValueError("PDF extraction returned empty text")
+            return text
+    except Exception as e:
+        raise ValueError(f"Failed to parse PDF: {e}")
 
 def html_extractor(url: str) -> str:
     headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
@@ -156,8 +159,14 @@ def text_chunker(text: str, chunk_size: int = 2800) -> list[str]:
 
 def gemini_flash_parse(chunk_text: str, software: str, source_url: str, license_str: str) -> dict:
     dummy_path = str(ROOT_DIR / "config" / "dummy_chunk.json")
-    with open(dummy_path, "r") as f:
-        parsed = json.load(f)
+    try:
+        with open(dummy_path, "r") as f:
+            parsed = json.load(f)
+    except Exception:
+        parsed = {k: "" for k in REQUIRED_KEYS}
+        parsed["steps"] = []
+        parsed["ui_paths"] = []
+        parsed["params"] = {}
     
     parsed["software"]   = software
     parsed["source_url"] = source_url

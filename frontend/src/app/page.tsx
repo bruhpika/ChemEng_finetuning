@@ -30,7 +30,7 @@ export default function Home() {
     if (!inputValue.trim() || isLoading) return;
 
     const userMessage: ChatMessage = {
-      id: Date.now().toString(),
+      id: crypto.randomUUID(),
       role: 'user',
       content: inputValue.trim(),
     };
@@ -38,6 +38,9 @@ export default function Home() {
     setMessages(prev => [...prev, userMessage]);
     setInputValue('');
     setIsLoading(true);
+
+    const abortController = new AbortController();
+    const timeoutId = setTimeout(() => abortController.abort(), 30000);
 
     try {
       const response = await fetch('http://localhost:8000/api/chat', {
@@ -47,14 +50,17 @@ export default function Home() {
           question: userMessage.content,
           software: software
         }),
+        signal: abortController.signal
       });
+
+      clearTimeout(timeoutId);
 
       if (!response.ok) throw new Error('Failed to fetch response');
 
       const data: ChatResponse = await response.json();
       
       const assistantMessage: ChatMessage = {
-        id: (Date.now() + 1).toString(),
+        id: crypto.randomUUID(),
         role: 'assistant',
         content: data.answer,
         sources: data.sources,
@@ -64,12 +70,16 @@ export default function Home() {
       setMessages(prev => [...prev, assistantMessage]);
     } catch (error) {
       console.error("Error:", error);
+      const isTimeout = error instanceof Error && error.name === 'AbortError';
       setMessages(prev => [...prev, {
-        id: (Date.now() + 1).toString(),
+        id: crypto.randomUUID(),
         role: 'assistant',
-        content: "Sorry, I encountered an error while trying to reach the server. Please make sure the FastAPI backend is running.",
+        content: isTimeout 
+          ? "Request timed out. The server took too long to respond."
+          : "Sorry, I encountered an error while trying to reach the server. Please make sure the FastAPI backend is running.",
       }]);
     } finally {
+      clearTimeout(timeoutId);
       setIsLoading(false);
     }
   };
@@ -130,43 +140,7 @@ export default function Home() {
           
           <AnimatePresence initial={false}>
             {messages.map((msg) => (
-              <motion.div
-                key={msg.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
-                className={`flex gap-4 md:gap-6 ${msg.role === 'user' ? 'flex-row-reverse' : 'flex-row'}`}
-              >
-                <div className={`w-8 h-8 shrink-0 rounded-full flex items-center justify-center mt-1 ${
-                  msg.role === 'user' ? 'bg-[#1e1e20] border border-white/10' : 'bg-gradient-to-br from-[#4b90ff] to-[#ff5546]'
-                }`}>
-                  {msg.role === 'user' ? <User size={18} className="text-white/80" /> : <Bot size={18} className="text-white" />}
-                </div>
-
-                <div className={`flex flex-col gap-2 max-w-[85%] ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
-                  <div className={`px-5 py-4 rounded-2xl ${
-                    msg.role === 'user' 
-                      ? 'bg-[#1e1e20] border border-white/5 rounded-tr-sm text-white/90' 
-                      : 'bg-transparent text-white/90 prose prose-invert max-w-none prose-p:leading-relaxed'
-                  }`}>
-                    {msg.role === 'user' ? (
-                      <p className="whitespace-pre-wrap">{msg.content}</p>
-                    ) : (
-                      <ReactMarkdown>{msg.content}</ReactMarkdown>
-                    )}
-                  </div>
-
-                  {msg.mode && (
-                    <span className="text-[11px] text-[#4b90ff] px-2 py-0.5 rounded-full border border-[#4b90ff]/20 bg-[#4b90ff]/5">
-                      {msg.mode}
-                    </span>
-                  )}
-
-                  {msg.sources && msg.sources.length > 0 && (
-                    <SourceAccordion sources={msg.sources} />
-                  )}
-                </div>
-              </motion.div>
+              <MessageItem key={msg.id} msg={msg} />
             ))}
           </AnimatePresence>
 
@@ -240,6 +214,48 @@ export default function Home() {
 }
 
 // Subcomponents
+
+const MessageItem = React.memo(({ msg }: { msg: ChatMessage }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+      className={`flex gap-4 md:gap-6 ${msg.role === 'user' ? 'flex-row-reverse' : 'flex-row'}`}
+    >
+      <div className={`w-8 h-8 shrink-0 rounded-full flex items-center justify-center mt-1 ${
+        msg.role === 'user' ? 'bg-[#1e1e20] border border-white/10' : 'bg-gradient-to-br from-[#4b90ff] to-[#ff5546]'
+      }`}>
+        {msg.role === 'user' ? <User size={18} className="text-white/80" /> : <Bot size={18} className="text-white" />}
+      </div>
+
+      <div className={`flex flex-col gap-2 max-w-[85%] ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
+        <div className={`px-5 py-4 rounded-2xl ${
+          msg.role === 'user' 
+            ? 'bg-[#1e1e20] border border-white/5 rounded-tr-sm text-white/90' 
+            : 'bg-transparent text-white/90 prose prose-invert max-w-none prose-p:leading-relaxed'
+        }`}>
+          {msg.role === 'user' ? (
+            <p className="whitespace-pre-wrap">{msg.content}</p>
+          ) : (
+            <ReactMarkdown>{msg.content}</ReactMarkdown>
+          )}
+        </div>
+
+        {msg.mode && (
+          <span className="text-[11px] text-[#4b90ff] px-2 py-0.5 rounded-full border border-[#4b90ff]/20 bg-[#4b90ff]/5">
+            {msg.mode}
+          </span>
+        )}
+
+        {msg.sources && msg.sources.length > 0 && (
+          <SourceAccordion sources={msg.sources} />
+        )}
+      </div>
+    </motion.div>
+  );
+});
+MessageItem.displayName = 'MessageItem';
 
 const SourceAccordion = ({ sources }: { sources: SourceChunk[] }) => {
   const [isOpen, setIsOpen] = useState(false);

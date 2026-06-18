@@ -250,8 +250,14 @@ def _parse_gemini_json(text: str) -> list | None:
 
 def gemini_extract(video_url: str, software: str, license_str: str, transcript: str) -> list[dict]:
     dummy_path = str(ROOT_DIR / "config" / "dummy_chunk.json")
-    with open(dummy_path, "r") as f:
-        parsed = json.load(f)
+    try:
+        with open(dummy_path, "r") as f:
+            parsed = json.load(f)
+    except Exception:
+        parsed = {k: "" for k in REQUIRED_KEYS}
+        parsed["steps"] = []
+        parsed["ui_paths"] = []
+        parsed["params"] = {}
     
     parsed["software"]   = software
     parsed["source_url"] = video_url

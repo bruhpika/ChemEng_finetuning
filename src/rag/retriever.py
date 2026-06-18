@@ -27,7 +27,7 @@ class KBRetriever:
         Optionally filters results to only include a specific software (DWSIM or MATLAB).
         """
         # Build a metadata filter if the user selected a specific software
-        where_filter = {}
+        where_filter = None
         if software and software != "Both":
             where_filter = {"software": software}
             

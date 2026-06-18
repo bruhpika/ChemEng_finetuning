@@ -339,6 +339,8 @@ This project is licensed under the **MIT License** – see the `LICENSE` file fo
 
 **Lead Maintainer:** Harshith Bhardwaz Kenkari – <harshithkenkary@gmail.com>
 
+Developed with the assistance of **Antigravity**, a powerful agentic AI coding assistant designed by the Google DeepMind team.
+
 Special thanks to the **Google Gemini** team for the extraction models, the **HuggingFace** community for PEFT/QLoRA, and the **open‑source DWSIM** project for providing a free simulation engine.
 
 ---

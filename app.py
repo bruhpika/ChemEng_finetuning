@@ -27,7 +27,9 @@ ADAPTER_PATH = os.path.join(PROJECT_ROOT, "finetune", "adapter")
 
 # ── Lazy-loaded globals (loaded once on first request to keep startup fast) ───
 _retriever = None
+_retriever_load_attempted = False
 _model = None
+_model_load_attempted = False
 _tokenizer = None
 _model_mode = "none"  # "finetuned" | "base" | "rag_only"
 
@@ -38,16 +40,19 @@ MAX_NEW_TOKENS = 512
 
 def get_retriever():
     """Loads the ChromaDB retriever on first call, then caches it."""
-    global _retriever
-    if _retriever is None:
-        try:
-            from src.rag.retriever import KBRetriever
-            _retriever = KBRetriever()
-            print("[app] ChromaDB retriever loaded.")
-        except Exception as e:
-            print(f"[app] WARNING: Could not load retriever — {e}")
-            print("[app] Run `python -m src.rag.build_vectorstore` first.")
-            _retriever = None
+    global _retriever, _retriever_load_attempted
+    if _retriever is not None or _retriever_load_attempted:
+        return _retriever
+
+    _retriever_load_attempted = True
+    try:
+        from src.rag.retriever import KBRetriever
+        _retriever = KBRetriever()
+        print("[app] ChromaDB retriever loaded.")
+    except Exception as e:
+        print(f"[app] WARNING: Could not load retriever — {e}")
+        print("[app] Run `python -m src.rag.build_vectorstore` first.")
+        _retriever = None
     return _retriever
 
 
@@ -56,9 +61,11 @@ def get_model():
     Loads the LLM on first call. 
     Priority: Fine-tuned LoRA adapter > Base Phi-3-mini > RAG-only fallback.
     """
-    global _model, _tokenizer, _model_mode
-    if _model is not None:
+    global _model, _tokenizer, _model_mode, _model_load_attempted
+    if _model is not None or _model_load_attempted:
         return _model, _tokenizer, _model_mode
+
+    _model_load_attempted = True
 
     try:
         import torch
@@ -67,13 +74,12 @@ def get_model():
 
         base_model_id = "microsoft/Phi-3-mini-4k-instruct"
         print(f"[app] Loading base model: {base_model_id} ...")
-        _tokenizer = AutoTokenizer.from_pretrained(base_model_id, trust_remote_code=True)
+        _tokenizer = AutoTokenizer.from_pretrained(base_model_id)
 
         _model = AutoModelForCausalLM.from_pretrained(
             base_model_id,
             torch_dtype=torch.float16,
             device_map="auto",
-            trust_remote_code=True,
         )
 
         # If fine-tuned adapter weights exist, load them on top of the base model
@@ -198,7 +204,6 @@ def generate_answer(question: str, software: str) -> Tuple[str, str, str, list]:
                 **inputs,
                 max_new_tokens=MAX_NEW_TOKENS,
                 do_sample=False,
-                temperature=1.0,
                 pad_token_id=tokenizer.eos_token_id,
             )
         # Decode only the newly generated tokens (not the prompt)

@@ -452,7 +452,7 @@ def generate_targeted(
     # Select chunks most relevant to this category
     category_field_map = {
         "how_to": lambda c: bool(c.get("steps")),
-        "troubleshooting": lambda c: bool(c.get("errors")) or bool(c.get("fixes")),
+        "troubleshooting": lambda c: bool(c.get("errors")) or bool(c.get("fixes")) or bool(c.get("steps")),
         "parameter_config": lambda c: bool(c.get("params")),
         "conceptual": lambda c: bool(c.get("theory") and len(str(c.get("theory", ""))) > 30),
     }

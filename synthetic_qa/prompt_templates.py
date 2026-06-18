@@ -158,7 +158,8 @@ def build_targeted_prompt(
         "troubleshooting": (
             "questions about errors, failures, and unexpected behavior. "
             "The input should describe a specific error or symptom. "
-            "The output should explain the root cause and provide a concrete fix."
+            "The output should explain the root cause and provide a concrete fix. "
+            "If the provided chunk only contains procedural steps or theory, invent a realistic, plausible student error based on that procedure and provide the concrete fix."
         ),
         "parameter_config": (
             "questions about what values to set for specific parameters, "
