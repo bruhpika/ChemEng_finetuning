@@ -297,7 +297,8 @@ Throughout the development of ChemE‑LLM, several technical hurdles were encoun
 | **Scanned/Low-Quality PDFs** | Leveraged **Gemini's File API for OCR** to extract structured text from scanned engineering documents. |
 | **Non-UI Software** (MATLAB CLI) | Adjusted extraction logic and validation to correctly handle CLI-based tools where UI navigation paths are not applicable. |
 | **Data Noise** (GitHub/Licenses) | Built automated cleanup scripts to filter out redundant metadata and license headers from extracted knowledge chunks. |
-| **Category Imbalance** | Built a `category_balancer.py` module that detects under-represented categories and triggers targeted generation passes. |
+| **Category Balancing Target Misses** | Relaxed targeted generation filters to allow the AI to synthesize troubleshooting scenarios from procedural and theory chunks. |
+| **System Reliability & UI Freezes** | Implemented Next.js `AbortController` timeouts, React `randomUUID` keys, and FastAPI `_load_attempted` fallback caching to prevent infinite startup loops. |
 
 ---
 
@@ -339,7 +340,7 @@ This project is licensed under the **MIT License** – see the `LICENSE` file fo
 
 **Lead Maintainer:** Harshith Bhardwaz Kenkari – <harshithkenkary@gmail.com>
 
-Developed with the assistance of **Antigravity**, a powerful agentic AI coding assistant designed by the Google DeepMind team.
+Developed with the assistance of **Antigravity** (affectionately known as "Mickey" 🐭), a powerful agentic AI coding assistant designed by the Google DeepMind team.
 
 Special thanks to the **Google Gemini** team for the extraction models, the **HuggingFace** community for PEFT/QLoRA, and the **open‑source DWSIM** project for providing a free simulation engine.
 
