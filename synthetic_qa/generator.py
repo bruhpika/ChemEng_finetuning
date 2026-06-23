@@ -330,7 +330,7 @@ def generate_from_chunks(
 
     if total_to_process == 0:
         log.info("Nothing to process — all chunks already done.")
-        return []
+        return checkpoint.get("pairs", [])
 
     # Track categories
     all_pairs: list[dict] = checkpoint.get("pairs", [])

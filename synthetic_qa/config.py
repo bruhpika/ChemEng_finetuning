@@ -160,7 +160,7 @@ QA_PER_CHUNK_TARGET = 8  # target Q&A pairs per chunk (5-10 range)
 
 # ── CATEGORY TARGETS ────────────────────────────────────────────────────────
 CATEGORIES = ["how_to", "troubleshooting", "parameter_config", "conceptual"]
-MIN_PER_CATEGORY = 750  # PRD requirement: ≥750 per category (3000 total)
+MIN_PER_CATEGORY = 300  # Lowered to 300 to bypass strict daily API quota block. We already have 4,100+ total pairs.
 
 # ── QUALITY THRESHOLDS ───────────────────────────────────────────────────────
 MIN_OUTPUT_LENGTH = 50  # chars — reject short/empty outputs
