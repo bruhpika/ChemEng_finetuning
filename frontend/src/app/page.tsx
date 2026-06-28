@@ -6,7 +6,7 @@ import {
   Send, Settings, BookOpen, Trash2, ChevronDown, ChevronUp, 
   ExternalLink, Bot, User, Plus, Search, Image as ImageIcon, 
   Video, Library, Gem, MessageSquare, Clock, PanelLeft, 
-  Mic, Sparkles, Terminal, Cpu, FolderOpen, ArrowUp, Share2
+  Mic, Sparkles, Terminal, Cpu, FolderOpen, ArrowUp, Share2, Award
 } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { ChatMessage, ChatResponse, SourceChunk } from '@/types';
