@@ -14,6 +14,8 @@ Pipeline:
 import os
 import json
 import time
+import asyncio
+import threading
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -33,6 +35,9 @@ _model_load_attempted = False
 _tokenizer = None
 _model_mode = "none"  # "finetuned" | "base" | "rag_only"
 
+_retriever_lock = threading.Lock()
+_model_lock = threading.Lock()
+
 SOFTWARE_OPTIONS = ["Both", "DWSIM", "MATLAB"]
 MAX_NEW_TOKENS = 512
 
@@ -44,15 +49,21 @@ def get_retriever():
     if _retriever is not None or _retriever_load_attempted:
         return _retriever
 
-    _retriever_load_attempted = True
-    try:
-        from src.rag.retriever import KBRetriever
-        _retriever = KBRetriever()
-        print("[app] ChromaDB retriever loaded.")
-    except Exception as e:
-        print(f"[app] WARNING: Could not load retriever — {e}")
-        print("[app] Run `python -m src.rag.build_vectorstore` first.")
-        _retriever = None
+    with _retriever_lock:
+        if _retriever is not None or _retriever_load_attempted:
+            return _retriever
+
+        try:
+            from src.rag.retriever import KBRetriever
+            _retriever = KBRetriever()
+            print("[app] ChromaDB retriever loaded.")
+        except Exception as e:
+            print(f"[app] WARNING: Could not load retriever — {e}")
+            print("[app] Run `python -m src.rag.build_vectorstore` first.")
+            _retriever = None
+        finally:
+            _retriever_load_attempted = True
+
     return _retriever
 
 
@@ -65,39 +76,43 @@ def get_model():
     if _model is not None or _model_load_attempted:
         return _model, _tokenizer, _model_mode
 
-    _model_load_attempted = True
+    with _model_lock:
+        if _model is not None or _model_load_attempted:
+            return _model, _tokenizer, _model_mode
 
-    try:
-        import torch
-        from transformers import AutoModelForCausalLM, AutoTokenizer
-        from peft import PeftModel
+        try:
+            import torch
+            from transformers import AutoModelForCausalLM, AutoTokenizer
+            from peft import PeftModel
 
-        base_model_id = "microsoft/Phi-3-mini-4k-instruct"
-        print(f"[app] Loading base model: {base_model_id} ...")
-        _tokenizer = AutoTokenizer.from_pretrained(base_model_id)
+            base_model_id = "microsoft/Phi-3-mini-4k-instruct"
+            print(f"[app] Loading base model: {base_model_id} ...")
+            _tokenizer = AutoTokenizer.from_pretrained(base_model_id)
 
-        _model = AutoModelForCausalLM.from_pretrained(
-            base_model_id,
-            torch_dtype=torch.float16,
-            device_map="auto",
-        )
+            _model = AutoModelForCausalLM.from_pretrained(
+                base_model_id,
+                torch_dtype=torch.float16,
+                device_map="auto",
+            )
 
-        # If fine-tuned adapter weights exist, load them on top of the base model
-        if os.path.exists(ADAPTER_PATH):
-            print(f"[app] Fine-tuned adapter found at {ADAPTER_PATH}. Loading...")
-            _model = PeftModel.from_pretrained(_model, ADAPTER_PATH)
-            _model_mode = "finetuned"
-            print("[app] Fine-tuned model loaded ✅")
-        else:
-            _model_mode = "base"
-            print("[app] No adapter found — running base model (no fine-tuning).")
+            # If fine-tuned adapter weights exist, load them on top of the base model
+            if os.path.exists(ADAPTER_PATH):
+                print(f"[app] Fine-tuned adapter found at {ADAPTER_PATH}. Loading...")
+                _model = PeftModel.from_pretrained(_model, ADAPTER_PATH)
+                _model_mode = "finetuned"
+                print("[app] Fine-tuned model loaded ✅")
+            else:
+                _model_mode = "base"
+                print("[app] No adapter found — running base model (no fine-tuning).")
 
-    except Exception as e:
-        print(f"[app] WARNING: Could not load LLM — {e}")
-        print("[app] Falling back to RAG-only mode (no generation).")
-        _model = None
-        _tokenizer = None
-        _model_mode = "rag_only"
+        except Exception as e:
+            print(f"[app] WARNING: Could not load LLM — {e}")
+            print("[app] Falling back to RAG-only mode (no generation).")
+            _model = None
+            _tokenizer = None
+            _model_mode = "rag_only"
+        finally:
+            _model_load_attempted = True
 
     return _model, _tokenizer, _model_mode
 
@@ -246,16 +261,19 @@ class ChatResponse(BaseModel):
     mode: str
     sources: List[SourceChunk]
 
+async def _background_load():
+    print("[app] Background loading started...")
+    await asyncio.to_thread(get_retriever)
+    await asyncio.to_thread(get_model)
+    print("[app] Background loading complete!")
+
 @app.on_event("startup")
 async def startup_event():
     print("=" * 60)
     print("ChemE-LLM — Starting up")
     print("=" * 60)
-    print("Pre-loading retriever...")
-    get_retriever()
-    print("Pre-loading model...")
-    get_model()
-    print("FastAPI backend is ready.")
+    asyncio.create_task(_background_load())
+    print("FastAPI backend is ready to accept connections (Model loading in background...)")
 
 @app.post("/api/chat", response_model=ChatResponse)
 async def chat_endpoint(request: ChatRequest):
