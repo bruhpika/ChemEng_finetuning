@@ -73,6 +73,7 @@ export default function Home() {
   const [software, setSoftware] = useState('Both');
   const [isLoading, setIsLoading] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [backendStatus, setBackendStatus] = useState<"loading" | "ready" | "fallback">("loading");
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -83,9 +84,29 @@ export default function Home() {
     scrollToBottom();
   }, [messages, isLoading]);
 
+  useEffect(() => {
+    const checkStatus = async () => {
+      try {
+        const res = await fetch("http://localhost:8000/api/status");
+        if (res.ok) {
+          const data = await res.json();
+          setBackendStatus(data.status);
+        } else {
+          setBackendStatus("loading");
+        }
+      } catch (err) {
+        console.error("Error polling backend status:", err);
+        setBackendStatus("loading");
+      }
+    };
+    checkStatus();
+    const interval = setInterval(checkStatus, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   const handleSubmit = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
-    if (!inputValue.trim() || isLoading) return;
+    if (!inputValue.trim() || isLoading || backendStatus === "loading") return;
 
     const userMessage: ChatMessage = {
       id: crypto.randomUUID(),
@@ -145,7 +166,9 @@ export default function Home() {
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
-      handleSubmit();
+      if (backendStatus !== "loading") {
+        handleSubmit();
+      }
     }
   };
 
@@ -351,6 +374,24 @@ export default function Home() {
           </div>
         </header>
 
+        {backendStatus === "loading" && (
+          <div className="bg-amber-500/10 border-b border-amber-500/20 px-6 py-3 text-xs md:text-sm text-amber-200 flex items-center gap-3 animate-pulse">
+            <span className="flex h-2 w-2 relative">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+            </span>
+            <span>ChemE-LLM is warming up. Please wait while the model and vector database are loading...</span>
+          </div>
+        )}
+        {backendStatus === "fallback" && (
+          <div className="bg-blue-500/10 border-b border-blue-500/20 px-6 py-3 text-xs md:text-sm text-blue-200 flex items-center gap-3">
+            <span className="flex h-2 w-2 relative">
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+            </span>
+            <span>RAG-only fallback mode active. Answers will be based directly on matching knowledge base documents without LLM generation.</span>
+          </div>
+        )}
+
         {/* Main Content / Chat Body */}
         <main className="flex-1 overflow-y-auto p-4 md:p-8 flex flex-col items-center">
           
@@ -434,8 +475,9 @@ export default function Home() {
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="Ask ChemE-LLM anything..."
-                className="w-full bg-transparent text-[#e3e3e3] px-3 py-2 outline-none resize-none min-h-[48px] max-h-48 text-sm md:text-base placeholder-white/40 custom-scrollbar"
+                placeholder={backendStatus === "loading" ? "ChemE-LLM is warming up..." : "Ask ChemE-LLM anything..."}
+                disabled={backendStatus === "loading"}
+                className="w-full bg-transparent text-[#e3e3e3] px-3 py-2 outline-none resize-none min-h-[48px] max-h-48 text-sm md:text-base placeholder-white/40 custom-scrollbar disabled:opacity-50 disabled:cursor-not-allowed"
                 rows={1}
               />
               
@@ -456,8 +498,8 @@ export default function Home() {
                   </button>
                   <button
                     type="submit"
-                    disabled={!inputValue.trim() || isLoading}
-                    className="p-2.5 rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 disabled:opacity-30 disabled:hover:from-violet-600 disabled:hover:to-indigo-600 transition-all text-white shadow-md hover:scale-105"
+                    disabled={!inputValue.trim() || isLoading || backendStatus === "loading"}
+                    className="p-2.5 rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 disabled:opacity-30 disabled:hover:from-violet-600 disabled:hover:to-indigo-600 disabled:cursor-not-allowed transition-all text-white shadow-md hover:scale-105"
                   >
                     <ArrowUp size={18} />
                   </button>

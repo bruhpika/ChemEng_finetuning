@@ -243,6 +243,31 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+class StatusResponse(BaseModel):
+    status: str
+    mode: str
+    retriever_ready: bool
+    model_ready: bool
+
+def get_backend_status():
+    global _retriever, _retriever_load_attempted, _model, _model_load_attempted, _model_mode
+    retriever_ready = _retriever is not None
+    model_ready = _model is not None
+    
+    if not _retriever_load_attempted or not _model_load_attempted:
+        status = "loading"
+    elif _model_mode == "rag_only":
+        status = "fallback"
+    else:
+        status = "ready"
+        
+    return {
+        "status": status,
+        "mode": _model_mode,
+        "retriever_ready": retriever_ready,
+        "model_ready": model_ready
+    }
+
 class ChatRequest(BaseModel):
     question: str
     software: str = "Both"
@@ -264,6 +289,15 @@ class ChatResponse(BaseModel):
 async def _background_load():
     print("[app] Background loading started...")
     await asyncio.to_thread(get_retriever)
+    delay = 0.0
+    mock_loading_time = os.environ.get("MOCK_MODEL_LOADING_TIME")
+    if mock_loading_time is not None:
+        try:
+            delay = float(mock_loading_time)
+        except ValueError:
+            pass
+    if delay > 0:
+        await asyncio.sleep(delay)
     await asyncio.to_thread(get_model)
     print("[app] Background loading complete!")
 
@@ -275,8 +309,19 @@ async def startup_event():
     asyncio.create_task(_background_load())
     print("FastAPI backend is ready to accept connections (Model loading in background...)")
 
+@app.get("/api/status", response_model=StatusResponse)
+def get_status_endpoint():
+    status_info = get_backend_status()
+    return StatusResponse(**status_info)
+
 @app.post("/api/chat", response_model=ChatResponse)
 async def chat_endpoint(request: ChatRequest):
+    if not _model_load_attempted and _model is None:
+        raise HTTPException(
+            status_code=503,
+            detail="Model is currently loading. Please try again shortly."
+        )
+
     if not request.question.strip():
         raise HTTPException(status_code=400, detail="Question cannot be empty.")
     

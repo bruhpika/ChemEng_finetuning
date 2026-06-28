@@ -48,3 +48,8 @@ synthetic_qa/generation_stats.json
 finetune_dataset.jsonl
 .venv
 data/chroma_db/
+
+# Agent/Tool State
+.agents/
+.antigravitycli/
+
