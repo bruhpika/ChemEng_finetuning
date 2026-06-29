@@ -34,6 +34,7 @@ _model = None
 _model_load_attempted = False
 _tokenizer = None
 _model_mode = "none"  # "finetuned" | "base" | "rag_only"
+_loading_step = "idle"  # "idle" | "loading_retriever" | "loading_model" | "done"
 
 _retriever_lock = threading.Lock()
 _model_lock = threading.Lock()
@@ -248,9 +249,10 @@ class StatusResponse(BaseModel):
     mode: str
     retriever_ready: bool
     model_ready: bool
+    loading_step: str
 
 def get_backend_status():
-    global _retriever, _retriever_load_attempted, _model, _model_load_attempted, _model_mode
+    global _retriever, _retriever_load_attempted, _model, _model_load_attempted, _model_mode, _loading_step
     retriever_ready = _retriever is not None
     model_ready = _model is not None
     
@@ -265,7 +267,8 @@ def get_backend_status():
         "status": status,
         "mode": _model_mode,
         "retriever_ready": retriever_ready,
-        "model_ready": model_ready
+        "model_ready": model_ready,
+        "loading_step": _loading_step,
     }
 
 class ChatRequest(BaseModel):
@@ -287,8 +290,11 @@ class ChatResponse(BaseModel):
     sources: List[SourceChunk]
 
 async def _background_load():
+    global _loading_step
     print("[app] Background loading started...")
+    _loading_step = "loading_retriever"
     await asyncio.to_thread(get_retriever)
+    _loading_step = "loading_model"
     delay = 0.0
     mock_loading_time = os.environ.get("MOCK_MODEL_LOADING_TIME")
     if mock_loading_time is not None:
@@ -299,6 +305,7 @@ async def _background_load():
     if delay > 0:
         await asyncio.sleep(delay)
     await asyncio.to_thread(get_model)
+    _loading_step = "done"
     print("[app] Background loading complete!")
 
 @app.on_event("startup")

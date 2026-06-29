@@ -19,6 +19,225 @@ const GitHubIcon = ({ className = "w-4 h-4" }: { className?: string }) => (
   </svg>
 );
 
+// ── Model Loading Overlay ──────────────────────────────────────────────────────
+
+const CHEM_TIPS = [
+  "DWSIM uses the NRTL activity coefficient model for non-ideal liquid mixtures.",
+  "Phi-3-mini has 3.8 billion parameters — optimized for constrained environments.",
+  "RAG (Retrieval-Augmented Generation) grounds answers in real knowledge base data.",
+  "Flash drums separate vapor-liquid mixtures using pressure and temperature changes.",
+  "MATLAB's ode45 uses a 4th/5th-order Runge-Kutta adaptive step method.",
+  "ChromaDB stores vector embeddings for fast semantic search over your knowledge base.",
+  "LoRA fine-tuning only trains a small fraction of parameters, saving GPU memory.",
+  "Distillation columns in DWSIM can model up to 500 theoretical stages.",
+];
+
+const STAGES = [
+  { key: "loading_retriever", label: "Loading Knowledge Base", sublabel: "Connecting ChromaDB vector store…", icon: "🧠" },
+  { key: "loading_model",     label: "Loading Language Model",  sublabel: "Initialising Phi-3-mini weights…",   icon: "🤖" },
+  { key: "done",              label: "Almost Ready",            sublabel: "Finalising inference pipeline…",      icon: "⚡" },
+];
+
+const ModelLoadingOverlay = ({
+  loadingStep,
+  retrieverReady,
+  modelReady,
+}: {
+  loadingStep: string;
+  retrieverReady: boolean;
+  modelReady: boolean;
+}) => {
+  const [tipIndex, setTipIndex] = useState(0);
+  const [tipVisible, setTipVisible] = useState(true);
+
+  // Cycle tips every 4 seconds
+  useEffect(() => {
+    const iv = setInterval(() => {
+      setTipVisible(false);
+      setTimeout(() => {
+        setTipIndex((i) => (i + 1) % CHEM_TIPS.length);
+        setTipVisible(true);
+      }, 400);
+    }, 4000);
+    return () => clearInterval(iv);
+  }, []);
+
+  // Progress percentage
+  const progress =
+    modelReady     ? 100 :
+    retrieverReady ? 60  :
+    loadingStep === "loading_retriever" ? 20 :
+    loadingStep === "loading_model"     ? 60 : 5;
+
+  const currentStageIndex =
+    modelReady     ? 2 :
+    retrieverReady ? 1 :
+    loadingStep === "loading_retriever" ? 0 : 0;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0, scale: 1.04 }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
+      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#0d0d0e]/95 backdrop-blur-2xl"
+    >
+      {/* Animated background orbs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          animate={{ scale: [1, 1.15, 1], opacity: [0.15, 0.25, 0.15] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-violet-600/20 blur-[120px]"
+        />
+        <motion.div
+          animate={{ scale: [1, 1.2, 1], opacity: [0.10, 0.20, 0.10] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-indigo-500/20 blur-[100px]"
+        />
+        <motion.div
+          animate={{ scale: [1, 1.1, 1], opacity: [0.08, 0.15, 0.08] }}
+          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-fuchsia-500/10 blur-[150px]"
+        />
+      </div>
+
+      <div className="relative flex flex-col items-center gap-10 max-w-lg w-full px-8 text-center">
+
+        {/* Logo + title */}
+        <motion.div
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="flex flex-col items-center gap-4"
+        >
+          <div className="relative w-20 h-20">
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+              className="absolute inset-0 rounded-full border-2 border-transparent border-t-violet-500 border-r-indigo-400"
+            />
+            <motion.div
+              animate={{ rotate: -360 }}
+              transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
+              className="absolute inset-2 rounded-full border-2 border-transparent border-t-fuchsia-400 border-b-pink-400"
+            />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="text-3xl">⚗️</span>
+            </div>
+          </div>
+
+          <div>
+            <h1 className="text-3xl font-semibold bg-gradient-to-r from-violet-400 via-indigo-300 to-pink-400 bg-clip-text text-transparent tracking-tight">
+              ChemE-LLM
+            </h1>
+            <p className="text-sm text-white/40 mt-1">Initialising your engineering AI…</p>
+          </div>
+        </motion.div>
+
+        {/* Progress bar */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="w-full flex flex-col gap-2"
+        >
+          <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
+            <motion.div
+              className="h-full rounded-full bg-gradient-to-r from-violet-500 via-indigo-400 to-fuchsia-400"
+              initial={{ width: "5%" }}
+              animate={{ width: `${progress}%` }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
+            />
+          </div>
+          <div className="flex justify-between text-[11px] text-white/30">
+            <span>Starting up</span>
+            <span>{progress}%</span>
+          </div>
+        </motion.div>
+
+        {/* Stage indicators */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="w-full flex flex-col gap-3"
+        >
+          {STAGES.map((stage, i) => {
+            const isDone   = i < currentStageIndex || modelReady;
+            const isActive = i === currentStageIndex && !modelReady;
+            return (
+              <div
+                key={stage.key}
+                className={`flex items-center gap-4 px-4 py-3 rounded-xl border transition-all duration-500 ${
+                  isDone
+                    ? "bg-emerald-500/10 border-emerald-500/25 text-emerald-300"
+                    : isActive
+                    ? "bg-violet-500/10 border-violet-500/30 text-violet-200"
+                    : "bg-white/3 border-white/5 text-white/30"
+                }`}
+              >
+                <span className="text-xl">{stage.icon}</span>
+                <div className="flex-1 text-left">
+                  <div className="text-sm font-medium">{stage.label}</div>
+                  <div className="text-xs opacity-60">{stage.sublabel}</div>
+                </div>
+                <div className="shrink-0">
+                  {isDone ? (
+                    <motion.span
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      className="text-emerald-400 text-lg"
+                    >✓</motion.span>
+                  ) : isActive ? (
+                    <motion.div
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                      className="w-4 h-4 border-2 border-violet-400/60 border-t-violet-400 rounded-full"
+                    />
+                  ) : (
+                    <div className="w-4 h-4 rounded-full border border-white/10" />
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </motion.div>
+
+        {/* Rotating fun-facts tip */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="w-full bg-white/3 border border-white/8 rounded-2xl px-5 py-4 min-h-[72px] flex items-center justify-center"
+        >
+          <AnimatePresence mode="wait">
+            {tipVisible && (
+              <motion.p
+                key={tipIndex}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.35 }}
+                className="text-xs text-white/50 leading-relaxed"
+              >
+                <span className="text-violet-400 font-medium">Did you know? </span>
+                {CHEM_TIPS[tipIndex]}
+              </motion.p>
+            )}
+          </AnimatePresence>
+        </motion.div>
+
+        {/* Bottom caption */}
+        <p className="text-[11px] text-white/20">
+          Large language models take a moment to initialise. Hang tight!
+        </p>
+      </div>
+    </motion.div>
+  );
+};
+
+// ─────────────────────────────────────────────────────────────────────────────
+
 // Cursor Follow Color Gradient Animation Component
 const CursorGlow = () => {
   const [mousePosition, setMousePosition] = useState({ x: -1000, y: -1000 });
@@ -74,6 +293,9 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [backendStatus, setBackendStatus] = useState<"loading" | "ready" | "fallback">("loading");
+  const [loadingStep, setLoadingStep] = useState<"idle" | "loading_retriever" | "loading_model" | "done">("idle");
+  const [retrieverReady, setRetrieverReady] = useState(false);
+  const [modelReady, setModelReady] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -91,6 +313,9 @@ export default function Home() {
         if (res.ok) {
           const data = await res.json();
           setBackendStatus(data.status);
+          setLoadingStep(data.loading_step ?? "idle");
+          setRetrieverReady(data.retriever_ready ?? false);
+          setModelReady(data.model_ready ?? false);
         } else {
           setBackendStatus("loading");
         }
@@ -191,6 +416,17 @@ export default function Home() {
     <div className="flex h-screen bg-[#131314] text-[#e3e3e3] font-sans overflow-hidden selection:bg-indigo-500/30 relative">
       {/* Interactive Cursor Color Gradient Animation */}
       <CursorGlow />
+
+      {/* Model Loading Overlay */}
+      <AnimatePresence>
+        {backendStatus === "loading" && (
+          <ModelLoadingOverlay
+            loadingStep={loadingStep}
+            retrieverReady={retrieverReady}
+            modelReady={modelReady}
+          />
+        )}
+      </AnimatePresence>
 
       {/* Gemini Left Sidebar */}
       <motion.aside 
@@ -374,15 +610,7 @@ export default function Home() {
           </div>
         </header>
 
-        {backendStatus === "loading" && (
-          <div className="bg-amber-500/10 border-b border-amber-500/20 px-6 py-3 text-xs md:text-sm text-amber-200 flex items-center gap-3 animate-pulse">
-            <span className="flex h-2 w-2 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
-            </span>
-            <span>ChemE-LLM is warming up. Please wait while the model and vector database are loading...</span>
-          </div>
-        )}
+
         {backendStatus === "fallback" && (
           <div className="bg-blue-500/10 border-b border-blue-500/20 px-6 py-3 text-xs md:text-sm text-blue-200 flex items-center gap-3">
             <span className="flex h-2 w-2 relative">
@@ -618,7 +846,6 @@ const SourceAccordion = ({ sources }: { sources: SourceChunk[] }) => {
     </div>
   );
 }
-
 const examples = [
   { text: "How do I configure a Flash Drum?", sw: "DWSIM" },
   { text: "Difference between ode45 and ode15s?", sw: "MATLAB" },
