@@ -29,3 +29,7 @@ accelerate>=0.21.0
 # RAG & Vector Database
 chromadb>=0.4.0
 sentence-transformers>=2.2.2
+
+# Web Search (Smart Waterfall)
+tavily-python>=0.3.3
+duckduckgo-search>=5.0.0

@@ -296,6 +296,8 @@ export default function Home() {
   const [loadingStep, setLoadingStep] = useState<"idle" | "loading_retriever" | "loading_model" | "done">("idle");
   const [retrieverReady, setRetrieverReady] = useState(false);
   const [modelReady, setModelReady] = useState(false);
+  const [deepSearchEnabled, setDeepSearchEnabled] = useState(false);
+  const [deepSearchQuota, setDeepSearchQuota] = useState(5);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -332,6 +334,13 @@ export default function Home() {
   const handleSubmit = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
     if (!inputValue.trim() || isLoading || backendStatus === "loading") return;
+
+    if (deepSearchEnabled && deepSearchQuota > 0) {
+      setDeepSearchQuota(prev => prev - 1);
+      if (deepSearchQuota === 1) {
+        setDeepSearchEnabled(false);
+      }
+    }
 
     const userMessage: ChatMessage = {
       id: crypto.randomUUID(),
@@ -443,7 +452,6 @@ export default function Home() {
                 <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-violet-600 via-indigo-500 to-pink-500 flex items-center justify-center shadow-lg shadow-indigo-500/20">
                   <Sparkles size={18} className="text-white animate-pulse" />
                 </div>
-                <span className="text-lg font-medium tracking-wide bg-gradient-to-r from-white via-white/90 to-white/70 bg-clip-text text-transparent">Gemini</span>
                 <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-violet-500/20 text-violet-300 border border-violet-500/30">ChemE</span>
               </div>
               <button 
@@ -463,53 +471,6 @@ export default function Home() {
               <Plus size={18} className="text-violet-400 group-hover:rotate-90 transition-transform duration-300" />
               <span>New chat</span>
             </button>
-
-            {/* Navigation Menu */}
-            <nav className="flex flex-col gap-1 text-sm text-white/70">
-              <a href="#" className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/5 transition-colors">
-                <Search size={18} className="text-white/50" />
-                <span>Search chats</span>
-              </a>
-              <a href="#" className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/5 transition-colors">
-                <ImageIcon size={18} className="text-white/50" />
-                <span>Images</span>
-              </a>
-              <a href="#" className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/5 transition-colors">
-                <Video size={18} className="text-white/50" />
-                <span>Videos</span>
-              </a>
-              <a href="#" className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/5 transition-colors">
-                <Library size={18} className="text-white/50" />
-                <span>Library</span>
-              </a>
-              <a href="#" className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/5 transition-colors">
-                <Gem size={18} className="text-white/50" />
-                <span>Gems</span>
-              </a>
-            </nav>
-
-            {/* Notebooks Section */}
-            <div className="flex flex-col gap-2 pt-2 border-t border-white/5">
-              <span className="text-xs font-semibold text-white/40 px-3 uppercase tracking-wider">Notebooks</span>
-              <div className="flex flex-col gap-1 text-sm text-white/70">
-                <a href="#" className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-white/5 transition-colors text-violet-400 font-medium">
-                  <Plus size={16} />
-                  <span>New notebook</span>
-                </a>
-                <a href="#" className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-white/5 transition-colors">
-                  <Terminal size={16} className="text-white/40" />
-                  <span>master prompter</span>
-                </a>
-                <a href="#" className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-white/5 transition-colors">
-                  <Cpu size={16} className="text-white/40" />
-                  <span>Pybamm</span>
-                </a>
-                <a href="#" className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-white/5 transition-colors text-xs text-white/50">
-                  <FolderOpen size={16} className="text-white/40" />
-                  <span>All notebooks</span>
-                </a>
-              </div>
-            </div>
 
             {/* Recent Chats Section */}
             <div className="flex flex-col gap-2 pt-2 border-t border-white/5 overflow-y-auto max-h-[160px] custom-scrollbar">
@@ -718,6 +679,27 @@ export default function Home() {
                   <span className="text-xs text-white/40 hidden sm:inline px-2 py-0.5 rounded-full bg-white/5 border border-white/5">
                     {software === 'Both' ? 'All Software' : software}
                   </span>
+
+                  {/* Deep Search Toggle */}
+                  <div className="flex items-center gap-2 ml-2">
+                    <button
+                      type="button"
+                      onClick={() => setDeepSearchEnabled(!deepSearchEnabled)}
+                      disabled={deepSearchQuota === 0}
+                      className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors ${
+                        deepSearchEnabled ? 'bg-violet-500' : 'bg-white/20'
+                      } ${deepSearchQuota === 0 ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
+                    >
+                      <span
+                        className={`inline-block h-3.5 w-3.5 transform rounded-full bg-white transition-transform ${
+                          deepSearchEnabled ? 'translate-x-5' : 'translate-x-1'
+                        }`}
+                      />
+                    </button>
+                    <span className="text-xs text-white/60">
+                      Deep Search ({deepSearchQuota}/5 remaining)
+                    </span>
+                  </div>
                 </div>
 
                 <div className="flex items-center gap-2">

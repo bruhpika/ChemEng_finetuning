@@ -20,6 +20,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional, Tuple
+import google.generativeai as genai
 
 # ── Path setup ────────────────────────────────────────────────────────────────
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
@@ -153,11 +154,77 @@ Answer:"""
     return prompt
 
 
+def pre_flight_check(question: str) -> bool:
+    """
+    Checks if the question is related to Chemical Engineering, DWSIM, or MATLAB.
+    Returns True if related, False otherwise.
+    """
+    q_lower = question.lower()
+    domain_keywords = [
+        "chem", "dwsim", "matlab", "thermo", "reactor", "fluid", 
+        "distill", "heat", "mass transfer", "kinetic", "simulat",
+        "pump", "valve", "pipe", "equation", "property", "state",
+        "enthalpy", "entropy", "exergy", "fugacity", "activity",
+        "equilibrium", "phase", "separator", "compressor", "turbine",
+        "exchanger", "cooler", "heater", "component"
+    ]
+    if any(kw in q_lower for kw in domain_keywords):
+        return True
+    
+    model, tokenizer, mode = get_model()
+    if model is not None and mode != "rag_only":
+        prompt = f"Is the following question related to Chemical Engineering, DWSIM, or MATLAB? Answer strictly with 'Yes' or 'No'.\nQuestion: {question}\nAnswer:"
+        try:
+            import torch
+            inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+            with torch.no_grad():
+                output = model.generate(**inputs, max_new_tokens=5, do_sample=False, pad_token_id=tokenizer.eos_token_id)
+            answer = tokenizer.decode(output[0][inputs["input_ids"].shape[1]:], skip_special_tokens=True).strip().lower()
+            if "yes" in answer:
+                return True
+            return False
+        except Exception:
+            pass
+
+    return False
+
+def smart_waterfall_search(question: str) -> str:
+    """Smart Waterfall: Try Tavily for complex questions, fallback to DuckDuckGo."""
+    is_complex = len(question.split()) > 5
+    tavily_api_key = os.environ.get("TAVILY_API_KEY")
+    
+    if is_complex and tavily_api_key:
+        try:
+            from tavily import TavilyClient
+            client = TavilyClient(api_key=tavily_api_key)
+            response = client.search(question, search_depth="advanced")
+            results = response.get("results", [])
+            if results:
+                content = "\n\n".join([f"**{r.get('title', 'Result')}**\n{r.get('content', '')}" for r in results[:3]])
+                return f"**[Web Search: Tavily (Deep Search)]**\n\n{content}"
+        except Exception as e:
+            print(f"[app] Tavily search failed: {e}")
+            pass
+            
+    try:
+        from duckduckgo_search import DDGS
+        results = DDGS().text(question, max_results=3)
+        if results:
+            content = "\n\n".join([f"**{r.get('title', 'Result')}**\n{r.get('body', '')}" for r in results])
+            return f"**[Web Search: DuckDuckGo (Fallback)]**\n\n{content}"
+        else:
+            return "**[Web Search]** No results found via DuckDuckGo."
+    except Exception as e:
+        return f"**[Web Search]** DuckDuckGo search failed: {e}"
+
 def generate_answer(question: str, software: str) -> Tuple[str, str, str, list]:
     """
     Full RAG + LLM pipeline.
     Returns: (answer, sources_markdown, model_mode_label, raw_sources)
     """
+    if not pre_flight_check(question):
+        refusal = "I am a specialized assistant for Chemical Engineering, DWSIM, and MATLAB. I cannot answer queries outside these domains."
+        return refusal, "", "Guardrail active", []
     # Step 1: Retrieve relevant chunks
     retriever = get_retriever()
     retrieved = []
@@ -198,17 +265,17 @@ def generate_answer(question: str, software: str) -> Tuple[str, str, str, list]:
     model, tokenizer, mode = get_model()
 
     if mode == "rag_only" or model is None:
-        # Graceful fallback — show retrieved chunk content directly
+        # Fallback to Web Search via Smart Waterfall
+        answer = smart_waterfall_search(question)
         if retrieved:
             chunk = retrieved[0]["chunk"]
-            answer = f"**[RAG-only mode — no LLM loaded]**\n\nTop matching knowledge:\n\n"
+            answer += f"\n\n---\n**Local Knowledge Base Top Match:**\n\n"
             if chunk.get("theory"):
                 answer += f"**Theory:** {chunk['theory']}\n\n"
             if chunk.get("steps"):
                 answer += f"**Steps:**\n" + "\n".join(f"- {s}" for s in chunk["steps"])
-        else:
-            answer = "I could not find any relevant information in the knowledge base for your question."
-        return answer, sources_md, f"Mode: RAG-only (no LLM — build vector store & load model)", raw_sources
+        
+        return answer, sources_md, f"Mode: Web Search Fallback (Local LLM off)", raw_sources
 
     # Full LLM generation
     try:

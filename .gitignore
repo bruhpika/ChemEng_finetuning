@@ -53,3 +53,9 @@ data/chroma_db/
 .agents/
 .antigravitycli/
 
+# Evaluation & Secrets
+.env
+.env.*
+eval/
+test_prompts.json
+evaluation_results/
