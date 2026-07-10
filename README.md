@@ -108,7 +108,7 @@ ChemE-LLM is designed for streamlined edge deployment without proprietary softwa
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/your_org/ChemEng_finetuning-main.git
+git clone https://github.com/your_org/ChemEng_finetuning.git
 cd ChemEng_finetuning-main
 
 # 2. Initialize the Python virtual environment
