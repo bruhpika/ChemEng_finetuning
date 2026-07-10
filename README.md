@@ -223,8 +223,11 @@ This software is distributed under the **MIT License**. See the `LICENSE` file f
 
 ---
 
-## Acknowledgements
+## Acknowledgements & Development Methodology
 
-**Lead Engineer:** Harshith Bhardwaz Kenkari – <harshithkenkary@gmail.com>
+**Lead Engineer & System Architect:** Harshith Bhardwaz Kenkari – <harshithkenkary@gmail.com>
 
-Special thanks to the Google Gemini teams, HuggingFace community, and the open-source DWSIM developers.
+### AI-Assisted Engineering Methodology
+In alignment with modern AI-native software engineering practices, parts of this project—including boilerplate generation, data ingestion automation scripts, test infrastructure scaffolding, and documentation styling—were developed using advanced **AI-assisted coding methodologies** (such as Google DeepMind agentic workflows & Gemini AI assistants) in pair programming with the Lead Engineer. All core domain architecture, chemical engineering theory verification, vector store retrieval pipelines, and final QLoRA fine-tuning regressions were rigorously designed, audited, and empirically validated under human engineering oversight.
+
+Special thanks to the Google Gemini teams, the Hugging Face community, and the open-source DWSIM and MATLAB developer ecosystems.
