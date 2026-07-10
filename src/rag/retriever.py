@@ -13,7 +13,11 @@ class KBRetriever:
         self.client = chromadb.PersistentClient(path=CHROMA_DB_DIR)
         
         # Load the exact same embedding model used during the build process
-        self.ef = embedding_functions.SentenceTransformerEmbeddingFunction(model_name="all-MiniLM-L6-v2")
+        local_model_path = os.path.expanduser(
+            "~/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41"
+        )
+        model_name = local_model_path if os.path.exists(local_model_path) else "all-MiniLM-L6-v2"
+        self.ef = embedding_functions.SentenceTransformerEmbeddingFunction(model_name=model_name)
         
         # Load the collection
         self.collection = self.client.get_collection(

@@ -62,8 +62,12 @@ def build_vectorstore():
     print(f"Initializing ChromaDB at {CHROMA_DB_DIR}...")
     client = chromadb.PersistentClient(path=CHROMA_DB_DIR)
     
-    # We use all-MiniLM-L6-v2 as requested in the PRD (fast, lightweight sentence transformer)
-    sentence_transformer_ef = embedding_functions.SentenceTransformerEmbeddingFunction(model_name="all-MiniLM-L6-v2")
+    # We use all-MiniLM-L6-v2 (from local snapshot when available for offline reliability)
+    local_model_path = os.path.expanduser(
+        "~/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41"
+    )
+    model_name = local_model_path if os.path.exists(local_model_path) else "all-MiniLM-L6-v2"
+    sentence_transformer_ef = embedding_functions.SentenceTransformerEmbeddingFunction(model_name=model_name)
     
     # Create the database collection. We delete it first if it exists to ensure a fresh build.
     try:
