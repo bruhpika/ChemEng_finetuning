@@ -33,3 +33,6 @@ sentence-transformers>=2.2.2
 # Web Search (Smart Waterfall)
 tavily-python>=0.3.3
 duckduckgo-search>=5.0.0
+
+# GGUF Inference
+llama-cpp-python>=0.2.0

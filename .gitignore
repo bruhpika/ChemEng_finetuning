@@ -1,10 +1,30 @@
-# Virtual Environments
+# ==============================================================================
+# ChemE-LLM (.gitignore)
+# Enterprise-Grade Exclusion Rules for AI & Simulation Pipelines
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. LARGE MODEL WEIGHTS & CHECKPOINTS (Hosted on Hugging Face Hub)
+# ------------------------------------------------------------------------------
+# Exclude all multi-gigabyte GGUF checkpoints, safetensors, and raw bin files
+# to prevent exceeding GitHub's 100 MB commit limit.
+*.gguf
+*.safetensors
+*.bin
+finetune/*.gguf
+finetune/merged_model/
+finetune/adapter/
+model_checkpoints/
+llama-bin/
+llama-bin.zip
+
+# ------------------------------------------------------------------------------
+# 2. PYTHON VIRTUAL ENVIRONMENTS & DEPENDENCY CACHES
+# ------------------------------------------------------------------------------
 .venv/
 venv/
 env/
 ENV/
-
-# Python Cache & Builds
 __pycache__/
 *.py[cod]
 *$py.class
@@ -26,36 +46,49 @@ share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+*.whl
 
-# ChemE-LLM Pipeline State & Key Files
-gemini_api_key.txt
-api.txt
-api_key.txt
-PROJECT_STATUS.md
-*.bak
-*.log
-
-# Cached Data & Ingestion State (large assets)
+# ------------------------------------------------------------------------------
+# 3. VECTOR STORAGE & LARGE PROCESSED DATASETS
+# ------------------------------------------------------------------------------
+data/chroma_db/
 data/processed/blackboard/cache/
 data/processed/blackboard/browser_session/
 data/processed/track_b/browser_session/
+finetune_dataset.jsonl
 
-# Downstream Training Outputs (if generated locally)
-model_checkpoints/
+# ------------------------------------------------------------------------------
+# 4. PIPELINE STATE, LOGS & TEMPORARY FILES
+# ------------------------------------------------------------------------------
+*.log
+*.bak
+*.tmp
+*.swp
+*~
+.DS_Store
+Thumbs.db
 synthetic_qa/checkpoint.json
 synthetic_qa/progress.md
 synthetic_qa/generation_stats.json
-finetune_dataset.jsonl
-.venv
-data/chroma_db/
-
-# Agent/Tool State
-.agents/
-.antigravitycli/
-
-# Evaluation & Secrets
-.env
-.env.*
-eval/
 test_prompts.json
 evaluation_results/
+
+# ------------------------------------------------------------------------------
+# 5. SECRETS, API KEYS & ENVIRONMENT CONFIGURATIONS
+# ------------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+api.txt
+api_key.txt
+gemini_api_key.txt
+PROJECT_STATUS.md
+
+# ------------------------------------------------------------------------------
+# 6. LOCAL AGENT, CLI & IDE METADATA
+# ------------------------------------------------------------------------------
+.agents/
+.antigravitycli/
+.gemini/
+.vscode/
+.idea/

@@ -33,9 +33,9 @@ const CHEM_TIPS = [
 ];
 
 const STAGES = [
-  { key: "loading_retriever", label: "Loading Knowledge Base", sublabel: "Connecting ChromaDB vector store…", icon: "🧠" },
-  { key: "loading_model",     label: "Loading Language Model",  sublabel: "Initialising Phi-3-mini weights…",   icon: "🤖" },
-  { key: "done",              label: "Almost Ready",            sublabel: "Finalising inference pipeline…",      icon: "⚡" },
+  { key: "loading_retriever", label: "Loading Knowledge Base", sublabel: "Connecting ChromaDB vector store…" },
+  { key: "loading_model",     label: "Loading Language Model",  sublabel: "Downloading & Initialising Weights (May take several minutes on first launch only)…" },
+  { key: "done",              label: "Almost Ready",            sublabel: "Finalising inference pipeline…" },
 ];
 
 const ModelLoadingOverlay = ({
@@ -82,52 +82,20 @@ const ModelLoadingOverlay = ({
       transition={{ duration: 0.5, ease: "easeInOut" }}
       className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#0d0d0e]/95 backdrop-blur-2xl"
     >
-      {/* Animated background orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          animate={{ scale: [1, 1.15, 1], opacity: [0.15, 0.25, 0.15] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-violet-600/20 blur-[120px]"
-        />
-        <motion.div
-          animate={{ scale: [1, 1.2, 1], opacity: [0.10, 0.20, 0.10] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-indigo-500/20 blur-[100px]"
-        />
-        <motion.div
-          animate={{ scale: [1, 1.1, 1], opacity: [0.08, 0.15, 0.08] }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-fuchsia-500/10 blur-[150px]"
-        />
+        <div className="absolute inset-0 bg-neutral-900/10" />
       </div>
 
       <div className="relative flex flex-col items-center gap-10 max-w-lg w-full px-8 text-center">
 
-        {/* Logo + title */}
         <motion.div
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           className="flex flex-col items-center gap-4"
         >
-          <div className="relative w-20 h-20">
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-              className="absolute inset-0 rounded-full border-2 border-transparent border-t-violet-500 border-r-indigo-400"
-            />
-            <motion.div
-              animate={{ rotate: -360 }}
-              transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-              className="absolute inset-2 rounded-full border-2 border-transparent border-t-fuchsia-400 border-b-pink-400"
-            />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-3xl">⚗️</span>
-            </div>
-          </div>
-
           <div>
-            <h1 className="text-3xl font-semibold bg-gradient-to-r from-violet-400 via-indigo-300 to-pink-400 bg-clip-text text-transparent tracking-tight">
+            <h1 className="text-3xl font-semibold text-white tracking-tight">
               ChemE-LLM
             </h1>
             <p className="text-sm text-white/40 mt-1">Initialising your engineering AI…</p>
@@ -176,7 +144,6 @@ const ModelLoadingOverlay = ({
                     : "bg-white/3 border-white/5 text-white/30"
                 }`}
               >
-                <span className="text-xl">{stage.icon}</span>
                 <div className="flex-1 text-left">
                   <div className="text-sm font-medium">{stage.label}</div>
                   <div className="text-xs opacity-60">{stage.sublabel}</div>
@@ -361,7 +328,8 @@ export default function Home() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           question: userMessage.content,
-          software: software
+          software: software,
+          history: messages.filter(m => m.id !== 'welcome').map(m => ({ role: m.role, content: m.content }))
         }),
         signal: abortController.signal
       });

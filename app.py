@@ -21,6 +21,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional, Tuple
 import google.generativeai as genai
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # ── Path setup ────────────────────────────────────────────────────────────────
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
@@ -69,12 +72,31 @@ def get_retriever():
     return _retriever
 
 
+import subprocess
+import atexit
+import requests
+import time
+
+_llama_process = None
+
+def cleanup_llama_process():
+    global _llama_process
+    if _llama_process:
+        print("[app] Terminating llama-server.exe...")
+        _llama_process.terminate()
+        try:
+            _llama_process.wait(timeout=5)
+        except subprocess.TimeoutExpired:
+            _llama_process.kill()
+
+atexit.register(cleanup_llama_process)
+
 def get_model():
     """
     Loads the LLM on first call. 
-    Priority: Fine-tuned LoRA adapter > Base Phi-3-mini > RAG-only fallback.
+    Priority: llama-server.exe subprocess based on QUANT_LEVEL environment variable.
     """
-    global _model, _tokenizer, _model_mode, _model_load_attempted
+    global _model, _tokenizer, _model_mode, _model_load_attempted, _llama_process
     if _model is not None or _model_load_attempted:
         return _model, _tokenizer, _model_mode
 
@@ -83,29 +105,42 @@ def get_model():
             return _model, _tokenizer, _model_mode
 
         try:
-            import torch
-            from transformers import AutoModelForCausalLM, AutoTokenizer
-            from peft import PeftModel
+            quant_level = os.environ.get("QUANT_LEVEL", "standard").lower()
+            gguf_map = {
+                "standard": "cheme-phi3-f16.gguf",
+                "q8": "cheme-phi3-q8_0.gguf",
+                "q5": "cheme-phi3-q5_k_m.gguf",
+                "q4": "cheme-phi3-q4_k_m.gguf"
+            }
+            
+            filename = gguf_map.get(quant_level, "cheme-phi3-q4_k_m.gguf")
+            model_path = os.path.join(PROJECT_ROOT, "finetune", filename)
+            server_path = os.path.join(PROJECT_ROOT, "llama-bin", "llama-server.exe")
+            
+            print(f"[app] Launching llama-server.exe ({quant_level}): {model_path} ...")
+            
+            if not os.path.exists(model_path):
+                raise FileNotFoundError(f"GGUF file not found: {model_path}")
+            if not os.path.exists(server_path):
+                raise FileNotFoundError(f"llama-server.exe not found at: {server_path}")
 
-            base_model_id = "microsoft/Phi-3-mini-4k-instruct"
-            print(f"[app] Loading base model: {base_model_id} ...")
-            _tokenizer = AutoTokenizer.from_pretrained(base_model_id)
-
-            _model = AutoModelForCausalLM.from_pretrained(
-                base_model_id,
-                torch_dtype=torch.float16,
-                device_map="auto",
-            )
-
-            # If fine-tuned adapter weights exist, load them on top of the base model
-            if os.path.exists(ADAPTER_PATH):
-                print(f"[app] Fine-tuned adapter found at {ADAPTER_PATH}. Loading...")
-                _model = PeftModel.from_pretrained(_model, ADAPTER_PATH)
-                _model_mode = "finetuned"
-                print("[app] Fine-tuned model loaded ✅")
-            else:
-                _model_mode = "base"
-                print("[app] No adapter found — running base model (no fine-tuning).")
+            cmd = [server_path, "-m", model_path, "-c", "4096", "--port", "8081", "-ngl", "999"]
+            _llama_process = subprocess.Popen(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            
+            # Wait for server to start
+            for _ in range(15):
+                try:
+                    res = requests.get("http://127.0.0.1:8081/health")
+                    if res.status_code == 200:
+                        break
+                except:
+                    pass
+                time.sleep(1)
+            
+            _model = "http://127.0.0.1:8081"
+            _tokenizer = None # Not needed for /completion API
+            _model_mode = f"gguf_{quant_level}_server"
+            print("[app] GGUF model loaded via llama-server successfully")
 
         except Exception as e:
             print(f"[app] WARNING: Could not load LLM — {e}")
@@ -154,12 +189,18 @@ Answer:"""
     return prompt
 
 
-def pre_flight_check(question: str) -> bool:
+def pre_flight_check(question: str, history: list = None) -> bool:
     """
     Checks if the question is related to Chemical Engineering, DWSIM, or MATLAB.
-    Returns True if related, False otherwise.
+    Allows greetings, pleasantries, and follow-ups based on history.
     """
-    q_lower = question.lower()
+    q_lower = question.lower().strip()
+    
+    # Conversational Whitelisting Heuristics
+    greetings = ["hi", "hello", "hey", "what can you do", "help", "who are you", "can you elaborate", "explain more", "why"]
+    if any(q_lower == g for g in greetings) or any(q_lower.startswith(g + " ") for g in greetings):
+        return True
+
     domain_keywords = [
         "chem", "dwsim", "matlab", "thermo", "reactor", "fluid", 
         "distill", "heat", "mass transfer", "kinetic", "simulat",
@@ -173,17 +214,36 @@ def pre_flight_check(question: str) -> bool:
     
     model, tokenizer, mode = get_model()
     if model is not None and mode != "rag_only":
-        prompt = f"Is the following question related to Chemical Engineering, DWSIM, or MATLAB? Answer strictly with 'Yes' or 'No'.\nQuestion: {question}\nAnswer:"
+        history_str = ""
+        if history:
+            for msg in history[-3:]: # last 3 messages for context
+                history_str += f"{msg['role']}: {msg['content']}\n"
+                
+        prompt = f"""You are a bouncer for a Chemical Engineering AI. 
+Is the following user question related to Chemical Engineering, DWSIM, or MATLAB? 
+Context Awareness: Consider the previous chat history. If the user is asking to "elaborate" or follow up on a previous engineering answer, allow it.
+Conversational Whitelisting: Allow generic greetings, pleasantries, and requests for clarification to pass through.
+Answer strictly with 'Yes' or 'No'.
+
+Chat History:
+{history_str}
+Current Question: {question}
+Answer:"""
         try:
-            import torch
-            inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
-            with torch.no_grad():
-                output = model.generate(**inputs, max_new_tokens=5, do_sample=False, pad_token_id=tokenizer.eos_token_id)
-            answer = tokenizer.decode(output[0][inputs["input_ids"].shape[1]:], skip_special_tokens=True).strip().lower()
-            if "yes" in answer:
-                return True
+            # Using llama-server completion API
+            payload = {
+                "prompt": prompt,
+                "n_predict": 5,
+                "stop": ["\n", "<|end|>"]
+            }
+            response = requests.post(f"{model}/completion", json=payload, timeout=10)
+            if response.status_code == 200:
+                answer = response.json().get("content", "").strip().lower()
+                if "yes" in answer:
+                    return True
             return False
-        except Exception:
+        except Exception as e:
+            print(f"[app] pre_flight_check error: {e}")
             pass
 
     return False
@@ -217,12 +277,12 @@ def smart_waterfall_search(question: str) -> str:
     except Exception as e:
         return f"**[Web Search]** DuckDuckGo search failed: {e}"
 
-def generate_answer(question: str, software: str) -> Tuple[str, str, str, list]:
+def generate_answer(question: str, software: str, history: list = None) -> Tuple[str, str, str, list]:
     """
     Full RAG + LLM pipeline.
     Returns: (answer, sources_markdown, model_mode_label, raw_sources)
     """
-    if not pre_flight_check(question):
+    if not pre_flight_check(question, history):
         refusal = "I am a specialized assistant for Chemical Engineering, DWSIM, and MATLAB. I cannot answer queries outside these domains."
         return refusal, "", "Guardrail active", []
     # Step 1: Retrieve relevant chunks
@@ -279,23 +339,21 @@ def generate_answer(question: str, software: str) -> Tuple[str, str, str, list]:
 
     # Full LLM generation
     try:
-        import torch
         prompt = build_rag_prompt(question, retrieved)
-        inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
-        with torch.no_grad():
-            output = model.generate(
-                **inputs,
-                max_new_tokens=MAX_NEW_TOKENS,
-                do_sample=False,
-                pad_token_id=tokenizer.eos_token_id,
-            )
-        # Decode only the newly generated tokens (not the prompt)
-        new_tokens = output[0][inputs["input_ids"].shape[1]:]
-        answer = tokenizer.decode(new_tokens, skip_special_tokens=True).strip()
+        payload = {
+            "prompt": prompt,
+            "n_predict": MAX_NEW_TOKENS,
+            "stop": ["<|end|>"]
+        }
+        response = requests.post(f"{model}/completion", json=payload, timeout=60)
+        if response.status_code == 200:
+            answer = response.json().get("content", "").strip()
+        else:
+            answer = f"Error from server: {response.text}"
     except Exception as e:
         answer = f"Error during generation: {e}"
 
-    mode_label = "Fine-tuned + RAG" if mode == "finetuned" else "Base model + RAG (no fine-tuning yet)"
+    mode_label = f"Fine-tuned + RAG ({mode})"
     return answer, sources_md, mode_label, raw_sources
 
 
@@ -338,9 +396,14 @@ def get_backend_status():
         "loading_step": _loading_step,
     }
 
+class ChatMessageInput(BaseModel):
+    role: str
+    content: str
+
 class ChatRequest(BaseModel):
     question: str
     software: str = "Both"
+    history: Optional[List[ChatMessageInput]] = []
 
 class SourceChunk(BaseModel):
     id: int
@@ -399,7 +462,8 @@ async def chat_endpoint(request: ChatRequest):
     if not request.question.strip():
         raise HTTPException(status_code=400, detail="Question cannot be empty.")
     
-    answer, sources_md, mode, raw_sources = generate_answer(request.question, request.software)
+    history_dicts = [{"role": msg.role, "content": msg.content} for msg in request.history] if request.history else []
+    answer, sources_md, mode, raw_sources = generate_answer(request.question, request.software, history_dicts)
     
     return ChatResponse(
         answer=answer,

@@ -4,6 +4,12 @@
 [![Python](https://img.shields.io/badge/python-3.9%2B-blue)](https://www.python.org/)
 [![Status](https://img.shields.io/badge/status-Phase%205%20%E2%80%94%20Complete-brightgreen)](PROJECT_STATUS.md)
 [![KB Chunks](https://img.shields.io/badge/KB%20Chunks-763-brightgreen)](data/processed/)
+[![HuggingFace GGUF](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-cheme--phi3--GGUF-ffc107?logo=huggingface&logoColor=black)](https://huggingface.co/bruhpika/cheme-phi3-GGUF)
+
+> [!IMPORTANT]
+> **🤗 Pre-trained Model Weights Available on Hugging Face:**  
+> Due to GitHub storage constraints, our quantized `.gguf` checkpoints (`Q4_K_M`, `Q5_K_M`, `Q8_0`, `F16`) and fine-tuned adapters are hosted exclusively on the Hugging Face Hub:  
+> 👉 **[Download ChemE-Phi3-GGUF Models on Hugging Face](https://huggingface.co/bruhpika/cheme-phi3-GGUF)**
 
 ---
 
@@ -81,7 +87,7 @@ ChemE-LLM implements a robust, multi-layered architecture designed for high avai
 | **Phase 1: Data Curation** | ✅ Complete | Fully audited source catalog, multi-modal ingestion pipeline ready. |
 | **Phase 2: KB Construction** | ✅ Complete | 763 Validated Knowledge Chunks (DWSIM: 296, MATLAB: 461+). |
 | **Phase 3: Synthetic QA Generation** | ✅ Complete | Synthesized ~5,300 high-fidelity training pairs. |
-| **Phase 4: QLoRA Fine-Tuning** | ✅ Complete | Model weights (adapter) present in `finetune/adapter`. |
+| **Phase 4: QLoRA Fine-Tuning** | ✅ Complete | Model weights present in `finetune/adapter` and exported to [Hugging Face Hub](https://huggingface.co/bruhpika/cheme-phi3-GGUF). |
 | **Phase 5: RAG & Next.js UI Integration** | ✅ Complete | ChromaDB initialized; full-stack application deployed locally. |
 
 ---
