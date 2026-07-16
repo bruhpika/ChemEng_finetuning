@@ -104,7 +104,25 @@ ChemE-LLM is designed for streamlined edge deployment without proprietary softwa
 - Hugging Face CLI (`pip install huggingface_hub`)
 - Local compute environment (≥6 GB RAM/VRAM for quantized models; ≥16 GB for F16 base weights)
 
-### Quick Start Guide
+### Ollama Quick Start (Easiest Method)
+
+For users who want to chat with the model immediately without setting up a Python virtual environment, you can use [Ollama](https://ollama.com/) to pull and run the model directly from our Hugging Face repository in a single command. Depending on your hardware, you can choose from all available quantization tiers:
+
+```bash
+# 1. Run the recommended Q8_0 model (Best balance of speed/accuracy, ~4.06 GB)
+ollama run hf.co/bruhpika/cheme-phi3-GGUF:Q8_0
+
+# 2. Run the balanced Q5_K_M model (Excellent speed/accuracy, ~2.76 GB)
+ollama run hf.co/bruhpika/cheme-phi3-GGUF:Q5_K_M
+
+# 3. Run the ultra-compact Q4_K_M model (For older hardware/constrained devices, ~2.40 GB)
+ollama run hf.co/bruhpika/cheme-phi3-GGUF:Q4_K_M
+
+# 4. Run the unquantized F16 base model (Maximum fidelity, requires ≥12GB RAM, ~7.64 GB)
+ollama run hf.co/bruhpika/cheme-phi3-GGUF:F16
+```
+
+### Quick Start Guide (Python Backend & UI)
 
 ```bash
 # 1. Clone the repository
